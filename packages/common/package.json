@@ -1,5 +1,5 @@
 {
-  "name": "@base-cms-newsletters/common",
+  "name": "@industrial-media/common",
   "version": "0.0.0",
   "author": "Jacob Bare <jacob@limit0.io>",
   "repository": "https://github.com/base-cms/base-cms-newsletters/tree/master/packages/common",
@@ -13,6 +13,8 @@
     "@base-cms/marko-core": "^1.0.0-rc.5",
     "@base-cms/marko-newsletters": "^1.0.0-rc.5",
     "@base-cms/marko-newsletters-email-x": "^1.0.0-rc.1",
-    "@base-cms/object-path": "^1.0.0-rc.1"
+    "@base-cms/object-path": "^1.0.0-rc.1",
+    "graphql": "^14.5.4",
+    "graphql-tag": "^2.10.1"
   }
 }
