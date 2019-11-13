@@ -55,5 +55,20 @@ services:
       - "21090:80"
       - "31090:31090"
 
+  all:
+    <<: *node
+    <<: *newsletter-cmd
+    working_dir: /root/tenants/all
+    environment:
+      <<: *env
+      <<: *env-caprica
+      PORT: 80
+      EXPOSED_PORT: 21091
+      LIVERELOAD_PORT: 31091
+      TENANT_KEY: indm_all
+    ports:
+      - "21091:80"
+      - "31091:31091"
+
 volumes:
   yarn-cache: {}
