@@ -1,5 +1,6 @@
 $ const { newsletter, date } = data;
 
 <common-document newsletter=newsletter date=date>
-  <h1>Hello!</h1>
+  <h1>Hello ${newsletter.name}</h1>
+  <h3>My current date is ${date.format("MMM Do, YYYY")}</h3>
 </common-document>
