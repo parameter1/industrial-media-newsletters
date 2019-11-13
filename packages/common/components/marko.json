@@ -1,4 +1,8 @@
 {
+  "taglib-imports": [
+    "./elements/marko.json",
+    "./blocks/marko.json"
+  ],
   "<common-document>": {
     "template": "./document.marko",
     "<head>": {},
@@ -7,5 +11,16 @@
   },
   "<common-static-styles>": {
     "template": "./static-styles.marko"
+  },
+  "<common-table>": {
+    "template": "./core-table.marko",
+    "@border": "number",
+    "@width": "string",
+    "@class": "string",
+    "@spacing": "number",
+    "@padding": "number",
+    "@align": "string",
+    "@style": "string",
+    "@attrs": "object"
   }
 }
