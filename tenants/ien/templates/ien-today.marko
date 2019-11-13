@@ -1,7 +1,7 @@
 import contentList from "../graphql/fragments/content-list";
 import emailX from "../config/email-x";
 
-$ const { config } = out.global;
+$ const { website } = out.global;
 $ const { newsletter, date } = data;
 
 <common-document newsletter=newsletter date=date>
@@ -17,7 +17,7 @@ $ const { newsletter, date } = data;
         <div style="line-height:20px; font-size:2px;">&nbsp;</div>
         <common-default-header-block
           name=newsletter.name
-          href=config.website("origin")
+          href=website.get("origin")
           image-src="/files/base/indm/ien/image/2016/03/ientoday.56f0149e9136a.png"
           bg-color="#ffffff"
         />
@@ -41,12 +41,12 @@ $ const { newsletter, date } = data;
           class="main"
           attrs={ border: 0, width: 630 }
         >
-          <@link href=node.websiteUrl target="_blank" />
+          <@link href=node.siteContext.url target="_blank" />
         </marko-newsletter-imgix>
       </marko-core-obj-value>
 
       <marko-core-obj-text tag="h4" obj=node field="name">
-        <@link href=node.websiteUrl target="_blank" class="my-cool-class" attrs={
+        <@link href=node.siteContext.url target="_blank" class="my-cool-class" attrs={
           style: "color: red;",
           "data-foo": "bar",
           "aria-hidden": "false",
@@ -76,11 +76,11 @@ $ const { newsletter, date } = data;
           class="main"
           attrs={ border: 0, width: 300 }
         >
-          <@link href=node.websiteUrl target="_blank" />
+          <@link href=node.siteContext.url target="_blank" />
         </marko-newsletter-imgix>
       </marko-core-obj-value>
       <marko-core-obj-text tag="h4" obj=node field="name">
-        <@link href=node.websiteUrl target="_blank" />
+        <@link href=node.siteContext.url target="_blank" />
       </marko-core-obj-text>
       <marko-core-obj-text tag="p" obj=node field="teaser" html=true />
       <hr>
@@ -105,11 +105,11 @@ $ const { newsletter, date } = data;
           class="main"
           attrs={ border: 0, width: 150 }
         >
-          <@link href=node.websiteUrl target="_blank" />
+          <@link href=node.siteContext.url target="_blank" />
         </marko-newsletter-imgix>
       </marko-core-obj-value>
       <marko-core-obj-text tag="h4" obj=node field="name">
-        <@link href=node.websiteUrl target="_blank" />
+        <@link href=node.siteContext.url target="_blank" />
       </marko-core-obj-text>
       <if(node.type === "text-ad")>
         <marko-core-obj-text obj=node field="body" html=true />
@@ -120,7 +120,7 @@ $ const { newsletter, date } = data;
 
       <if(node.type === "text-ad")>
         <marko-core-obj-text tag="p" obj=node field="linkText">
-          <@link href=node.websiteUrl target="_blank" />
+          <@link href=node.siteContext.url target="_blank" />
         </marko-core-obj-text>
       </if>
       <hr>
@@ -143,12 +143,12 @@ $ const { newsletter, date } = data;
           class="main"
           attrs={ border: 0, width: 150 }
         >
-          <@link href=node.websiteUrl target="_blank" />
+          <@link href=node.siteContext.url target="_blank" />
         </marko-newsletter-imgix>
       </marko-core-obj-value>
 
       <marko-core-obj-text tag="h4" obj=node field="name">
-        <@link href=node.websiteUrl target="_blank" />
+        <@link href=node.siteContext.url target="_blank" />
       </marko-core-obj-text>
       <if(node.type === "text-ad")>
         <marko-core-obj-text obj=node field="body" html=true />
@@ -158,7 +158,7 @@ $ const { newsletter, date } = data;
       </else>
       <if(node.type === "text-ad")>
         <marko-core-obj-text tag="p" obj=node field="linkText">
-          <@link href=node.websiteUrl target="_blank" />
+          <@link href=node.siteContext.url target="_blank" />
         </marko-core-obj-text>
       </if>
       <else>
