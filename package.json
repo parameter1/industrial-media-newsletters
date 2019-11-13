@@ -1,0 +1,23 @@
+{
+  "name": "@base-cms-newsletters/industrial-media",
+  "description": "Newsletters for Industrial Media",
+  "repository": "https://github.com/base-cms-newsletters/industrial-media.git",
+  "author": "Jacob Bare <jacob@limit0.io>",
+  "license": "MIT",
+  "private": true,
+  "root": true,
+  "workspaces": [
+    "tenants/*"
+  ],
+  "scripts": {
+    "compile": "lerna run compile",
+    "lint": "lerna run lint",
+    "lint:css": "lerna run lint:css",
+    "lint:js": "lerna run lint:js",
+    "test": "lerna run test"
+  },
+  "devDependencies": {
+    "@base-cms/marko-compiler": "^1.0.0-beta.1",
+    "lerna": "^3.16.4"
+  }
+}
