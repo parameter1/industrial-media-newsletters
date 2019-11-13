@@ -1,0 +1,11 @@
+{
+  "<common-document>": {
+    "template": "./document.marko",
+    "<head>": {},
+    "@newsletter": "object",
+    "@date": "date"
+  },
+  "<common-static-styles>": {
+    "template": "./static-styles.marko"
+  }
+}

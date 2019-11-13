@@ -1,0 +1,17 @@
+{
+  "name": "@base-cms-newsletters/common",
+  "version": "0.0.0",
+  "author": "Jacob Bare <jacob@limit0.io>",
+  "repository": "https://github.com/base-cms/base-cms-newsletters/tree/master/packages/common",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "lint": "eslint --ext .js --max-warnings 5 ./",
+    "test": "yarn lint"
+  },
+  "dependencies": {
+    "@base-cms/marko-core": "^1.0.0-rc.1",
+    "@base-cms/marko-newsletters": "^1.0.0-rc.1",
+    "@base-cms/object-path": "^1.0.0-rc.1"
+  }
+}
