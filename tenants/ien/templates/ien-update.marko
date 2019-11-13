@@ -1,10 +1,29 @@
 import contentList from "../graphql/fragments/content-list";
+import emailX from "../config/email-x";
 
+$ const { config } = out.global;
 $ const { newsletter, date } = data;
 
 <common-document newsletter=newsletter date=date>
-  <h1>Hello ${newsletter.name}</h1>
-  <h3>My current date is ${date.format("MMM Do, YYYY")}</h3>
+  <common-banner-element
+    name=newsletter.name
+    date=date
+    ad-unit=emailX.getAdUnit({ name: "header", alias: newsletter.alias })
+  />
+
+  <common-table width="630" align="center" class="main" padding=null spacing=null>
+    <tr>
+      <td>
+        <div style="line-height:20px; font-size:2px;">&nbsp;</div>
+        <common-default-header-block
+          name=newsletter.name
+          href=config.website("origin")
+          image-src="/files/base/indm/ien/image/2016/11/update_left.58342d0891a12.png"
+          bg-color="#ffffff"
+        />
+      </td>
+    </tr>
+  </common-table>
 
   <marko-web-query|{ nodes }| name="newsletter-scheduled-content" params={
     date: date.valueOf(),
