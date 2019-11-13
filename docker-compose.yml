@@ -51,7 +51,6 @@ services:
       EXPOSED_PORT: 21090
       LIVERELOAD_PORT: 31090
       TENANT_KEY: indm_ien
-      SITE_ID: 5669a4f16cdeeaf8598b4579
     ports:
       - "21090:80"
       - "31090:31090"
