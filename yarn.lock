@@ -95,17 +95,17 @@
   resolved "https://registry.yarnpkg.com/@base-cms/marko-newsletters-mc/-/marko-newsletters-mc-1.0.0-rc.5.tgz#5a5a138c52df56db6bac9e2be5767f2f86331566"
   integrity sha512-+L1uBpg/Uue96XmzS5oRSgxn3gbqG/+qbXcsDq0NpNZk//Gze+f3ogTLrmYrbSSI2/FooEsYdM/JALZDjNqQRA==
 
-"@base-cms/marko-newsletters@^1.0.0-rc.5":
-  version "1.0.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@base-cms/marko-newsletters/-/marko-newsletters-1.0.0-rc.5.tgz#bbecb54fc93b5516f0373bd9e069a1b67fdeef3c"
-  integrity sha512-3pFZKyVG6pkwGf67Wy4vDIkF/xs215MgCvDC+eRtmpDP96uOM+PC7qP+eTtdyPVu4mennnQxOTYaHj9s4/1Qnw==
+"@base-cms/marko-newsletters@^1.0.0-rc.9":
+  version "1.0.0-rc.9"
+  resolved "https://registry.yarnpkg.com/@base-cms/marko-newsletters/-/marko-newsletters-1.0.0-rc.9.tgz#41deb492bc2575dae91bda0d295afd646a599714"
+  integrity sha512-+M2YfKDJSsvpLkdm7l119RkYhhNDhi5ytDeik0ykt/WmnK0HJdlI/CWd24fyt9ZjdsaXaGDndLAjANbYLeZ7+A==
   dependencies:
     "@base-cms/express-apollo" "^1.0.0-rc.5"
     "@base-cms/image" "^1.0.0-rc.1"
     "@base-cms/object-path" "^1.0.0-rc.1"
     "@base-cms/tenant-context" "^1.0.0-rc.1"
     "@base-cms/utils" "^1.0.0-rc.1"
-    "@base-cms/web-common" "^1.0.0-rc.5"
+    "@base-cms/web-common" "^1.0.0-rc.8"
     "@godaddy/terminus" "^4.2.0"
     express "^4.17.1"
     graphql "^14.5.4"
@@ -153,6 +153,18 @@
   version "1.0.0-rc.5"
   resolved "https://registry.yarnpkg.com/@base-cms/web-common/-/web-common-1.0.0-rc.5.tgz#1c8e26cbdd8c77c91281be5c5994722daf72813c"
   integrity sha512-7CtOga0PGKgLNmpkvGZHUOpwzzeA3eLpYwDmItBMd+U/pFpuvY0KzjmkQ1McpN7eHHga09+IpzcRcAVzCh0SPg==
+  dependencies:
+    "@base-cms/inflector" "^1.0.0-rc.1"
+    "@base-cms/object-path" "^1.0.0-rc.1"
+    "@base-cms/utils" "^1.0.0-rc.1"
+    graphql "^14.5.4"
+    graphql-tag "^2.10.1"
+    http-errors "^1.7.3"
+
+"@base-cms/web-common@^1.0.0-rc.8":
+  version "1.0.0-rc.8"
+  resolved "https://registry.yarnpkg.com/@base-cms/web-common/-/web-common-1.0.0-rc.8.tgz#cd4626e3a5f68c9d144afa76b15708b14c024ce3"
+  integrity sha512-oNzddArvQ5ACENl6+qEwzv5+shKtPhFAksa80jHOmYLgL7J18S5eM2LRStcdcE6CGNSeE1xfA0M52mftZc/Y4A==
   dependencies:
     "@base-cms/inflector" "^1.0.0-rc.1"
     "@base-cms/object-path" "^1.0.0-rc.1"
