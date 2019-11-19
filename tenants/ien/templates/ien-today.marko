@@ -9,7 +9,10 @@ $ const { newsletter, date } = data;
   description=newsletter.description
   date=date
 >
-  <@body>
+  <@head>
+    <common-static-styles />
+  </@head>
+  <@body style="margin: 0px !important;">
     <common-banner-element
       name=newsletter.name
       date=date
