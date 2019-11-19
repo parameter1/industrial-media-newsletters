@@ -2,7 +2,7 @@
   "name": "@industrial-media/all",
   "version": "0.0.0",
   "author": "Jacob Bare <jacob@limit0.io>",
-  "repository": "https://github.com/base-cms/base-cms-newsletters/tree/master/tenants/all",
+  "repository": "https://github.com/base-cms-newsletters/industrial-media/tree/master/tenants/all",
   "license": "MIT",
   "private": true,
   "scripts": {

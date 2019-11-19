@@ -1,2 +1,2 @@
 #!/bin/bash
-scripts/yarn.sh workspace "@base-cms-newsletters/$@"
+scripts/yarn.sh workspace "@industrial-media/$@"
