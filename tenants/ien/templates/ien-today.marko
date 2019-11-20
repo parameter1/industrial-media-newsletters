@@ -3,6 +3,7 @@ import emailX from "../config/email-x";
 
 $ const { website } = out.global;
 $ const { newsletter, date } = data;
+$ const primaryColor = "#ee0228";
 $ const blackBarText = "text-decoration: none !important; font-size: 10px; font-family: Arial, Helvetica, sans-serif; color: #ffffff; font-weight: regular;"
 $ const titleStyle = "text-decoration: none !important; font-size: 14px; font-family: Arial, Helvetica, sans-serif; color: #000000; text-align: left; font-weight: bold;";
 $ const contentLinkStyle = {
@@ -11,7 +12,7 @@ $ const contentLinkStyle = {
   "text-decoration": "none !important",
   "font-size": "16px",
   "font-family": "Arial, Helvetica, sans-serif",
-  "color": "#ee0228",
+  "color": primaryColor,
   "font-weight": "bold"
 };
 $ const teaserStyle = {
@@ -33,7 +34,7 @@ $ const textAdCopyStyle = {
   "line-height": "18px",
   "margin-top": "3px !important",
 };
-$ const textAdButtonStyle = "color:#3B579D; background:#3B579D; padding-top:10px; padding-left:10px; padding-right:10px; padding-bottom:10px;";
+$ const textAdButtonStyle = "background:#3B579D; padding-top:10px; padding-left:10px; padding-right:10px; padding-bottom:10px;";
 $ const textAdButtonLinkStyle = {
   "text-decoration": "none",
   "text-align": "left",
@@ -82,8 +83,19 @@ $ const textAdButtonLinkStyle = {
                 </div>
               </td>
               <td>
-                <img border="0" src="https://cdn.ien.com/files/base/newsletter/header-slanted_left.png" width="166" height="20" align="left" alt="">
-                <img border="0" src="https://cdn.ien.com/files/base/newsletter/header-slanted_right.png" width="330" height="20" align="left" alt="" class="mobileHide">
+                <marko-newsletter-imgix 
+                  src="/files/base/newsletter/header-slanted_left.png" 
+                  options={ w: 166, h: 20 } 
+                  alt=""
+                  attrs={ border: 0, align: "left", width: 166, height: 20 }>
+                </marko-newsletter-imgix>
+                <marko-newsletter-imgix 
+                  src="/files/base/newsletter/header-slanted_right.png" 
+                  options={ w: 330, h: 20 } 
+                  alt=""
+                  class="mobileHide"
+                  attrs={ border: 0, align: "left", width: 330, height: 20 }>
+                </marko-newsletter-imgix>
               </td>
             </tr>
           </common-table>
