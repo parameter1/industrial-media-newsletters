@@ -9,7 +9,6 @@ ADD tenants/$TENANT /root/tenants/$TENANT
 RUN yarn --production --pure-lockfile
 
 WORKDIR /root/tenants/$TENANT
-# RUN node_modules/.bin/basecms-newsletter build
 
 FROM node:10.15-alpine
 ENV NODE_ENV production
