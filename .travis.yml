@@ -5,8 +5,93 @@ cache: yarn
 stages:
   - name: test
 
+  - name: production
+    if: tag =~ /^v\d+\.\d+\.\d+$/
+
+  - name: staging
+    if: tag is present
+
 jobs:
   include:
     - stage: test
-      env:
-        - NODE_ENV=test
+      env: [NODE_ENV=test]
+
+    - stage: production
+      name: Deployment Started
+      script: npx @base-cms/newsletter-deployment-tool notify-started
+      install: skip
+      env: [ENVIRONMENT=production RANCHER_CLUSTERID=c-gxsr7]
+
+    - stage: staging
+      name: Deployment Started
+      script: npx @base-cms/newsletter-deployment-tool notify-started
+      install: skip
+      env: [ENVIRONMENT=staging RANCHER_CLUSTERID=c-rc5kp]
+
+    #############################
+    # vvv ADD SERVICES HERE vvv #
+    #############################
+
+    - stage: production
+      name: All/Multi-site
+      script: npx @base-cms/newsletter-deployment-tool deploy all caprica
+      install: skip
+      env: [ENVIRONMENT=production RANCHER_CLUSTERID=c-gxsr7]
+
+    - stage: staging
+      name: All/Multi-site
+      script: npx @base-cms/newsletter-deployment-tool deploy all caprica
+      install: skip
+      env: [ENVIRONMENT=staging RANCHER_CLUSTERID=c-rc5kp]
+
+    # - stage: production
+    #   name: CEN
+    #   script: npx @base-cms/newsletter-deployment-tool deploy cen caprica
+    #   install: skip
+    #   env: [ENVIRONMENT=production RANCHER_CLUSTERID=c-gxsr7]
+
+    # - stage: staging
+    #   name: CEN
+    #   script: npx @base-cms/newsletter-deployment-tool deploy cen caprica
+    #   install: skip
+    #   env: [ENVIRONMENT=staging RANCHER_CLUSTERID=c-rc5kp]
+
+    # - stage: production
+    #   name: DDT
+    #   script: npx @base-cms/newsletter-deployment-tool deploy ddt caprica
+    #   install: skip
+    #   env: [ENVIRONMENT=production RANCHER_CLUSTERID=c-gxsr7]
+
+    # - stage: staging
+    #   name: DDT
+    #   script: npx @base-cms/newsletter-deployment-tool deploy ddt caprica
+    #   install: skip
+    #   env: [ENVIRONMENT=staging RANCHER_CLUSTERID=c-rc5kp]
+
+    - stage: production
+      name: IEN
+      script: npx @base-cms/newsletter-deployment-tool deploy ien caprica
+      install: skip
+      env: [ENVIRONMENT=production RANCHER_CLUSTERID=c-gxsr7]
+
+    - stage: staging
+      name: IEN
+      script: npx @base-cms/newsletter-deployment-tool deploy ien caprica
+      install: skip
+      env: [ENVIRONMENT=staging RANCHER_CLUSTERID=c-rc5kp]
+
+    #############################
+    # ^^^ ADD SERVICES HERE ^^^ #
+    #############################
+
+    - stage: production
+      name: Deployment Finished
+      script: npx @base-cms/newsletter-deployment-tool notify-finished
+      install: skip
+      env: [ENVIRONMENT=production RANCHER_CLUSTERID=c-gxsr7]
+
+    - stage: staging
+      name: Deployment Finished
+      script: npx @base-cms/newsletter-deployment-tool notify-finished
+      install: skip
+      env: [ENVIRONMENT=staging RANCHER_CLUSTERID=c-rc5kp]
