@@ -39,6 +39,15 @@ config
     },
   ])
 
+  .setAdUnits('newswire', [
+    {
+      name: 'header',
+      id: '5dde9e8255da064bc9436c26',
+      width: 600,
+      height: 100,
+    },
+  ])
+
   .setAdUnits('mbt-today', [
     {
       name: 'header',
