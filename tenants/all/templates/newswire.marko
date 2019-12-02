@@ -433,12 +433,14 @@ $ const textAdButtonLinkStyle = {
       <tr>
         <td>
           <span style="display:none;">
-            %%[
-              set @publistID = listid
-              if IndexOf(_listname,"VPL") &gt; 0 AND IndexOf(_listname,"for List") &gt; 0 then
-                set @publistID = Substring(_listname,Add(IndexOf(_listname,"for List"),9),20)
-              endif
-            ]%%
+            $!{`
+              %%[
+                set @publistID = listid
+                if IndexOf(_listname,"VPL") > 0 AND IndexOf(_listname,"for List") > 0 then
+                  set @publistID = Substring(_listname,Add(IndexOf(_listname,"for List"),9),20)
+                endif
+              ]%%
+            `}
           </span>
           <div style="font-family: Arial, Helvetica, sans-serif; font-size: 10px; line-height: 17px;">
             <p style="margin:0px;margin-bottom:1em;">This email is being sent to
