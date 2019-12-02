@@ -23,7 +23,7 @@ x-env-defaults: &env
   NEW_RELIC_LICENSE_KEY: ${NEW_RELIC_LICENSE_KEY-(unset)}
 
 x-env-caprica: &env-caprica
-  GRAPHQL_URI: ${GRAPHQL_URI-https://caprica.graphql-staging.base-cms.io}
+  GRAPHQL_URI: ${GRAPHQL_URI-https://caprica.graphql.base-cms.io}
 
 services:
   terminal:
