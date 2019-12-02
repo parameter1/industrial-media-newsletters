@@ -253,7 +253,7 @@ $ const textAdButtonLinkStyle = {
                             <tr>
                               <td style=`${textAdButtonStyle}`>
                                 <marko-core-obj-text obj=node field="linkText" html=true >
-                                  <@link href=node.linkText target="_blank" attrs={ style: textAdButtonLinkStyle } />
+                                  <@link href=node.siteContext.url target="_blank" attrs={ style: textAdButtonLinkStyle } />
                                 </marko-core-obj-text>
                               </td>
                             </tr>
@@ -371,7 +371,7 @@ $ const textAdButtonLinkStyle = {
                               <tr>
                                 <td style=`${textAdButtonStyle}`>
                                   <marko-core-obj-text obj=node field="linkText" html=true >
-                                    <@link href=node.linkText target="_blank" attrs={ style: textAdButtonLinkStyle } />
+                                    <@link href=node.siteContext.url target="_blank" attrs={ style: textAdButtonLinkStyle } />
                                   </marko-core-obj-text>
                                 </td>
                               </tr>
