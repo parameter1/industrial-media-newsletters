@@ -1,5 +1,4 @@
 import contentList from "@industrial-media/common/graphql/fragments/content-list";
-import emailX from "../config/email-x";
 
 $ const { website } = out.global;
 $ const { newsletter, date } = data;
@@ -36,7 +35,6 @@ $ const teaserStyle = {
     <common-banner-element
       name=newsletter.name
       date=date
-      ad-unit=emailX.getAdUnit({ name: "header", alias: newsletter.alias })
     />
 
     <!-- Header -->
