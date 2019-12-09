@@ -9,7 +9,21 @@ $ const adUnit = getAsObject(input, "adUnit");
         <tr>
           <common-view-online-element name=input.name />
         </tr>
-        <!-- @todo Disabling until GAM/DFP is implemented. -->
+
+        <if(adUnit.path)>
+          <tr>
+            <td align="center">
+              <div class="advertisement inline ad-600x100">
+                <marko-newsletters-gam-display>
+                  <@ad-unit ...adUnit />
+                  <@image class="scaleAd" />
+                </marko-newsletters-gam-display>
+              </div>
+            </td>
+          </tr>
+        </if>
+
+        <!-- Leaving for now, in case EmailX is added back -->
         <!-- <if(adUnit.id)>
           <tr>
             <td align="center">

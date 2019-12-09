@@ -1,5 +1,4 @@
 import contentList from "@industrial-media/common/graphql/fragments/content-list";
-import emailX from "../config/email-x";
 
 $ const { website } = out.global;
 $ const { newsletter, date } = data;
@@ -36,7 +35,6 @@ $ const teaserStyle = {
     <common-banner-element
       name=newsletter.name
       date=date
-      ad-unit=emailX.getAdUnit({ name: "header", alias: newsletter.alias })
     />
 
     <!-- Header -->
@@ -158,7 +156,7 @@ $ const teaserStyle = {
               <a href="mailto:%%emailaddr%%">%%emailaddr%%</a>.
             </p>
             <p style="margin:0px;margin-bottom:1em;">
-              Please add reply.manufacturing.net to your address book or safe sender list to receive our emails in your inbox.
+              Please add reply.ien.com to your address book or safe sender list to receive our emails in your inbox.
             </p>
             <p style="margin:0px;margin-bottom:1em;">
               <a href="%%=RedirectTo(CloudPagesURL(204, 'sk', _subscriberkey, 'p', listid, 'ln', _listname, 'j', jobid, 'e', _emailid, 'en', emailname_, 'de', _DataSourceName))=%%">Unsubscribe</a>
