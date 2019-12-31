@@ -6,11 +6,11 @@ import GAM from "../config/gam";
 $ const { website } = out.global;
 $ const { newsletter, date, dateInfo } = data;
 $ const primaryColor = "#ef6422";
-$ const blackBarText = "text-decoration: none !important; font-size: 10px; font-family: Arial, Helvetica, sans-serif; color: #ffffff; font-weight: regular;";
+$ const blackBarText = "text-decoration: none !important; font-size: 10px; font-family: Arial, Helvetica, sans-serif; color: #ffffff; font-weight: normal;";
 $ const titleStyle = "text-decoration: none !important; font-size: 14px; font-family: Arial, Helvetica, sans-serif; color: #000000; text-align: left; font-weight: bold;";
 $ const contentLinkStyle = {
   "text-decoration": "none",
-   "text-align": "left",
+  "text-align": "left",
   "text-decoration": "none !important",
   "font-size": "16px",
   "font-family": "Arial, Helvetica, sans-serif",
@@ -21,28 +21,27 @@ $ const teaserStyle = {
   "text-decoration": "none !important",
   "font-size": "13px",
   "font-family": "Arial, Helvetica, sans-serif",
-  color: "#666666",
-  "font-weight": "regular",
+  "color": "#666666",
+  "font-weight": "normal",
   "text-align": "left",
-  "margin-top": "3px !important",
+  "margin-top": "5px !important",
   "line-height": "1.2em",
 };
 $ const textAdCopyStyle = {
   "font-family": "Arial, Helvetica, sans-serif",
   "font-size": "12px",
-  color: "#000000",
-  "line-height": "1em",
+  "color": "#000000",
   "text-align": "left",
   "line-height": "18px",
-  "margin-top": "3px !important",
+  "margin-top": "5px !important",
 };
 $ const textAdButtonStyle = "background:#3B579D; padding-top:10px; padding-left:10px; padding-right:10px; padding-bottom:10px;";
 $ const textAdButtonLinkStyle = {
   "font-family": "Arial, Helvetica, sans-serif",
   "text-decoration": "none",
   "text-align": "left",
-  background: "#3B579D",
-  color: "#ffffff",
+  "background": "#3B579D",
+  "color": "#ffffff",
   "font-weight": "bold",
   "font-size": "16px",
   "margin-top": "10px",
@@ -143,10 +142,10 @@ $ const textAdButtonLinkStyle = {
                 </marko-newsletter-imgix>
               </marko-core-obj-value>
 
-              <marko-core-obj-text obj=node field="name" attrs={ style: { "margin-top": "10px", "text-align": "left" } } >
+              <marko-core-obj-text obj=node field="name" attrs={ style: { "margin-top": "5px", "text-align": "left" } } >
                 <@link href=node.siteContext.url target="_blank" attrs={ style: contentLinkStyle } />
               </marko-core-obj-text>
-              <marko-core-obj-text tag="p" obj=node field="teaser" html=true attrs={ style: teaserStyle } />
+              <marko-core-obj-text tag="div" obj=node field="teaser" html=true attrs={ style: teaserStyle } />
             </for>
           </marko-web-query>
         </td>
@@ -195,11 +194,14 @@ $ const textAdButtonLinkStyle = {
                             </marko-newsletter-imgix>
                           </marko-core-obj-value>
 
-                          <marko-core-obj-text obj=node field="name" attrs={ style: { "margin-top": "10px", "text-align": "left" } } >
+                          <marko-core-obj-text obj=node field="name" attrs={ style: { "margin-top": "5px", "text-align": "left" } } >
                             <@link href=node.siteContext.url target="_blank" attrs={ style: contentLinkStyle } />
                           </marko-core-obj-text>
-                          <marko-core-obj-text tag="p" obj=node field="teaser" html=true attrs={ style: teaserStyle } />
+                          <marko-core-obj-text tag="div" obj=node field="teaser" html=true attrs={ style: teaserStyle } />
                         </td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
                       </tr>
                     </common-table>
                   </for>
@@ -215,7 +217,7 @@ $ const textAdButtonLinkStyle = {
             sectionId: 63308,
             queryFragment: contentList,
           }>
-            <!-- Left Wrapping Table -->
+            <!-- Right Wrapping Table -->
             <common-table width="300" style="border-collapse:collapse;" align="right" class="main" padding=0 spacing=0>
               <tr>
                 <td valign="top">
@@ -249,7 +251,9 @@ $ const textAdButtonLinkStyle = {
                               </td>
                             </tr>
                           </common-table>
-                          <marko-core-obj-text tag="p" obj=node field="body" html=true attrs={ style: textAdCopyStyle } />
+
+                          <marko-core-obj-text tag="div" obj=node field="body" html=true attrs={ style: textAdCopyStyle } />
+
                           <common-table align="right" class="main" padding=0 spacing=0>
                             <tr>
                               <td style=`${textAdButtonStyle}`>
@@ -275,9 +279,7 @@ $ const textAdButtonLinkStyle = {
 
         </td>
       </tr>
-      <tr>
-        <td>&nbsp;</td>
-      </tr>
+
       <tr>
         <td><hr></td>
       </tr>
@@ -324,7 +326,7 @@ $ const textAdButtonLinkStyle = {
                       <marko-core-obj-text obj=node field="name" >
                         <@link href=node.siteContext.url target="_blank" attrs={ style: contentLinkStyle } />
                       </marko-core-obj-text>
-                      <marko-core-obj-text tag="p" obj=node field="teaser" html=true attrs={ style: teaserStyle } />
+                      <marko-core-obj-text tag="div" obj=node field="teaser" html=true attrs={ style: teaserStyle } />
                     </td>
                   </tr>
                   <tr>
@@ -334,66 +336,61 @@ $ const textAdButtonLinkStyle = {
               </if>
               <else-if(node.type === 'text-ad')>
                 <!-- Left Wrapping Table -->
-                <common-table width="630" style="border-collapse:collapse;" align="right" class="main" padding=0 spacing=0>
+
+                <common-table width="630" style="border-collapse:collapse;" align="left" class="main" padding=10 spacing=0>
                   <tr>
-                    <td valign="top">
-                      <common-table width="630" style="border-collapse:collapse;" align="left" class="right" padding=10 spacing=0>
+                    <td bgcolor="#ecedee">
+                      <marko-core-obj-text obj=node field="name">
+                        <@link href=node.siteContext.url target="_blank" attrs={ style: contentLinkStyle } />
+                      </marko-core-obj-text>
+                      <common-table
+                        style="margin:10px 10px 0 0;"
+                        align="left"
+                        class="left"
+                        padding=5
+                        spacing=0
+                      >
                         <tr>
-                          <td bgcolor="#ecedee">
-                            <marko-core-obj-text obj=node field="name">
-                              <@link href=node.siteContext.url target="_blank" attrs={ style: contentLinkStyle } />
-                            </marko-core-obj-text>
-                            <common-table
-                              style="margin:10px 10px 0 0;"
-                              align="left"
-                              class="left"
-                              padding=0
-                              spacing=0
-                            >
-                              <tr>
-                                <td>
-                                  <marko-core-obj-value|{ value: image }| obj=node field="primaryImage" as="object">
-                                    <marko-newsletter-imgix
-                                      src=image.src
-                                      alt=image.alt
-                                      options={ w: 150 }
-                                      class="main"
-                                      attrs={ border: 0, width: 150 }
-                                    >
-                                      <@link href=node.siteContext.url target="_blank" />
-                                    </marko-newsletter-imgix>
-                                  </marko-core-obj-value>
-                                </td>
-                              </tr>
-                            </common-table>
-                            <marko-core-obj-text tag="p" obj=node field="body" html=true attrs={ style: textAdCopyStyle } />
-                            <common-table align="right" class="main" padding=0 spacing=0>
-                              <tr>
-                                <td style=`${textAdButtonStyle}`>
-                                  <marko-core-obj-text obj=node field="linkText" html=true >
-                                    <@link href=node.siteContext.url target="_blank" attrs={ style: textAdButtonLinkStyle } />
-                                  </marko-core-obj-text>
-                                </td>
-                              </tr>
-                            </common-table>
+                          <td>
+                            <marko-core-obj-value|{ value: image }| obj=node field="primaryImage" as="object">
+                              <marko-newsletter-imgix
+                                src=image.src
+                                alt=image.alt
+                                options={ w: 150 }
+                                class="main"
+                                attrs={ border: 0, width: 150 }
+                              >
+                                <@link href=node.siteContext.url target="_blank" />
+                              </marko-newsletter-imgix>
+                            </marko-core-obj-value>
                           </td>
                         </tr>
                       </common-table>
-                      <common-table width="100%" align="center" class="center" >
+
+                      <marko-core-obj-text tag="div" obj=node field="body" html=true attrs={ style: textAdCopyStyle } />
+                      <common-table align="right" class="main" padding=0 spacing=0>
                         <tr>
-                          <td>&nbsp;</td>
+                          <td style=`${textAdButtonStyle}`>
+                            <marko-core-obj-text obj=node field="linkText" html=true >
+                              <@link href=node.linkText target="_blank" attrs={ style: textAdButtonLinkStyle } />
+                            </marko-core-obj-text>
+                          </td>
                         </tr>
                       </common-table>
                     </td>
                   </tr>
+
                 </common-table>
+                <common-table width="630" style="border-collapse:collapse;" align="left" class="main" padding=0 spacing=0>
+                  <tr>
+                    <td>&nbsp;</td>
+                  </tr>
+                </common-table>
+
               </else-if>
             </for>
           </marko-web-query>
         </td>
-      </tr>
-      <tr>
-        <td>&nbsp;</td>
       </tr>
     </common-table>
 
