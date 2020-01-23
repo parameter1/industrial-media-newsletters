@@ -37,7 +37,6 @@ $ const textAdCopyStyle = {
 };
 $ const textAdButtonStyle = "background:#3B579D; padding-top:10px; padding-left:10px; padding-right:10px; padding-bottom:10px;";
 $ const textAdButtonLinkStyle = {
-  "font-family": "Arial, Helvetica, sans-serif",
   "text-decoration": "none",
   "text-align": "left",
   "background": "#3B579D",
@@ -407,9 +406,9 @@ $ const textAdButtonLinkStyle = {
                   |
                   <a href=`${website.get("origin")}/contact-us` target="_blank" style=`${blackBarText}`>Contact Us</a>
                   |
-                  <a href=`${website.get("origin")}/subscribe/email` target="_blank" style=`${blackBarText}`>Subscribe</a>
+                  <a href=`${website.get("origin")}/subscribe` target="_blank" style=`${blackBarText}`>Subscribe</a>
                   |
-                  <a href=`${website.get("origin")}/advertise` target="_blank" style=`${blackBarText}`>Advertise</a>
+                  <a href=`${website.get("origin")}/page/mnet-advertise` target="_blank" style=`${blackBarText}`>Advertise</a>
                 </div>
               </td>
             </tr>
@@ -451,9 +450,9 @@ $ const textAdButtonLinkStyle = {
               <a href="%%=RedirectTo(CloudPagesURL(204, 'sk', _subscriberkey, 'p', listid, 'ln', _listname, 'j', jobid, 'e', _emailid, 'en', emailname_, 'de', _DataSourceName))=%%">Unsubscribe</a>
               | <a href="%%ftaf_url%%">Forward to a Friend</a>
               | <a href="%%profile_center_url%%" alias="Update Profile">Update Profile</a>
-              | <a href=`${website.get("origin")}/advertise`>Advertise</a>
+              | <a href=`${website.get("origin")}/page/mnet-advertise`>Advertise</a>
               | <a href=`${website.get("origin")}/contact-us`>Customer Service Center </a>
-              | <a href=`${website.get("origin")}/privacy-policy`> Privacy Policy</a>
+              | <a href=`${website.get("origin")}/page/mnet-privacy-policy`> Privacy Policy</a>
             </p>
 
             <p style="margin:0px;margin-bottom:1em;">
