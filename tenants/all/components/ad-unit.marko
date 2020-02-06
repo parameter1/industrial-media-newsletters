@@ -1,0 +1,37 @@
+import buildGAMTargeting from "@industrial-media/common/utils/build-gam-targeting";
+import emailX from "../config/email-x";
+import GAM from "../config/gam";
+
+$ const { req } = out.global;
+$ const emailXEnabled = Object.hasOwnProperty.call(req.query, 'emailx');
+
+$ const {
+  name,
+  newsletter,
+  date,
+  dateInfo,
+} = input;
+
+$ const { alias } = newsletter;
+
+$ let adUnit;
+$ if (emailXEnabled) {
+  adUnit = emailX.getAdUnit({ name, alias })
+} else {
+  adUnit = GAM.getAdUnit({ name, alias, targeting: buildGAMTargeting({ newsletter, date, dateInfo }) });
+}
+
+<if(adUnit.path || adUnit.id)>
+  <if(emailXEnabled)>
+    <marko-newsletters-email-x-display decoded-params=["email", "send"]>
+      <@ad-unit ...adUnit />
+      <@params date=date email="%%emailaddr%%" send="%%jobid%%" />
+    </marko-newsletters-email-x-display>
+  </if>
+  <else>
+    <marko-newsletters-gam-display>
+      <@ad-unit ...adUnit />
+      <@image class="scaleAd" />
+    </marko-newsletters-gam-display>
+  </else>
+</if>
