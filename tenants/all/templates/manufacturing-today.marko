@@ -1,7 +1,4 @@
 import contentList from "@industrial-media/common/graphql/fragments/content-list";
-import buildGAMTargeting from "@industrial-media/common/utils/build-gam-targeting";
-import emailX from "../config/email-x";
-import GAM from "../config/gam";
 
 $ const { website } = out.global;
 $ const { newsletter, date, dateInfo } = data;
@@ -55,11 +52,10 @@ $ const textAdButtonLinkStyle = {
     <common-static-styles />
   </@head>
   <@body style="margin: 0px !important;">
-    <common-banner-element
-      name=newsletter.name
+    <tenant-banner-element
+      newsletter=newsletter
       date=date
-      ad-unit=GAM.getAdUnit({ name: "header", alias: newsletter.alias, targeting: buildGAMTargeting({ newsletter, date, dateInfo }) })
-
+      date-info=dateInfo
     />
 
     <!-- Header -->

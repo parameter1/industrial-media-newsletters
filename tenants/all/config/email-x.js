@@ -9,6 +9,7 @@ config
       id: '5ddd5531c044ef4d6c9d4055',
       width: 600,
       height: 100,
+      uri: 'https://email-serve.foodmanufacturing.com',
     },
   ])
 
@@ -18,6 +19,7 @@ config
       id: '5ddd570255da06ed43436a55',
       width: 600,
       height: 100,
+      uri: 'https://email-serve.inddist.com',
     },
   ])
 
@@ -27,6 +29,7 @@ config
       id: '5ddd57f0c044efa60c9d40cd',
       width: 600,
       height: 100,
+      uri: 'https://email-serve.impomag.com',
     },
   ])
 
@@ -36,6 +39,7 @@ config
       id: '5ddd585b55da06bd77436acd',
       width: 600,
       height: 100,
+      uri: 'https://email-serve.manufacturing.net',
     },
   ])
 
@@ -45,6 +49,7 @@ config
       id: '5dde9e8255da064bc9436c26',
       width: 600,
       height: 100,
+      uri: 'https://email-serve.manufacturing.net',
     },
   ])
 
@@ -54,6 +59,7 @@ config
       id: '5ddd58ac55da0684a3436b05',
       width: 600,
       height: 100,
+      uri: 'https://email-serve.mbtmag.com',
     },
   ]);
 
