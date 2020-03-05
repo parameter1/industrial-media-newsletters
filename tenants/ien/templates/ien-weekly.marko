@@ -1,0 +1,503 @@
+import contentList from "@industrial-media/common/graphql/fragments/content-list";
+import emailX from "../config/email-x";
+
+$ const { website } = out.global;
+$ const { newsletter, date } = data;
+$ const primaryColor = "#ee0228";
+$ const dateStyle = "text-decoration: none !important; font-size: 12px; font-family: Arial, Helvetica, sans-serif; color: #ffffff; line-height: 12px; text-transform: uppercase;"
+$ const blackBarText = "text-decoration: none !important; font-size: 10px; font-family: Arial, Helvetica, sans-serif; color: #ffffff; font-weight: normal;"
+$ const titleStyle = "text-decoration: none !important; font-size: 14px; font-family: Arial, Helvetica, sans-serif; color: #000000; text-align: left; font-weight: bold;";
+$ const contentLinkStyle = {
+  "text-decoration": "none",
+  "text-align": "left",
+  "text-decoration": "none !important",
+  "font-size": "16px",
+  "font-family": "Arial, Helvetica, sans-serif",
+  "color": primaryColor,
+  "font-weight": "bold"
+};
+$ const teaserStyle = {
+  "text-decoration": "none !important",
+  "font-size": "13px",
+  "font-family": "Arial, Helvetica, sans-serif",
+  "color": "#666666",
+  "font-weight": "normal",
+  "text-align": "left",
+  "margin-top": "5px !important",
+  "line-height": "1.2em",
+};
+$ const textAdCopyStyle = {
+  "font-family": "Arial, Helvetica, sans-serif",
+  "font-size": "12px",
+  "color": "#000000",
+  "text-align": "left",
+  "line-height": "18px",
+  "margin-top": "5px !important",
+};
+$ const textAdButtonStyle = "background:#3B579D; padding-top:10px; padding-left:10px; padding-right:10px; padding-bottom:10px;";
+$ const textAdButtonLinkStyle = {
+  "text-decoration": "none",
+  "text-align": "left",
+  "background": "#3B579D",
+  "color": "#ffffff",
+  "font-weight": "bold",
+  "font-size": "16px",
+  "margin-top": "10px",
+};
+
+<marko-newsletter-root
+  title=newsletter.name
+  description=newsletter.description
+  date=date
+>
+  <@head>
+    <common-static-styles />
+  </@head>
+  <@body style="margin: 0px !important;">
+    <common-banner-element
+      name=newsletter.name
+      date=date
+      ad-unit=emailX.getAdUnit({ name: "header", alias: newsletter.alias })
+    />
+
+    <!-- Header -->
+    <common-table width="630" style="border-collapse:collapse;" align="center" class="main" padding=0 spacing=0>
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td valign="top" style="height:100px; width:320px;" align="right">
+          <marko-newsletter-imgix
+            src="/files/base/indm/ien/image/2019/11/IEN_Weekly.5dcd884c844aa.png"
+            alt="IEN Update"
+            options={ w: 320, h: 100 }
+            class="main"
+            attrs={ border: 0, width: 320 }
+          >
+            <@link href=website.get("origin") target="_blank" />
+          </marko-newsletter-imgix>
+        </td>
+        <td valign="top" class="mobileHide" style="height:100px; width:310px; background-color:#ffffff;" align="left">
+          <div style="height:100px; width:310px;  background:url('https://cdn.ien.com/files/base/indm/ien/image/2019/11/IEN_Weekly2.5dcd8851bc313.png');" align="left">
+            <common-table style="border-collapse:collapse;" width="310" padding=0 align="center" spacing=0 class="main">
+              <tr>
+                <td>&nbsp;</td>
+              </tr>
+              <tr align="right">
+                <td>
+                  <a href="https://www.facebook.com/Industrial-Equipment-News-153179218105048" style="text-decoration:none;" target="_blank">
+                    <img border="0" src="https://cdn.ien.com/files/base/newsletter/facebook-black-round.png" height="30">
+                  </a>&nbsp;
+                  <a href="https://twitter.com/IEN_Now" style="text-decoration:none;" target="_blank">
+                    <img border="0" src="https://cdn.ien.com/files/base/newsletter/twitter-black-round.png" height="30" alt="">
+                  </a>&nbsp;
+
+                  <a href="https://www.youtube.com/channel/UCwKursTtvT5lmEJBhdYeRbQ" style="text-decoration:none;" target="_blank">
+                    <img border="0" src="https://cdn.ien.com/files/base/newsletter/youtube-black-round.png" height="30" alt="">
+                  </a>&nbsp;
+                  <a href="https://www.instagram.com/ien_now/" style="text-decoration:none;" target="_blank">
+                    <img border="0" src="https://cdn.ien.com/files/base/newsletter/instagram-black-round.png" height="30" alt="">
+                  </a>&nbsp;&nbsp;&nbsp;
+                </td>
+              </tr>
+              <tr>
+                <td height="20" align="right">
+                  <common-table width="100%" border="0" spacing=0 padding=0>
+                    <tr style="text-decoration: none !important; font-size: 14px; font-family: Arial, Helvetica, sans-serif; color: #000000; font-weight: bold;">
+                      <td align="right" style="color:#000000; padding-right:20px;">
+                        ${date.format("MMMM DD, YYYY")}
+                      </td>
+                    </tr>
+                  </common-table>
+                </td>
+              </tr>
+            </common-table>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+    </common-table>
+
+    <!-- Featured Full -->
+    <common-table width="630" style="border-collapse:collapse;" align="center" class="main" padding=0 spacing=0>
+      <tr>
+        <td>
+          <marko-web-query|{ nodes }| name="newsletter-scheduled-content" params={
+            date: date.valueOf(),
+            newsletterId: newsletter.id,
+            sectionId: 63365,
+            limit: 1,
+            queryFragment: contentList,
+          }>
+            <common-table width="630" style="border-collapse:collapse;" align="center" class="main" padding=0 spacing=0>
+              <tr>
+                <td style=`${titleStyle}`>
+                  FEATURED STORY
+                </td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+              </tr>
+            </common-table>
+            <for|node| of=nodes>
+              <marko-core-obj-value|{ value: image }| obj=node field="primaryImage" as="object">
+                <marko-newsletter-imgix
+                  src=image.src
+                  alt=image.alt
+                  options={ w: 630 }
+                  class="main"
+                  attrs={ border: 0, width: 630 }
+                >
+                  <@link href=node.siteContext.url target="_blank" />
+                </marko-newsletter-imgix>
+              </marko-core-obj-value>
+
+              <marko-core-obj-text obj=node field="name" attrs={ style: { "margin-top": "5px", "text-align": "left" } } >
+                <@link href=node.siteContext.url target="_blank" attrs={ style: contentLinkStyle } />
+              </marko-core-obj-text>
+              <marko-core-obj-text tag="div" obj=node field="teaser" html=true attrs={ style: teaserStyle } />
+            </for>
+          </marko-web-query>
+        </td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td><hr></td>
+      </tr>
+    </common-table>
+
+    <!-- Featured Split Left||Right -->
+    <common-table width="630" style="border-collapse:collapse;" align="center" class="main" padding=0 spacing=0>
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>
+
+          <!-- Left Query Wrapper -->
+          <marko-web-query|{ nodes }| name="newsletter-scheduled-content" params={
+            date: date.valueOf(),
+            newsletterId: newsletter.id,
+            sectionId: 63364,
+            limit: 2,
+            queryFragment: contentList,
+          }>
+
+            <!-- Left Wrapping Table -->
+            <common-table width="300" style="border-collapse:collapse;" align="left" class="main" padding=0 spacing=0>
+              <tr>
+                <td valign="top">
+                  <for|node| of=nodes>
+                    <common-table width="300" style="border-collapse:collapse;" align="left" class="left" padding=0 spacing=0>
+                      <tr>
+                        <td>
+                          <marko-core-obj-value|{ value: image }| obj=node field="primaryImage" as="object">
+                            <marko-newsletter-imgix
+                              src=image.src
+                              alt=image.alt
+                              options={ w: 300 }
+                              class="main"
+                              attrs={ border: 0, width: 300 }
+                            >
+                              <@link href=node.siteContext.url target="_blank" />
+                            </marko-newsletter-imgix>
+                          </marko-core-obj-value>
+
+                          <marko-core-obj-text obj=node field="name" attrs={ style: { "margin-top": "5px", "text-align": "left" } } >
+                            <@link href=node.siteContext.url target="_blank" attrs={ style: contentLinkStyle } />
+                          </marko-core-obj-text>
+                          <marko-core-obj-text tag="div" obj=node field="teaser" html=true attrs={ style: teaserStyle } />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
+                      </tr>
+                    </common-table>
+                  </for>
+                </td>
+              </tr>
+            </common-table>
+          </marko-web-query>
+
+          <!-- Right Query Wrapper -->
+          <marko-web-query|{ nodes }| name="newsletter-scheduled-content" params={
+            date: date.valueOf(),
+            newsletterId: newsletter.id,
+            sectionId: 63367,
+            limit: 2,
+            queryFragment: contentList,
+          }>
+            <!-- Right Wrapping Table -->
+            <common-table width="300" style="border-collapse:collapse;" align="right" class="main" padding=0 spacing=0>
+              <tr>
+                <td valign="top">
+                  <for|node| of=nodes>
+                    <common-table width="300" style="border-collapse:collapse;" align="left" class="right" padding=10 spacing=0>
+                      <tr>
+                        <td bgcolor="#ecedee">
+                          <marko-core-obj-text obj=node field="name">
+                            <@link href=node.siteContext.url target="_blank" attrs={ style: contentLinkStyle } />
+                          </marko-core-obj-text>
+                          <common-table
+                            style="margin:10px 10px 0 0;"
+                            align="left"
+                            class="left"
+                            padding=0
+                            spacing=0
+                          >
+                            <tr>
+                              <td>
+                                <marko-core-obj-value|{ value: image }| obj=node field="primaryImage" as="object">
+                                  <marko-newsletter-imgix
+                                    src=image.src
+                                    alt=image.alt
+                                    options={ w: 150 }
+                                    class="main"
+                                    attrs={ border: 0, width: 150 }
+                                  >
+                                    <@link href=node.siteContext.url target="_blank" />
+                                  </marko-newsletter-imgix>
+                                </marko-core-obj-value>
+                              </td>
+                            </tr>
+                          </common-table>
+
+                          <marko-core-obj-text tag="div" obj=node field="body" html=true attrs={ style: textAdCopyStyle } />
+
+                          <common-table align="right" class="main" padding=0 spacing=0>
+                            <tr>
+                              <td style=`${textAdButtonStyle}`>
+                                <marko-core-obj-text obj=node field="linkText" html=true >
+                                  <@link href=node.siteContext.url target="_blank" attrs={ style: textAdButtonLinkStyle } />
+                                </marko-core-obj-text>
+                              </td>
+                            </tr>
+                          </common-table>
+                        </td>
+                      </tr>
+                    </common-table>
+                    <common-table width="100%" align="center" class="center" >
+                      <tr>
+                        <td>&nbsp;</td>
+                      </tr>
+                    </common-table>
+                  </for>
+                </td>
+              </tr>
+            </common-table>
+          </marko-web-query>
+
+        </td>
+      </tr>
+
+    </common-table>
+
+    <common-table width="630" padding=0 spacing=0 align="center" style="border-collapse:collapse;" class="main">
+    <tr>
+        <td>
+            <marko-newsletter-imgix
+              src="/files/base/newsletter/slanted.png"
+              options={ w: 315, h: 10 }
+              alt=""
+              attrs={ border: 0, align: "left", width: 315, height: 10 }>
+            </marko-newsletter-imgix>
+            <marko-newsletter-imgix
+              src="/files/base/newsletter/slanted.png"
+              options={ w: 315, h: 10 }
+              alt=""
+              class="mobileHide"
+              attrs={ border: 0, align: "left", width: 315, height: 10 }>
+            </marko-newsletter-imgix>
+        </td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+    </tr>
+    </common-table>
+
+    <!-- Main -->
+    <common-table width="630" style="border-collapse:collapse;" align="center" class="main" padding=0 spacing=0>
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>
+          <marko-web-query|{ nodes }| name="newsletter-scheduled-content" params={
+            date: date.valueOf(),
+            newsletterId: newsletter.id,
+            sectionId: 63366,
+            queryFragment: contentList,
+          }>
+            <for|node| of=nodes>
+              <if(node.type !== 'text-ad')>
+                <common-table width="630" style="border-collapse:collapse;" align="center" class="main" padding=0 spacing=0>
+                  <tr>
+                    <td valign="top">
+                      <common-table style="margin-right: 10px;" align="left" class="left" padding=0 spacing=0>
+                        <tr>
+                          <td>
+                            <marko-core-obj-value|{ value: image }| obj=node field="primaryImage" as="object">
+                              <marko-newsletter-imgix
+                                src=image.src
+                                alt=image.alt
+                                options={ w: 150 }
+                                class="main"
+                                attrs={ border: 0, width: 150 }
+                              >
+                                <@link href=node.siteContext.url target="_blank" />
+                              </marko-newsletter-imgix>
+                            </marko-core-obj-value>
+                          </td>
+                        </tr>
+                      </common-table>
+                      <marko-core-obj-text obj=node field="name" >
+                        <@link href=node.siteContext.url target="_blank" attrs={ style: contentLinkStyle } />
+                      </marko-core-obj-text>
+                      <marko-core-obj-text tag="div" obj=node field="teaser" html=true attrs={ style: teaserStyle } />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>
+                  </tr>
+                </common-table>
+              </if>
+              <else-if(node.type === 'text-ad')>
+                <common-table width="630" style="border-collapse:collapse;" align="left" class="main" padding=10 spacing=0>
+                  <tr>
+                    <td bgcolor="#ecedee">
+                      <marko-core-obj-text obj=node field="name">
+                        <@link href=node.siteContext.url target="_blank" attrs={ style: contentLinkStyle } />
+                      </marko-core-obj-text>
+                      <common-table
+                        style="margin:10px 10px 0 0;"
+                        align="left"
+                        class="left"
+                        padding=5
+                        spacing=0
+                      >
+                        <tr>
+                          <td>
+                            <marko-core-obj-value|{ value: image }| obj=node field="primaryImage" as="object">
+                              <marko-newsletter-imgix
+                                src=image.src
+                                alt=image.alt
+                                options={ w: 150 }
+                                class="main"
+                                attrs={ border: 0, width: 150 }
+                              >
+                                <@link href=node.siteContext.url target="_blank" />
+                              </marko-newsletter-imgix>
+                            </marko-core-obj-value>
+                          </td>
+                        </tr>
+                      </common-table>
+
+                      <marko-core-obj-text tag="div" obj=node field="body" html=true attrs={ style: textAdCopyStyle } />
+                      <common-table align="right" class="main" padding=0 spacing=0>
+                        <tr>
+                          <td style=`${textAdButtonStyle}`>
+                            <marko-core-obj-text obj=node field="linkText" html=true >
+                              <@link href=node.siteContext.url target="_blank" attrs={ style: textAdButtonLinkStyle } />
+                            </marko-core-obj-text>
+                          </td>
+                        </tr>
+                      </common-table>
+                    </td>
+                  </tr>
+
+                </common-table>
+                <common-table width="630" style="border-collapse:collapse;" align="left" class="main" padding=0 spacing=0>
+                  <tr>
+                    <td>&nbsp;</td>
+                  </tr>
+                </common-table>
+
+              </else-if>
+            </for>
+          </marko-web-query>
+        </td>
+      </tr>
+    </common-table>
+
+    <common-table width=630 border=0 padding=10 spacing=0 align="center" class="main">
+      <tr>
+        <td bgcolor="#000000">
+          <common-table width=300 border=0 padding=0 spacing=0 align="left">
+            <tr>
+              <td>
+                <div style=`${blackBarText} background-color: #000000; text-align:left;" class="center`>
+                  <a href=`${website.get("origin")}` target="_blank" style=`${blackBarText}`>Home</a>
+                  |
+                  <a href=`${website.get("origin")}/contact-us` target="_blank" style=`${blackBarText}`>Contact Us</a>
+                  |
+                  <a href=`${website.get("origin")}/subscribe/email` target="_blank" style=`${blackBarText}`>Subscribe</a>
+                  |
+                  <a href=`${website.get("origin")}/advertise` target="_blank" style=`${blackBarText}`>Advertise</a>
+                </div>
+              </td>
+            </tr>
+          </common-table>
+          <common-table width=300 border=0 padding=0 spacing=0 align="right">
+            <tr>
+              <td>
+                <div style=`${blackBarText}; background-color: #000000; text-align:right;` class="center">© 2019 All rights reserved, Industrial Media, LLC </div>
+              </td>
+            </tr>
+          </common-table>
+        </td>
+      </tr>
+    </common-table>
+    <common-table width=630 border=0 padding=10 spacing=0 align="center" class="main">
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>
+          <span style="display:none;">
+            %%[
+              set @publistID = listid
+              if IndexOf(_listname,"VPL") &gt; 0 AND IndexOf(_listname,"for List") &gt; 0 then
+                set @publistID = Substring(_listname,Add(IndexOf(_listname,"for List"),9),20)
+              endif
+            ]%%
+          </span>
+          <div style="font-family: Arial, Helvetica, sans-serif; font-size: 10px; line-height: 17px;">
+            <p style="margin:0px;margin-bottom:1em;">This email is being sent to
+              <a href="mailto:%%emailaddr%%">%%emailaddr%%</a>.
+            </p>
+            <p style="margin:0px;margin-bottom:1em;">
+              Please add reply.foodmanufacturing.com to your address book or safe sender list to receive our emails in your inbox.
+            </p>
+            <p style="margin:0px;margin-bottom:1em;">
+              <a href="%%=RedirectTo(CloudPagesURL(204, 'sk', _subscriberkey, 'p', listid, 'ln', _listname, 'j', jobid, 'e', _emailid, 'en', emailname_, 'de', _DataSourceName))=%%">Unsubscribe</a>
+              | <a href="%%ftaf_url%%">Forward to a Friend</a>
+              | <a href="%%profile_center_url%%" alias="Update Profile">Update Profile</a>
+              | <a href=`${website.get("origin")}/advertise`>Advertise</a>
+              | <a href=`${website.get("origin")}/contact-us`>Customer Service Center </a>
+              | <a href=`${website.get("origin")}/privacy-policy`> Privacy Policy</a>
+            </p>
+
+            <p style="margin:0px;margin-bottom:1em;">
+              Interested in advertising opportunities?  Please contact <a href="mailto:tom@ien.com">Tom Lynch</a> for more information.
+            </p>
+            <p style="margin:0px;margin-bottom:1em;">
+              If you have trouble with any of these methods, you can reach us at 608-692-2304.
+            </p>
+            <p>
+              %%Member_Busname%% <br>
+              %%Member_Addr%% <br>
+              %%Member_City%%, %%Member_State%%, %%Member_PostalCode%%, %%Member_Country%%
+            </p>
+            <!-- <img border="0" src="https://cdn.baseplatform.io/files/base/newsletter/ien.jpg" width="100" height="100" alt=""/> -->
+            <p>This newsletter is an Industrial Media, LLC product.</p>
+          </div>
+        </td>
+      </tr>
+    </common-table>
+    <marko-newsletters-mc-open-counter />
+  </@body>
+</marko-newsletter-root>
