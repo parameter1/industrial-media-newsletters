@@ -70,9 +70,7 @@ $ const teaserStyle = {
     <common-table width="630" border="0" spacing=0 padding=0 align="center" style="border-collapse:collapse;" class="main">
       <tr>
         <td>
-
-
-          <marko-web-query|{ node: issue }| name="magazine-latest-issue" params={
+          <marko-web-query|{ node: latestIssue }| name="magazine-latest-issue" params={
             publicationId: "5dd31636b1e3fe2e008b46ae",
             queryFragment: latestIssueFragment
           }>
@@ -80,17 +78,49 @@ $ const teaserStyle = {
             <common-table width="630" border="0" spacing=0 padding=0 align="center" style="border-collapse:collapse;" class="main">
               <tr>
                 <td valign="top" align="center">
-                    <marko-core-obj-value|{ value: coverImage }| obj=issue field="coverImage" as="object">
-                      <marko-newsletter-imgix
-                        src=coverImage.src
-                        alt=coverImage.alt
-                        options={ w: 450 }
-                        class="main"
-                        attrs={ border: 0, width: 450 }
-                      >
-                        <@link href=issue.digitalEditionUrl  target="_blank" />
-                      </marko-newsletter-imgix>
-                    </marko-core-obj-value>
+                  <marko-core-obj-value|{ value: coverImage }| obj=latestIssue field="coverImage" as="object">
+                    <marko-newsletter-imgix
+                      src=coverImage.src
+                      alt=coverImage.alt
+                      options={ w: 450 }
+                      class="main"
+                      attrs={ border: 0, width: 450 }
+                    >
+                      <@link href=latestIssue.digitalEditionUrl  target="_blank" />
+                    </marko-newsletter-imgix>
+                  </marko-core-obj-value>
+                </td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+              </tr>
+            </common-table>
+            <common-table width="630" border="0" spacing=0 padding=0 align="center" style="border-collapse:collapse;" class="main">
+              <tr>
+                <td valign="top" align="center" style="font-size:14px; text-decoration: none !important; font-family: Arial, Helvetica, sans-serif; color: #666666;">
+                  Your <strong>${latestIssue.name}</strong> issue of <em>Industrial Distribution Magazine</em> is now available online!
+                    <if(latestIssue.digitalEditionUrl)>
+                      <a href=latestIssue.digitalEditionUrl target="_blank" style="text-decoration: none !important; font-size: 14px; font-family: Arial, Helvetica, sans-serif; color: #f06724;">
+                        <strong>VIEW »</strong>
+                      </a>
+                    </if>
+                </td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td style="font-size: 14px; text-decoration: none !important; font-family: Arial, Helvetica, sans-serif; color: #666666;" align="center">
+                  <if(latestIssue.publication.subscribeUrl)>
+                    <a style="text-decoration: none !important; font-size: 14px; font-family: Arial, Helvetica, sans-serif; color: #f06724;" href=latestIssue.publication.subscribeUrl target="_blank" rel="noopener noreferrer">
+                      <strong>SUBSCRIBE</strong>
+                    </a> for more leading edge content from <em>Indsutrial Distribution</em>!
+                  </if>
+                  <else>
+                    <a style="text-decoration: none !important; font-size: 14px; font-family: Arial, Helvetica, sans-serif; color: #f06724;" href=`${website.get("origin")}/subscribe` target="_blank" rel="noopener noreferrer">
+                      <strong>SUBSCRIBE</strong>
+                    </a> for more leading edge content from <em>Indsutrial Distribution</em>!
+                  </else>
                 </td>
               </tr>
               <tr>
@@ -99,6 +129,7 @@ $ const teaserStyle = {
             </common-table>
 
           </marko-web-query>
+
         </td>
       </tr>
     </common-table>

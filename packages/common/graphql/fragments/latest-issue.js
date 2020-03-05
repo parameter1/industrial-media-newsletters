@@ -2,7 +2,7 @@ const gql = require('graphql-tag');
 
 module.exports = gql`
 
-fragment MagazinePublicationCardLatestIssueFragment on MagazineIssue {
+fragment MagazinePublicationLatestIssueFragment on MagazineIssue {
   id
   name
   digitalEditionUrl
