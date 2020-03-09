@@ -3,14 +3,16 @@
     "template": "./wrapper.marko",
     "@separator-position": "string",
     "@separator-type": "string",
-    "@clear-floats": "boolean"
+    "@clear-floats": "boolean",
+    "@date": "object"
   },
   "<common-default-header-block>": {
-    "template": "./index.marko",
+    "template": "./image-full.marko",
     "<wrapper>": {
       "@separator-position": "string",
       "@separator-type": "string",
-      "@clear-floats": "boolean"
+      "@clear-floats": "boolean",
+      "@date": "object"
     },
     "@name": "string",
     "@href": "string",

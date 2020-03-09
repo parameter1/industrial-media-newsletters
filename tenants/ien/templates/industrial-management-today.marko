@@ -71,40 +71,10 @@ $ const textAdButtonLinkStyle = {
             name=newsletter.name
             href=website.get("origin")
             image-src="/files/base/indm/ien/image/2020/03/imt_header.5e61772b9d42b.png"
-            bg-color="#ffffff"
-          />
+          >
+            <@wrapper date=date separator-type="date"/>
+          </common-default-header-block>
         </td>
-      </tr>
-      <tr>
-        <td>
-          <common-table width="630" style="border-collapse:collapse;" align="center" class="main" padding=0 spacing=0>
-            <tr>
-              <td bgcolor="#000000" width="134" height="20" align="center" valign="middle">
-                <div style=`${dateStyle}`>
-                  ${date.format("MMMM D, YYYY")}
-                </div>
-              </td>
-              <td>
-                <marko-newsletter-imgix
-                  src="/files/base/newsletter/header-slanted_left.png"
-                  options={ w: 166, h: 20 }
-                  alt=""
-                  attrs={ border: 0, align: "left", width: 166, height: 20 }>
-                </marko-newsletter-imgix>
-                <marko-newsletter-imgix
-                  src="/files/base/newsletter/header-slanted_right.png"
-                  options={ w: 330, h: 20 }
-                  alt=""
-                  class="mobileHide"
-                  attrs={ border: 0, align: "left", width: 330, height: 20 }>
-                </marko-newsletter-imgix>
-              </td>
-            </tr>
-          </common-table>
-        </td>
-      </tr>
-      <tr>
-        <td>&nbsp;</td>
       </tr>
     </common-table>
 
