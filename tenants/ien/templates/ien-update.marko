@@ -1,47 +1,10 @@
 import contentList from "@industrial-media/common/graphql/fragments/content-list";
 import emailX from "../config/email-x";
 
-$ const { website } = out.global;
+$ const { website, config } = out.global;
 $ const { newsletter, date } = data;
+$ const socialMediaProviders = config.getAsArray('socialMediaLinks');
 $ const primaryColor = "#ee0228";
-$ const titleStyle = "text-decoration: none !important; font-size: 14px; font-family: Arial, Helvetica, sans-serif; color: #000000; text-align: left; font-weight: bold;";
-$ const contentLinkStyle = {
-  "text-decoration": "none",
-  "text-align": "left",
-  "text-decoration": "none !important",
-  "font-size": "16px",
-  "font-family": "Arial, Helvetica, sans-serif",
-  "color": primaryColor,
-  "font-weight": "bold"
-};
-$ const teaserStyle = {
-  "text-decoration": "none !important",
-  "font-size": "13px",
-  "font-family": "Arial, Helvetica, sans-serif",
-  "color": "#666666",
-  "font-weight": "normal",
-  "text-align": "left",
-  "margin-top": "5px !important",
-  "line-height": "1.2em",
-};
-$ const textAdCopyStyle = {
-  "font-family": "Arial, Helvetica, sans-serif",
-  "font-size": "12px",
-  "color": "#000000",
-  "text-align": "left",
-  "line-height": "18px",
-  "margin-top": "5px !important",
-};
-$ const textAdButtonStyle = "background:#3B579D; padding-top:10px; padding-left:10px; padding-right:10px; padding-bottom:10px;";
-$ const textAdButtonLinkStyle = {
-  "text-decoration": "none",
-  "text-align": "left",
-  "background": "#3B579D",
-  "color": "#ffffff",
-  "font-weight": "bold",
-  "font-size": "16px",
-  "margin-top": "10px",
-};
 
 <marko-newsletter-root
   title=newsletter.name
@@ -58,7 +21,8 @@ $ const textAdButtonLinkStyle = {
       ad-unit=emailX.getAdUnit({ name: "header", alias: newsletter.alias })
     />
 
-    <!-- Header -->
+<!-- Header -->
+
     <common-table width="630" style="border-collapse:collapse;" align="center" class="main" padding=0 spacing=0>
       <tr>
         <td>&nbsp;</td>
@@ -83,19 +47,17 @@ $ const textAdButtonLinkStyle = {
               </tr>
               <tr align="right">
                 <td>
-                  <a href="https://www.facebook.com/Industrial-Equipment-News-153179218105048" style="text-decoration:none;" target="_blank">
-                    <img border="0" src="https://cdn.ien.com/files/base/newsletter/facebook-black-round.png" height="30">
-                  </a>&nbsp;
-                  <a href="https://twitter.com/IEN_Now" style="text-decoration:none;" target="_blank">
-                    <img border="0" src="https://cdn.ien.com/files/base/newsletter/twitter-black-round.png" height="30" alt="">
-                  </a>&nbsp;
-
-                  <a href="https://www.youtube.com/channel/UCwKursTtvT5lmEJBhdYeRbQ" style="text-decoration:none;" target="_blank">
-                    <img border="0" src="https://cdn.ien.com/files/base/newsletter/youtube-black-round.png" height="30" alt="">
-                  </a>&nbsp;
-                  <a href="https://www.instagram.com/ien_now/" style="text-decoration:none;" target="_blank">
-                    <img border="0" src="https://cdn.ien.com/files/base/newsletter/instagram-black-round.png" height="30" alt="">
-                  </a>&nbsp;&nbsp;&nbsp;
+                  <for|socialLinks| of=socialMediaProviders>
+                      <marko-newsletter-imgix
+                        src=`/files/base/newsletter/${socialLinks.provider}-black-round.png`
+                        alt=socialLinks.provider
+                        options={ w: 30 }
+                        attrs={ border: 0, width: 30 }
+                      >
+                        <@link href=socialLinks.href title=socialLinks.title target="_blank" />
+                      </marko-newsletter-imgix>
+                      &nbsp;&nbsp;
+                    </for>
                 </td>
               </tr>
               <tr>
@@ -118,308 +80,72 @@ $ const textAdButtonLinkStyle = {
       </tr>
     </common-table>
 
-    <!-- Featured Full -->
+<!-- Content -->
+
+    <common-featured-full-block
+      section-id=52262,
+      limit=1,
+      title="FEATURED STORY",
+      date=date,
+      newsletter=newsletter,
+      primary-color=primaryColor,
+      hr-below=true,
+    />
+
     <common-table width="630" style="border-collapse:collapse;" align="center" class="main" padding=0 spacing=0>
       <tr>
         <td>
-          <marko-web-query|{ nodes }| name="newsletter-scheduled-content" params={
-            date: date.valueOf(),
-            newsletterId: newsletter.id,
-            sectionId: 52262,
-            limit: 1,
-            queryFragment: contentList,
-          }>
-            <common-table width="630" style="border-collapse:collapse;" align="center" class="main" padding=0 spacing=0>
-              <tr>
-                <td style=`${titleStyle}`>
-                  FEATURED STORY
-                </td>
-              </tr>
-              <tr>
-                <td>&nbsp;</td>
-              </tr>
-            </common-table>
-            <for|node| of=nodes>
-              <marko-core-obj-value|{ value: image }| obj=node field="primaryImage" as="object">
-                <marko-newsletter-imgix
-                  src=image.src
-                  alt=image.alt
-                  options={ w: 630 }
-                  class="main"
-                  attrs={ border: 0, width: 630 }
-                >
-                  <@link href=node.siteContext.url target="_blank" />
-                </marko-newsletter-imgix>
-              </marko-core-obj-value>
-
-              <marko-core-obj-text obj=node field="name" attrs={ style: { "margin-top": "5px", "text-align": "left" } } >
-                <@link href=node.siteContext.url target="_blank" attrs={ style: contentLinkStyle } />
-              </marko-core-obj-text>
-              <marko-core-obj-text tag="div" obj=node field="teaser" html=true attrs={ style: teaserStyle } />
-            </for>
-          </marko-web-query>
+          <common-featured-half-block
+            section-id=53088,
+            limit=2,
+            date=date,
+            newsletter=newsletter,
+            primary-color=primaryColor,
+            align="left",
+          />
+          <common-promotion-half-block
+            section-id=52263,
+            limit=2,
+            date=date,
+            primary-color=primaryColor,
+            newsletter=newsletter,
+            align="right",
+          />
         </td>
       </tr>
-      <tr>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td><hr></td>
-      </tr>
-    </common-table>
-
-    <!-- Featured Split Left||Right -->
-    <common-table width="630" style="border-collapse:collapse;" align="center" class="main" padding=0 spacing=0>
-      <tr>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td>
-
-          <!-- Left Query Wrapper -->
-          <marko-web-query|{ nodes }| name="newsletter-scheduled-content" params={
-            date: date.valueOf(),
-            newsletterId: newsletter.id,
-            sectionId: 53088,
-            limit: 2,
-            queryFragment: contentList,
-          }>
-
-            <!-- Left Wrapping Table -->
-            <common-table width="300" style="border-collapse:collapse;" align="left" class="main" padding=0 spacing=0>
-              <tr>
-                <td valign="top">
-                  <for|node| of=nodes>
-                    <common-table width="300" style="border-collapse:collapse;" align="left" class="left" padding=0 spacing=0>
-                      <tr>
-                        <td>
-                          <marko-core-obj-value|{ value: image }| obj=node field="primaryImage" as="object">
-                            <marko-newsletter-imgix
-                              src=image.src
-                              alt=image.alt
-                              options={ w: 300 }
-                              class="main"
-                              attrs={ border: 0, width: 300 }
-                            >
-                              <@link href=node.siteContext.url target="_blank" />
-                            </marko-newsletter-imgix>
-                          </marko-core-obj-value>
-
-                          <marko-core-obj-text obj=node field="name" attrs={ style: { "margin-top": "5px", "text-align": "left" } } >
-                            <@link href=node.siteContext.url target="_blank" attrs={ style: contentLinkStyle } />
-                          </marko-core-obj-text>
-                          <marko-core-obj-text tag="div" obj=node field="teaser" html=true attrs={ style: teaserStyle } />
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>&nbsp;</td>
-                      </tr>
-                    </common-table>
-                  </for>
-                </td>
-              </tr>
-            </common-table>
-          </marko-web-query>
-
-          <!-- Right Query Wrapper -->
-          <marko-web-query|{ nodes }| name="newsletter-scheduled-content" params={
-            date: date.valueOf(),
-            newsletterId: newsletter.id,
-            sectionId: 52263,
-            limit: 2,
-            queryFragment: contentList,
-          }>
-            <!-- Right Wrapping Table -->
-            <common-table width="300" style="border-collapse:collapse;" align="right" class="main" padding=0 spacing=0>
-              <tr>
-                <td valign="top">
-                  <for|node| of=nodes>
-                    <common-table width="280" style="border-collapse:collapse;" align="left" class="right" padding=10 spacing=0>
-                      <tr>
-                        <td bgcolor="#ecedee">
-                          <marko-core-obj-text obj=node field="name">
-                            <@link href=node.siteContext.url target="_blank" attrs={ style: contentLinkStyle } />
-                          </marko-core-obj-text>
-                          <common-table
-                            style="margin:10px 10px 0 0;"
-                            align="left"
-                            class="left"
-                            padding=0
-                            spacing=0
-                          >
-                            <tr>
-                              <td>
-                                <marko-core-obj-value|{ value: image }| obj=node field="primaryImage" as="object">
-                                  <marko-newsletter-imgix
-                                    src=image.src
-                                    alt=image.alt
-                                    options={ w: 150 }
-                                    class="main"
-                                    attrs={ border: 0, width: 150 }
-                                  >
-                                    <@link href=node.siteContext.url target="_blank" />
-                                  </marko-newsletter-imgix>
-                                </marko-core-obj-value>
-                              </td>
-                            </tr>
-                          </common-table>
-
-                          <marko-core-obj-text tag="div" obj=node field="body" html=true attrs={ style: textAdCopyStyle } />
-
-                          <common-table align="right" class="main" padding=0 spacing=0>
-                            <tr>
-                              <td style=`${textAdButtonStyle}`>
-                                <marko-core-obj-text obj=node field="linkText" html=true >
-                                  <@link href=node.siteContext.url target="_blank" attrs={ style: textAdButtonLinkStyle } />
-                                </marko-core-obj-text>
-                              </td>
-                            </tr>
-                          </common-table>
-                        </td>
-                      </tr>
-                    </common-table>
-                    <common-table width="100%" align="center" class="center" >
-                      <tr>
-                        <td>&nbsp;</td>
-                      </tr>
-                    </common-table>
-                  </for>
-                </td>
-              </tr>
-            </common-table>
-          </marko-web-query>
-
-        </td>
-      </tr>
-
     </common-table>
 
     <common-table width="630" padding=0 spacing=0 align="center" style="border-collapse:collapse;" class="main">
-    <tr>
-        <td>
-            <marko-newsletter-imgix
-              src="/files/base/newsletter/slanted.png"
-              options={ w: 315, h: 10 }
-              alt=""
-              attrs={ border: 0, align: "left", width: 315, height: 10 }>
-            </marko-newsletter-imgix>
-            <marko-newsletter-imgix
-              src="/files/base/newsletter/slanted.png"
-              options={ w: 315, h: 10 }
-              alt=""
-              class="mobileHide"
-              attrs={ border: 0, align: "left", width: 315, height: 10 }>
-            </marko-newsletter-imgix>
-        </td>
-    </tr>
-    <tr>
-        <td>&nbsp;</td>
-    </tr>
-    </common-table>
-
-    <!-- Main -->
-    <common-table width="630" style="border-collapse:collapse;" align="center" class="main" padding=0 spacing=0>
-      <tr>
-        <td>&nbsp;</td>
-      </tr>
       <tr>
         <td>
-          <marko-web-query|{ nodes }| name="newsletter-scheduled-content" params={
-            date: date.valueOf(),
-            newsletterId: newsletter.id,
-            sectionId: 52264,
-            queryFragment: contentList,
-          }>
-            <for|node| of=nodes>
-              <if(node.type !== 'text-ad')>
-                <common-table width="630" style="border-collapse:collapse;" align="center" class="main" padding=0 spacing=0>
-                  <tr>
-                    <td valign="top">
-                      <common-table style="margin-right: 10px;" align="left" class="left" padding=0 spacing=0>
-                        <tr>
-                          <td>
-                            <marko-core-obj-value|{ value: image }| obj=node field="primaryImage" as="object">
-                              <marko-newsletter-imgix
-                                src=image.src
-                                alt=image.alt
-                                options={ w: 150 }
-                                class="main"
-                                attrs={ border: 0, width: 150 }
-                              >
-                                <@link href=node.siteContext.url target="_blank" />
-                              </marko-newsletter-imgix>
-                            </marko-core-obj-value>
-                          </td>
-                        </tr>
-                      </common-table>
-                      <marko-core-obj-text obj=node field="name" >
-                        <@link href=node.siteContext.url target="_blank" attrs={ style: contentLinkStyle } />
-                      </marko-core-obj-text>
-                      <marko-core-obj-text tag="div" obj=node field="teaser" html=true attrs={ style: teaserStyle } />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>&nbsp;</td>
-                  </tr>
-                </common-table>
-              </if>
-              <else-if(node.type === 'text-ad')>
-                <common-table width="630" style="border-collapse:collapse;" align="left" class="main" padding=10 spacing=0>
-                  <tr>
-                    <td bgcolor="#ecedee">
-                      <marko-core-obj-text obj=node field="name">
-                        <@link href=node.siteContext.url target="_blank" attrs={ style: contentLinkStyle } />
-                      </marko-core-obj-text>
-                      <common-table
-                        style="margin:10px 10px 0 0;"
-                        align="left"
-                        class="left"
-                        padding=5
-                        spacing=0
-                      >
-                        <tr>
-                          <td>
-                            <marko-core-obj-value|{ value: image }| obj=node field="primaryImage" as="object">
-                              <marko-newsletter-imgix
-                                src=image.src
-                                alt=image.alt
-                                options={ w: 150 }
-                                class="main"
-                                attrs={ border: 0, width: 150 }
-                              >
-                                <@link href=node.siteContext.url target="_blank" />
-                              </marko-newsletter-imgix>
-                            </marko-core-obj-value>
-                          </td>
-                        </tr>
-                      </common-table>
-
-                      <marko-core-obj-text tag="div" obj=node field="body" html=true attrs={ style: textAdCopyStyle } />
-                      <common-table align="right" class="main" padding=0 spacing=0>
-                        <tr>
-                          <td style=`${textAdButtonStyle}`>
-                            <marko-core-obj-text obj=node field="linkText" html=true >
-                              <@link href=node.siteContext.url target="_blank" attrs={ style: textAdButtonLinkStyle } />
-                            </marko-core-obj-text>
-                          </td>
-                        </tr>
-                      </common-table>
-                    </td>
-                  </tr>
-
-                </common-table>
-                <common-table width="630" style="border-collapse:collapse;" align="left" class="main" padding=0 spacing=0>
-                  <tr>
-                    <td>&nbsp;</td>
-                  </tr>
-                </common-table>
-
-              </else-if>
-            </for>
-          </marko-web-query>
+          <marko-newsletter-imgix
+            src="/files/base/newsletter/slanted.png"
+            options={ w: 315, h: 10 }
+            alt=""
+            attrs={ border: 0, align: "left", width: 315, height: 10 }>
+          </marko-newsletter-imgix>
+          <marko-newsletter-imgix
+            src="/files/base/newsletter/slanted.png"
+            options={ w: 315, h: 10 }
+            alt=""
+            class="mobileHide"
+            attrs={ border: 0, align: "left", width: 315, height: 10 }>
+          </marko-newsletter-imgix>
         </td>
       </tr>
+      <tr>
+          <td>&nbsp;</td>
+      </tr>
     </common-table>
+
+    <common-feed-full-block
+      section-id=52264,
+      date=date,
+      newsletter=newsletter,
+      primary-color=primaryColor,
+    />
+
+<!-- Footer/OptOut -->
 
     <common-default-footer-block />
 
