@@ -3,7 +3,7 @@ import emailX from "../config/email-x";
 
 $ const { website } = out.global;
 $ const { newsletter, date } = data;
-$ const primaryColor = "#ee0228";
+$ const primaryColor = "#45ad35";
 
 <marko-newsletter-root
   title=newsletter.name
@@ -25,7 +25,7 @@ $ const primaryColor = "#ee0228";
     <common-default-header-block
       name=newsletter.name
       href=website.get("origin")
-      image-src="/files/base/indm/ien/image/2020/03/today.5e6a9734444ee.png"
+      image-src="/files/base/indm/ien/image/2020/03/ist_header.5e617321bb8b9.png"
       bg-color="#ffffff"
     >
       <@wrapper date=date separator-type="date"/>
@@ -34,7 +34,7 @@ $ const primaryColor = "#ee0228";
 <!-- Content -->
 
     <common-featured-full-block
-      section-id=52258,
+      section-id=57788,
       limit=1,
       title="FEATURED STORY",
       date=date,
@@ -47,7 +47,7 @@ $ const primaryColor = "#ee0228";
       <tr>
         <td>
           <common-featured-half-block
-            section-id=53089,
+            section-id=57789,
             limit=2,
             date=date,
             newsletter=newsletter,
@@ -55,7 +55,7 @@ $ const primaryColor = "#ee0228";
             align="left",
           />
           <common-promotion-half-block
-            section-id=52260,
+            section-id=57791,
             limit=2,
             date=date,
             primary-color=primaryColor,
@@ -67,7 +67,7 @@ $ const primaryColor = "#ee0228";
     </common-table>
 
     <common-feed-full-block
-      section-id=52259,
+      section-id=57790,
       date=date,
       newsletter=newsletter,
       primary-color=primaryColor,
