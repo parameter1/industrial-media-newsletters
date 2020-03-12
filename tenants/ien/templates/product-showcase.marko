@@ -38,27 +38,18 @@ $ const teaserStyle = {
       ad-unit=emailX.getAdUnit({ name: "header", alias: newsletter.alias })
     />
 
-    <!-- Header -->
-    <common-table width="630" style="border-collapse:collapse;" align="center" class="main" padding=0 spacing=0>
-      <tr>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td>
-          <common-default-header-block
-            name=newsletter.name
-            href=website.get("origin")
-            image-src="/files/base/indm/ien/image/2020/03/psheader.5e6669294d1c6.png"
-            bg-color="#ffffff"
-          />
-        </td>
-      </tr>
-      <tr>
-        <td>&nbsp;</td>
-      </tr>
-    </common-table>
+<!-- Header -->
 
-    <!-- Featrued Full -->
+    <common-default-header-block
+      name=newsletter.name
+      href=website.get("origin")
+      image-src="/files/base/indm/ien/image/2020/03/psheader.5e6669294d1c6.png"
+      bg-color="#ffffff"
+    >
+    </common-default-header-block>
+
+<!-- Content -->
+
     <common-table width="630" style="border-collapse:collapse;" align="center" class="main" padding=0 spacing=0>
       <tr>
         <td>
@@ -107,6 +98,8 @@ $ const teaserStyle = {
         </td>
       </tr>
     </common-table>
+
+<!-- Footer/OptOut -->
 
     <common-default-footer-block />
 
