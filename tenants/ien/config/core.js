@@ -19,5 +19,10 @@ module.exports = {
       href: 'https://www.youtube.com/channel/UCwKursTtvT5lmEJBhdYeRbQ',
       title: 'Follow us on YouTube',
     },
+    {
+      provider: 'instagram',
+      href: 'https://www.instagram.com/ien_now/',
+      title: 'Follow us on Instagram',
+    },
   ],
 };
