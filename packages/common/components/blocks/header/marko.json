@@ -4,7 +4,8 @@
     "@separator-position": "string",
     "@separator-type": "string",
     "@clear-floats": "boolean",
-    "@date": "object"
+    "@date": "object",
+    "@date-style": "object"
   },
   "<common-default-header-block>": {
     "template": "./image-full.marko",
@@ -12,7 +13,8 @@
       "@separator-position": "string",
       "@separator-type": "string",
       "@clear-floats": "boolean",
-      "@date": "object"
+      "@date": "object",
+      "@date-style": "object"
     },
     "@name": "string",
     "@href": "string",

@@ -3,24 +3,22 @@ import emailX from "../config/email-x";
 
 $ const { website } = out.global;
 $ const { newsletter, date } = data;
+
 $ const contentLinkStyle = {
-  "text-decoration": "none",
-   "text-align": "left",
   "text-decoration": "none !important",
   "font-size": "14px",
+  "margin-top": "10px !important",
   "font-family": "Arial, Helvetica, sans-serif",
-  "color": "#002f4e",
-  "font-weight": "bold"
+  "color": "#e9132f",
+  "font-weight": "bold",
 };
+
 $ const teaserStyle = {
   "text-decoration": "none !important",
-  "font-size": "12px",
+  "font-size": "13px",
   "font-family": "Arial, Helvetica, sans-serif",
   "color": "#666666",
-  "font-weight": "normal",
-  "text-align": "left",
-  "margin-top": "15px !important",
-  "line-height": "1.2em",
+  "margin-top": "0px !important",
 };
 
 <marko-newsletter-root
@@ -38,77 +36,27 @@ $ const teaserStyle = {
       ad-unit=emailX.getAdUnit({ name: "header", alias: newsletter.alias })
     />
 
-    <!-- Header -->
-    <common-table width="630" style="border-collapse:collapse;" align="center" class="main" padding=0 spacing=0>
-      <tr>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td>
-          <common-default-header-block
-            name=newsletter.name
-            href=website.get("origin")
-            image-src="/files/base/indm/ien/image/2019/01/video_showcase_2.5c32de2d18b91.png"
-            bg-color="#ffffff"
-          />
-        </td>
-      </tr>
-      <tr>
-        <td>&nbsp;</td>
-      </tr>
-    </common-table>
+<!-- Header -->
 
-    <!-- Featrued Full -->
-    <common-table width="630" style="border-collapse:collapse;" align="center" class="main" padding=0 spacing=0>
-      <tr>
-        <td>
-          <marko-web-query|{ nodes }| name="newsletter-scheduled-content" params={
-            date: date.valueOf(),
-            newsletterId: newsletter.id,
-            sectionId: 61601,
-            queryFragment: contentList,
-          }>
-            <for|node| of=nodes>
-              <common-table width="630" border="0" spacing=0 padding=0 align="center" class="main">
-                <tr width="630" class="main" border="0" spacing=0 padding=0 align="center">
-                  <td>
-                    <marko-core-obj-value|{ value: image }| obj=node field="primaryImage" as="object">
-                      <marko-newsletter-imgix
-                        src=image.src
-                        alt=image.alt
-                        options={ w: 630 }
-                        class="main"
-                        attrs={ border: 0, width: 630 }
-                      >
-                        <@link href=node.siteContext.url target="_blank" />
-                      </marko-newsletter-imgix>
-                    </marko-core-obj-value>
-                  </td>
-                </tr>
-                <tr>
-                  <td>&nbsp;</td>
-                </tr>
-                <tr width="630" class="main">
-                  <td>
-                    <div class="main" style="text-align: left;">
-                      <a href="https://www.thomasnet.com/knowledge.php/harpro-container-frames-offer-eco-friendly-portable-recycling-solution" target="_blank" style="text-decoration:none; text-align: left; text-decoration: none !important; font-size: 14px; font-family: Arial, Helvetica, sans-serif; color: #e9132f; font-weight: bold;">
-                        Eco-friendly, Portable Recycling Solution&nbsp;
-                      </a>
-                    </div>
-                    <div class="main" style="text-decoration: none !important; font-size: 13px; font-family: Arial, Helvetica, sans-serif; color: #666666; font-weight: normal;; text-align: left; margin-top:3px !important; line-height:1.2em;">
-                      Harpro’s MiddleMan™ recycling container frames and reusable bags are made from eco-friendly material, fold for easy storage, and are easy to assemble. Check out the video to learn more.
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>&nbsp;</td>
-                </tr>
-              </common-table>
-            </for>
-          </marko-web-query>
-        </td>
-      </tr>
-    </common-table>
+    <common-default-header-block
+      name=newsletter.name
+      href=website.get("origin")
+      image-src="/files/base/indm/ien/image/2019/01/video_showcase_2.5c32de2d18b91.png"
+      bg-color="#ffffff"
+    />
+
+<!-- Content -->
+
+    <common-featured-full-block
+      section-id=61601,
+      date=date,
+      newsletter=newsletter,
+      show-body=true,
+      content-link-style=contentLinkStyle,
+      teaser-style=teaserStyle,
+    />
+
+<!-- Footer/OptOut -->
 
     <common-default-footer-block />
 

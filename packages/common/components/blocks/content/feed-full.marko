@@ -10,7 +10,7 @@ $ const {
   skip,
   hrBelow,
   primaryColor,
-  teaser
+  showTeaser
 } = input;
 
 $ const titleStyle = defaultValue(input.titleStyle, {
@@ -112,7 +112,7 @@ $ const textAdButtonLinkStyle = {
                       <marko-core-obj-text obj=node field="name" >
                         <@link href=node.siteContext.url target="_blank" attrs={ style: contentLinkStyle } />
                       </marko-core-obj-text>
-                      <if(teaser != false)>
+                      <if(showTeaser != false)>
                         <marko-core-obj-text tag="div" obj=node field="teaser" html=true attrs={ style: teaserStyle } />
                       </if>
                     </td>
@@ -176,9 +176,6 @@ $ const textAdButtonLinkStyle = {
               </else-if>
               </for>
             </td>
-          </tr>
-          <tr>
-            <td>&nbsp;</td>
           </tr>
         </common-table>
       </marko-web-query>

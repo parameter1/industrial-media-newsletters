@@ -33,7 +33,7 @@
       "default-value" : "#eb1b2c"
     },
     "@hr-below": "bool",
-    "@teaser": "bool"
+    "@show-teaser": "bool"
   },
   "<common-featured-full-block>": {
     "template": "./featured-full.marko",
@@ -68,7 +68,9 @@
       "type" : "string",
       "default-value" : "#eb1b2c"
     },
-    "@hr-below": "bool"
+    "@hr-below": "bool",
+    "@show-body": "bool",
+    "@show-teaser": "bool"
   },
   "<common-featured-half-block>": {
     "template": "./featured-half.marko",

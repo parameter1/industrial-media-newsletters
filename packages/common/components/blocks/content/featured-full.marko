@@ -9,7 +9,9 @@ $ const {
   limit,
   skip,
   hrBelow,
-  primaryColor
+  primaryColor,
+  showTeaser,
+  showBody
 } = input;
 
 $ const titleStyle = defaultValue(input.titleStyle, {
@@ -39,7 +41,8 @@ $ const contentLinkStyle = defaultValue(input.contentLinkStyle, {
   "font-size": "16px",
   "font-family": "Arial, Helvetica, sans-serif",
   "color": primaryColor,
-  "font-weight": "bold"
+  "font-weight": "bold",
+  "margin-top" : "5px",
 });
 
 <common-table width="630" style="border-collapse:collapse;" align="center" class="main" padding=0 spacing=0>
@@ -79,10 +82,15 @@ $ const contentLinkStyle = defaultValue(input.contentLinkStyle, {
                     </marko-newsletter-imgix>
                   </marko-core-obj-value>
 
-                  <marko-core-obj-text obj=node field="name" attrs={ style: { "margin-top": "5px", "text-align": "left" } } >
+                  <marko-core-obj-text obj=node field="name" attrs={ style: contentLinkStyle } >
                     <@link href=node.siteContext.url target="_blank" attrs={ style: contentLinkStyle } />
                   </marko-core-obj-text>
-                  <marko-core-obj-text tag="div" obj=node field="teaser" html=true attrs={ style: teaserStyle } />
+                  <if(showBody === true) >
+                    <marko-core-obj-text tag="div" obj=node field="body" html=true attrs={ style: teaserStyle } />
+                  </if>
+                  <else-if(showTeaser != false)>
+                    <marko-core-obj-text tag="div" obj=node field="teaser" html=true attrs={ style: teaserStyle } />
+                  </else-if>
               </td>
             </tr>
             <tr>
