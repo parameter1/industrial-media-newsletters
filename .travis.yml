@@ -52,29 +52,29 @@ jobs:
       install: skip
       env: [ENVIRONMENT=staging RANCHER_CLUSTERID=c-rc5kp]
 
-    # - stage: production
-    #   name: CEN
-    #   script: npx @base-cms/newsletter-deployment-tool deploy cen caprica
-    #   install: skip
-    #   env: [ENVIRONMENT=production RANCHER_CLUSTERID=c-gxsr7]
+    - stage: production
+      name: CEN
+      script: npx @base-cms/newsletter-deployment-tool deploy cen caprica
+      install: skip
+      env: [ENVIRONMENT=production RANCHER_CLUSTERID=c-gxsr7]
 
-    # - stage: staging
-    #   name: CEN
-    #   script: npx @base-cms/newsletter-deployment-tool deploy cen caprica
-    #   install: skip
-    #   env: [ENVIRONMENT=staging RANCHER_CLUSTERID=c-rc5kp]
+    - stage: staging
+      name: CEN
+      script: npx @base-cms/newsletter-deployment-tool deploy cen caprica
+      install: skip
+      env: [ENVIRONMENT=staging RANCHER_CLUSTERID=c-rc5kp]
 
-    # - stage: production
-    #   name: DDT
-    #   script: npx @base-cms/newsletter-deployment-tool deploy ddt caprica
-    #   install: skip
-    #   env: [ENVIRONMENT=production RANCHER_CLUSTERID=c-gxsr7]
+    - stage: production
+      name: DDT
+      script: npx @base-cms/newsletter-deployment-tool deploy ddt caprica
+      install: skip
+      env: [ENVIRONMENT=production RANCHER_CLUSTERID=c-gxsr7]
 
-    # - stage: staging
-    #   name: DDT
-    #   script: npx @base-cms/newsletter-deployment-tool deploy ddt caprica
-    #   install: skip
-    #   env: [ENVIRONMENT=staging RANCHER_CLUSTERID=c-rc5kp]
+    - stage: staging
+      name: DDT
+      script: npx @base-cms/newsletter-deployment-tool deploy ddt caprica
+      install: skip
+      env: [ENVIRONMENT=staging RANCHER_CLUSTERID=c-rc5kp]
 
     - stage: production
       name: IEN
