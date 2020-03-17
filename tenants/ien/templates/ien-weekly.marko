@@ -1,8 +1,9 @@
 import contentList from "@industrial-media/common/graphql/fragments/content-list";
-import emailX from "../config/email-x";
+import buildGAMTargeting from "@industrial-media/common/utils/build-gam-targeting";
+import GAM from "../config/gam";
 
-$ const { website, config } = out.global;
-$ const { newsletter, date } = data;
+$ const { website } = out.global;
+$ const { newsletter, date, dateInfo } = data;
 $ const socialMediaProviders = config.getAsArray('socialMediaLinks');
 $ const primaryColor = "#ee0228";
 
@@ -18,7 +19,7 @@ $ const primaryColor = "#ee0228";
     <common-banner-element
       name=newsletter.name
       date=date
-      ad-unit=emailX.getAdUnit({ name: "header", alias: newsletter.alias })
+      ad-unit=GAM.getAdUnit({ name: "header", alias: newsletter.alias, targeting: buildGAMTargeting({ newsletter, date, dateInfo }) })
     />
 
 <!-- Header -->
