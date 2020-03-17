@@ -70,5 +70,35 @@ services:
       - "21091:80"
       - "31091:31091"
 
+  ddt:
+    <<: *node
+    <<: *newsletter-cmd
+    working_dir: /root/tenants/ddt
+    environment:
+      <<: *env
+      <<: *env-caprica
+      PORT: 80
+      EXPOSED_PORT: 21092
+      LIVERELOAD_PORT: 31092
+      TENANT_KEY: indm_ddt
+    ports:
+      - "21092:80"
+      - "31092:31092"
+
+  cen:
+    <<: *node
+    <<: *newsletter-cmd
+    working_dir: /root/tenants/cen
+    environment:
+      <<: *env
+      <<: *env-caprica
+      PORT: 80
+      EXPOSED_PORT: 21093
+      LIVERELOAD_PORT: 31093
+      TENANT_KEY: indm_cen
+    ports:
+      - "21093:80"
+      - "31093:31093"
+
 volumes:
   yarn-cache: {}
