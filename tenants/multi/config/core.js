@@ -18,4 +18,19 @@ module.exports = {
       },
     ],
   },
+
+  cen: {
+    socialMediaLinks: [
+      {
+        provider: 'facebook',
+        href: 'https://www.facebook.com/CannaEquipmentNews/',
+        title: 'Follow us on Facebook',
+      },
+      {
+        provider: 'twitter',
+        href: 'https://twitter.com/news_cen',
+        title: 'Follow us on Twitter',
+      },
+    ],
+  },
 };
