@@ -3,7 +3,7 @@ import emailX from "../config/email-x";
 import GAM from "../config/gam";
 
 $ const { req } = out.global;
-$ const emailXEnabled = Object.hasOwnProperty.call(req.query, 'emailx');
+$ const gamEnabled = Object.hasOwnProperty.call(req.query, 'gam');
 
 $ const {
   name,
@@ -15,23 +15,23 @@ $ const {
 $ const { alias } = newsletter;
 
 $ let adUnit;
-$ if (emailXEnabled) {
-  adUnit = emailX.getAdUnit({ name, alias })
-} else {
+$ if (gamEnabled) {
   adUnit = GAM.getAdUnit({ name, alias, targeting: buildGAMTargeting({ newsletter, date, dateInfo }) });
+} else {
+  adUnit = emailX.getAdUnit({ name, alias });
 }
 
 <if(adUnit.path || adUnit.id)>
-  <if(emailXEnabled)>
-    <marko-newsletters-email-x-display decoded-params=["email", "send"]>
-      <@ad-unit ...adUnit />
-      <@params date=date email="%%emailaddr%%" send="%%jobid%%" />
-    </marko-newsletters-email-x-display>
-  </if>
-  <else>
+  <if(gamEnabled)>
     <marko-newsletters-gam-display>
       <@ad-unit ...adUnit />
       <@image class="scaleAd" />
     </marko-newsletters-gam-display>
+  </if>
+  <else>
+    <marko-newsletters-email-x-display decoded-params=["email", "send"]>
+      <@ad-unit ...adUnit />
+      <@params date=date email="%%emailaddr%%" send="%%jobid%%" />
+    </marko-newsletters-email-x-display>
   </else>
 </if>
