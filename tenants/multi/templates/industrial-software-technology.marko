@@ -1,8 +1,7 @@
 import contentList from "@industrial-media/common/graphql/fragments/content-list";
-import emailX from "../config/email-x";
 
 $ const { website } = out.global;
-$ const { newsletter, date } = data;
+$ const { newsletter, date, dateInfo } = data;
 $ const primaryColor = "#45ad35";
 
 <marko-newsletter-root
@@ -14,10 +13,10 @@ $ const primaryColor = "#45ad35";
     <common-static-styles />
   </@head>
   <@body style="margin: 0px !important;">
-    <common-banner-element
-      name=newsletter.name
+    <tenant-banner-element
+      newsletter=newsletter
       date=date
-      ad-unit=emailX.getAdUnit({ name: "header", alias: newsletter.alias })
+      date-info=dateInfo
     />
 
 <!-- Header -->

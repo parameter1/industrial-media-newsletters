@@ -1,9 +1,8 @@
 import contentList from "@industrial-media/common/graphql/fragments/content-list";
-import emailX from "../config/email-x";
 
 $ const { website, config } = out.global;
-$ const { newsletter, date } = data;
-$ const socialMediaProviders = config.getAsArray('socialMediaLinks');
+$ const { newsletter, date, dateInfo } = data;
+$ const socialMediaProviders = config.getAsArray('ien.socialMediaLinks');
 $ const primaryColor = "#ee0228";
 
 <marko-newsletter-root
@@ -15,10 +14,10 @@ $ const primaryColor = "#ee0228";
     <common-static-styles />
   </@head>
   <@body style="margin: 0px !important;">
-    <common-banner-element
-      name=newsletter.name
+    <tenant-banner-element
+      newsletter=newsletter
       date=date
-      ad-unit=emailX.getAdUnit({ name: "header", alias: newsletter.alias })
+      date-info=dateInfo
     />
 
 <!-- Header -->
