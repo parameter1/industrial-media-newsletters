@@ -1,0 +1,187 @@
+import contentList from "@industrial-media/common/graphql/fragments/content-list";
+
+$ const { website } = out.global;
+$ const { newsletter, date, dateInfo } = data;
+$ const blackBarText = "text-decoration: none !important; font-size: 10px; font-family: Arial, Helvetica, sans-serif; color: #ffffff; font-weight: normal;"
+$ const contentLinkStyle = {
+  "text-decoration": "none",
+  "text-align": "left",
+  "text-decoration": "none !important",
+  "font-size": "14px",
+  "font-family": "Arial, Helvetica, sans-serif",
+  "color": "#002f4e",
+  "font-weight": "bold"
+};
+$ const teaserStyle = {
+  "text-decoration": "none !important",
+  "font-size": "13px",
+  "font-family": "Arial, Helvetica, sans-serif",
+  "color": "#666666",
+  "font-weight": "normal",
+  "text-align": "left",
+  "margin-top": "3px !important",
+  "line-height": "1.2em",
+};
+
+<marko-newsletter-root
+  title=newsletter.n
+  description=newsletter.description
+  date=date
+>
+  <@head>
+    <common-static-styles />
+  </@head>
+  <@body style="margin: 0px !important;">
+    <tenant-banner-element
+      newsletter=newsletter
+      date=date
+      date-info=dateInfo
+    />
+
+    <!-- Header -->
+    <common-table width="630" style="border-collapse:collapse;" align="center" class="main" padding=0 spacing=0>
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>
+          <common-default-header-block
+            name=newsletter.name
+            href=website.get("origin")
+            image-src="/files/base/indm/all/image/static/logos/mbt_today.png"
+            bg-color="#ffffff"
+          />
+        </td>
+      </tr>
+    </common-table>
+
+    <!-- Featured Full -->
+    <common-table width="630" style="border-collapse:collapse;" align="center" class="main" padding=0 spacing=0>
+      <tr>
+        <td>
+          <marko-web-query|{ nodes }| name="newsletter-scheduled-content" params={
+            date: date.valueOf(),
+            newsletterId: newsletter.id,
+            sectionId: 63329,
+            queryFragment: contentList,
+          }>
+            <for|node| of=nodes>
+              <common-table width="630" style="border: 5px solid #ecedee;" align="center" class="sponsored" padding=10 spacing=0>
+                <tr>
+                  <td valign="top">
+                    <common-table width="280" class="left" align="left" padding=0 spacing=0>
+                      <tr>
+                        <td>
+                          <marko-core-obj-value|{ value: image }| obj=node field="primaryImage" as="object">
+                            <marko-newsletter-imgix
+                              src=image.src
+                              alt=image.alt
+                              options={ w: 280 }
+                              class="main"
+                              attrs={ border: 0, width: 280 }
+                            >
+                              <@link href=node.siteContext.url target="_blank" />
+                            </marko-newsletter-imgix>
+                          </marko-core-obj-value>
+                        </td>
+                      </tr>
+                    </common-table>
+                    <common-table width="295" class="main" align="right" padding=0 spacing=0>
+                      <tr>
+                        <td>
+                          <marko-core-obj-text obj=node field="name" attrs={ style: { "text-align": "left" } } >
+                            <@link href=node.siteContext.url target="_blank" attrs={ style: contentLinkStyle } />
+                          </marko-core-obj-text>
+                          <marko-core-obj-text tag="div" obj=node field="teaser" html=true attrs={ style: teaserStyle } />
+                        </td>
+                      </tr>
+                    </common-table>
+                  </td>
+                </tr>
+              </common-table>
+            </for>
+          </marko-web-query>
+        </td>
+      </tr>
+    </common-table>
+
+    <common-table width=630 border=0 padding=10 spacing=0 align="center" class="main">
+      <tr>
+        <td bgcolor="#000000">
+          <common-table width=300 border=0 padding=0 spacing=0 align="left">
+            <tr>
+              <td>
+                <div style=`${blackBarText} background-color: #000000; text-align:left;" class="center`>
+                  <a href=`${website.get("origin")}` target="_blank" style=`${blackBarText}`>Home</a>
+                  |
+                  <a href=`${website.get("origin")}/contact-us` target="_blank" style=`${blackBarText}`>Contact Us</a>
+                  |
+                  <a href=`${website.get("origin")}/subscribe` target="_blank" style=`${blackBarText}`>Subscribe</a>
+                  |
+                  <a href=`${website.get("origin")}/page/mbt-advertise` target="_blank" style=`${blackBarText}`>Advertise</a>
+                </div>
+              </td>
+            </tr>
+          </common-table>
+          <common-table width=300 border=0 padding=0 spacing=0 align="right">
+            <tr>
+              <td>
+                <div style=`${blackBarText}; background-color: #000000; text-align:right;` class="center">© 2019 All rights reserved, Industrial Media, LLC </div>
+              </td>
+            </tr>
+          </common-table>
+        </td>
+      </tr>
+    </common-table>
+    <common-table width=630 border=0 padding=10 spacing=0 align="center" class="main">
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>
+          <span style="display:none;">
+            $!{`
+              %%[
+                set @publistID = listid
+                if IndexOf(_listname,"VPL") > 0 AND IndexOf(_listname,"for List") > 0 then
+                  set @publistID = Substring(_listname,Add(IndexOf(_listname,"for List"),9),20)
+                endif
+              ]%%
+            `}
+          </span>
+          <div style="font-family: Arial, Helvetica, sans-serif; font-size: 10px; line-height: 17px;">
+            <p style="margin:0px;margin-bottom:1em;">This email is being sent to
+              <a href="mailto:%%emailaddr%%">%%emailaddr%%</a>.
+            </p>
+            <p style="margin:0px;margin-bottom:1em;">
+              Please add reply.ien.com to your address book or safe sender list to receive our emails in your inbox.
+            </p>
+            <p style="margin:0px;margin-bottom:1em;">
+              <a href="%%=RedirectTo(CloudPagesURL(204, 'sk', _subscriberkey, 'p', listid, 'ln', _listname, 'j', jobid, 'e', _emailid, 'en', emailname_, 'de', _DataSourceName))=%%">Unsubscribe</a>
+              | <a href="%%ftaf_url%%">Forward to a Friend</a>
+              | <a href="%%profile_center_url%%" alias="Update Profile">Update Profile</a>
+              | <a href=`${website.get("origin")}/page/mbt-advertise`>Advertise</a>
+              | <a href=`${website.get("origin")}/contact-us`>Customer Service Center </a>
+              | <a href=`${website.get("origin")}/page/mbt-privacy-policy`> Privacy Policy</a>
+            </p>
+
+            <p style="margin:0px;margin-bottom:1em;">
+              Interested in advertising opportunities?  Please contact <a href="mailto:tom@ien.com">Tom Lynch</a> for more information.
+            </p>
+            <p style="margin:0px;margin-bottom:1em;">
+              If you have trouble with any of these methods, you can reach us at 608-692-2304.
+            </p>
+            <p>
+              %%Member_Busname%% <br>
+              %%Member_Addr%% <br>
+              %%Member_City%%, %%Member_State%%, %%Member_PostalCode%%, %%Member_Country%%
+            </p>
+            <!-- <img border="0" src="https://cdn.baseplatform.io/files/base/newsletter/ien.jpg" width="100" height="100" alt=""/> -->
+            <p>This newsletter is an Industrial Media, LLC product.</p>
+          </div>
+        </td>
+      </tr>
+    </common-table>
+    <marko-newsletters-mc-open-counter />
+  </@body>
+</marko-newsletter-root>

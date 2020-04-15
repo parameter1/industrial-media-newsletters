@@ -21,7 +21,7 @@ $ const { website, config } = out.global;
               |
               <a href=`${website.get("origin")}/contact-us` target="_blank" style=footerText>Contact Us</a>
               |
-              <a href=`${website.get("origin")}/subscribe/email` target="_blank" style=footerText>Subscribe</a>
+              <a href=`${website.get("origin")}/newsletter-signup` target="_blank" style=footerText>Subscribe</a>
               |
               <a href=`${website.get("origin")}/advertise` target="_blank" style=footerText>Advertise</a>
             </div>
@@ -31,7 +31,7 @@ $ const { website, config } = out.global;
       <common-table width=300 border=0 padding=0 spacing=0 align="right">
         <tr>
           <td align="right" class="center">
-            <div style=footerText>© 2019 All rights reserved, Industrial Media, LLC </div>
+            <div style=footerText>© ${(new Date().getFullYear())} All rights reserved, Industrial Media, LLC </div>
           </td>
         </tr>
       </common-table>
@@ -47,12 +47,14 @@ $ const { website, config } = out.global;
   <tr>
     <td>
       <span style="display:none;">
-        %%[
-          set @publistID = listid
-          if IndexOf(_listname,"VPL") &gt; 0 AND IndexOf(_listname,"for List") &gt; 0 then
-            set @publistID = Substring(_listname,Add(IndexOf(_listname,"for List"),9),20)
-          endif
-        ]%%
+        $!{`
+          %%[
+            set @publistID = listid
+            if IndexOf(_listname,"VPL") > 0 AND IndexOf(_listname,"for List") > 0 then
+              set @publistID = Substring(_listname,Add(IndexOf(_listname,"for List"),9),20)
+            endif
+          ]%%
+        `}
       </span>
       <div style="font-family: Arial, Helvetica, sans-serif; font-size: 10px; line-height: 17px;">
         <p style="margin:0px;margin-bottom:1em;">This email is being sent to
@@ -62,7 +64,7 @@ $ const { website, config } = out.global;
           Please add ${config.get("optOut.safeSenders")} to your address book or safe sender list to receive our emails in your inbox.
         </p>
         <p style="margin:0px;margin-bottom:1em;">
-        <a href=`${config.get("optOut.unsubscribeLink")}`>Unsubscribe</a>
+        <a href="%%=RedirectTo(CloudPagesURL(204, 'sk', _subscriberkey, 'p', listid, 'ln', _listname, 'j', jobid, 'e', _emailid, 'en', emailname_, 'de', _DataSourceName))=%%">Unsubscribe</a>
           | <a href="%%ftaf_url%%">Forward to a Friend</a>
           | <a href="%%profile_center_url%%" alias="Update Profile">Update Profile</a>
           | <a href=`${website.get("origin")}/advertise`>Advertise</a>
