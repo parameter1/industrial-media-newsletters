@@ -3,7 +3,7 @@ import contentList from "@industrial-media/common/graphql/fragments/content-list
 $ const { website, config } = out.global;
 $ const { newsletter, date, dateInfo } = data;
 $ const primaryColor = "#00b3e3";
-$ const socialMediaProviders = config.getAsArray('socialMediaLinks');
+$ const socialMediaProviders = config.getAsArray('ddt.socialMediaLinks');
 
 <marko-newsletter-root
   title=newsletter.name
