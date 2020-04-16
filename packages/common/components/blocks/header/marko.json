@@ -19,6 +19,7 @@
     "@name": "string",
     "@href": "string",
     "@image-src": "string",
+    "@image-width": "number",
     "@bg-color": "string"
   }
 }
