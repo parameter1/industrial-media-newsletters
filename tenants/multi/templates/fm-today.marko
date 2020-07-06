@@ -1,6 +1,5 @@
 import contentList from "@industrial-media/common/graphql/fragments/content-list";
 $ const truncate = require('truncate-html');
-$ truncate.setup({ length: 260 });
 
 $ const { website } = out.global;
 $ const { newsletter, date, dateInfo } = data;
@@ -253,8 +252,8 @@ $ const textAdButtonLinkStyle = {
                           </common-table>
 
                           <!-- truncate body html for promos -->
-                          $ const truncatedHTML = truncate(node.body);
-                          <marko-core-text tag='div' value=truncatedHTML html=true attrs={ style: textAdCopyStyle } />
+                          $ truncate.setup({ length: 100 });
+                          <marko-core-text tag='div' value=truncate(node.body) html=true attrs={ style: textAdCopyStyle } />
 
                           <common-table align="right" class="main" padding=0 spacing=0>
                             <tr>
@@ -369,7 +368,10 @@ $ const textAdButtonLinkStyle = {
                         </tr>
                       </common-table>
 
-                      <marko-core-obj-text tag="div" obj=node field="body" html=true attrs={ style: textAdCopyStyle } />
+                      <!-- truncate body html for promos -->
+                      $ truncate.setup({ length: 260 });
+                      <marko-core-text tag='div' value=truncate(node.body) html=true attrs={ style: textAdCopyStyle } />
+
                       <common-table align="right" class="main" padding=0 spacing=0>
                         <tr>
                           <td style=`${textAdButtonStyle}`>
