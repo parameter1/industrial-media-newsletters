@@ -10,8 +10,11 @@ $ const {
   skip,
   hrBelow,
   primaryColor,
-  showTeaser
+  showTeaser,
+  twoColumn,
 } = input;
+
+$ let counter = 0;
 
 $ const titleStyle = defaultValue(input.titleStyle, {
   "text-decoration": "none !important",
@@ -72,93 +75,158 @@ $ const textAdButtonLinkStyle = {
           </if>
           <tr>
             <td valign="top">
-              <for|node| of=nodes>
+              <for|node, index| of=nodes>
                 <if(node.type !== 'text-ad')>
-                <common-table width="630" style="border-collapse:collapse;" align="center" class="main" padding=0 spacing=0>
-                  <tr>
-                    <td valign="top">
-                      <common-table style="margin-right: 10px;" align="left" class="left" padding=0 spacing=0>
+                  <if(twoColumn)>
+                    $ counter++;
+                    $ const isEven = counter % 2 === 0;
+                    $ const align = isEven ? 'right' : 'left';
+                    <common-table width="300" style="border-collapse:collapse;" align=align class="main" padding=0 spacing=0>
+                      <tr>
+                        <td>
+
+                          <common-table width="110" style="border-collapse:collapse; margin-bottom: 5px;" align="left" class="main" padding=0 spacing=0>
+                            <tr>
+                              <td>
+                                <marko-core-obj-value|{ value: image }| obj=node field="primaryImage" as="object">
+                                  <marko-newsletter-imgix
+                                    src=image.src
+                                    alt=image.alt
+                                    options={ w: 330 }
+                                    class="main"
+                                    attrs={ border: 0, width: 110 }
+                                  >
+                                    <@link href=node.siteContext.url target="_blank" />
+                                  </marko-newsletter-imgix>
+                                </marko-core-obj-value>
+                              </td>
+                            </tr>
+                          </common-table>
+
+                          <common-table width="170" style="border-collapse:collapse;" spacing=0 padding=0 align="right" class="main">
+                            <tr>
+                              <td>
+                                <marko-core-obj-text obj=node field="name" attrs={ style: { "margin-top": "0px", "text-align": "left" } } >
+                                  <@link href=node.siteContext.url target="_blank" attrs={ style: contentLinkStyle } />
+                                </marko-core-obj-text>
+
+                                <if(showTeaser != false)>
+                                  <marko-core-obj-text tag="p" obj=node field="teaser" html=true attrs={ style: teaserStyle } />
+                                </if>
+                              </td>
+                            </tr>
+
+                          </common-table>
+
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
+                      </tr>
+                    </common-table>
+
+                    <if(align === 'right')>
+                      <common-table width="630" align="center" class="main" style="border-collapse:collapse;">
                         <tr>
-                          <td>
-                            <marko-core-obj-value|{ value: image }| obj=node field="primaryImage" as="object">
-                              <marko-newsletter-imgix
-                                src=image.src
-                                alt=image.alt
-                                options={ w: 300 }
-                                class="main"
-                                attrs={ border: 0, width: 150 }
-                              >
-                                <@link href=node.siteContext.url target="_blank" />
-                              </marko-newsletter-imgix>
-                            </marko-core-obj-value>
+                          <td valign="top">
+                            <div style="line-height:5px;">&nbsp;</div>
                           </td>
                         </tr>
                       </common-table>
-                      <marko-core-obj-text obj=node field="name" >
-                        <@link href=node.siteContext.url target="_blank" attrs={ style: contentLinkStyle } />
-                      </marko-core-obj-text>
-                      <if(showTeaser != false)>
-                        <marko-core-obj-text tag="div" obj=node field="teaser" html=true attrs={ style: teaserStyle } />
-                      </if>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>&nbsp;</td>
-                  </tr>
-                </common-table>
-              </if>
-              <else-if(node.type === 'text-ad')>
-                <common-table width="630" style="border-collapse:collapse;" align="left" class="main" padding=10 spacing=0>
-                  <tr>
-                    <td bgcolor="#ecedee">
-                      <marko-core-obj-text obj=node field="name">
-                        <@link href=node.siteContext.url target="_blank" attrs={ style: contentLinkStyle } />
-                      </marko-core-obj-text>
-                      <common-table
-                        style="margin:10px 10px 0 0;"
-                        align="left"
-                        class="left"
-                        padding=5
-                        spacing=0
-                      >
-                        <tr>
-                          <td>
-                            <marko-core-obj-value|{ value: image }| obj=node field="primaryImage" as="object">
-                              <marko-newsletter-imgix
-                                src=image.src
-                                alt=image.alt
-                                options={ w: 300 }
-                                class="sponsored"
-                                attrs={ border: 0, width: 150 }
-                              >
-                                <@link href=node.siteContext.url target="_blank" />
-                              </marko-newsletter-imgix>
-                            </marko-core-obj-value>
-                          </td>
-                        </tr>
-                      </common-table>
+                    </if>
 
-                      <marko-core-obj-text tag="div" obj=node field="body" html=true attrs={ style: textAdCopyStyle } />
-                      <common-table align="right" padding=0 spacing=0>
-                        <tr>
-                          <td style=`${textAdButtonStyle}`>
-                            <marko-core-obj-text obj=node field="linkText" html=true >
-                              <@link href=node.siteContext.url target="_blank" attrs={ style: textAdButtonLinkStyle } />
-                            </marko-core-obj-text>
-                          </td>
-                        </tr>
-                      </common-table>
-                    </td>
-                  </tr>
+                  </if>
 
-                </common-table>
-                <common-table width="630" style="border-collapse:collapse;" align="left" class="main" padding=0 spacing=0>
-                  <tr>
-                    <td>&nbsp;</td>
-                  </tr>
-                </common-table>
+                  <else>
+                    <common-table width="630" style="border-collapse:collapse;" align="center" class="main" padding=0 spacing=0>
+                      <tr>
+                        <td valign="top">
+                          <common-table style="margin-right: 10px;" align="left" class="left" padding=0 spacing=0>
+                            <tr>
+                              <td>
+                                <marko-core-obj-value|{ value: image }| obj=node field="primaryImage" as="object">
+                                  <marko-newsletter-imgix
+                                    src=image.src
+                                    alt=image.alt
+                                    options={ w: 330 }
+                                    class="main"
+                                    attrs={ border: 0, width: 150 }
+                                  >
+                                    <@link href=node.siteContext.url target="_blank" />
+                                  </marko-newsletter-imgix>
+                                </marko-core-obj-value>
+                              </td>
+                            </tr>
+                          </common-table>
+                          <marko-core-obj-text obj=node field="name" >
+                            <@link href=node.siteContext.url target="_blank" attrs={ style: contentLinkStyle } />
+                          </marko-core-obj-text>
+                          <if(showTeaser != false)>
+                            <marko-core-obj-text tag="p" obj=node field="teaser" html=true attrs={ style: teaserStyle } />
+                          </if>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>&nbsp;</td>
+                      </tr>
+                    </common-table>
+                  </else>
 
-              </else-if>
+                </if>
+
+                <else-if(node.type === 'text-ad')>
+                  $ counter = 0;
+                  <common-table width="630" style="border-collapse:collapse;" align="center" class="main" padding=10 spacing=0>
+                    <tr>
+                      <td bgcolor="#ecedee">
+                        <marko-core-obj-text obj=node field="name">
+                          <@link href=node.siteContext.url target="_blank" attrs={ style: contentLinkStyle } />
+                        </marko-core-obj-text>
+                        <common-table
+                          style="margin:10px 15px 0 0;"
+                          align="left"
+                          class="left"
+                          padding=5
+                          spacing=0
+                        >
+                          <tr>
+                            <td>
+                              <marko-core-obj-value|{ value: image }| obj=node field="primaryImage" as="object">
+                                <marko-newsletter-imgix
+                                  src=image.src
+                                  alt=image.alt
+                                  options={ w: 300 }
+                                  attrs={ border: 0, width: 150 }
+                                >
+                                  <@link href=node.siteContext.url target="_blank" />
+                                </marko-newsletter-imgix>
+                              </marko-core-obj-value>
+                            </td>
+                          </tr>
+                        </common-table>
+
+                        <marko-core-obj-text tag="div" obj=node field="body" html=true attrs={ style: textAdCopyStyle } />
+                        <common-table align="right" padding=0 spacing=0>
+                          <tr>
+                            <td class="scaleAd center" style=`${textAdButtonStyle}`>
+                              <marko-core-obj-text obj=node field="linkText" html=true >
+                                <@link href=node.siteContext.url target="_blank" attrs={ style: textAdButtonLinkStyle } />
+                              </marko-core-obj-text>
+                            </td>
+                          </tr>
+                        </common-table>
+                      </td>
+                    </tr>
+
+                  </common-table>
+                  <common-table width="630" style="border-collapse:collapse;" align="center" class="main" padding=0 spacing=0>
+                    <tr>
+                      <td valign="top">
+                        <div style="line-height:20px;">&nbsp;</div>
+                      </td>
+                    </tr>
+                  </common-table>
+                </else-if>
               </for>
             </td>
           </tr>
