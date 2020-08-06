@@ -12,13 +12,6 @@ stages:
   - name: production-finished
     if: tag =~ /^v\d+\.\d+\.\d+$/
 
-  - name: staging-started
-    if: tag is present
-  - name: staging
-    if: tag is present
-  - name: staging-finished
-    if: tag is present
-
 jobs:
   include:
     - stage: test
@@ -28,13 +21,7 @@ jobs:
       name: Deployment Started
       script: npx @base-cms/newsletter-deployment-tool notify-started
       install: skip
-      env: [ENVIRONMENT=production RANCHER_CLUSTERID=c-gxsr7]
-
-    - stage: staging-started
-      name: Deployment Started
-      script: npx @base-cms/newsletter-deployment-tool notify-started
-      install: skip
-      env: [ENVIRONMENT=staging RANCHER_CLUSTERID=c-rc5kp]
+      env: [ENVIRONMENT=production]
 
     #############################
     # vvv ADD SERVICES HERE vvv #
@@ -42,15 +29,9 @@ jobs:
 
     - stage: production
       name: Multi-site
-      script: npx @base-cms/newsletter-deployment-tool deploy multi caprica
+      script: npx @base-cms/newsletter-deployment-tool deploy multi newsletters
       install: skip
-      env: [ENVIRONMENT=production RANCHER_CLUSTERID=c-gxsr7]
-
-    - stage: staging
-      name: Multi-site
-      script: npx @base-cms/newsletter-deployment-tool deploy multi caprica
-      install: skip
-      env: [ENVIRONMENT=staging RANCHER_CLUSTERID=c-rc5kp]
+      env: [ENVIRONMENT=production]
 
     #############################
     # ^^^ ADD SERVICES HERE ^^^ #
@@ -60,10 +41,4 @@ jobs:
       name: Deployment Finished
       script: npx @base-cms/newsletter-deployment-tool notify-finished
       install: skip
-      env: [ENVIRONMENT=production RANCHER_CLUSTERID=c-gxsr7]
-
-    - stage: staging-finished
-      name: Deployment Finished
-      script: npx @base-cms/newsletter-deployment-tool notify-finished
-      install: skip
-      env: [ENVIRONMENT=staging RANCHER_CLUSTERID=c-rc5kp]
+      env: [ENVIRONMENT=production]
