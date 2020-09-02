@@ -22,8 +22,8 @@ x-env-defaults: &env
   NEW_RELIC_ENABLED: ${NEW_RELIC_ENABLED-0}
   NEW_RELIC_LICENSE_KEY: ${NEW_RELIC_LICENSE_KEY-(unset)}
 
-x-env-caprica: &env-caprica
-  GRAPHQL_URI: ${GRAPHQL_URI-https://caprica.graphql.base-cms.io}
+x-env-tauron: &env-tauron
+  GRAPHQL_URI: ${GRAPHQL_URI-https://tauron.graphql.base.parameter1.com}
 
 services:
   terminal:
@@ -46,7 +46,7 @@ services:
     working_dir: /root/tenants/multi
     environment:
       <<: *env
-      <<: *env-caprica
+      <<: *env-tauron
       PORT: 80
       EXPOSED_PORT: 21094
       LIVERELOAD_PORT: 31094
