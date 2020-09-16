@@ -10,6 +10,9 @@ $ const footerText = defaultValue(input.footerText, {
 
 $ const { website, config } = out.global;
 
+$ const unsubscribeId = defaultValue(input.unsubscribeCloudPageId, 204);
+$ const unsubscribeUrl = `%%=RedirectTo(CloudPagesURL(${unsubscribeId}, 'sk', _subscriberkey, 'p', listid, 'ln', _listname, 'j', jobid, 'e', _emailid, 'en', emailname_, 'de', _DataSourceName))=%%`;
+
 <common-table width=630 border=0 padding=10 spacing=0 align="center" class="main">
   <tr>
     <td bgcolor=bgColor>
@@ -64,7 +67,7 @@ $ const { website, config } = out.global;
           Please add ${config.get("optOut.safeSenders")} to your address book or safe sender list to receive our emails in your inbox.
         </p>
         <p style="margin:0px;margin-bottom:1em;">
-        <a href="%%=RedirectTo(CloudPagesURL(204, 'sk', _subscriberkey, 'p', listid, 'ln', _listname, 'j', jobid, 'e', _emailid, 'en', emailname_, 'de', _DataSourceName))=%%">Unsubscribe</a>
+        <a href=unsubscribeUrl>Unsubscribe</a>
           | <a href="%%ftaf_url%%">Forward to a Friend</a>
           | <a href="%%profile_center_url%%" alias="Update Profile">Update Profile</a>
           | <a href=`${website.get("origin")}/advertise`>Advertise</a>
