@@ -1,6 +1,6 @@
 {
   "name": "@industrial-media/common",
-  "version": "1.6.7",
+  "version": "1.6.8",
   "author": "Jacob Bare <jacob@limit0.io>",
   "repository": "https://github.com/base-cms-newsletters/industrial-media/tree/master/packages/common",
   "license": "MIT",
