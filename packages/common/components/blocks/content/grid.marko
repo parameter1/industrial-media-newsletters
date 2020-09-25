@@ -76,8 +76,9 @@ $ const contentLinkStyle = defaultValue(input.contentLinkStyle, {
                     <marko-newsletter-imgix
                       src=image.src
                       alt=image.alt
-                      options={ w: 280 }
-                      attrs={ border: 0, width: 280 }
+                      options={ w: 300, ar: '16:9', fit: 'crop' }
+                      class="main"
+                      attrs={ border: 0, width: 300 }
                     >
                       <@link href=node.siteContext.url target="_blank" />
                     </marko-newsletter-imgix>
