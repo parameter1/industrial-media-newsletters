@@ -70,7 +70,7 @@ $ const contentLinkStyle = defaultValue(input.contentLinkStyle, {
           <if(node.type === "text-ad")>
             <common-table width="300" style="border-collapse:collapse;" class="main" align=align padding=0 spacing=0>
               <tr>
-                <td bgcolor="#ecedee" valign="top" style="padding: 0 10px;" align="center">
+                <td bgcolor="#ecedee" valign="top" style="padding: 10px;" align="center">
                   <marko-core-obj-value|{ value: image }| obj=node field="primaryImage" as="object">
                     <marko-newsletter-imgix
                       src=image.src
@@ -99,7 +99,7 @@ $ const contentLinkStyle = defaultValue(input.contentLinkStyle, {
           <else>
             <common-table width="300" style="border-collapse:collapse;" align=align class="main" padding=0 spacing=0>
               <tr>
-                <td>
+                <td style="padding-top: 10px">
                   <marko-core-obj-value|{ value: image }| obj=node field="primaryImage" as="object">
                     <marko-newsletter-imgix
                       src=image.src
