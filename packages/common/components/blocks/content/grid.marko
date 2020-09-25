@@ -70,14 +70,14 @@ $ const contentLinkStyle = defaultValue(input.contentLinkStyle, {
           <if(node.type === "text-ad")>
             <common-table width="300" style="border-collapse:collapse;" class="main" align=align padding=0 spacing=0>
               <tr>
-                <td bgcolor="#ecedee" valign="top" style="padding: 0 10px;" align="center">
-                  <div style="text-align: left; color: #6b6b6b; font: 400 11px/16px Helvetica, Arial, sans-serif;">Advertisement</div>
+                <td bgcolor="#ecedee" valign="top" style="padding: 10px;" align="center">
                   <marko-core-obj-value|{ value: image }| obj=node field="primaryImage" as="object">
                     <marko-newsletter-imgix
                       src=image.src
                       alt=image.alt
-                      options={ w: 280 }
-                      attrs={ border: 0, width: 280 }
+                      options={ w: 300, ar: '16:9', fit: 'crop' }
+                      class="main"
+                      attrs={ border: 0, width: 300 }
                     >
                       <@link href=node.siteContext.url target="_blank" />
                     </marko-newsletter-imgix>
@@ -87,6 +87,7 @@ $ const contentLinkStyle = defaultValue(input.contentLinkStyle, {
                     <@link href=node.siteContext.url target="_blank" attrs={ style: contentLinkStyle } />
                   </marko-core-obj-text>
                   <marko-core-obj-text tag=null obj=node field="body" html=true attrs={ style: bodyStyle } />
+                  <div style="text-align: center; color: #6b6b6b; font: 400 11px/16px Helvetica, Arial, sans-serif;">Advertisement</div>
                 </td>
               </tr>
               <tr>
@@ -98,7 +99,7 @@ $ const contentLinkStyle = defaultValue(input.contentLinkStyle, {
           <else>
             <common-table width="300" style="border-collapse:collapse;" align=align class="main" padding=0 spacing=0>
               <tr>
-                <td>
+                <td style="padding-top: 10px">
                   <marko-core-obj-value|{ value: image }| obj=node field="primaryImage" as="object">
                     <marko-newsletter-imgix
                       src=image.src
