@@ -22,6 +22,21 @@ module.exports = {
   cen: {
     socialMediaLinks: [
       {
+        provider: 'linkedin',
+        href: 'https://www.linkedin.com/company/cannabis-equipment-news/',
+        title: 'Follow us on LinkedIn',
+      },
+      {
+        provider: 'instagram',
+        href: 'https://www.instagram.com/cannabisequipmentnews/?hl=en',
+        title: 'Follow us on Instagram',
+      },
+      {
+        provider: 'youtube',
+        href: 'https://www.youtube.com/channel/UCe37Mhsr0aaBUuBzk1RR6AA/featured',
+        title: 'Follow us on YouTube',
+      },
+      {
         provider: 'facebook',
         href: 'https://www.facebook.com/CannaEquipmentNews/',
         title: 'Follow us on Facebook',
