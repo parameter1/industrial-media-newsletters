@@ -1,6 +1,7 @@
 import defaultValue from "@base-cms/marko-core/utils/default-value";
 
 $ const bgColor = defaultValue(input.bgColor, "#000000");
+$ const companyName = defaultValue(input.companyName, "Industrial Media, LLC");
 $ const footerText = defaultValue(input.footerText, {
   "text-decoration": "none !important",
   "color": "#fff",
@@ -34,7 +35,7 @@ $ const unsubscribeUrl = `%%=RedirectTo(CloudPagesURL(${unsubscribeId}, 'sk', _s
       <common-table width=300 border=0 padding=0 spacing=0 align="right">
         <tr>
           <td align="right" class="center">
-            <div style=footerText>© ${(new Date().getFullYear())} All rights reserved, Industrial Media, LLC </div>
+            <div style=footerText>© ${(new Date().getFullYear())} All rights reserved, ${companyName} </div>
           </td>
         </tr>
       </common-table>
@@ -87,7 +88,7 @@ $ const unsubscribeUrl = `%%=RedirectTo(CloudPagesURL(${unsubscribeId}, 'sk', _s
           %%Member_City%%, %%Member_State%%, %%Member_PostalCode%%, %%Member_Country%%
         </p>
         <!-- <img border="0" src="https://cdn.baseplatform.io/files/base/newsletter/ien.jpg" width="100" height="100" alt=""/> -->
-        <p>This newsletter is an Industrial Media, LLC product.</p>
+        <p>This newsletter is an ${companyName} product.</p>
       </div>
     </td>
   </tr>
