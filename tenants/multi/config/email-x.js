@@ -119,6 +119,15 @@ config
       uri: 'https://email-serve.ien.com',
     },
   ])
+  .setAdUnits('id-video-showcase', [
+    {
+      name: 'header',
+      id: '601424ceae663a0e6759c81e',
+      width: 600,
+      height: 100,
+      uri: 'https://email-serve.inddist.com',
+    },
+  ])
   .setAdUnits('product-showcase', [
     {
       name: 'header',
