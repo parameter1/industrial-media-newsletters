@@ -2,6 +2,8 @@ import defaultValue from "@base-cms/marko-core/utils/default-value";
 
 $ const bgColor = defaultValue(input.bgColor, "#000000");
 $ const companyName = defaultValue(input.companyName, "Industrial Media, LLC");
+$ const pleaseContactEmail = defaultValue(input.pleaseContactEmail, "tom@ien.com");
+$ const pleaseContactName = defaultValue(input.pleaseContactName, "Tom Lynch");
 $ const footerText = defaultValue(input.footerText, {
   "text-decoration": "none !important",
   "color": "#fff",
@@ -77,7 +79,7 @@ $ const unsubscribeUrl = `%%=RedirectTo(CloudPagesURL(${unsubscribeId}, 'sk', _s
         </p>
 
         <p style="margin:0px;margin-bottom:1em;">
-          Interested in advertising opportunities?  Please contact <a href="mailto:tom@ien.com">Tom Lynch</a> for more information.
+          Interested in advertising opportunities?  Please contact <a href=`mailto:${pleaseContactEmail}`>${pleaseContactName}</a> for more information.
         </p>
         <p>
           %%Member_Busname%% <br>
