@@ -4,6 +4,8 @@
     "@bg-color": "string",
     "@company-name": "string",
     "@unsubscribe-cloud-page-id": "string",
-    "@footer-text": "object"
+    "@footer-text": "object",
+    "@please-contact-email" : "string",
+    "@please-contact-name" : "string"
   }
 }
