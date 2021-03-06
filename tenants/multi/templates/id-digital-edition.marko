@@ -114,12 +114,12 @@ $ const teaserStyle = {
                   <if(latestIssue.publication.subscribeUrl)>
                     <a style="text-decoration: none !important; font-size: 14px; font-family: Arial, Helvetica, sans-serif; color: #f06724;" href=latestIssue.publication.subscribeUrl target="_blank" rel="noopener noreferrer">
                       <strong>SUBSCRIBE</strong>
-                    </a> for more leading edge content from <em>Indsutrial Distribution</em>!
+                    </a> for more leading edge content from <em>Industrial Distribution</em>!
                   </if>
                   <else>
                     <a style="text-decoration: none !important; font-size: 14px; font-family: Arial, Helvetica, sans-serif; color: #f06724;" href=`${website.get("origin")}/subscribe` target="_blank" rel="noopener noreferrer">
                       <strong>SUBSCRIBE</strong>
-                    </a> for more leading edge content from <em>Indsutrial Distribution</em>!
+                    </a> for more leading edge content from <em>Industrial Distribution</em>!
                   </else>
                 </td>
               </tr>
@@ -227,7 +227,7 @@ $ const teaserStyle = {
           <common-table width=300 border=0 padding=0 spacing=0 align="right">
             <tr>
               <td>
-                <div style=`${blackBarText}; background-color: #000000; text-align:right;` class="center">© 2019 All rights reserved, Industrial Media, LLC </div>
+                <div style=`${blackBarText}; background-color: #000000; text-align:right;` class="center">© ${(new Date().getFullYear())} All rights reserved, Industrial Media, LLC </div>
               </td>
             </tr>
           </common-table>
@@ -268,9 +268,6 @@ $ const teaserStyle = {
 
             <p style="margin:0px;margin-bottom:1em;">
               Interested in advertising opportunities?  Please contact <a href="mailto:tom@ien.com">Tom Lynch</a> for more information.
-            </p>
-            <p style="margin:0px;margin-bottom:1em;">
-              If you have trouble with any of these methods, you can reach us at 608-692-2304.
             </p>
             <p>
               %%Member_Busname%% <br>

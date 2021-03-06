@@ -35,12 +35,10 @@ $ const textAdCopyStyle = {
 };
 $ const textAdButtonStyle = "background:#3B579D; padding-top:10px; padding-left:10px; padding-right:10px; padding-bottom:10px;";
 $ const textAdButtonLinkStyle = {
-  "text-decoration": "none",
-  "text-align": "left",
+  "text-decoration": "none !important",
+  "font" : "bold 16px/18px Arial, Helvetica, sans-serif",
   "background": "#3B579D",
   "color": "#ffffff",
-  "font-weight": "bold",
-  "font-size": "16px",
   "margin-top": "10px",
 };
 
@@ -414,7 +412,7 @@ $ const textAdButtonLinkStyle = {
           <common-table width=300 border=0 padding=0 spacing=0 align="right">
             <tr>
               <td>
-                <div style=`${blackBarText}; background-color: #000000; text-align:right;` class="center">© 2019 All rights reserved, Industrial Media, LLC </div>
+                <div style=`${blackBarText}; background-color: #000000; text-align:right;` class="center">© ${(new Date().getFullYear())} All rights reserved, Industrial Media, LLC </div>
               </td>
             </tr>
           </common-table>
@@ -455,9 +453,6 @@ $ const textAdButtonLinkStyle = {
 
             <p style="margin:0px;margin-bottom:1em;">
               Interested in advertising opportunities?  Please contact <a href="mailto:tom@ien.com">Tom Lynch</a> for more information.
-            </p>
-            <p style="margin:0px;margin-bottom:1em;">
-              If you have trouble with any of these methods, you can reach us at 608-692-2304.
             </p>
             <p>
               %%Member_Busname%% <br>

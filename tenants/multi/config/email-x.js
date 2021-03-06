@@ -102,6 +102,15 @@ config
       uri: 'https://email-serve.ien.com',
     },
   ])
+  .setAdUnits('ien-today-refresh', [
+    {
+      name: 'header',
+      id: '5c7fd8a7dd5ae704948d03fb',
+      width: 600,
+      height: 100,
+      uri: 'https://email-serve.ien.com',
+    },
+  ])
   .setAdUnits('ien-weekly', [
     {
       name: 'header',
@@ -118,6 +127,15 @@ config
       width: 600,
       height: 100,
       uri: 'https://email-serve.ien.com',
+    },
+  ])
+  .setAdUnits('id-video-showcase', [
+    {
+      name: 'header',
+      id: '601424ceae663a0e6759c81e',
+      width: 600,
+      height: 100,
+      uri: 'https://email-serve.inddist.com',
     },
   ])
   .setAdUnits('product-showcase', [

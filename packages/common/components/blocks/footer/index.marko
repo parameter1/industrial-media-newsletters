@@ -1,6 +1,9 @@
 import defaultValue from "@base-cms/marko-core/utils/default-value";
 
 $ const bgColor = defaultValue(input.bgColor, "#000000");
+$ const companyName = defaultValue(input.companyName, "Industrial Media, LLC");
+$ const pleaseContactEmail = defaultValue(input.pleaseContactEmail, "tom@ien.com");
+$ const pleaseContactName = defaultValue(input.pleaseContactName, "Tom Lynch");
 $ const footerText = defaultValue(input.footerText, {
   "text-decoration": "none !important",
   "color": "#fff",
@@ -9,6 +12,9 @@ $ const footerText = defaultValue(input.footerText, {
 });
 
 $ const { website, config } = out.global;
+
+$ const unsubscribeId = defaultValue(input.unsubscribeCloudPageId, 204);
+$ const unsubscribeUrl = `%%=RedirectTo(CloudPagesURL(${unsubscribeId}, 'sk', _subscriberkey, 'p', listid, 'ln', _listname, 'j', jobid, 'e', _emailid, 'en', emailname_, 'de', _DataSourceName))=%%`;
 
 <common-table width=630 border=0 padding=10 spacing=0 align="center" class="main">
   <tr>
@@ -31,7 +37,7 @@ $ const { website, config } = out.global;
       <common-table width=300 border=0 padding=0 spacing=0 align="right">
         <tr>
           <td align="right" class="center">
-            <div style=footerText>© ${(new Date().getFullYear())} All rights reserved, Industrial Media, LLC </div>
+            <div style=footerText>© ${(new Date().getFullYear())} All rights reserved, ${companyName} </div>
           </td>
         </tr>
       </common-table>
@@ -64,7 +70,7 @@ $ const { website, config } = out.global;
           Please add ${config.get("optOut.safeSenders")} to your address book or safe sender list to receive our emails in your inbox.
         </p>
         <p style="margin:0px;margin-bottom:1em;">
-        <a href="%%=RedirectTo(CloudPagesURL(204, 'sk', _subscriberkey, 'p', listid, 'ln', _listname, 'j', jobid, 'e', _emailid, 'en', emailname_, 'de', _DataSourceName))=%%">Unsubscribe</a>
+        <a href=unsubscribeUrl>Unsubscribe</a>
           | <a href="%%ftaf_url%%">Forward to a Friend</a>
           | <a href="%%profile_center_url%%" alias="Update Profile">Update Profile</a>
           | <a href=`${website.get("origin")}/advertise`>Advertise</a>
@@ -73,10 +79,7 @@ $ const { website, config } = out.global;
         </p>
 
         <p style="margin:0px;margin-bottom:1em;">
-          Interested in advertising opportunities?  Please contact <a href="mailto:tom@ien.com">Tom Lynch</a> for more information.
-        </p>
-        <p style="margin:0px;margin-bottom:1em;">
-          If you have trouble with any of these methods, you can reach us at 608-692-2304.
+          Interested in advertising opportunities?  Please contact <a href=`mailto:${pleaseContactEmail}`>${pleaseContactName}</a> for more information.
         </p>
         <p>
           %%Member_Busname%% <br>
@@ -84,7 +87,7 @@ $ const { website, config } = out.global;
           %%Member_City%%, %%Member_State%%, %%Member_PostalCode%%, %%Member_Country%%
         </p>
         <!-- <img border="0" src="https://cdn.baseplatform.io/files/base/newsletter/ien.jpg" width="100" height="100" alt=""/> -->
-        <p>This newsletter is an Industrial Media, LLC product.</p>
+        <p>This newsletter is an ${companyName} product.</p>
       </div>
     </td>
   </tr>

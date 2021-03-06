@@ -2,25 +2,22 @@ import contentList from "@industrial-media/common/graphql/fragments/content-list
 
 $ const { website } = out.global;
 $ const { newsletter, date, dateInfo } = data;
-$ const blackBarText = "text-decoration: none !important; font-size: 10px; font-family: Arial, Helvetica, sans-serif; color: #ffffff; font-weight: normal;"
+$ const blackBarText = "text-decoration: none !important; font-size: 10px; font-family: Arial, Helvetica, sans-serif; color: #ffffff; font-weight: normal;";
 $ const contentLinkStyle = {
-  "text-decoration": "none",
-  "text-align": "left",
   "text-decoration": "none !important",
   "font-size": "14px",
+  "margin-top": "10px !important",
   "font-family": "Arial, Helvetica, sans-serif",
-  "color": "#002f4e",
-  "font-weight": "bold"
+  "color": "#e9132f",
+  "font-weight": "bold",
 };
+
 $ const teaserStyle = {
   "text-decoration": "none !important",
   "font-size": "13px",
   "font-family": "Arial, Helvetica, sans-serif",
   "color": "#666666",
-  "font-weight": "normal",
-  "text-align": "left",
-  "margin-top": "3px !important",
-  "line-height": "1.2em",
+  "margin-top": "0px !important",
 };
 
 <marko-newsletter-root
@@ -38,74 +35,27 @@ $ const teaserStyle = {
       date-info=dateInfo
     />
 
-    <!-- Header -->
-    <common-table width="630" style="border-collapse:collapse;" align="center" class="main" padding=0 spacing=0>
-      <tr>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td>
-          <common-default-header-block
-            name=newsletter.name
-            href=website.get("origin")
-            image-src="/files/base/indm/all/image/static/logos/fm_today.png"
-            bg-color="#ffffff"
-          />
-        </td>
-      </tr>
-    </common-table>
+<!-- Header -->
 
-    <!-- Featured Full -->
-    <common-table width="630" style="border-collapse:collapse;" align="center" class="main" padding=0 spacing=0>
-      <tr>
-        <td>
-          <marko-web-query|{ nodes }| name="newsletter-scheduled-content" params={
-            date: date.valueOf(),
-            newsletterId: newsletter.id,
-            sectionId: 63314,
-            limit: 25,
-            queryFragment: contentList,
-          }>
-            <for|node| of=nodes>
-              <common-table width="630" style="border: 5px solid #ecedee;" align="center" class="sponsored" padding=10 spacing=0>
-                <tr>
-                  <td valign="top">
-                    <common-table width="280" class="left" align="left" padding=0 spacing=0>
-                      <tr>
-                        <td>
-                          <marko-core-obj-value|{ value: image }| obj=node field="primaryImage" as="object">
-                            <marko-newsletter-imgix
-                              src=image.src
-                              alt=image.alt
-                              options={ w: 280 }
-                              class="main"
-                              attrs={ border: 0, width: 280 }
-                            >
-                              <@link href=node.siteContext.url target="_blank" />
-                            </marko-newsletter-imgix>
-                          </marko-core-obj-value>
-                        </td>
-                      </tr>
-                    </common-table>
-                    <common-table width="295" class="main" align="right" padding=0 spacing=0>
-                      <tr>
-                        <td>
-                          <marko-core-obj-text obj=node field="name" attrs={ style: { "text-align": "left" } } >
-                            <@link href=node.siteContext.url target="_blank" attrs={ style: contentLinkStyle } />
-                          </marko-core-obj-text>
-                          <marko-core-obj-text tag="div" obj=node field="teaser" html=true attrs={ style: teaserStyle } />
-                        </td>
-                      </tr>
-                    </common-table>
-                  </td>
-                </tr>
-              </common-table>
-            </for>
-          </marko-web-query>
-        </td>
-      </tr>
-    </common-table>
+    <common-default-header-block
+      name=newsletter.name
+      href=website.get("origin")
+      image-src="/files/base/indm/multi/image/2021/02/640w/IDVideoShowcase_ai.60216a1a043d9.jpg"
+      bg-color="#ffffff"
+    />
 
+    <!-- Content -->
+
+    <common-featured-full-block
+      section-id=69702,
+      date=date,
+      newsletter=newsletter,
+      show-body=true,
+      content-link-style=contentLinkStyle,
+      teaser-style=teaserStyle,
+    />
+
+    <!-- Black Bar -->
     <common-table width=630 border=0 padding=10 spacing=0 align="center" class="main">
       <tr>
         <td bgcolor="#000000">
@@ -119,7 +69,7 @@ $ const teaserStyle = {
                   |
                   <a href=`${website.get("origin")}/subscribe` target="_blank" style=`${blackBarText}`>Subscribe</a>
                   |
-                  <a href=`${website.get("origin")}/page/fm-advertise` target="_blank" style=`${blackBarText}`>Advertise</a>
+                  <a href=`${website.get("origin")}/page/id-advertising` target="_blank" style=`${blackBarText}`>Advertise</a>
                 </div>
               </td>
             </tr>
@@ -134,6 +84,7 @@ $ const teaserStyle = {
         </td>
       </tr>
     </common-table>
+    <!-- Footer/OptOut -->
     <common-table width=630 border=0 padding=10 spacing=0 align="center" class="main">
       <tr>
         <td>&nbsp;</td>
@@ -161,9 +112,9 @@ $ const teaserStyle = {
               <a href="%%=RedirectTo(CloudPagesURL(204, 'sk', _subscriberkey, 'p', listid, 'ln', _listname, 'j', jobid, 'e', _emailid, 'en', emailname_, 'de', _DataSourceName))=%%">Unsubscribe</a>
               | <a href="%%ftaf_url%%">Forward to a Friend</a>
               | <a href="%%profile_center_url%%" alias="Update Profile">Update Profile</a>
-              | <a href=`${website.get("origin")}/page/fm-advertise`>Advertise</a>
+              | <a href=`${website.get("origin")}/page/id-advertising`>Advertise</a>
               | <a href=`${website.get("origin")}/contact-us`>Customer Service Center </a>
-              | <a href=`${website.get("origin")}/page/fm-privacy-policy`> Privacy Policy</a>
+              | <a href=`${website.get("origin")}/page/id-privacy-policy`> Privacy Policy</a>
             </p>
 
             <p style="margin:0px;margin-bottom:1em;">
@@ -180,6 +131,8 @@ $ const teaserStyle = {
         </td>
       </tr>
     </common-table>
+
     <marko-newsletters-mc-open-counter />
+
   </@body>
 </marko-newsletter-root>

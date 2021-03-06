@@ -2,6 +2,10 @@
   "<common-default-footer-block>": {
     "template": "./index.marko",
     "@bg-color": "string",
-    "@footer-text": "object"
+    "@company-name": "string",
+    "@unsubscribe-cloud-page-id": "string",
+    "@footer-text": "object",
+    "@please-contact-email" : "string",
+    "@please-contact-name" : "string"
   }
 }
