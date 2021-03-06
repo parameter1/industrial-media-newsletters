@@ -43,6 +43,16 @@ config
     },
   ])
 
+  .setAdUnits('manufacturing-today-safety', [
+    {
+      name: 'header',
+      id: '6043e527ae663a568e5a27b9',
+      width: 600,
+      height: 100,
+      uri: 'https://email-serve.manufacturing.net',
+    },
+  ])
+
   .setAdUnits('newswire', [
     {
       name: 'header',
