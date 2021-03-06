@@ -39,6 +39,15 @@ config
     },
   ])
 
+  .setAdUnits('manufacturing-today-safety', [
+    {
+      name: 'header',
+      path: 'IEN-Newsletters-600x100',
+      width: 600,
+      height: 100,
+    },
+  ])
+
   .setAdUnits('newswire', [
     {
       name: 'header',
