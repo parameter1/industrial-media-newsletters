@@ -83,6 +83,16 @@ config
     },
   ])
 
+  .setAdUnits('design-development-weekly', [
+    {
+      name: 'header',
+      id: '6058f5e15e9bb68489f9c9dc',
+      width: 600,
+      height: 100,
+      uri: 'https://email-serve.designdevelopmenttoday.com',
+    },
+  ])
+
   .setAdUnits('design-development-today', [
     {
       name: 'header',
