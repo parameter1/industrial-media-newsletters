@@ -13,6 +13,16 @@ config
     },
   ])
 
+  .setAdUnits('fm-weekly', [
+    {
+      name: 'header',
+      id: '605b8eec5e9bb64609f9cbf8',
+      width: 600,
+      height: 100,
+      uri: 'https://email-serve.foodmanufacturing.com',
+    },
+  ])
+
   .setAdUnits('id-today', [
     {
       name: 'header',
