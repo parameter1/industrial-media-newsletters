@@ -33,7 +33,7 @@ config
     },
   ])
 
-  .setAdUnits('impo-mag-today', [
+  .setAdUnits('impo-insider', [
     {
       name: 'header',
       id: '5ddd57f0c044efa60c9d40cd',

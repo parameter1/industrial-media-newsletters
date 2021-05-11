@@ -21,7 +21,7 @@ config
     },
   ])
 
-  .setAdUnits('impo-mag-today', [
+  .setAdUnits('impo-insider', [
     {
       name: 'header',
       path: 'IEN-Newsletters-600x100',
