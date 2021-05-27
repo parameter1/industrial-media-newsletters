@@ -239,7 +239,6 @@ $ const textAdButtonLinkStyle = {
                                     src=image.src
                                     alt=image.alt
                                     options={ w: 150 }
-                                    class="main"
                                     attrs={ border: 0, width: 150 }
                                   >
                                     <@link href=node.siteContext.url target="_blank" />
@@ -251,7 +250,7 @@ $ const textAdButtonLinkStyle = {
 
                           <marko-core-obj-text tag="div" obj=node field="body" html=true attrs={ style: textAdCopyStyle } />
 
-                          <common-table align="right" class="main" padding=0 spacing=0>
+                          <common-table align="right" class="main center" padding=0 spacing=0>
                             <tr>
                               <td style=`${textAdButtonStyle}`>
                                 <marko-core-obj-text obj=node field="linkText" html=true >
