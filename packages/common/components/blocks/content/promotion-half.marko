@@ -82,7 +82,7 @@ $ const textAdButtonLinkStyle = {
     <tr>
       <td valign="top">
         <for|node| of=nodes>
-          <common-table width="280" style="border-collapse:collapse;" align=align padding=10 spacing=0>
+          <common-table class="main" width="280" style="border-collapse:collapse;" align=align padding=10 spacing=0>
             <tr>
               <td bgcolor="#ecedee">
                 <marko-core-obj-text obj=node field="name">
@@ -101,7 +101,6 @@ $ const textAdButtonLinkStyle = {
                         <marko-newsletter-imgix
                           src=image.src
                           alt=image.alt
-                          class="sponsored"
                           options={ w: 150 }
                           attrs={ border: 0, width: 150 }
                         >
