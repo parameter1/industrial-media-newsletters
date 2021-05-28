@@ -82,7 +82,7 @@ $ const textAdButtonLinkStyle = {
     <tr>
       <td valign="top">
         <for|node| of=nodes>
-          <common-table width="280" style="border-collapse:collapse;" align=align padding=10 spacing=0>
+          <common-table class="main" width="280" style="border-collapse:collapse;" align=align padding=10 spacing=0>
             <tr>
               <td bgcolor="#ecedee">
                 <marko-core-obj-text obj=node field="name">
@@ -101,8 +101,7 @@ $ const textAdButtonLinkStyle = {
                         <marko-newsletter-imgix
                           src=image.src
                           alt=image.alt
-                          options={ w: 300 }
-                          class="sponsored"
+                          options={ w: 150 }
                           attrs={ border: 0, width: 150 }
                         >
                           <@link href=node.siteContext.url target="_blank" />
@@ -116,7 +115,7 @@ $ const textAdButtonLinkStyle = {
 
                 <common-table align="right" padding=0 spacing=0>
                   <tr>
-                    <td style=`${textAdButtonStyle}`>
+                    <td class="scaleAd center" style=`${textAdButtonStyle}`>
                       <marko-core-obj-text obj=node field="linkText" html=true >
                         <@link href=node.siteContext.url target="_blank" attrs={ style: textAdButtonLinkStyle } />
                       </marko-core-obj-text>
