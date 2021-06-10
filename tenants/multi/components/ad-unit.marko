@@ -2,7 +2,7 @@ import buildGAMTargeting from "@industrial-media/common/utils/build-gam-targetin
 import emailX from "../config/email-x";
 import GAM from "../config/gam";
 
-$ const { req } = out.global;
+$ const { config, req } = out.global;
 $ const gamEnabled = Object.hasOwnProperty.call(req.query, 'gam');
 
 $ const {
@@ -13,6 +13,13 @@ $ const {
 } = input;
 
 $ const { alias } = newsletter;
+
+$ const { query } = req;
+$ const esp = query.esp || config.get("defaultEsp");
+$ const emailMergeVars = {
+  email: esp === "et" ? "%%emailaddr%%" : "@{delivery_email}@",
+  send: esp === "et" ? "%%jobid%%" : "@{track_id}@",
+};
 
 $ let adUnit;
 $ if (gamEnabled) {
@@ -31,7 +38,7 @@ $ if (gamEnabled) {
   <else>
     <marko-newsletters-email-x-display decoded-params=["email", "send"]>
       <@ad-unit ...adUnit />
-      <@params date=date email="%%emailaddr%%" send="%%jobid%%" />
+      <@params date=date email=emailMergeVars.email send=emailMergeVars.send />
       <@image class="scaleAd" />
     </marko-newsletters-email-x-display>
   </else>
