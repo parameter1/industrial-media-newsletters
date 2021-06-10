@@ -17,7 +17,7 @@ $ const unsubscribeId = defaultValue(input.unsubscribeCloudPageId, 204);
 $ const unsubscribeUrl = `%%=RedirectTo(CloudPagesURL(${unsubscribeId}, 'sk', _subscriberkey, 'p', listid, 'ln', _listname, 'j', jobid, 'e', _emailid, 'en', emailname_, 'de', _DataSourceName))=%%`;
 
 $ const { query } = req;
-$ const esp = query.esp || "et";
+$ const esp = query.esp || config.get("defaultEsp");
 
 <common-table width=630 border=0 padding=10 spacing=0 align="center" class="main">
   <tr>
