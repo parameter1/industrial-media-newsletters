@@ -1,3 +1,9 @@
+$ const { config, req } = out.global;
+
+$ const { query } = req;
+$ const esp = query.esp || config.get("defaultEsp");
+$ const viewOnlineLink = esp === "et" ? "%%view_email_url%%" : "@{mv_online_version}@";
+
 <tr>
   <td
     height="35"
@@ -7,6 +13,6 @@
   >
       <span class="breakLn">${input.name}</span>
       <span class="mobileHide">&nbsp; | &nbsp;</span>
-      To view this email as a web page, <a target="_blank" style="color:#666666;" href="%%view_email_url%%">click here.</a>
+      To view this email as a web page, <a target="_blank" style="color:#666666;" href=viewOnlineLink>click here.</a>
   </td>
 </tr>
