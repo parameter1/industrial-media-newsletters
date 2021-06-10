@@ -1,4 +1,5 @@
 module.exports = {
+  defaultEsp: 'et',
   ddt: {
     socialMediaLinks: [
       {
