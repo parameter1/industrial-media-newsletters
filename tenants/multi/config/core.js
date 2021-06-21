@@ -1,5 +1,5 @@
 module.exports = {
-  defaultEsp: 'et',
+  defaultEsp: 'omeda',
   ddt: {
     socialMediaLinks: [
       {
