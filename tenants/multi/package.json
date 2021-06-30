@@ -1,6 +1,6 @@
 {
   "name": "@industrial-media/multi",
-  "version": "1.8.4",
+  "version": "1.8.5",
   "author": "Jacob Bare <jacob@limit0.io>",
   "repository": "https://github.com/parameter1/newsletter-industrial-media/tree/master/tenants/multi",
   "license": "MIT",
@@ -18,7 +18,7 @@
     "@base-cms/marko-newsletters-gam": "^1.25.0",
     "@base-cms/newsletter-cli": "^1.13.0",
     "@base-cms/object-path": "^1.25.0",
-    "@industrial-media/common": "^1.8.4",
+    "@industrial-media/common": "^1.8.5",
     "graphql": "^14.5.4",
     "graphql-tag": "^2.10.1",
     "newrelic": "^5.11.0"
