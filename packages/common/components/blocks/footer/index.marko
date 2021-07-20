@@ -17,6 +17,7 @@ $ const unsubscribeId = defaultValue(input.unsubscribeCloudPageId, 204);
 $ const unsubscribeUrl = `%%=RedirectTo(CloudPagesURL(${unsubscribeId}, 'sk', _subscriberkey, 'p', listid, 'ln', _listname, 'j', jobid, 'e', _emailid, 'en', emailname_, 'de', _DataSourceName))=%%`;
 
 $ const preferencePageLink = defaultValue(input.preferencePageLink, "https://industrialmedia.dragonforms.com/loading.do?omedasite=IEN_prefs&r=@{encrypted_customer_id}@");
+$ const advertisePageLink = defaultValue(input.advertisePageLink, "https://ien.formstack.com/forms/advertise_with_industrial_media");
 
 $ const { query } = req;
 $ const esp = query.esp || config.get("defaultEsp");
@@ -34,7 +35,7 @@ $ const esp = query.esp || config.get("defaultEsp");
               |
               <a href=`${website.get("origin")}/newsletter-signup` target="_blank" style=footerText>Subscribe</a>
               |
-              <a href="https://ien.formstack.com/forms/advertise_with_industrial_media" target="_blank" style=footerText>Advertise</a>
+              <a href=`${advertisePageLink}` target="_blank" style=footerText>Advertise</a>
             </div>
           </td>
         </tr>
@@ -79,7 +80,7 @@ $ const esp = query.esp || config.get("defaultEsp");
           <a href=unsubscribeUrl>Unsubscribe</a>
             | <a href="%%ftaf_url%%">Forward to a Friend</a>
             | <a href="%%profile_center_url%%" alias="Update Profile">Update Profile</a>
-            | <a href="https://ien.formstack.com/forms/advertise_with_industrial_media">Advertise</a>
+            | <a href=`${advertisePageLink}` alias="Advertise">Advertise</a>
             | <a href=`${website.get("origin")}/contact-us`>Customer Service Center </a>
             | <a href=`${website.get("origin")}/privacy-policy`> Privacy Policy</a>
           </p>
@@ -119,7 +120,7 @@ $ const esp = query.esp || config.get("defaultEsp");
             <a href="@{confirmunsubscribelink}@">Unsubscribe</a>
             | <a href="@{forwardtoafriendlink}@">Forward to a Friend</a>
             | <a href=`${preferencePageLink}` alias="Update Profile">Update Profile</a>
-            | <a href="https://ien.formstack.com/forms/advertise_with_industrial_media">Advertise</a>
+            | <a href=`${advertisePageLink}` alias="Advertise">Advertise</a>
             | <a href=`${website.get("origin")}/contact-us`>Customer Service Center </a>
             | <a href=`${website.get("origin")}/privacy-policy`> Privacy Policy</a>
           </p>

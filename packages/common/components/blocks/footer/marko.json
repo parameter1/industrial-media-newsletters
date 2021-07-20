@@ -7,6 +7,7 @@
     "@footer-text": "object",
     "@please-contact-email" : "string",
     "@please-contact-name" : "string",
-    "@preference-page-link" : "string"
+    "@preference-page-link" : "string",
+    "@advertise-page-link" : "string"
   }
 }
