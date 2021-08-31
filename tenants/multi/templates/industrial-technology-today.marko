@@ -4,6 +4,19 @@ $ const { website } = out.global;
 $ const { newsletter, date, dateInfo } = data;
 $ const primaryColor = "#45ad35";
 
+$ const stealthLinkStyle = {
+  "color": "#ffffff",
+  "display": "none",
+  "visibility": "hidden",
+  "mso-hide": "all",
+  "font-size": "1px",
+  "line-height": "1px",
+  "max-height": "0px",
+  "max-width": "0px",
+  "opacity": "0",
+  "overflow": "hidden",
+}
+
 <marko-newsletter-root
   title=newsletter.name
   description=newsletter.description
@@ -73,6 +86,7 @@ $ const primaryColor = "#45ad35";
 
     <!-- Footer/OptOut -->
     <common-default-footer-block />
+    <div style=stealthLinkStyle><a href="https://www.ien.com/__about-us">About Industrial Media LLC.</a></div>
 
   </@body>
 </marko-newsletter-root>
