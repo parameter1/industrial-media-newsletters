@@ -248,6 +248,24 @@ config
       height: 100,
       uri: 'https://email-serve.mbtmag.com',
     },
+  ])
+  .setAdUnits('food-video-showcase', [
+    {
+      name: 'header',
+      id: '61f2bba20d2f1a7717ee7767',
+      width: 600,
+      height: 100,
+      uri: 'https://email-serve.ien.com',
+    },
+  ])
+  .setAdUnits('impo-video-showcase', [
+    {
+      name: 'header',
+      id: '61f2bbca5d6c0a90928a1627',
+      width: 600,
+      height: 100,
+      uri: 'https://email-serve.ien.com',
+    },
   ]);
 
 module.exports = config;
