@@ -74,4 +74,19 @@ module.exports = {
       },
     ],
   },
+
+  mdd: {
+    socialMediaLinks: [
+      {
+        provider: 'facebook',
+        href: '#',
+        title: 'Follow us on Facebook',
+      },
+      {
+        provider: 'twitter',
+        href: '#',
+        title: 'Follow us on Twitter',
+      },
+    ],
+  },
 };
