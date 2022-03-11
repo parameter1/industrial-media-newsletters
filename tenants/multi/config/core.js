@@ -79,12 +79,12 @@ module.exports = {
     socialMediaLinks: [
       {
         provider: 'facebook',
-        href: '#',
+        href: 'https://www.facebook.com/medicaldesigndevelopment/',
         title: 'Follow us on Facebook',
       },
       {
         provider: 'twitter',
-        href: '#',
+        href: '#https://twitter.com/MedDevelopment',
         title: 'Follow us on Twitter',
       },
     ],
