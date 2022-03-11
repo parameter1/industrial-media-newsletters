@@ -84,7 +84,7 @@ module.exports = {
       },
       {
         provider: 'twitter',
-        href: '#https://twitter.com/MedDevelopment',
+        href: 'https://twitter.com/MedDevelopment',
         title: 'Follow us on Twitter',
       },
     ],
