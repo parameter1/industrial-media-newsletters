@@ -74,4 +74,19 @@ module.exports = {
       },
     ],
   },
+
+  mdd: {
+    socialMediaLinks: [
+      {
+        provider: 'facebook',
+        href: 'https://www.facebook.com/medicaldesigndevelopment/',
+        title: 'Follow us on Facebook',
+      },
+      {
+        provider: 'twitter',
+        href: 'https://twitter.com/MedDevelopment',
+        title: 'Follow us on Twitter',
+      },
+    ],
+  },
 };

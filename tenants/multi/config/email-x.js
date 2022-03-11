@@ -266,6 +266,15 @@ config
       height: 100,
       uri: 'https://email-serve.ien.com',
     },
+  ])
+  .setAdUnits('today-medical-design-development', [
+    {
+      name: 'header',
+      id: '622119fa5d6c0a35b18a5cad',
+      width: 600,
+      height: 100,
+      uri: 'https://email-serve.medicaldesigndevelopment.com',
+    },
   ]);
 
 module.exports = config;

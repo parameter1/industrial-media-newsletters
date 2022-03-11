@@ -64,6 +64,15 @@ config
       width: 600,
       height: 100,
     },
+  ])
+
+  .setAdUnits('today-medical-design-development', [
+    {
+      name: 'header',
+      path: 'IEN-Newsletters-600x100',
+      width: 600,
+      height: 100,
+    },
   ]);
 
 module.exports = config;
