@@ -148,9 +148,9 @@ $ const textAdButtonLinkStyle = {
                                   <marko-newsletter-imgix
                                     src=image.src
                                     alt=image.alt
-                                    options={ w: 330 }
+                                    options={ w: 330, fit: 'crop' }
                                     class="main"
-                                    attrs={ border: 0, width: 150 }
+                                    attrs={ border: 0, width: 150, height: 85 }
                                   >
                                     <@link href=node.siteContext.url target="_blank" />
                                   </marko-newsletter-imgix>
