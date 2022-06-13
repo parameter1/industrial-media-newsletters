@@ -1,4 +1,5 @@
 import contentList from "@industrial-media/common/graphql/fragments/content-list";
+import waterMarkDisplay from "@industrial-media/common/utils/watermark-display";
 
 $ const { website } = out.global;
 $ const { newsletter, date, dateInfo } = data;
@@ -127,10 +128,15 @@ $ const textAdButtonLinkStyle = {
             </common-table>
             <for|node| of=nodes>
               <marko-core-obj-value|{ value: image }| obj=node field="primaryImage" as="object">
+                $ const imgWaterMarkOptions = waterMarkDisplay({ node, newsletter, markWidth: 185, markHeight: 185 });
+                $ const imgOptions = {
+                  w: 630,
+                  ...imgWaterMarkOptions
+                };
                 <marko-newsletter-imgix
                   src=image.src
                   alt=image.alt
-                  options={ w: 630 }
+                  options=imgOptions
                   class="main"
                   attrs={ border: 0, width: 630 }
                 >
@@ -179,10 +185,15 @@ $ const textAdButtonLinkStyle = {
                       <tr>
                         <td>
                           <marko-core-obj-value|{ value: image }| obj=node field="primaryImage" as="object">
+                            $ const imgWaterMarkOptions = waterMarkDisplay({ node, newsletter, markWidth: 185, markHeight: 185 });
+                            $ const imgOptions = {
+                              w: 300,
+                              ...imgWaterMarkOptions
+                            };
                             <marko-newsletter-imgix
                               src=image.src
                               alt=image.alt
-                              options={ w: 300 }
+                              options=imgOptions
                               class="main"
                               attrs={ border: 0, width: 300 }
                             >
@@ -234,10 +245,15 @@ $ const textAdButtonLinkStyle = {
                             <tr>
                               <td>
                                 <marko-core-obj-value|{ value: image }| obj=node field="primaryImage" as="object">
+                                  $ const imgWaterMarkOptions = waterMarkDisplay({ node, newsletter, markWidth: 90, markHeight: 90 });
+                                  $ const imgOptions = {
+                                    w: 150,
+                                    ...imgWaterMarkOptions
+                                  };
                                   <marko-newsletter-imgix
                                     src=image.src
                                     alt=image.alt
-                                    options={ w: 150 }
+                                    options=imgOptions
                                     class="main"
                                     attrs={ border: 0, width: 150 }
                                   >
@@ -306,10 +322,15 @@ $ const textAdButtonLinkStyle = {
                         <tr>
                           <td>
                             <marko-core-obj-value|{ value: image }| obj=node field="primaryImage" as="object">
+                              $ const imgWaterMarkOptions = waterMarkDisplay({ node, newsletter, markWidth: 90, markHeight: 90 });
+                              $ const imgOptions = {
+                                w: 150,
+                                ...imgWaterMarkOptions
+                              };
                               <marko-newsletter-imgix
                                 src=image.src
                                 alt=image.alt
-                                options={ w: 150 }
+                                options=imgOptions
                                 class="main"
                                 attrs={ border: 0, width: 150 }
                               >
