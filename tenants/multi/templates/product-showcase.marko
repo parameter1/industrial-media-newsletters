@@ -1,4 +1,5 @@
 import contentList from "@industrial-media/common/graphql/fragments/content-list";
+import waterMarkDisplay from "@industrial-media/common/utils/watermark-display";
 
 $ const { website } = out.global;
 $ const { newsletter, date, dateInfo } = data;
@@ -64,10 +65,15 @@ $ const teaserStyle = {
                       <tr>
                         <td>
                           <marko-core-obj-value|{ value: image }| obj=node field="primaryImage" as="object">
+                            $ const imgWaterMarkOptions = waterMarkDisplay({ node, newsletter, markWidth: 185, markHeight: 185 });
+                            $ const imgOptions = {
+                              w: 280,
+                              ...imgWaterMarkOptions
+                            };
                             <marko-newsletter-imgix
                               src=image.src
                               alt=image.alt
-                              options={ w: 280 }
+                              options=imgOptions
                               class="main"
                               attrs={ border: 0, width: 280 }
                             >

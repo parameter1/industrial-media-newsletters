@@ -1,5 +1,6 @@
 import getAlignment from "@industrial-media/common/utils/get-alignment";
 import contentList from "@industrial-media/common/graphql/fragments/content-list";
+import waterMarkDisplay from "@industrial-media/common/utils/watermark-display";
 import defaultValue from "@base-cms/marko-core/utils/default-value";
 
 $ const {
@@ -101,10 +102,15 @@ $ const contentLinkStyle = defaultValue(input.contentLinkStyle, {
               <tr>
                 <td style="padding-top: 10px">
                   <marko-core-obj-value|{ value: image }| obj=node field="primaryImage" as="object">
+                      $ const imgWaterMarkOptions = waterMarkDisplay({ node, newsletter, markWidth: 185, markHeight: 185 });
+                      $ const imgOptions = {
+                        w: 330,
+                        ...imgWaterMarkOptions
+                      };
                     <marko-newsletter-imgix
                       src=image.src
                       alt=image.alt
-                      options={ w: 330 }
+                      options=imgOptions
                       class="main"
                       attrs={ border: 0, width: 300 }
                     >

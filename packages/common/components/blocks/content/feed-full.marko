@@ -1,4 +1,5 @@
 import contentList from "@industrial-media/common/graphql/fragments/content-list";
+import waterMarkDisplay from "@industrial-media/common/utils/watermark-display";
 import defaultValue from "@base-cms/marko-core/utils/default-value";
 
 $ const {
@@ -77,6 +78,11 @@ $ const textAdButtonLinkStyle = {
             <td valign="top">
               <for|node, index| of=nodes>
                 <if(node.type !== 'text-ad')>
+                  $ const imgWaterMarkOptions = waterMarkDisplay({ node, newsletter, markWidth: 185, markHeight: 185 });
+                  $ const imgOptions = {
+                    w: 330,
+                    ...imgWaterMarkOptions
+                  };
                   <if(twoColumn)>
                     $ counter++;
                     $ const isEven = counter % 2 === 0;
@@ -84,7 +90,6 @@ $ const textAdButtonLinkStyle = {
                     <common-table width="300" style="border-collapse:collapse;" align=align class="main" padding=0 spacing=0>
                       <tr>
                         <td>
-
                           <common-table width="110" style="border-collapse:collapse; margin-bottom: 5px;" align="left" class="main" padding=0 spacing=0>
                             <tr>
                               <td>
@@ -92,7 +97,7 @@ $ const textAdButtonLinkStyle = {
                                   <marko-newsletter-imgix
                                     src=image.src
                                     alt=image.alt
-                                    options={ w: 330 }
+                                    options=imgOptions
                                     class="main"
                                     attrs={ border: 0, width: 110 }
                                   >
@@ -148,7 +153,7 @@ $ const textAdButtonLinkStyle = {
                                   <marko-newsletter-imgix
                                     src=image.src
                                     alt=image.alt
-                                    options={ w: 330 }
+                                    options=imgOptions
                                     class="main"
                                     attrs={ border: 0, width: 150 }
                                   >
