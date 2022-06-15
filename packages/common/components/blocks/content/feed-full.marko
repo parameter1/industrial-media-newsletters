@@ -78,9 +78,9 @@ $ const textAdButtonLinkStyle = {
             <td valign="top">
               <for|node, index| of=nodes>
                 <if(node.type !== 'text-ad')>
-                  $ const imgWaterMarkOptions = waterMarkDisplay({ node, newsletter, markWidth: 185, markHeight: 185 });
+                  $ const imgWaterMarkOptions = waterMarkDisplay({ node, newsletter, markWidth: 45, markHeight: 45 });
                   $ const imgOptions = {
-                    w: 330,
+                    w: 150,
                     ...imgWaterMarkOptions
                   };
                   <if(twoColumn)>
