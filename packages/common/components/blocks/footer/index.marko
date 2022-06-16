@@ -13,6 +13,7 @@ $ const footerText = defaultValue(input.footerText, {
 
 $ const { website, config, req } = out.global;
 
+$ const subscrbeUrl = defaultValue(input.subscribeUrl, `${website.get("origin")}/newsletter-signup`);
 $ const unsubscribeId = defaultValue(input.unsubscribeCloudPageId, 204);
 $ const unsubscribeUrl = `%%=RedirectTo(CloudPagesURL(${unsubscribeId}, 'sk', _subscriberkey, 'p', listid, 'ln', _listname, 'j', jobid, 'e', _emailid, 'en', emailname_, 'de', _DataSourceName))=%%`;
 
@@ -33,7 +34,7 @@ $ const esp = query.esp || config.get("defaultEsp");
               |
               <a href=`${website.get("origin")}/contact-us` target="_blank" style=footerText>Contact Us</a>
               |
-              <a href=`${website.get("origin")}/newsletter-signup` target="_blank" style=footerText>Subscribe</a>
+              <a href=subscrbeUrl target="_blank" style=footerText>Subscribe</a>
               |
               <a href=`${advertisePageLink}` target="_blank" style=footerText>Advertise</a>
             </div>
