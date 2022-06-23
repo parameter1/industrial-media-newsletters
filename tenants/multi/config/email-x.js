@@ -274,6 +274,14 @@ config
       width: 600,
       height: 100,
     },
+  ])
+  .setAdUnits('imts-weekly', [
+    {
+      name: 'header',
+      id: '62b4bcf2c6f3de4ac5a43913',
+      width: 600,
+      height: 100,
+    },
   ]);
 
 module.exports = config;
