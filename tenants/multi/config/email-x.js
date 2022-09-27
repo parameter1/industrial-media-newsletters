@@ -282,6 +282,24 @@ config
       width: 600,
       height: 100,
     },
+  ])
+  .setAdUnits('design-development-weekly-comp', [
+    {
+      name: 'header',
+      id: '6332f0b9dbe278486fcaabcb',
+      width: 600,
+      height: 100,
+      uri: 'https://email-serve.designdevelopmenttoday.com',
+    },
+  ])
+  .setAdUnits('manufacturing-weekly-comp', [
+    {
+      name: 'header',
+      id: '6332f4bde0b1e864c422d508',
+      width: 600,
+      height: 100,
+      uri: 'https://email-serve.manufacturing.net',
+    },
   ]);
 
 module.exports = config;
