@@ -54,6 +54,15 @@
     html2plaintext "^2.1.2"
     striptags "^3.1.1"
 
+"@base-cms/html@^1.37.0":
+  version "1.37.0"
+  resolved "https://registry.yarnpkg.com/@base-cms/html/-/html-1.37.0.tgz#502ae8d9effa13966a6287a091596d4853c91c7d"
+  integrity sha512-Km7A+jNWk+Q1HT8EVvsbfqCLzQcqrCaMBk/AJgJbDEnc9QHR/qQ0vSdi3hgxtN7owFMYyLm6Lldj5cDJ7KWWjQ==
+  dependencies:
+    html-entities "^1.2.1"
+    html2plaintext "^2.1.2"
+    striptags "^3.1.1"
+
 "@base-cms/image@^1.34.0":
   version "1.34.0"
   resolved "https://registry.yarnpkg.com/@base-cms/image/-/image-1.34.0.tgz#5c7ff80c5247dfe5e99e5ad36fc1fdae4a94fdd8"
@@ -62,10 +71,25 @@
     "@base-cms/html" "^1.0.0"
     "@base-cms/inflector" "^1.34.0"
 
+"@base-cms/image@^1.37.0":
+  version "1.37.0"
+  resolved "https://registry.yarnpkg.com/@base-cms/image/-/image-1.37.0.tgz#55817720f29d3ee701cc130dd9d0629fd7a158b1"
+  integrity sha512-Tkn3sJ64zS/IldBGXSUd/bhyAxUWUWCaRqkHE/NuRjP/4A8zh2CnyIxvRVD8ynyDGuCqop7vwShebidtu9MB7A==
+  dependencies:
+    "@base-cms/html" "^1.37.0"
+    "@base-cms/inflector" "^1.37.0"
+
 "@base-cms/inflector@^1.34.0":
   version "1.34.0"
   resolved "https://registry.yarnpkg.com/@base-cms/inflector/-/inflector-1.34.0.tgz#95285a40c6d80398f2e9d5a2ce9992b298de2a5f"
   integrity sha512-miuCdB9wX3QpFjMXHhbsMdCUDzX4ubEN8dceNOtCiz9UFpm7lNRYRSwbulOztcSbDbnQXKrjUomkviLFAaHgWw==
+  dependencies:
+    inflected "^2.0.4"
+
+"@base-cms/inflector@^1.37.0":
+  version "1.37.0"
+  resolved "https://registry.yarnpkg.com/@base-cms/inflector/-/inflector-1.37.0.tgz#e40c4bac785792d0ac4dd028ed0ee89dea9b601b"
+  integrity sha512-7a+Dwv/e7kLusQXWSUD3JZmxLDbKqjbC1U3PBVo7Ul1jFUZT9WjDCZ91PPYd6vQKxcjhCDAXqi+msAduhVVkYg==
   dependencies:
     inflected "^2.0.4"
 
@@ -5053,16 +5077,16 @@ modify-values@^1.0.0:
   integrity sha512-xV2bxeN6F7oYjZWTe/YPAy6MN2M+sL4u/Rlm2AHCIVGfo2p1yGmBHQ6vHehl4bRTZBdHu3TSkWdYgkwpYzAGSw==
 
 moment-timezone@^0.5.26:
-  version "0.5.27"
-  resolved "https://registry.yarnpkg.com/moment-timezone/-/moment-timezone-0.5.27.tgz#73adec8139b6fe30452e78f210f27b1f346b8877"
-  integrity sha512-EIKQs7h5sAsjhPCqN6ggx6cEbs94GK050254TIJySD1bzoM5JTYDwAU1IoVOeTOL6Gm27kYJ51/uuvq1kIlrbw==
+  version "0.5.37"
+  resolved "https://registry.yarnpkg.com/moment-timezone/-/moment-timezone-0.5.37.tgz#adf97f719c4e458fdb12e2b4e87b8bec9f4eef1e"
+  integrity sha512-uEDzDNFhfaywRl+vwXxffjjq1q0Vzr+fcQpQ1bU0kbzorfS7zVtZnCnGc8mhWmF39d4g4YriF6kwA75mJKE/Zg==
   dependencies:
     moment ">= 2.9.0"
 
 "moment@>= 2.9.0", moment@^2.24.0:
-  version "2.24.0"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
-  integrity sha512-bV7f+6l2QigeBBZSM/6yTNq4P2fNpSWj/0e7jQcy87A8e7o2nAfP/34/2ky5Vw4B9S446EtIhodAzkFCcR4dQg==
+  version "2.29.4"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.4.tgz#3dbe052889fe7c1b2ed966fcb3a77328964ef108"
+  integrity sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==
 
 move-concurrently@^1.0.1:
   version "1.0.1"
