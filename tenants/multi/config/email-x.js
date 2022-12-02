@@ -300,6 +300,14 @@ config
       height: 100,
       uri: 'https://email-serve.manufacturing.net',
     },
+  ])
+  .setAdUnits('mdd-video-showcase', [
+    {
+      name: 'header',
+      id: '638a12eae0b1e83f132374fc',
+      width: 600,
+      height: 100,
+    },
   ]);
 
 module.exports = config;
