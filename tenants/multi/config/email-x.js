@@ -308,6 +308,14 @@ config
       width: 600,
       height: 100,
     },
+  ])
+  .setAdUnits('id-ma-monthly', [
+    {
+      name: 'header',
+      id: '63c01ab4d852a643db05f313',
+      width: 600,
+      height: 100,
+    },
   ]);
 
 module.exports = config;
