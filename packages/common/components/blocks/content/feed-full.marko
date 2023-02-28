@@ -81,6 +81,7 @@ $ const textAdButtonLinkStyle = {
                   $ const imgWaterMarkOptions = waterMarkDisplay({ node, newsletter, markWidth: 45, markHeight: 45 });
                   $ const imgOptions = {
                     w: 330,
+                    fit: "crop",
                     ...imgWaterMarkOptions
                   };
                   <if(twoColumn)>
@@ -155,7 +156,7 @@ $ const textAdButtonLinkStyle = {
                                     alt=image.alt
                                     options=imgOptions
                                     class="main"
-                                    attrs={ border: 0, width: 150 }
+                                    attrs={ border: 0, width: 150, height: 85 }
                                   >
                                     <@link href=node.siteContext.url target="_blank" />
                                   </marko-newsletter-imgix>
