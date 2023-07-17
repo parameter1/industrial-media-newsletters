@@ -316,6 +316,33 @@ config
       width: 600,
       height: 100,
     },
+  ])
+  .setAdUnits('fm-weekly-tim-podcast', [
+    {
+      name: 'header',
+      id: '64b56133622c15b6efab69d4',
+      width: 600,
+      height: 100,
+      uri: 'https://email-serve.foodmanufacturing.com',
+    },
+  ])
+  .setAdUnits('ien-weekly-tim-podcast', [
+    {
+      name: 'header',
+      id: '64b5618d374d32530b17bf4b',
+      width: 600,
+      height: 100,
+      uri: 'https://email-serve.ien.com',
+    },
+  ])
+  .setAdUnits('design-development-weekly-tim-podcast', [
+    {
+      name: 'header',
+      id: '64b561d7374d32299917bf8b',
+      width: 600,
+      height: 100,
+      uri: 'https://email-serve.designdevelopmenttoday.com',
+    },
   ]);
 
 module.exports = config;
