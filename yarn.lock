@@ -1025,6 +1025,15 @@
     moment "^2.29.1"
     node-fetch "^2.6.9"
 
+"@parameter1/base-cms-marko-newsletters-gam@^4.5.12":
+  version "4.5.12"
+  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-newsletters-gam/-/base-cms-marko-newsletters-gam-4.5.12.tgz#6eb11a1cf5bcf728ed53d8a3de313c1bf838a03c"
+  integrity sha512-7Agh986HVbrPgI0o6TJrmwFsNnAxtSCudhLFfocEVMIJ+Ze5dH/jEsfCKL4T4QTmD9L/Lf0oYZpkKhdkIa+xgw==
+  dependencies:
+    "@parameter1/base-cms-object-path" "^4.5.12"
+    "@parameter1/base-cms-utils" "^4.5.12"
+    moment "^2.29.1"
+
 "@parameter1/base-cms-marko-newsletters-omail@^4.5.12":
   version "4.5.12"
   resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-newsletters-omail/-/base-cms-marko-newsletters-omail-4.5.12.tgz#62c63228349d9e2204ea574fd4bcaa8565f95baf"

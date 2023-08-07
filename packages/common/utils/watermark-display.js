@@ -1,4 +1,4 @@
-const { buildImgixUrl } = require('@base-cms/image');
+const { buildImgixUrl } = require('@parameter1/base-cms-image');
 
 module.exports = ({
   node,
