@@ -1,4 +1,4 @@
-const GAMConfiguration = require('@base-cms/marko-newsletters-gam/config');
+const GAMConfiguration = require('@parameter1/base-cms-marko-newsletters-gam/config');
 
 const config = new GAMConfiguration('137873098');
 

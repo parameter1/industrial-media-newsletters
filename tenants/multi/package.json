@@ -6,21 +6,32 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "basecms-newsletters dev index.js",
-    "compile": "basecms-marko-compile compile --dir ./ --silent true",
-    "lint": "eslint --ext .js --max-warnings 5 ./",
-    "test": "yarn lint && yarn compile"
+    "build": "yarn compile",
+    "dev": "basecms-newsletters dev --compile-dir ../../packages --watch-dir ../../packages",
+    "compile": "basecms-marko-compile compile",
+    "lint": "eslint --ext .js --max-warnings 5 --config ../../.eslintrc.js --ignore-path ../../.eslintignore ./",
+    "lint:fix": "yarn lint --fix",
+    "test": "yarn lint && yarn compile --no-clean"
   },
+  "engines": {
+    "node": ">=14.15"
+  },
+  "os": [
+    "darwin",
+    "linux",
+    "win32"
+  ],
   "dependencies": {
-    "@base-cms/marko-core": "^1.36.1",
-    "@base-cms/marko-newsletters": "^1.36.3",
-    "@base-cms/marko-newsletters-email-x": "^1.25.0",
-    "@base-cms/marko-newsletters-gam": "^1.25.0",
-    "@base-cms/newsletter-cli": "^1.13.0",
-    "@base-cms/object-path": "^1.25.0",
+    "@parameter1/base-cms-marko-core": "^4.32.0",
+    "@parameter1/base-cms-marko-newsletters": "^4.32.0",
+    "@parameter1/base-cms-marko-newsletters-email-x": "^4.5.12",
+    "@parameter1/base-cms-marko-newsletters-gam": "^4.5.12",
+    "@parameter1/base-cms-marko-web-native-x": "^4.32.0",
+    "@parameter1/base-cms-newsletter-cli": "^4.5.12",
+    "@parameter1/base-cms-object-path": "^4.5.12",
     "@industrial-media/common": "^1.8.23",
     "graphql": "^14.5.4",
     "graphql-tag": "^2.10.1",
-    "newrelic": "^5.11.0"
+    "newrelic": "^9.10.1"
   }
 }
