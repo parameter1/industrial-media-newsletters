@@ -343,6 +343,15 @@ config
       height: 100,
       uri: 'https://email-serve.designdevelopmenttoday.com',
     },
+  ])
+  .setAdUnits('manufacturing-security-breach', [
+    {
+      name: 'header',
+      id: '653fdd87ef752af12989ac8c',
+      width: 600,
+      height: 100,
+      uri: 'https://email-serve.manufacturing.net',
+    },
   ]);
 
 module.exports = config;
