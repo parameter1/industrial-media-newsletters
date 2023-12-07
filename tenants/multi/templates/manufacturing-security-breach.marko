@@ -64,12 +64,30 @@ $ const textAdButtonLinkStyle = {
       </tr>
       <tr>
         <td>
-          <common-default-header-block
-            name=newsletter.name
-            href=website.get("origin")
-            image-src="/files/base/indm/all/image/static/logos/securitybreachscreen.jpeg"
-            bg-color="#ffffff"
-          />
+          <common-table width="630" align="center" class="main">
+            <tr>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>
+                <common-table width="100%" align="left" class="main">
+                  <tr>
+                    <td align="left" valign="top">
+                      <marko-newsletter-imgix
+                        src="/files/base/indm/all/image/static/logos/securitybreachupdated.png"
+                        attrs={fit:"clip", width:630, height:230}
+                      >
+                        <@link href=website.get("origin") target="_blank" />
+                      </marko-newsletter-imgix>
+                    </td>
+                  </tr>
+                </common-table>
+              </td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+            </tr>
+          </common-table>
         </td>
       </tr>
       <tr>
