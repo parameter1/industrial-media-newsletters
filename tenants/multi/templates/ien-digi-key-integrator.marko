@@ -1,0 +1,173 @@
+import contentList from "@industrial-media/common/graphql/fragments/content-list";
+import waterMarkDisplay from "@industrial-media/common/utils/watermark-display";
+
+$ const { website } = out.global;
+$ const { newsletter, date, dateInfo } = data;
+$ const primaryColor = "#c93a3a";
+$ const blackBarText = "text-decoration: none !important; font-size: 10px; font-family: Arial, Helvetica, sans-serif; color: #ffffff; font-weight: normal;";
+$ const titleStyle = "text-decoration: none !important; font-size: 14px; font-family: Arial, Helvetica, sans-serif; color: #000000; text-align: left; font-weight: bold;";
+$ const contentLinkStyle = {
+  "text-decoration": "none",
+  "text-align": "left",
+  "text-decoration": "none !important",
+  "font-size": "16px",
+  "font-family": "Arial, Helvetica, sans-serif",
+  "color": primaryColor,
+  "font-weight": "bold"
+};
+$ const teaserStyle = {
+  "text-decoration": "none !important",
+  "font-size": "13px",
+  "font-family": "Arial, Helvetica, sans-serif",
+  "color": "#666666",
+  "font-weight": "normal",
+  "text-align": "left",
+  "margin-top": "5px !important",
+  "line-height": "1.2em",
+};
+$ const textAdCopyStyle = {
+  "font-family": "Arial, Helvetica, sans-serif",
+  "font-size": "12px",
+  "color": "#000000",
+  "text-align": "left",
+  "line-height": "18px",
+  "margin-top": "5px !important",
+};
+$ const textAdButtonStyle = "background:#3B579D; padding-top:10px; padding-left:10px; padding-right:10px; padding-bottom:10px;";
+$ const textAdButtonLinkStyle = {
+  "text-decoration": "none !important",
+  "font" : "bold 16px/18px Arial, Helvetica, sans-serif",
+  "background": "#3B579D",
+  "color": "#ffffff",
+  "margin-top": "10px",
+};
+
+<marko-newsletter-root
+  title=newsletter.name
+  description=newsletter.description
+  date=date
+>
+  <@head>
+    <common-static-styles />
+  </@head>
+  <@body style="margin: 0px !important;">
+    <tenant-banner-element
+      newsletter=newsletter
+      date=date
+      date-info=dateInfo
+    />
+
+    <!-- Header -->
+    <common-table width="630" style="border-collapse:collapse;" align="center" class="main" padding=0 spacing=0>
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>
+          <common-table width="630" align="center" class="main">
+            <tr>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>
+                <common-table width="100%" align="left" class="main">
+                  <tr>
+                    <td align="left" valign="top">
+                      <marko-newsletter-imgix
+                        src="/files/base/indm/all/image/static/logos/digikeysystem.jpeg"
+                        options={ w: 630 }
+                        attrs={ width: 630 }
+                      >
+                        <@link href=website.get("origin") target="_blank" />
+                      </marko-newsletter-imgix>
+                    </td>
+                  </tr>
+                </common-table>
+              </td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+            </tr>
+          </common-table>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <common-table width="630" style="border-collapse:collapse;" align="center" class="main" padding=0 spacing=0>
+            <tr>
+              <td bgcolor="#000000" width="134" height="20" align="center" valign="middle">
+                <div style=`${blackBarText} text-transform: uppercase;`>
+                  ${date.format("MMMM D, YYYY")}
+                </div>
+              </td>
+              <td>
+                <marko-newsletter-imgix
+                  src="/files/base/newsletter/header-slanted_left.png"
+                  options={ w: 166, h: 20 }
+                  alt=""
+                  attrs={ border: 0, align: "left", width: 166, height: 20 }>
+                </marko-newsletter-imgix>
+                <marko-newsletter-imgix
+                  src="/files/base/newsletter/header-slanted_right.png"
+                  options={ w: 330, h: 20 }
+                  alt=""
+                  class="mobileHide"
+                  attrs={ border: 0, align: "left", width: 330, height: 20 }>
+                </marko-newsletter-imgix>
+              </td>
+            </tr>
+          </common-table>
+        </td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+    </common-table>
+
+
+    <!-- Content -->
+    <common-featured-full-block
+      section-id=87505,
+      limit=1,
+      title="FEATURED STORY",
+      date=date,
+      newsletter=newsletter,
+      primary-color=primaryColor,
+      hr-below=true,
+    />
+
+    <common-table width="630" style="border-collapse:collapse;" align="center" class="main" padding=0 spacing=0>
+      <tr>
+        <td>
+          <common-featured-half-block
+            section-id=87506,
+            limit=2,
+            date=date,
+            newsletter=newsletter,
+            primary-color=primaryColor,
+            align="left",
+          />
+          <common-promotion-half-block
+            section-id=87507,
+            limit=2,
+            date=date,
+            primary-color=primaryColor,
+            newsletter=newsletter,
+            align="right",
+          />
+        </td>
+      </tr>
+    </common-table>
+
+    <common-feed-full-block
+      section-id=87504,
+      date=date,
+      newsletter=newsletter,
+      primary-color=primaryColor,
+    />
+
+    <!-- Footer/OptOut -->
+    <common-default-footer-block advertise-page-link="https://www.ien.com/formstack/advertise_with_im_ien" />
+
+  </@body>
+</marko-newsletter-root>

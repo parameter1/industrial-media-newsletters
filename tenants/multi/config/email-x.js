@@ -352,6 +352,15 @@ config
       height: 100,
       uri: 'https://email-serve.manufacturing.net',
     },
+  ])
+  .setAdUnits('ien-digi-key-integrator', [
+    {
+      name: 'header',
+      id: '65a1a5e0a393663387ef57ca',
+      width: 600,
+      height: 100,
+      uri: 'https://email-serve.ien.com',
+    },
   ]);
 
 module.exports = config;
