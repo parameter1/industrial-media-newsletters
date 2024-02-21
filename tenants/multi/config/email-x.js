@@ -344,7 +344,7 @@ config
       uri: 'https://email-serve.designdevelopmenttoday.com',
     },
   ])
-  .setAdUnits('manufacturing-security-breach', [
+  .setAdUnits('ot-security-update-weekly', [
     {
       name: 'header',
       id: '653fdd87ef752af12989ac8c',
