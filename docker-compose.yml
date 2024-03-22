@@ -45,7 +45,6 @@ services:
     <<: *newsletter-cmd
     working_dir: /root/tenants/multi
     environment:
-      <<: *env
       <<: *env-tauron
       PORT: 80
       EXPOSED_PORT: 21094
