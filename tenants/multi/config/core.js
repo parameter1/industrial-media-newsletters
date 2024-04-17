@@ -78,6 +78,11 @@ module.exports = {
   mdd: {
     socialMediaLinks: [
       {
+        provider: 'linkedin',
+        href: 'https://www.linkedin.com/company/medical-design-development/',
+        title: 'Follow us on LinkedIn',
+      },
+      {
         provider: 'facebook',
         href: 'https://www.facebook.com/medicaldesigndevelopment/',
         title: 'Follow us on Facebook',
