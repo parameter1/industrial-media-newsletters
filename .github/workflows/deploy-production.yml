@@ -50,6 +50,10 @@ jobs:
   build-newsletters:
     needs: [version]
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        tenant:
+          - multi
     steps:
       - uses: actions/checkout@v3
       - name: Log in to ECR
@@ -74,8 +78,7 @@ jobs:
         namespace:
           - tauron-newsletters
         tenant:
-          - all
-          - mundo
+          - multi
     steps:
       - name: Deploy to Kubernetes
         run: |
