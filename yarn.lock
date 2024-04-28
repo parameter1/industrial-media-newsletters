@@ -1015,10 +1015,10 @@
     marko "~4.20.0"
     pretty "^2.0.0"
 
-"@parameter1/base-cms-marko-newsletters-email-x@^4.50.0":
-  version "4.50.0"
-  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-newsletters-email-x/-/base-cms-marko-newsletters-email-x-4.50.0.tgz#f01535be0d8aa658475484838da09b4092675dba"
-  integrity sha512-JNm+1Zt+zwOcwD+VuogljNznSmIxeXddTT/vuQ6x0CRl+rvowqf7vblCue92uVbnq9aP8pDROrZcaimJRWzgvQ==
+"@parameter1/base-cms-marko-newsletters-email-x@^4.55.3":
+  version "4.55.3"
+  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-newsletters-email-x/-/base-cms-marko-newsletters-email-x-4.55.3.tgz#3ca98e3f7285fdb59da53fb97ec7c91c536ae628"
+  integrity sha512-tZjY+AyyZqU86ZCQ41kKNXWVuChZ717nNb1vbiUeyZ5lZwOMVx0jYp6FIjSCdjc25pB7PqKc0YnnionUmEZbtQ==
   dependencies:
     "@parameter1/base-cms-object-path" "^4.40.3"
     "@parameter1/base-cms-utils" "^4.40.3"

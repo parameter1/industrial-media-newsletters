@@ -14,13 +14,6 @@ $ const {
 
 $ const { alias } = newsletter;
 
-$ const { query } = req;
-$ const esp = query.esp || config.get("defaultEsp");
-$ const emailMergeVars = {
-  email: esp === "et" ? "%%emailaddr%%" : "@{delivery_email}@",
-  send: esp === "et" ? "%%jobid%%" : "@{track_id}@",
-};
-
 $ let adUnit;
 $ if (gamEnabled) {
   adUnit = GAM.getAdUnit({ name, alias, targeting: buildGAMTargeting({ newsletter, date, dateInfo }) });
@@ -36,10 +29,14 @@ $ if (gamEnabled) {
     </marko-newsletters-gam-display>
   </if>
   <else>
-    <marko-newsletters-email-x-display decoded-params=["email", "send"]>
+    <marko-newsletters-email-x-data|{ response }| decoded-params=["email", "send"]>
       <@ad-unit ...adUnit />
-      <@params date=date email=emailMergeVars.email send=emailMergeVars.send />
-      <@image class="scaleAd" />
-    </marko-newsletters-email-x-display>
+      <@params date=input.date email="@{delivery_email}@" send="@{track_id}@" include-advertiser=true />
+      <if(response)>
+        <marko-newsletters-email-x-render response=response>
+          <@image class="scaleAd" />
+        </marko-newsletters-email-x-render>
+      </if>
+    </marko-newsletters-email-x-data>
   </else>
 </if>
