@@ -9,7 +9,6 @@ config
       id: '5ddd5531c044ef4d6c9d4055',
       width: 600,
       height: 100,
-      // uri: 'https://email-serve.foodmanufacturing.com',
     },
   ])
 
@@ -19,7 +18,6 @@ config
       id: '605b8eec5e9bb64609f9cbf8',
       width: 600,
       height: 100,
-      // uri: 'https://email-serve.foodmanufacturing.com',
     },
   ])
 
@@ -29,7 +27,6 @@ config
       id: '5ddd570255da06ed43436a55',
       width: 600,
       height: 100,
-      // uri: 'https://email-serve.inddist.com',
     },
   ])
 
@@ -39,7 +36,6 @@ config
       id: '5ddd57f0c044efa60c9d40cd',
       width: 600,
       height: 100,
-      // uri: 'https://email-serve.impomag.com',
     },
   ])
 
@@ -49,7 +45,6 @@ config
       id: '5ddd585b55da06bd77436acd',
       width: 600,
       height: 100,
-      // uri: 'https://email-serve.manufacturing.net',
     },
   ])
 
@@ -59,7 +54,6 @@ config
       id: '6043e527ae663a568e5a27b9',
       width: 600,
       height: 100,
-      // uri: 'https://email-serve.manufacturing.net',
     },
   ])
 
@@ -69,7 +63,6 @@ config
       id: '5dde9e8255da064bc9436c26',
       width: 600,
       height: 100,
-      // uri: 'https://email-serve.manufacturing.net',
     },
   ])
 
@@ -79,7 +72,6 @@ config
       id: '5c7fd6b6dd5ae7933a8d03c4',
       width: 600,
       height: 100,
-      // uri: 'https://email-serve.cannabisequipmentnews.com',
     },
   ])
 
@@ -89,7 +81,6 @@ config
       id: '5c7fd61044d39f5560b85eed',
       width: 600,
       height: 100,
-      // uri: 'https://email-serve.designdevelopmenttoday.com',
     },
   ])
 
@@ -99,7 +90,6 @@ config
       id: '6058f5e15e9bb68489f9c9dc',
       width: 600,
       height: 100,
-      // uri: 'https://email-serve.designdevelopmenttoday.com',
     },
   ])
 
@@ -109,7 +99,6 @@ config
       id: '5c7fd480dd5ae7f7fb8d037b',
       width: 600,
       height: 100,
-      // uri: 'https://email-serve.designdevelopmenttoday.com',
     },
   ])
 
@@ -119,7 +108,6 @@ config
       id: '5c7fd8a7dd5ae704948d03fb',
       width: 600,
       height: 100,
-      // uri: 'https://email-serve.ien.com',
     },
   ])
   .setAdUnits('ien-today-refresh', [
@@ -128,7 +116,6 @@ config
       id: '5c7fd8a7dd5ae704948d03fb',
       width: 600,
       height: 100,
-      // uri: 'https://email-serve.ien.com',
     },
   ])
   .setAdUnits('ien-weekly', [
@@ -137,7 +124,6 @@ config
       id: '5e41bd4bc9c827744d3bd55b',
       width: 600,
       height: 100,
-      // uri: 'https://email-serve.ien.com',
     },
   ])
   .setAdUnits('video-showcase', [
@@ -146,7 +132,6 @@ config
       id: '5c7fd95344d39f0b6db85fdb',
       width: 600,
       height: 100,
-      // uri: 'https://email-serve.ien.com',
     },
   ])
   .setAdUnits('id-video-showcase', [
@@ -155,7 +140,6 @@ config
       id: '601424ceae663a0e6759c81e',
       width: 600,
       height: 100,
-      // uri: 'https://email-serve.inddist.com',
     },
   ])
   .setAdUnits('product-showcase', [
@@ -164,7 +148,6 @@ config
       id: '5c7fd93add5ae7033c8d046b',
       width: 600,
       height: 100,
-      // uri: 'https://email-serve.ien.com',
     },
   ])
   .setAdUnits('industrial-technology-today', [
@@ -173,7 +156,6 @@ config
       id: '5c7fd8e644d39f0f19b85f7f',
       width: 600,
       height: 100,
-      // uri: 'https://email-serve.ien.com',
     },
   ])
   .setAdUnits('industrial-software-technology', [
@@ -182,7 +164,6 @@ config
       id: '5c7fd961dd5ae7189f8d0487',
       width: 600,
       height: 100,
-      // uri: 'https://email-serve.ien.com',
     },
   ])
   .setAdUnits('industrial-management-today', [
@@ -191,7 +172,6 @@ config
       id: '5c7fd8fbdd5ae787f98d042a',
       width: 600,
       height: 100,
-      // uri: 'https://email-serve.ien.com',
     },
   ])
   .setAdUnits('food-beverage-insider', [
@@ -200,7 +180,6 @@ config
       id: '5c7fd97144d39f8d00b85ff7',
       width: 600,
       height: 100,
-      // uri: 'https://email-serve.ien.com',
     },
   ])
   .setAdUnits('finishing-world', [
@@ -209,7 +188,6 @@ config
       id: '5c7fd918dd5ae73bdd8d044f',
       width: 600,
       height: 100,
-      // uri: 'https://email-serve.ien.com',
     },
   ])
   .setAdUnits('industrial-technology-today', [
@@ -218,7 +196,6 @@ config
       id: '5c7fd8e644d39f0f19b85f7f',
       width: 600,
       height: 100,
-      // uri: 'https://email-serve.ien.com',
     },
   ])
   .setAdUnits('engineering-news-today', [
@@ -227,7 +204,6 @@ config
       id: '5c7fd92944d39fefc6b85fbf',
       width: 600,
       height: 100,
-      // uri: 'https://email-serve.ien.com',
     },
   ])
   .setAdUnits('ien-update', [
@@ -236,7 +212,6 @@ config
       id: '5c7fd8c7dd5ae749ea8d040e',
       width: 600,
       height: 100,
-      // uri: 'https://email-serve.ien.com',
     },
   ])
 
@@ -246,7 +221,6 @@ config
       id: '5ddd58ac55da0684a3436b05',
       width: 600,
       height: 100,
-      // uri: 'https://email-serve.mbtmag.com',
     },
   ])
   .setAdUnits('food-video-showcase', [
@@ -255,7 +229,6 @@ config
       id: '61f2bba20d2f1a7717ee7767',
       width: 600,
       height: 100,
-      // uri: 'https://email-serve.ien.com',
     },
   ])
   .setAdUnits('impo-video-showcase', [
@@ -264,7 +237,6 @@ config
       id: '61f2bbca5d6c0a90928a1627',
       width: 600,
       height: 100,
-      // uri: 'https://email-serve.ien.com',
     },
   ])
   .setAdUnits('today-medical-design-development', [
@@ -289,7 +261,6 @@ config
       id: '6332f0b9dbe278486fcaabcb',
       width: 600,
       height: 100,
-      uri: 'https://email-serve.designdevelopmenttoday.com',
     },
   ])
   .setAdUnits('manufacturing-weekly-comp', [
@@ -298,7 +269,6 @@ config
       id: '6332f4bde0b1e864c422d508',
       width: 600,
       height: 100,
-      // uri: 'https://email-serve.manufacturing.net',
     },
   ])
   .setAdUnits('mdd-video-showcase', [
@@ -323,7 +293,6 @@ config
       id: '64b56133622c15b6efab69d4',
       width: 600,
       height: 100,
-      // uri: 'https://email-serve.foodmanufacturing.com',
     },
   ])
   .setAdUnits('ien-weekly-tim-podcast', [
@@ -332,7 +301,6 @@ config
       id: '64b5618d374d32530b17bf4b',
       width: 600,
       height: 100,
-      // uri: 'https://email-serve.ien.com',
     },
   ])
   .setAdUnits('design-development-weekly-tim-podcast', [
@@ -341,7 +309,6 @@ config
       id: '64b561d7374d32299917bf8b',
       width: 600,
       height: 100,
-      // uri: 'https://email-serve.designdevelopmenttoday.com',
     },
   ])
   .setAdUnits('ot-security-update-weekly', [
@@ -350,7 +317,6 @@ config
       id: '653fdd87ef752af12989ac8c',
       width: 600,
       height: 100,
-      // uri: 'https://email-serve.manufacturing.net',
     },
   ])
   .setAdUnits('ien-digi-key-integrator', [
@@ -359,7 +325,6 @@ config
       id: '65a1a5e0a393663387ef57ca',
       width: 600,
       height: 100,
-      // uri: 'https://email-serve.ien.com',
     },
   ]);
 
