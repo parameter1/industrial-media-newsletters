@@ -87,7 +87,13 @@ $ const textAdButtonLinkStyle = {
             <tr>
               <td bgcolor="#ecedee">
                 <marko-core-obj-text obj=node field="name">
-                  <@link href=node.siteContext.url target="_blank" attrs={ style: contentLinkStyle } />
+                  <!-- investigate where we should do this on all with node.linkUrl???? -->
+                  <if(node.linkUrl && node.linkUrl.includes("mailto"))>
+                    <@link href=node.linkUrl target="_blank" attrs={ style: contentLinkStyle } />
+                  </if>
+                  <else>
+                    <@link href=node.siteContext.url target="_blank" attrs={ style: contentLinkStyle } />
+                  </else>
                 </marko-core-obj-text>
                 <common-table
                   style="margin:10px 10px 0 0;"
@@ -110,7 +116,12 @@ $ const textAdButtonLinkStyle = {
                           options=imgOptions
                           attrs={ border: 0, width: 150 }
                         >
-                          <@link href=node.siteContext.url target="_blank" />
+                          <if(node.linkUrl && node.linkUrl.includes("mailto"))>
+                            <@link href=node.linkUrl target="_blank"/>
+                          </if>
+                          <else>
+                            <@link href=node.siteContext.url target="_blank"/>
+                          </else>
                         </marko-newsletter-imgix>
                       </marko-core-obj-value>
                     </td>
@@ -123,7 +134,12 @@ $ const textAdButtonLinkStyle = {
                   <tr>
                     <td style=`${textAdButtonStyle}`>
                       <marko-core-obj-text obj=node field="linkText" html=true >
-                        <@link href=node.siteContext.url target="_blank" attrs={ style: textAdButtonLinkStyle } />
+                        <if(node.linkUrl && node.linkUrl.includes("mailto"))>
+                          <@link href=node.linkUrl target="_blank" attrs={ style: textAdButtonLinkStyle } />
+                        </if>
+                        <else>
+                          <@link href=node.siteContext.url target="_blank" attrs={ style: textAdButtonLinkStyle } />
+                        </else>
                       </marko-core-obj-text>
                     </td>
                   </tr>
