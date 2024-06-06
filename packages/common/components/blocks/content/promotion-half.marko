@@ -83,12 +83,13 @@ $ const textAdButtonLinkStyle = {
     <tr>
       <td valign="top">
         <for|node| of=nodes>
+          <!-- Add prop for if check to use linkUrl with textAds  <if(useLinkUrl)>-->
+          $ const useLinkUrl = node.type === "text-ad" && node.linkUrl;
           <common-table class="main" width="280" style="border-collapse:collapse;" align=align padding=10 spacing=0>
             <tr>
               <td bgcolor="#ecedee">
                 <marko-core-obj-text obj=node field="name">
-                  <!-- investigate where we should do this on all with node.linkUrl???? -->
-                  <if(node.linkUrl && node.linkUrl.includes("mailto"))>
+                  <if(useLinkUrl)>
                     <@link href=node.linkUrl target="_blank" attrs={ style: contentLinkStyle } />
                   </if>
                   <else>
@@ -116,7 +117,7 @@ $ const textAdButtonLinkStyle = {
                           options=imgOptions
                           attrs={ border: 0, width: 150 }
                         >
-                          <if(node.linkUrl && node.linkUrl.includes("mailto"))>
+                          <if(useLinkUrl)>
                             <@link href=node.linkUrl target="_blank"/>
                           </if>
                           <else>
@@ -134,7 +135,7 @@ $ const textAdButtonLinkStyle = {
                   <tr>
                     <td style=`${textAdButtonStyle}`>
                       <marko-core-obj-text obj=node field="linkText" html=true >
-                        <if(node.linkUrl && node.linkUrl.includes("mailto"))>
+                        <if(useLinkUrl)>
                           <@link href=node.linkUrl target="_blank" attrs={ style: textAdButtonLinkStyle } />
                         </if>
                         <else>
