@@ -7,7 +7,7 @@
   "private": true,
   "newsletter": {
     "account": "industrial-media",
-    "tenant": "all",
+    "tenant": "multi",
     "stack": "tauron",
     "deploy": true
   },
