@@ -16,6 +16,7 @@ fragment NewsletterContentListFragment on Content {
   ... on ContentTextAd {
     body(input: { mutation: Email })
     linkText
+    linkUrl
   }
 }
 
