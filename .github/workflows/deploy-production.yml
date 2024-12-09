@@ -53,7 +53,7 @@ jobs:
         #v# Make sure this matches the newsletter matrix! #v#
         #####################################################
         newsletter:
-          - { stack: tauron, account: industrial-media, tenant: all, rancher_label: industrial-media-multi }
+          - { stack: tauron, account: industrial-media, tenant: multi, rancher_label: industrial-media-multi }
         #####################################################
         #^# Make sure this matches the newsletter matrix! #^#
         #####################################################
@@ -73,7 +73,7 @@ jobs:
         #v# Make sure this matches the newsletter matrix! #v#
         #####################################################
         newsletter:
-          - { stack: tauron, account: industrial-media, tenant: all, rancher_label: industrial-media-multi }
+          - { stack: tauron, account: industrial-media, tenant: multi, rancher_label: industrial-media-multi }
         #####################################################
         #^# Make sure this matches the newsletter matrix! #^#
         #####################################################
