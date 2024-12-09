@@ -5,6 +5,12 @@
   "repository": "https://github.com/parameter1/newsletter-industrial-media/tree/master/tenants/multi",
   "license": "MIT",
   "private": true,
+  "newsletter": {
+    "account": "industrial-media",
+    "tenant": "all",
+    "stack": "tauron",
+    "deploy": true
+  },
   "scripts": {
     "build": "yarn compile",
     "dev": "basecms-newsletters dev --compile-dir ../../packages --watch-dir ../../packages",
