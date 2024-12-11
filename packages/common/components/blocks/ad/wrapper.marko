@@ -8,7 +8,7 @@ $ const { config } = out.global;
 $ const nativeX = config.getAsObject("nativeX");
 
 $ const newsletter = getAsObject(input, "newsletter");
-$ const { sectionName, date, placementId } = input;
+$ const { sectionName, date, placementId, primaryColor } = input;
 
 $ const promotionComponents = {
   "half-native-block": HalfNativeBlock,
@@ -35,6 +35,7 @@ $ const PromotionComponent = promotionComponents[defaultValue(input.promotionCom
         dpm-args=dpmArgs
         tenant=tenant
         creative-id=get(data, "creative.mindfulCreativeId")
+        primary-color=primaryColor
       />
     </if>
   </core-native-x-fetch>
