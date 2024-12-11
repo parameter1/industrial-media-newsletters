@@ -1,11 +1,9 @@
 import contentList from "@industrial-media/common/graphql/fragments/content-list";
-import { get } from "@parameter1/base-cms-object-path";
 
 $ const { website, config } = out.global;
 $ const { newsletter, date, dateInfo } = data;
 $ const socialMediaProviders = config.getAsArray('cen.socialMediaLinks');
 $ const primaryColor = "#247c26";
-$ const nativeX = config.getAsObject("nativeX");
 
 <marko-newsletter-root
   title=newsletter.name
@@ -107,18 +105,6 @@ $ const nativeX = config.getAsObject("nativeX");
             primary-color=primaryColor,
             newsletter=newsletter,
             align="right",
-          />
-          <common-ad-wrapper-block
-            newsletter=newsletter
-            date=date
-            promotion-component="half-native-block"
-            placement-id=get(nativeX, `placements.${newsletter.alias}.toc-1`)
-          />
-          <common-ad-wrapper-block
-            newsletter=newsletter
-            date=date
-            promotion-component="half-native-block"
-            placement-id=get(nativeX, `placements.${newsletter.alias}.toc-2`)
           />
         </td>
       </tr>
