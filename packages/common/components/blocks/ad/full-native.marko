@@ -1,0 +1,143 @@
+import { get, getAsObject } from "@parameter1/base-cms-object-path";
+import defaultValue from "@parameter1/base-cms-marko-core/utils/default-value";
+import waterMarkDisplay from "@industrial-media/common/utils/watermark-display";
+
+$ const creativeId = get(input, "creativeId");
+$ const tenant = get(input, "tenant");
+$ const newsletter = getAsObject(input, "newsletter");
+$ const { sectionName, date, content, dpmArgs, primaryColor } = input;
+$ const contextualUrl = get(content, "siteContext.path");
+
+$ const company = getAsObject(content, "company");
+
+
+$ const imgStyles = {
+  "font-size": "14px",
+  "line-height": 0,
+  "border": 0,
+};
+
+$ const imgLinkStyles = {
+  "display": "block",
+  "font-size": "14px",
+  "line-height": 0,
+}
+
+$ const linkAttrs = {
+  ...(getAsObject(input, "link.attrs")),
+  ...(creativeId && { 'data-mindful-creative-id': creativeId }),
+  ...(tenant && { 'data-mindful-tenant': tenant }),
+};
+
+$ const imgLinkAttrs = { style: imgLinkStyles, ...linkAttrs };
+
+$ const titleStyle = defaultValue(input.titleStyle, {
+  "text-decoration": "none !important",
+  "font-size": "14px",
+  "font-family": "Arial, Helvetica, sans-serif",
+  "color": "#000000",
+  "text-align": "left",
+  "font-weight": "bold",
+});
+
+$ const teaserStyle = defaultValue(input.teaserStyle, {
+  "text-decoration": "none !important",
+  "font-size": "13px",
+  "font-family": "Arial, Helvetica, sans-serif",
+  "color": "#666666",
+  "font-weight": "normal",
+  "text-align": "left",
+  "margin-top": "5px !important",
+  "line-height": "1.2em",
+});
+
+$ const contentLinkStyle = defaultValue(input.contentLinkStyle, {
+  "text-decoration": "none",
+  "text-align": "left",
+  "text-decoration": "none !important",
+  "font-size": "16px",
+  "font-family": "Arial, Helvetica, sans-serif",
+  "color": primaryColor,
+  "font-weight": "bold"
+});
+
+$ const textAdCopyStyle = {
+  "font-family": "Arial, Helvetica, sans-serif",
+  "font-size": "12px",
+  "color": "#000000",
+  "text-align": "left",
+  "line-height": "18px",
+  "margin-top": "10px !important",
+};
+
+$ const textAdButtonStyle = "background:#3B579D; padding-top:10px; padding-left:10px; padding-right:10px; padding-bottom:10px;";
+$ const textAdButtonLinkStyle = {
+  "text-decoration": "none !important",
+  "font" : "bold 16px/18px Arial, Helvetica, sans-serif",
+  "background": "#3B579D",
+  "color": "#ffffff",
+  "margin-top": "10px",
+};
+
+<common-table width="630" style="border-collapse:collapse;" align="center" class="main" padding=0 spacing=0>
+  <tr>
+    <td>
+      <common-table width="630" style="border-collapse:collapse;" align="left" class="main" padding=10 spacing=0>
+        <tr>
+          <td bgcolor="#ecedee">
+            <div>
+              <a href=contextualUrl target="_blank" style=contentLinkStyle ...linkAttrs>
+                $!{content.name}
+              </a>
+            </div>
+            <common-table
+              style="margin:10px 15px 0 0;"
+              align="left"
+              class="left"
+              padding=5
+              spacing=0
+            >
+              <tr>
+                <td>
+                  <marko-core-obj-value|{ value: image }| obj=content field="primaryImage" as="object">
+                    <marko-newsletter-imgix
+                      src=image.src
+                      alt=image.alt
+                      options={ w: 150 }
+                      attrs={ border: 0, width: 150 }
+                    >
+                      <@link href=contextualUrl target="_blank" />
+                    </marko-newsletter-imgix>
+                  </marko-core-obj-value>
+                </td>
+              </tr>
+            </common-table>
+            <div style=textAdCopyStyle>
+              <p>
+                $!{content.teaser}
+              </p>
+            </div>
+            <common-table align="right" padding=0 spacing=0 style="padding-top: 5px">
+              <tr>
+                <td style=`${textAdButtonStyle}`>
+                  <div>
+                    <a href=contextualUrl style=textAdButtonLinkStyle>
+                      $!{content.linkText}
+                    </a>
+                  </div>
+                </td>
+              </tr>
+            </common-table>
+          </td>
+        </tr>
+      </common-table>
+      <common-table width="630" style="border-collapse:collapse;" align="center" class="main" padding=0 spacing=0>
+        <tr>
+          <td valign="top">
+            <div style="line-height:20px;">&nbsp;</div>
+          </td>
+        </tr>
+      </common-table>
+    </td>
+  </tr>
+</common-table>

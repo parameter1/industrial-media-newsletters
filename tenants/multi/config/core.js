@@ -1,4 +1,7 @@
+const nativeX = require('./native-x');
+
 module.exports = {
+  nativeX,
   defaultEsp: 'omeda',
   ddt: {
     socialMediaLinks: [
