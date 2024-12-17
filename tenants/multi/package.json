@@ -1,6 +1,6 @@
 {
   "name": "@industrial-media/multi",
-  "version": "2.2.8",
+  "version": "2.2.9",
   "author": "Jacob Bare <jacob@limit0.io>",
   "repository": "https://github.com/parameter1/newsletter-industrial-media/tree/master/tenants/multi",
   "license": "MIT",
@@ -28,7 +28,7 @@
     "win32"
   ],
   "dependencies": {
-    "@industrial-media/common": "^2.2.8",
+    "@industrial-media/common": "^2.2.9",
     "@parameter1/base-cms-marko-core": "^4.54.2",
     "@parameter1/base-cms-marko-newsletters": "^4.55.0",
     "@parameter1/base-cms-marko-newsletters-email-x": "^4.55.3",
