@@ -1,0 +1,42 @@
+import { get, getAsObject } from "@parameter1/base-cms-object-path";
+import defaultValue from "@parameter1/base-cms-marko-core/utils/default-value";
+import { convertAdToContent } from "@parameter1/base-cms-marko-newsletters-native-x/utils";
+import HalfNativeBlock from "./half-native";
+import FullNativeBlock from "./full-native";
+
+$ const { config } = out.global;
+$ const nativeX = config.getAsObject("nativeX");
+
+$ const newsletter = getAsObject(input, "newsletter");
+$ const { sectionName, date, placementId, primaryColor } = input;
+
+$ const promotionComponents = {
+  "half-native-block": HalfNativeBlock,
+  "full-native-block": FullNativeBlock,
+};
+$ const PromotionComponent = promotionComponents[defaultValue(input.promotionComponent, "half-native-block")];
+
+<if(nativeX.uri && placementId)>
+  <core-native-x-fetch|{ data, tenant }| uri=nativeX.uri date=date placement-id=placementId>
+    <if(data)>
+      <!-- $ const lcvDefaultValue = get(data, "advertiser.name"); -->
+      $ const dpmArgs = {
+        lc: "Advertising",
+        lkw: "sponsoredContent",
+        ln: `${get(data, "advertiser.name" || "creative.name")}`,
+        lcv: `${get(data, "campaign.name")}`,
+      };
+
+      <${PromotionComponent}
+        date=date
+        newsletter=newsletter
+        section-name=sectionName
+        content=convertAdToContent(data, { sectionName })
+        dpm-args=dpmArgs
+        tenant=tenant
+        creative-id=get(data, "creative.mindfulCreativeId")
+        primary-color=primaryColor
+      />
+    </if>
+  </core-native-x-fetch>
+</if>

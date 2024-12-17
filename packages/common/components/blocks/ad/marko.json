@@ -1,0 +1,11 @@
+{
+  "<common-ad-wrapper-block>": {
+    "template": "./wrapper.marko"
+  },
+  "<common-ad-half-native-block": {
+    "template": "./half-native.marko"
+  },
+  "<common-ad-full-native-block>": {
+    "template": "./full-native.marko"
+  }
+}
