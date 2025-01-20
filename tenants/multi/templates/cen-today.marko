@@ -1,7 +1,10 @@
 import contentList from "@industrial-media/common/graphql/fragments/content-list";
+import { get } from "@parameter1/base-cms-object-path";
 
 $ const { website, config } = out.global;
 $ const { newsletter, date, dateInfo } = data;
+
+$ const nativeX = config.getAsObject("nativeX");
 $ const socialMediaProviders = config.getAsArray('cen.socialMediaLinks');
 $ const primaryColor = "#247c26";
 
@@ -98,25 +101,121 @@ $ const primaryColor = "#247c26";
             primary-color=primaryColor,
             align="left",
           />
-          <common-promotion-half-block
-            section-id=60777,
-            limit=2,
-            date=date,
-            primary-color=primaryColor,
-            newsletter=newsletter,
-            align="right",
-          />
+
+          <if(nativeX)>
+            <common-ad-wrapper-block
+              newsletter=newsletter
+              date=date
+              primary-color=primaryColor
+              promotion-component="half-native-block"
+              placement-id=get(nativeX, `placements.${newsletter.alias}.toc-1`)
+            />
+            <common-ad-wrapper-block
+              newsletter=newsletter
+              date=date
+              primary-color=primaryColor
+              promotion-component="half-native-block"
+              placement-id=get(nativeX, `placements.${newsletter.alias}.toc-2`)
+            />
+          </if>
+          <else>
+            <common-promotion-half-block
+              section-id=60777,
+              limit=2,
+              date=date,
+              primary-color=primaryColor,
+              newsletter=newsletter,
+              align="right",
+            />
+          </else>
         </td>
       </tr>
     </common-table>
 
-    <common-feed-full-block
-      section-id=62908,
-      date=date,
-      newsletter=newsletter,
-      primary-color=primaryColor,
-    />
-
+    <if(nativeX)>
+      <common-feed-block
+        section-id=62908,
+        date=date,
+        newsletter=newsletter,
+        primary-color=primaryColor,
+        limit=2,
+      />
+      <common-ad-wrapper-block
+        newsletter=newsletter
+        date=date
+        primary-color=primaryColor
+        promotion-component="full-native-block"
+        placement-id=get(nativeX, `placements.${newsletter.alias}.inline-1`)
+      />
+      <common-feed-block
+        section-id=62908,
+        date=date,
+        newsletter=newsletter,
+        primary-color=primaryColor,
+        limit=2,
+        skip=2
+      />
+      <common-ad-wrapper-block
+        newsletter=newsletter
+        date=date
+        primary-color=primaryColor
+        promotion-component="full-native-block"
+        placement-id=get(nativeX, `placements.${newsletter.alias}.inline-2`)
+      />
+      <common-feed-block
+        section-id=62908,
+        date=date,
+        newsletter=newsletter,
+        primary-color=primaryColor,
+        limit=2,
+        skip=4
+      />
+      <common-ad-wrapper-block
+        newsletter=newsletter
+        date=date
+        primary-color=primaryColor
+        promotion-component="full-native-block"
+        placement-id=get(nativeX, `placements.${newsletter.alias}.inline-3`)
+      />
+      <common-feed-block
+        section-id=62908,
+        date=date,
+        newsletter=newsletter,
+        primary-color=primaryColor,
+        limit=2,
+        skip=6
+      />
+      <common-ad-wrapper-block
+        newsletter=newsletter
+        date=date
+        primary-color=primaryColor
+        promotion-component="full-native-block"
+        placement-id=get(nativeX, `placements.${newsletter.alias}.inline-4`)
+      />
+      <common-feed-block
+        section-id=62908,
+        date=date,
+        newsletter=newsletter,
+        primary-color=primaryColor,
+        limit=2,
+        skip=8
+      />
+      <common-ad-wrapper-block
+        newsletter=newsletter
+        date=date
+        primary-color=primaryColor
+        promotion-component="full-native-block"
+        placement-id=get(nativeX, `placements.${newsletter.alias}.inline-5`)
+      />
+    </if>
+    <else>
+      <common-feed-full-block
+        section-id=62908,
+        date=date,
+        newsletter=newsletter,
+        primary-color=primaryColor,
+      />
+    </else>
     <common-featured-full-block
       section-id=88380,
       limit=1,
@@ -135,6 +234,6 @@ $ const primaryColor = "#247c26";
       preference-page-link="https://lynchmedia.dragonforms.com/loading.do?omedasite=CEN_prefs"
       advertise-page-link="https://www.cannabisequipmentnews.com/formstack/advertise_with_lm_cen"
     />
-
+<!-- $ console.log(newsletter.config); -->
   </@body>
 </marko-newsletter-root>
