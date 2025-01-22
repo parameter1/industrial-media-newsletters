@@ -1,6 +1,7 @@
 const nativeX = require('./native-x');
 
 module.exports = {
+  mindfulAdsDate: '2025-01-25',
   nativeX,
   defaultEsp: 'omeda',
   ddt: {

@@ -178,5 +178,8 @@
       "default-value" : "#eb1b2c"
     },
     "@align": "string"
+  },
+  "<common-feed-block>": {
+    "template": "./feed.marko"
   }
 }

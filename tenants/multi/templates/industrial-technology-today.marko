@@ -1,21 +1,11 @@
 import contentList from "@industrial-media/common/graphql/fragments/content-list";
+import { get } from "@parameter1/base-cms-object-path";
+import moment from "moment";
 
-$ const { website } = out.global;
+$ const { website, config } = out.global;
 $ const { newsletter, date, dateInfo } = data;
 $ const primaryColor = "#45ad35";
-
-$ const stealthLinkStyle = {
-  "color": "#ffffff",
-  "display": "none",
-  "visibility": "hidden",
-  "mso-hide": "all",
-  "font-size": "1px",
-  "line-height": "1px",
-  "max-height": "0px",
-  "max-width": "0px",
-  "opacity": "0",
-  "overflow": "hidden",
-}
+$ const nativeX = (date >= moment(config.mindfulAdsDate)) ? config.getAsObject("nativeX") : false;
 
 <marko-newsletter-root
   title=newsletter.name
@@ -64,25 +54,121 @@ $ const stealthLinkStyle = {
             primary-color=primaryColor,
             align="left",
           />
-          <common-promotion-half-block
-            section-id=52271,
-            limit=2,
-            date=date,
-            primary-color=primaryColor,
-            newsletter=newsletter,
-            align="right",
-          />
+          <if(nativeX)>
+            <common-ad-wrapper-block
+              newsletter=newsletter
+              date=date
+              primary-color=primaryColor
+              promotion-component="half-native-block"
+              placement-id=get(nativeX, `placements.${newsletter.alias}.toc-1`)
+            />
+            <common-ad-wrapper-block
+              newsletter=newsletter
+              date=date
+              primary-color=primaryColor
+              promotion-component="half-native-block"
+              placement-id=get(nativeX, `placements.${newsletter.alias}.toc-2`)
+            />
+          </if>
+          <else>
+            <common-promotion-half-block
+              section-id=52271,
+              limit=2,
+              date=date,
+              primary-color=primaryColor,
+              newsletter=newsletter,
+              align="right",
+            />
+          </else>
         </td>
       </tr>
     </common-table>
 
-    <common-feed-full-block
-      section-id=52269,
-      date=date,
-      newsletter=newsletter,
-      primary-color=primaryColor,
-      show-teaser=true,
-    />
+    <if(nativeX)>
+      <common-feed-block
+        section-id=52269,
+        date=date,
+        newsletter=newsletter,
+        primary-color=primaryColor,
+        limit=2,
+      />
+      <common-ad-wrapper-block
+        newsletter=newsletter
+        date=date
+        primary-color=primaryColor
+        promotion-component="full-native-block"
+        placement-id=get(nativeX, `placements.${newsletter.alias}.inline-1`)
+      />
+      <common-feed-block
+        section-id=52269,
+        date=date,
+        newsletter=newsletter,
+        primary-color=primaryColor,
+        limit=2,
+        skip=2
+      />
+      <common-ad-wrapper-block
+        newsletter=newsletter
+        date=date
+        primary-color=primaryColor
+        promotion-component="full-native-block"
+        placement-id=get(nativeX, `placements.${newsletter.alias}.inline-2`)
+      />
+      <common-feed-block
+        section-id=52269,
+        date=date,
+        newsletter=newsletter,
+        primary-color=primaryColor,
+        limit=2,
+        skip=4
+      />
+      <common-ad-wrapper-block
+        newsletter=newsletter
+        date=date
+        primary-color=primaryColor
+        promotion-component="full-native-block"
+        placement-id=get(nativeX, `placements.${newsletter.alias}.inline-3`)
+      />
+      <common-feed-block
+        section-id=52269,
+        date=date,
+        newsletter=newsletter,
+        primary-color=primaryColor,
+        limit=2,
+        skip=6
+      />
+      <common-ad-wrapper-block
+        newsletter=newsletter
+        date=date
+        primary-color=primaryColor
+        promotion-component="full-native-block"
+        placement-id=get(nativeX, `placements.${newsletter.alias}.inline-4`)
+      />
+      <common-feed-block
+        section-id=52269,
+        date=date,
+        newsletter=newsletter,
+        primary-color=primaryColor,
+        limit=2,
+        skip=8
+      />
+      <common-ad-wrapper-block
+        newsletter=newsletter
+        date=date
+        primary-color=primaryColor
+        promotion-component="full-native-block"
+        placement-id=get(nativeX, `placements.${newsletter.alias}.inline-5`)
+      />
+    </if>
+    <else>
+      <common-feed-full-block
+        section-id=52269,
+        date=date,
+        newsletter=newsletter,
+        primary-color=primaryColor,
+        show-teaser=true,
+      />
+    </else>
 
     <common-featured-full-block
       section-id=88409,
