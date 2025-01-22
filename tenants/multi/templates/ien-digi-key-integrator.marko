@@ -1,46 +1,12 @@
 import contentList from "@industrial-media/common/graphql/fragments/content-list";
-import waterMarkDisplay from "@industrial-media/common/utils/watermark-display";
+import { get } from "@parameter1/base-cms-object-path";
+import moment from "moment";
 
-$ const { website } = out.global;
+$ const { website, config } = out.global;
 $ const { newsletter, date, dateInfo } = data;
 $ const primaryColor = "#c93a3a";
 $ const blackBarText = "text-decoration: none !important; font-size: 10px; font-family: Arial, Helvetica, sans-serif; color: #ffffff; font-weight: normal;";
-$ const titleStyle = "text-decoration: none !important; font-size: 14px; font-family: Arial, Helvetica, sans-serif; color: #000000; text-align: left; font-weight: bold;";
-$ const contentLinkStyle = {
-  "text-decoration": "none",
-  "text-align": "left",
-  "text-decoration": "none !important",
-  "font-size": "16px",
-  "font-family": "Arial, Helvetica, sans-serif",
-  "color": primaryColor,
-  "font-weight": "bold"
-};
-$ const teaserStyle = {
-  "text-decoration": "none !important",
-  "font-size": "13px",
-  "font-family": "Arial, Helvetica, sans-serif",
-  "color": "#666666",
-  "font-weight": "normal",
-  "text-align": "left",
-  "margin-top": "5px !important",
-  "line-height": "1.2em",
-};
-$ const textAdCopyStyle = {
-  "font-family": "Arial, Helvetica, sans-serif",
-  "font-size": "12px",
-  "color": "#000000",
-  "text-align": "left",
-  "line-height": "18px",
-  "margin-top": "5px !important",
-};
-$ const textAdButtonStyle = "background:#3B579D; padding-top:10px; padding-left:10px; padding-right:10px; padding-bottom:10px;";
-$ const textAdButtonLinkStyle = {
-  "text-decoration": "none !important",
-  "font" : "bold 16px/18px Arial, Helvetica, sans-serif",
-  "background": "#3B579D",
-  "color": "#ffffff",
-  "margin-top": "10px",
-};
+$ const nativeX = (date >= moment(config.mindfulAdsDate)) ? config.getAsObject("nativeX") : false;
 
 <marko-newsletter-root
   title=newsletter.name
@@ -147,24 +113,120 @@ $ const textAdButtonLinkStyle = {
             primary-color=primaryColor,
             align="left",
           />
-          <common-promotion-half-block
-            section-id=87507,
-            limit=2,
-            date=date,
-            primary-color=primaryColor,
-            newsletter=newsletter,
-            align="right",
-          />
+          <if(nativeX)>
+            <common-ad-wrapper-block
+              newsletter=newsletter
+              date=date
+              primary-color=primaryColor
+              promotion-component="half-native-block"
+              placement-id=get(nativeX, `placements.${newsletter.alias}.toc-1`)
+            />
+            <common-ad-wrapper-block
+              newsletter=newsletter
+              date=date
+              primary-color=primaryColor
+              promotion-component="half-native-block"
+              placement-id=get(nativeX, `placements.${newsletter.alias}.toc-2`)
+            />
+          </if>
+          <else>
+            <common-promotion-half-block
+              section-id=87507,
+              limit=2,
+              date=date,
+              primary-color=primaryColor,
+              newsletter=newsletter,
+              align="right",
+            />
+          </else>
         </td>
       </tr>
     </common-table>
 
-    <common-feed-full-block
-      section-id=87504,
-      date=date,
-      newsletter=newsletter,
-      primary-color=primaryColor,
-    />
+    <if(nativeX)>
+      <common-feed-block
+        section-id=87504,
+        date=date,
+        newsletter=newsletter,
+        primary-color=primaryColor,
+        limit=2,
+      />
+      <common-ad-wrapper-block
+        newsletter=newsletter
+        date=date
+        primary-color=primaryColor
+        promotion-component="full-native-block"
+        placement-id=get(nativeX, `placements.${newsletter.alias}.inline-1`)
+      />
+      <common-feed-block
+        section-id=87504,
+        date=date,
+        newsletter=newsletter,
+        primary-color=primaryColor,
+        limit=2,
+        skip=2
+      />
+      <common-ad-wrapper-block
+        newsletter=newsletter
+        date=date
+        primary-color=primaryColor
+        promotion-component="full-native-block"
+        placement-id=get(nativeX, `placements.${newsletter.alias}.inline-2`)
+      />
+      <common-feed-block
+        section-id=87504,
+        date=date,
+        newsletter=newsletter,
+        primary-color=primaryColor,
+        limit=2,
+        skip=4
+      />
+      <common-ad-wrapper-block
+        newsletter=newsletter
+        date=date
+        primary-color=primaryColor
+        promotion-component="full-native-block"
+        placement-id=get(nativeX, `placements.${newsletter.alias}.inline-3`)
+      />
+      <common-feed-block
+        section-id=87504,
+        date=date,
+        newsletter=newsletter,
+        primary-color=primaryColor,
+        limit=2,
+        skip=6
+      />
+      <common-ad-wrapper-block
+        newsletter=newsletter
+        date=date
+        primary-color=primaryColor
+        promotion-component="full-native-block"
+        placement-id=get(nativeX, `placements.${newsletter.alias}.inline-4`)
+      />
+      <common-feed-block
+        section-id=87504,
+        date=date,
+        newsletter=newsletter,
+        primary-color=primaryColor,
+        limit=2,
+        skip=8
+      />
+      <common-ad-wrapper-block
+        newsletter=newsletter
+        date=date
+        primary-color=primaryColor
+        promotion-component="full-native-block"
+        placement-id=get(nativeX, `placements.${newsletter.alias}.inline-5`)
+      />
+    </if>
+    <else>
+      <common-feed-full-block
+        section-id=87504,
+        date=date,
+        newsletter=newsletter,
+        primary-color=primaryColor,
+      />
+    </else>
 
     <common-featured-full-block
       section-id=88398,
