@@ -2,7 +2,7 @@
   "name": "@industrial-media/newsletters",
   "description": "Newsletters for Industrial Media",
   "repository": "https://github.com/base-cms-newsletters/industrial-media.git",
-  "author": "Jacob Bare <jacob@limit0.io>",
+  "author": "Brandon Krigbaum <brandon@parameter1.com>",
   "license": "MIT",
   "private": true,
   "root": true,
@@ -19,8 +19,8 @@
     "test": "lerna run test"
   },
   "devDependencies": {
-    "@parameter1/base-cms-eslint": "^4.5.12",
-    "@parameter1/base-cms-marko-compiler": "^4.40.3",
+    "@mindful-web/eslint": "^1.0.0",
+    "@mindful-web/marko-compiler": "^1.0.0",
     "lerna": "^6.5.1"
   },
   "resolutions": {
