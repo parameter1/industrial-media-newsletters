@@ -106,7 +106,7 @@ $ const textAdButtonLinkStyle = {
                       options={ w: 150 }
                       attrs={ border: 0, width: 150 }
                     >
-                      <@link href=contextualUrl target="_blank" />
+                      <@link href=contextualUrl target="_blank" attrs=imgLinkAttrs />
                     </marko-newsletter-imgix>
                   </marko-core-obj-value>
                 </td>
@@ -121,7 +121,7 @@ $ const textAdButtonLinkStyle = {
               <tr>
                 <td style=`${textAdButtonStyle}`>
                   <div>
-                    <a href=contextualUrl style=textAdButtonLinkStyle>
+                    <a href=contextualUrl style=textAdButtonLinkStyle ...linkAttrs>
                       $!{content.linkText}
                     </a>
                   </div>
