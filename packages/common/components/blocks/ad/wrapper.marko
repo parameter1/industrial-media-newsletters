@@ -26,7 +26,10 @@ $ const PromotionComponent = promotionComponents[defaultValue(input.promotionCom
         ln: `${get(data, "advertiser.name" || "creative.name")}`,
         lcv: `${get(data, "campaign.name")}`,
       };
-
+      $ const linkAttrs = {
+        ...(getAsObject(input, "link.attrs")),
+        ...data.elements.a,
+      };
       <${PromotionComponent}
         date=date
         newsletter=newsletter
@@ -36,6 +39,7 @@ $ const PromotionComponent = promotionComponents[defaultValue(input.promotionCom
         tenant=tenant
         creative-id=get(data, "creative.mindfulCreativeId")
         primary-color=primaryColor
+        link-attrs=linkAttrs
       />
     </if>
   </core-native-x-fetch>
