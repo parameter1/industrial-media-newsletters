@@ -151,7 +151,7 @@ $ const contentLinkStyle = defaultValue(input.contentLinkStyle, {
                             <@link href=node.siteContext.url target="_blank" attrs={ style: contentLinkStyle } />
                           </marko-core-obj-text>
                           <if(showTeaser != false)>
-                            <marko-core-obj-text tag="p" obj=node field="teaser" html=true attrs={ style: teaserStyle } />
+                            <marko-core-obj-text tag="div" obj=node field="teaser" html=true attrs={ style: teaserStyle } />
                           </if>
                         </td>
                       </tr>
