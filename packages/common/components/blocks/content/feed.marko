@@ -1,13 +1,17 @@
 import contentList from "@industrial-media/common/graphql/fragments/content-list";
 import waterMarkDisplay from "@industrial-media/common/utils/watermark-display";
 import defaultValue from "@mindful-web/marko-core/utils/default-value";
+import moment from "moment";
+
+$ const { config, req } = out.global;
+$ const { query } = req;
+$ const debug = query.debug ? true : false;
 
 $ const {
   newsletter,
   date,
   sectionId,
   title,
-  limit,
   skip,
   hrBelow,
   primaryColor,
@@ -16,6 +20,17 @@ $ const {
 } = input;
 
 $ let counter = 0;
+
+$ const sequence = defaultValue(input.sequence, false);
+$ const limit = defaultValue(input.limit, 10);
+
+$ const getSequenceFor = (content, secId, date) => {
+  const [schedule] = (Array.isArray(content.emailSchedules) ? content.emailSchedules : [])
+    .filter((s) => s.section && s.section.id === secId)
+    .filter((s) => date.isSame(moment(s.deploymentDate), 'day'))
+  ;
+  return schedule ? schedule.sequence : 0;
+};
 
 $ const titleStyle = defaultValue(input.titleStyle, {
   "text-decoration": "none !important",
@@ -61,7 +76,9 @@ $ const contentLinkStyle = defaultValue(input.contentLinkStyle, {
           <tr>
             <td valign="top">
               <for|node, index| of=nodes>
-                <if(node.type !== 'text-ad')>
+                $ const nodeSequence = getSequenceFor(node, sectionId, date);
+                $ const validSequence = (sequence === 1 && nodeSequence <= 1 || sequence === nodeSequence);
+                <if(node.type !== 'text-ad' && (sequence === false || validSequence))>
                   $ const imgWaterMarkOptions = waterMarkDisplay({ node, newsletter, markWidth: 45, markHeight: 45 });
                   $ const imgOptions = {
                     w: 330,
@@ -102,6 +119,7 @@ $ const contentLinkStyle = defaultValue(input.contentLinkStyle, {
                                 <if(showTeaser != false)>
                                   <marko-core-obj-text tag="p" obj=node field="teaser" html=true attrs={ style: teaserStyle } />
                                 </if>
+                                <if(debug)><p style="color:red;">Sequence: ${nodeSequence}</p></if>
                               </td>
                             </tr>
 
@@ -153,6 +171,7 @@ $ const contentLinkStyle = defaultValue(input.contentLinkStyle, {
                           <if(showTeaser != false)>
                             <marko-core-obj-text tag="div" obj=node field="teaser" html=true attrs={ style: teaserStyle } />
                           </if>
+                          <if(debug)><p style="color:red;">Sequence: ${nodeSequence}</p></if>
                         </td>
                       </tr>
                       <tr>
