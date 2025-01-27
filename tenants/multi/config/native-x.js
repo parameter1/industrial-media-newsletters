@@ -245,5 +245,14 @@ module.exports = {
       'inline-4': '6759ef77f18e33525669b711',
       'inline-5': '6759f12f584bddb2d6cdfa93',
     },
+    'manufacturing-weekly-comp': {
+      'toc-1': '6787eb629f383a6266ee5fd3',
+      'toc-2': '6787eb65f74bf6259dc76588',
+      'inline-1': '6787eb569f383a6266ee5fcf',
+      'inline-2': '6787eb58f74bf6259dc76586',
+      'inline-3': '6787eb59ef3357df6c6a9644',
+      'inline-4': '6787eb5b9f383a6266ee5fd1',
+      'inline-5': '6787eb5cef3357df6c6a9646',
+    },
   },
 };
