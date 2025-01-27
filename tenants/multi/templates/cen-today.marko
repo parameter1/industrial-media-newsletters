@@ -5,8 +5,7 @@ import defaultValue from "@mindful-web/marko-core/utils/default-value";
 
 $ const { website, config } = out.global;
 $ const { newsletter, date, dateInfo } = data;
-
-$ const nativeX = (date >= moment(config.mindfulAdsDate)) ? config.getAsObject("nativeX") : false;
+$ const nativeX = (date >= moment(config.get("mindfulAdsDate"))) ? config.getAsObject("nativeX") : false;
 $ const socialMediaProviders = config.getAsArray('cen.socialMediaLinks');
 $ const primaryColor = "#247c26";
 $ const align = defaultValue(input.align, "right");

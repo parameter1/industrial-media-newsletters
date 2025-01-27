@@ -7,7 +7,7 @@ $ const { website, config } = out.global;
 $ const { newsletter, date, dateInfo } = data;
 $ const primaryColor = "#ec1a23";
 $ const blackBarText = "text-decoration: none !important; font-size: 10px; font-family: Arial, Helvetica, sans-serif; color: #ffffff; font-weight: normal;";
-$ const nativeX = (date >= moment(config.mindfulAdsDate)) ? config.getAsObject("nativeX") : false;
+$ const nativeX = (date >= moment(config.get("mindfulAdsDate"))) ? config.getAsObject("nativeX") : false;
 $ const align = defaultValue(input.align, "right");
 
 <marko-newsletter-root
