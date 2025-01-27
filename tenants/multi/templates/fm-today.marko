@@ -210,6 +210,13 @@ $ const align = defaultValue(input.align, "right");
         promotion-component="full-native-block"
         placement-id=get(nativeX, `placements.${newsletter.alias}.inline-5`)
       />
+      <common-feed-block
+        section-id=63312,
+        date=date,
+        newsletter=newsletter,
+        primary-color=primaryColor,
+        skip=10
+      />
     </if>
     <else>
       <common-feed-full-block
