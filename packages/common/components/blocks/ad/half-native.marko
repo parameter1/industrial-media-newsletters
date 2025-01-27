@@ -80,64 +80,58 @@ $ const textAdButtonLinkStyle = {
   "margin-top": "10px",
 };
 
-<common-table width="300" style="border-collapse:collapse;" align=align class="main" padding=0 spacing=0>
+<common-table class="main" width="280" style="border-collapse:collapse;" align=align padding=10 spacing=0>
   <tr>
-    <td valign="top">
-      <common-table class="main" width="280" style="border-collapse:collapse;" align=align padding=10 spacing=0>
+    <td bgcolor="#ecedee">
+      <a href=contextualUrl target="_blank" style=contentLinkStyle ...linkAttrs>
+        $!{content.name}
+      </a>
+      <common-table
+        style="margin:10px 10px 0 0;"
+        align="left"
+        class="left"
+        padding=0
+        spacing=0
+      >
         <tr>
-          <td bgcolor="#ecedee">
-            <a href=contextualUrl target="_blank" style=contentLinkStyle ...linkAttrs>
-              $!{content.name}
-            </a>
-            <common-table
-              style="margin:10px 10px 0 0;"
-              align="left"
-              class="left"
-              padding=0
-              spacing=0
-            >
-              <tr>
-                <td>
-                  <marko-core-obj-value|{ value: image }| obj=content field="primaryImage" as="object">
-                  $ const imgWaterMarkOptions = waterMarkDisplay({ node: content, newsletter, markWidth: 45, markHeight: 45 });
-                  $ const imgOptions = {
-                    w: 150,
-                    ...imgWaterMarkOptions
-                  };
-                    <marko-newsletter-imgix
-                      src=image.src
-                      alt=image.alt
-                      options={ w: 150 }
-                      attrs={ border: 0, width: 150, style: "float=left" }
-                    >
-                      <@link href=contextualUrl target="_blank" attrs=imgLinkAttrs />
-                    </marko-newsletter-imgix>
-                  </marko-core-obj-value>
-                </td>
-              </tr>
-            </common-table>
-            <div style=textAdCopyStyle>
-              <p>
-                $!{content.teaser}
-              </p>
-            </div>
-            <common-table align="right" padding=0 spacing=0>
-              <tr>
-                <td style=`${textAdButtonStyle}`>
-                  <a href=contextualUrl style=textAdButtonLinkStyle ...linkAttrs>
-                    $!{content.linkText}
-                  </a>
-                </td>
-              </tr>
-            </common-table>
+          <td>
+            <marko-core-obj-value|{ value: image }| obj=content field="primaryImage" as="object">
+            $ const imgWaterMarkOptions = waterMarkDisplay({ node: content, newsletter, markWidth: 45, markHeight: 45 });
+            $ const imgOptions = {
+              w: 150,
+              ...imgWaterMarkOptions
+            };
+              <marko-newsletter-imgix
+                src=image.src
+                alt=image.alt
+                options={ w: 150 }
+                attrs={ border: 0, width: 150, style: "float=left" }
+              >
+                <@link href=contextualUrl target="_blank" attrs=imgLinkAttrs />
+              </marko-newsletter-imgix>
+            </marko-core-obj-value>
           </td>
         </tr>
       </common-table>
-      <common-table width="280" align="center" class="center" >
+      <div style=textAdCopyStyle>
+        <p>
+          $!{content.teaser}
+        </p>
+      </div>
+      <common-table align="right" padding=0 spacing=0>
         <tr>
-          <td>&nbsp;</td>
+          <td style=`${textAdButtonStyle}`>
+            <a href=contextualUrl style=textAdButtonLinkStyle ...linkAttrs>
+              $!{content.linkText}
+            </a>
+          </td>
         </tr>
       </common-table>
     </td>
+  </tr>
+</common-table>
+<common-table width="280" align="center" class="center" >
+  <tr>
+    <td>&nbsp;</td>
   </tr>
 </common-table>
