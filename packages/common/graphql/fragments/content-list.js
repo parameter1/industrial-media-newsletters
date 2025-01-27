@@ -18,6 +18,14 @@ fragment NewsletterContentListFragment on Content {
     linkText
     linkUrl
   }
+  emailSchedules {
+    id
+    deploymentDate
+    section {
+      id
+    }
+    sequence
+  }
 }
 
 `;
