@@ -7,7 +7,7 @@ $ const { website, config } = out.global;
 $ const { newsletter, date, dateInfo } = data;
 $ const socialMediaProviders = config.getAsArray('ien.socialMediaLinks');
 $ const primaryColor = "#ee0228";
-$ const nativeX = (date >= moment(config.mindfulAdsDate)) ? config.getAsObject("nativeX") : false;
+$ const nativeX = (date >= moment(config.get("mindfulAdsDate"))) ? config.getAsObject("nativeX") : false;
 $ const align = defaultValue(input.align, "right");
 
 <marko-newsletter-root

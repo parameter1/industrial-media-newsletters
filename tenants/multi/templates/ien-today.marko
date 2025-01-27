@@ -6,7 +6,7 @@ import moment from "moment";
 $ const { website, config } = out.global;
 $ const { newsletter, date, dateInfo } = data;
 $ const primaryColor = "#ee0228";
-$ const nativeX = (date >= moment(config.mindfulAdsDate)) ? config.getAsObject("nativeX") : false;
+$ const nativeX = (date >= moment(config.get("mindfulAdsDate"))) ? config.getAsObject("nativeX") : false;
 $ const align = defaultValue(input.align, "right");
 
 <marko-newsletter-root
