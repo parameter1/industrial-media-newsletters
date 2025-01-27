@@ -1,12 +1,14 @@
 import contentList from "@industrial-media/common/graphql/fragments/content-list";
 import { get } from "@mindful-web/object-path";
 import moment from "moment";
+import defaultValue from "@mindful-web/marko-core/utils/default-value";
 
 $ const { website, config } = out.global;
 $ const { newsletter, date, dateInfo } = data;
 $ const primaryColor = "#23255d";
 $ const blackBarText = "text-decoration: none !important; font-size: 10px; font-family: Arial, Helvetica, sans-serif; color: #ffffff; font-weight: normal;";
 $ const nativeX = (date >= moment(config.mindfulAdsDate)) ? config.getAsObject("nativeX") : false;
+$ const align = defaultValue(input.align, "right");
 
 <marko-newsletter-root
   title=newsletter.name
@@ -93,20 +95,26 @@ $ const nativeX = (date >= moment(config.mindfulAdsDate)) ? config.getAsObject("
             align="left",
           />
           <if(nativeX)>
-            <common-ad-wrapper-block
-              newsletter=newsletter
-              date=date
-              primary-color=primaryColor
-              promotion-component="half-native-block"
-              placement-id=get(nativeX, `placements.${newsletter.alias}.toc-1`)
-            />
-            <common-ad-wrapper-block
-              newsletter=newsletter
-              date=date
-              primary-color=primaryColor
-              promotion-component="half-native-block"
-              placement-id=get(nativeX, `placements.${newsletter.alias}.toc-2`)
-            />
+            <common-table width="300" style="border-collapse:collapse;" align=align class="main" padding=0 spacing=0>
+              <tr>
+                <td valign="top">
+                  <common-ad-wrapper-block
+                    newsletter=newsletter
+                    date=date
+                    primary-color=primaryColor
+                    promotion-component="half-native-block"
+                    placement-id=get(nativeX, `placements.${newsletter.alias}.toc-1`)
+                  />
+                  <common-ad-wrapper-block
+                    newsletter=newsletter
+                    date=date
+                    primary-color=primaryColor
+                    promotion-component="half-native-block"
+                    placement-id=get(nativeX, `placements.${newsletter.alias}.toc-2`)
+                  />
+                </td>
+              </tr>
+            </common-table>
           </if>
           <else>
             <common-promotion-half-block
