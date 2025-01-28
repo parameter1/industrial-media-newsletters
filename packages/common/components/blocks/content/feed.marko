@@ -22,7 +22,7 @@ $ const {
 $ let counter = 0;
 
 $ const sequence = defaultValue(input.sequence, false);
-$ const limit = defaultValue(input.limit, 10);
+$ const limit = defaultValue(input.limit, 50);
 
 $ const getSequenceFor = (content, secId, date) => {
   const [schedule] = (Array.isArray(content.emailSchedules) ? content.emailSchedules : [])
