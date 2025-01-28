@@ -76,9 +76,6 @@ $ const contentLinkStyle = defaultValue(input.contentLinkStyle, {
           <tr>
             <td valign="top">
               <for|node, index| of=nodes>
-                <if(sequence === 5)>
-                  $ console.log(nodes);
-                </if>
                 $ const nodeSequence = getSequenceFor(node, sectionId, date);
                 $ const validSequence = (sequence === 1 && nodeSequence <= 1 || sequence === nodeSequence);
                 <if(node.type !== 'text-ad' && (sequence === false || validSequence))>
