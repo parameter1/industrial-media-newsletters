@@ -64,7 +64,7 @@ module.exports = {
       'inline-4': '6786997c5e8b8f6a7e48e365',
       'inline-5': '6786997fd8a6cacd823f84ce',
     },
-    'fm-weeky-tim-podcast': {
+    'fm-weekly-tim-podcast': {
       'inline-1': '6787e8c19f383a6266ee5fbd',
     },
     'fm-weekly': {
