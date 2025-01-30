@@ -326,6 +326,14 @@ config
       width: 600,
       height: 100,
     },
+  ])
+  .setAdUnits('impo-weekly', [
+    {
+      name: 'header',
+      id: '679b9864cd0da9948e8697fa',
+      width: 600,
+      height: 100,
+    },
   ]);
 
 module.exports = config;

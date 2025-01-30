@@ -254,5 +254,14 @@ module.exports = {
       'inline-4': '6787eb5b9f383a6266ee5fd1',
       'inline-5': '6787eb5cef3357df6c6a9646',
     },
+    'impo-weekly': {
+      'toc-1': '679b980db02eeae5e800b932',
+      'toc-2': '679b9812c573642bd08934d9',
+      'inline-1': '679b97f9c573642bd08934d5',
+      'inline-2': '679b97fdc573642bd08934d7',
+      'inline-3': '679b9800b02eeae5e800b92e',
+      'inline-4': '679b9803b02eeae5e800b930',
+      'inline-5': '679b9808cd0da9948e8697f8',
+    },
   },
 };
