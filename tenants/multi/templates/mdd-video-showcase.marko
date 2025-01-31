@@ -1,7 +1,11 @@
 import contentList from "@industrial-media/common/graphql/fragments/content-list";
+import { get } from "@mindful-web/object-path";
+import moment from "moment";
 
-$ const { website } = out.global;
+$ const { website, config } = out.global;
 $ const { newsletter, date, dateInfo } = data;
+$ const nativeX = (date >= moment(config.get("mindfulAdsDate"))) ? config.getAsObject("nativeX") : false;
+$ const primaryColor = "#00b3e3";
 
 $ const contentLinkStyle = {
   "text-decoration": "none !important",
@@ -42,16 +46,61 @@ $ const teaserStyle = {
       image-src="files/base/indm/mdd/image/static/MDDVideoShowcaseHeader-2023.jpeg"
       bg-color="#ffffff"
     />
-
-    <!-- Content -->
-    <common-featured-full-block
-      section-id=85181,
-      date=date,
-      newsletter=newsletter,
-      show-body=true,
-      content-link-style=contentLinkStyle,
-      teaser-style=teaserStyle,
-    />
+    <if(nativeX)>
+      <common-ad-wrapper-block
+        newsletter=newsletter
+        date=date
+        primary-color=primaryColor
+        promotion-component="video-native-block"
+        placement-id=get(nativeX, `placements.${newsletter.alias}.ad-slot-1`)
+      />
+      <common-ad-wrapper-block
+        newsletter=newsletter
+        date=date
+        primary-color=primaryColor
+        promotion-component="video-native-block"
+        placement-id=get(nativeX, `placements.${newsletter.alias}.ad-slot-2`)
+      />
+      <common-ad-wrapper-block
+        newsletter=newsletter
+        date=date
+        primary-color=primaryColor
+        promotion-component="video-native-block"
+        placement-id=get(nativeX, `placements.${newsletter.alias}.ad-slot-3`)
+      />
+      <common-ad-wrapper-block
+        newsletter=newsletter
+        date=date
+        primary-color=primaryColor
+        promotion-component="video-native-block"
+        placement-id=get(nativeX, `placements.${newsletter.alias}.ad-slot-4`)
+      />
+      <common-ad-wrapper-block
+        newsletter=newsletter
+        date=date
+        primary-color=primaryColor
+        promotion-component="video-native-block"
+        placement-id=get(nativeX, `placements.${newsletter.alias}.ad-slot-5`)
+      />
+      <common-ad-wrapper-block
+        newsletter=newsletter
+        date=date
+        primary-color=primaryColor
+        promotion-component="video-native-block"
+        placement-id=get(nativeX, `placements.${newsletter.alias}.ad-slot-6`)
+      />
+    </if>
+    <else>
+      <!-- Content -->
+      <common-featured-full-block
+        section-id=85181,
+        date=date,
+        newsletter=newsletter,
+        show-body=true,
+        content-link-style=contentLinkStyle,
+        teaser-style=teaserStyle,
+      />
+    </else>
 
     <common-featured-full-block
       section-id=88416,

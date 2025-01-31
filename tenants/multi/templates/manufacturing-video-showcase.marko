@@ -5,7 +5,7 @@ import moment from "moment";
 $ const { website, config } = out.global;
 $ const { newsletter, date, dateInfo } = data;
 $ const nativeX = (date >= moment(config.get("mindfulAdsDate"))) ? config.getAsObject("nativeX") : false;
-$ const primaryColor = "#ec1a23";
+$ const primaryColor = "#c93a3a";
 
 $ const contentLinkStyle = {
   "text-decoration": "none !important",
@@ -43,10 +43,9 @@ $ const teaserStyle = {
     <common-default-header-block
       name=newsletter.name
       href=website.get("origin")
-      image-src="/files/base/indm/all/IMPO_Video-Showcase-Header_FINAL.jpeg"
+      image-src="/files/base/indm/all/image/static/logos/Mnet_Video_Showcase.jpg"
       bg-color="#ffffff"
     />
-
     <if(nativeX)>
       <common-ad-wrapper-block
         newsletter=newsletter
@@ -94,7 +93,7 @@ $ const teaserStyle = {
     <else>
       <!-- Content -->
       <common-featured-full-block
-        section-id=81719,
+        section-id=89092,
         date=date,
         newsletter=newsletter,
         show-body=true,
@@ -104,7 +103,7 @@ $ const teaserStyle = {
     </else>
 
     <common-featured-full-block
-      section-id=88405,
+      section-id=89093,
       limit=1,
       title="FEATURED VIDEO",
       date=date,
@@ -113,7 +112,7 @@ $ const teaserStyle = {
     />
 
     <!-- Footer/OptOut -->
-    <common-default-footer-block advertise-page-link="https://www.ien.com/formstack/advertise_with_im_impo" />
+    <common-default-footer-block advertise-page-link="https://www.ien.com/formstack/advertise_with_im_ien" />
 
   </@body>
 </marko-newsletter-root>
