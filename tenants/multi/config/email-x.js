@@ -334,6 +334,14 @@ config
       width: 600,
       height: 100,
     },
+  ])
+  .setAdUnits('manufacturing-video-showcase', [
+    {
+      name: 'header',
+      id: '679d0ec4525e2a5c7dd42559',
+      width: 600,
+      height: 100,
+    },
   ]);
 
 module.exports = config;

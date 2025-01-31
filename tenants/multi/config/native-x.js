@@ -263,5 +263,13 @@ module.exports = {
       'inline-4': '679b9803b02eeae5e800b930',
       'inline-5': '679b9808cd0da9948e8697f8',
     },
+    'manufacturing-video-showcase': {
+      'ad-slot-1': '679b98a2b02eeae5e800b934',
+      'ad-slot-2': '679b98a4c573642bd08934db',
+      'ad-slot-3': '679b98a7b02eeae5e800b936',
+      'ad-slot-4': '679b98aacd0da9948e8697fc',
+      'ad-slot-5': '679b98adc573642bd08934dd',
+      'ad-slot-6': '679b98b0cd0da9948e8697fe',
+    },
   },
 };

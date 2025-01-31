@@ -3,6 +3,7 @@ import defaultValue from "@mindful-web/marko-core/utils/default-value";
 import { convertAdToContent } from "@mindful-web/marko-newsletters-native-x/utils";
 import HalfNativeBlock from "./half-native";
 import FullNativeBlock from "./full-native";
+import VideoNativeBlock from "./video-native";
 
 $ const { config } = out.global;
 $ const nativeX = config.getAsObject("nativeX");
@@ -13,6 +14,7 @@ $ const { sectionName, date, placementId, primaryColor } = input;
 $ const promotionComponents = {
   "half-native-block": HalfNativeBlock,
   "full-native-block": FullNativeBlock,
+  "video-native-block": VideoNativeBlock,
 };
 $ const PromotionComponent = promotionComponents[defaultValue(input.promotionComponent, "half-native-block")];
 
