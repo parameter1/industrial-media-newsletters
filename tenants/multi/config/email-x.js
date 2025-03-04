@@ -342,6 +342,14 @@ config
       width: 600,
       height: 100,
     },
+  ])
+  .setAdUnits('manufacturing-oracle-netsuite-update', [
+    {
+      name: 'header',
+      id: '67c759b58658e62c17c9b79b',
+      width: 600,
+      height: 100,
+    },
   ]);
 
 module.exports = config;

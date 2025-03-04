@@ -271,5 +271,14 @@ module.exports = {
       'ad-slot-5': '679b98adc573642bd08934dd',
       'ad-slot-6': '679b98b0cd0da9948e8697fe',
     },
+    'manufacturing-oracle-netsuite-update': {
+      'toc-1': '67c75a1cf4fc2a621e4eca5f',
+      'toc-2': '67c75a28f4fc2a621e4eca61',
+      'inline-1': '67c75a2b8658e62c17c9b79f',
+      'inline-2': '67c75a2d16c337b1582b2082',
+      'inline-3': '67c75a308658e62c17c9b7a1',
+      'inline-4': '67c75a32f4fc2a621e4eca63',
+      'inline-5': '67c75a35f4fc2a621e4eca65',
+    },
   },
 };
