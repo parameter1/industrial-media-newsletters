@@ -1,0 +1,91 @@
+import latestIssueFragment from "@industrial-media/common/graphql/fragments/latest-issue";
+import defaultValue from "@mindful-web/marko-core/utils/default-value";
+import { get, getAsObject } from "@mindful-web/object-path";
+import queryFragment from "@industrial-media/common/graphql/fragments/content-list";
+
+$ const { config } = out.global;
+$ const { date, newsletter, publicationId, title, subscribeText } = input;
+
+$ const subscribeStyle = {
+  "font-family": "Arial, Helvetica, sans-serif",
+  "font-size": "20px",
+}
+
+$ const magStyle = {
+  "width": "150px",
+  "height": "206px",
+}
+
+$ const titleStyle = defaultValue(input.titleStyle, {
+  "text-decoration": "none !important",
+  "font" : "bold 14px/16px Arial, Helvetica, sans-serif",
+  "color": "#000000",
+});
+
+<common-table width="630" style="border-collapse:collapse;" align="center" class="main" padding=0 spacing=0>
+  <tr>
+    <td>
+      <marko-web-query|{ nodes: issues }|
+        name="magazine-active-issues"
+        params={
+        publicationId: publicationId,
+        queryFragment: latestIssueFragment,
+        requiresCoverImage: true,
+        limit: 3
+        }
+      >
+        <common-table width="630" style="border-collapse:collapse;" align="center" class="main" padding=0 spacing=0>
+          <if(title)>
+            <tr>
+              <td style=titleStyle>
+                ${title}
+              </td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+            </tr>
+          </if>
+        </common-table>
+
+        <common-table width="630" style="border-collapse:collapse;" align="center" class="main" padding=0 spacing=0>
+          <tr>
+            <td align="center" valign="top">
+              <common-table width="100%" border="0" align="center">
+                <tr>
+                  <for|issue| of=issues>
+                    <td align="center">
+                      <marko-core-obj-value|{ value: coverImage }| obj=issue field="coverImage" as="object">
+                        <marko-newsletter-imgix
+                          src=coverImage.src
+                          alt=coverImage.alt
+                          attrs={ border: 0, style: magStyle }
+                        >
+                          <@link href=issue.digitalEditionUrl target="_blank" />
+                        </marko-newsletter-imgix>
+                      </marko-core-obj-value>
+                    </td>
+                  </for>
+                </tr>
+              </common-table>
+              <common-table width="100%" border="0" align="center">
+                <tr>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td col span="3" align="center" valign="center">
+                    <div style=subscribeStyle>
+                      $!{subscribeText}
+                    </div>
+                  </td>
+                </tr>
+              </common-table>
+            </td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+        </common-table>
+      </marko-web-query>
+    </td>
+  </tr>
+</common-table>
