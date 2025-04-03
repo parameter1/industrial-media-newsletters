@@ -1,0 +1,228 @@
+import contentList from "@industrial-media/common/graphql/fragments/content-list";
+import { get } from "@mindful-web/object-path";
+import moment from "moment";
+import defaultValue from "@mindful-web/marko-core/utils/default-value";
+
+$ const { website, config } = out.global;
+$ const { newsletter, date, dateInfo } = data;
+<!-- $ const nativeX = (date >= moment(config.get("mindfulAdsDate"))) ? config.getAsObject("nativeX") : false; -->
+$ const socialMediaProviders = config.getAsArray('cen.socialMediaLinks');
+$ const primaryColor = "#247c26";
+$ const align = defaultValue(input.align, "right");
+$ const nativeX = config.getAsObject("nativeX");
+
+<marko-newsletter-root
+  title=newsletter.name
+  description=newsletter.description
+  date=date
+>
+  <@head>
+    <common-static-styles />
+  </@head>
+  <@body style="margin: 0px !important;">
+    <tenant-banner-element
+      newsletter=newsletter
+      date=date
+      date-info=dateInfo
+    />
+
+    <!-- Header -->
+    <common-table width="630" style="border-collapse:collapse;" align="center" class="main" padding=0 spacing=0>
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td valign="top" style="height:100px; width:320px;" align="right">
+          <marko-newsletter-imgix
+            src="/files/base/indm/cen/image/static/CEN_Weekly_Header.png"
+            alt="CEN Weekly"
+            options={ w: 320, h: 100 }
+            class="main"
+            attrs={ border: 0, width: 320 }
+          >
+            <@link href=website.get("origin") target="_blank" />
+          </marko-newsletter-imgix>
+        </td>
+        <td valign="top" class="mobileHide" style="height:100px; width:310px; background-color:#ffffff;" align="left">
+          <common-table style="border-collapse:collapse;" width="310" padding=0 align="center" spacing=0 class="main">
+            <tr>
+              <td>&nbsp;</td>
+            </tr>
+            <tr align="right">
+              <tr>
+                <td height="20" align="right">
+                  <common-table width="100%" border="0" spacing=0 padding=0>
+                    <tr style="text-decoration: none !important; font-size: 11px; font-family: Arial, Helvetica, sans-serif; color: #424242; font-weight: bold;">
+                      <td align="right" style="color:#424242; padding-right:20px; padding-bottom: 10px;">
+                        ${date.format("MMMM DD, YYYY")}
+                      </td>
+                    </tr>
+                  </common-table>
+                </td>
+              </tr>
+              <td align="right">
+                <for|socialLinks| of=socialMediaProviders>
+                    <marko-newsletter-imgix
+                      src=`/files/base/newsletter/${socialLinks.provider}-gray-round.png`
+                      alt=socialLinks.provider
+                      options={ w: 40 }
+                      attrs={ border: 0, width: 40 }
+                    >
+                      <@link href=socialLinks.href title=socialLinks.title target="_blank" />
+                    </marko-newsletter-imgix>
+                    &nbsp;&nbsp;&nbsp;
+                  </for>
+              </td>
+            </tr>
+          </common-table>
+        </td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+    </common-table>
+
+    <!-- Content -->
+    <common-featured-full-block
+      section-id=89260,
+      limit=1,
+      title="FEATURED STORY",
+      date=date,
+      newsletter=newsletter,
+      primary-color=primaryColor,
+      hr-below=true,
+    />
+
+    <common-table width="630" style="border-collapse:collapse;" align="center" class="main" padding=0 spacing=0>
+      <tr>
+        <td>
+          <common-featured-half-block
+            section-id=89259,
+            limit=2,
+            date=date,
+            newsletter=newsletter,
+            primary-color=primaryColor,
+            align="left",
+          />
+
+          <common-table width="300" style="border-collapse:collapse;" align=align class="main" padding=0 spacing=0>
+            <tr>
+              <td valign="top">
+                <common-ad-wrapper-block
+                  newsletter=newsletter
+                  date=date
+                  primary-color=primaryColor
+                  promotion-component="half-native-block"
+                  placement-id=get(nativeX, `placements.${newsletter.alias}.toc-1`)
+                />
+                <common-ad-wrapper-block
+                  newsletter=newsletter
+                  date=date
+                  primary-color=primaryColor
+                  promotion-component="half-native-block"
+                  placement-id=get(nativeX, `placements.${newsletter.alias}.toc-2`)
+                />
+              </td>
+            </tr>
+          </common-table>
+        </td>
+      </tr>
+    </common-table>
+
+    <common-feed-block
+      section-id=89262,
+      date=date,
+      newsletter=newsletter,
+      primary-color=primaryColor,
+      sequence=1
+    />
+    <common-ad-wrapper-block
+      newsletter=newsletter
+      date=date
+      primary-color=primaryColor
+      promotion-component="full-native-block"
+      placement-id=get(nativeX, `placements.${newsletter.alias}.inline-1`)
+    />
+    <common-feed-block
+      section-id=89262,
+      date=date,
+      newsletter=newsletter,
+      primary-color=primaryColor,
+      sequence=3
+    />
+    <common-ad-wrapper-block
+      newsletter=newsletter
+      date=date
+      primary-color=primaryColor
+      promotion-component="full-native-block"
+      placement-id=get(nativeX, `placements.${newsletter.alias}.inline-2`)
+    />
+    <common-feed-block
+      section-id=89262,
+      date=date,
+      newsletter=newsletter,
+      primary-color=primaryColor,
+      sequence=5
+    />
+    <common-ad-wrapper-block
+      newsletter=newsletter
+      date=date
+      primary-color=primaryColor
+      promotion-component="full-native-block"
+      placement-id=get(nativeX, `placements.${newsletter.alias}.inline-3`)
+    />
+    <common-feed-block
+      section-id=89262,
+      date=date,
+      newsletter=newsletter,
+      primary-color=primaryColor,
+      sequence=7
+    />
+    <common-ad-wrapper-block
+      newsletter=newsletter
+      date=date
+      primary-color=primaryColor
+      promotion-component="full-native-block"
+      placement-id=get(nativeX, `placements.${newsletter.alias}.inline-4`)
+    />
+    <common-feed-block
+      section-id=89262,
+      date=date,
+      newsletter=newsletter,
+      primary-color=primaryColor,
+      sequence=9
+    />
+    <common-ad-wrapper-block
+      newsletter=newsletter
+      date=date
+      primary-color=primaryColor
+      promotion-component="full-native-block"
+      placement-id=get(nativeX, `placements.${newsletter.alias}.inline-5`)
+    />
+    <common-feed-block
+      section-id=89262,
+      date=date,
+      newsletter=newsletter,
+      primary-color=primaryColor,
+      sequence=11
+    />
+    <common-featured-full-block
+      section-id=89261,
+      limit=1,
+      title="FEATURED VIDEO",
+      date=date,
+      newsletter=newsletter,
+      primary-color=primaryColor,
+      hr-below=true,
+    />
+
+    <!-- Footer/OptOut -->
+    <common-default-footer-block
+      unsubscribe-cloud-page-id=854
+      company-name="Lynch Media"
+      please-contact-email="tom@cannabisequipmentnews.com"
+      preference-page-link="https://lynchmedia.dragonforms.com/loading.do?omedasite=CEN_prefs"
+      advertise-page-link="https://www.cannabisequipmentnews.com/formstack/advertise_with_lm_cen"
+    />
+  </@body>
+</marko-newsletter-root>
