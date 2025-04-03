@@ -10,6 +10,15 @@ module.exports = {
       'inline-4': '6759efeff18e33525669b717',
       'inline-5': '6759eff2f18e33525669b719',
     },
+    'cen-weekly': {
+      'toc-1': '67eebfb59050752fccd92ca4',
+      'toc-2': '67eebfb79050752fccd92ca6',
+      'inline-1': '67eebfba9050752fccd92ca8',
+      'inline-2': '67eebfbc9050752fccd92caa',
+      'inline-3': '67eebfbe88fd10346420f16e',
+      'inline-4': '67eebfc188fd10346420f170',
+      'inline-5': '67eebfc4b3178b979e5aa9fb',
+    },
     'design-development-today': {
       'toc-1': '67869727d67b9fe2b80c0225',
       'toc-2': '6786972c5e8b8f6a7e48e351',
