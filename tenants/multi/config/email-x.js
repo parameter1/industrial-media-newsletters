@@ -75,6 +75,15 @@ config
     },
   ])
 
+  .setAdUnits('cen-weekly', [
+    {
+      name: 'header',
+      id: '67eebf7db3178b979e5aa9f9',
+      width: 600,
+      height: 100,
+    },
+  ])
+
   .setAdUnits('design-development-update', [
     {
       name: 'header',
