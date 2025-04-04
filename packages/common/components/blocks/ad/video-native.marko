@@ -22,7 +22,7 @@ $ const imgLinkStyles = {
 }
 
 $ const linkAttrs = {
-  ...(getAsObject(input, "link.attrs")),
+  ...(getAsObject(input, "linkAttrs")),
   ...(creativeId && { 'data-mindful-creative-id': creativeId }),
   ...(tenant && { 'data-mindful-tenant': tenant }),
 };
