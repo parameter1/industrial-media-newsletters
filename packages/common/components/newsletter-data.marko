@@ -34,7 +34,6 @@ $ const queryParams = {
     // req,
     // debug,
   };
-  <!-- $ console.log({ ...fetchParams, placementId: get(nativeX, `placements.${newsletter.alias}.inline-1`) }); -->
   $ const promises = [
     fetchEmailAd({ ...fetchParams, placementId: get(nativeX, `placements.${newsletter.alias}.inline-1`) }),
     fetchEmailAd({ ...fetchParams, placementId: get(nativeX, `placements.${newsletter.alias}.inline-2`) }),
@@ -45,9 +44,7 @@ $ const queryParams = {
 
   <marko-web-resolve|{ resolved }| promise=Promise.all(promises)>
     $ const banners = resolved.filter(item => item.data);
-    <!-- <${input.renderBody} nodes=nodes banners=banners /> -->
     <if(nodes && nodes.length)>
-      <!-- Minimum 1 chunk, or chunks equals the number of banners -->
       $ const chunkNumber = (banners.length) ? ((banners.length == 2) ? 2 : banners.length - 1) : 1;
       $ const chunkedNodes = chunk(nodes, chunkNumber);
 
