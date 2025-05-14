@@ -12,6 +12,9 @@
   "<common-static-styles>": {
     "template": "./static-styles.marko"
   },
+  "<common-newsletter-data>": {
+    "template": "./newsletter-data.marko"
+  },
   "<common-table>": {
     "template": "./core-table.marko",
     "@border": "number",
