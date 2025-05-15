@@ -45,7 +45,7 @@ $ const queryParams = {
   <marko-web-resolve|{ resolved }| promise=Promise.all(promises)>
     $ const banners = resolved.filter(item => item.data);
     <if(nodes && nodes.length)>
-      $ const chunkNumber = (banners.length) ? ((nodes.length % banners.length === 0) ? nodes.length / banners.length - 1 : Math.floor(nodes.length / banners.length)) : nodes.length;
+      $ const chunkNumber = (banners.length) ? ((nodes.length % banners.length === 0 && nodes.length / banners.length > 2) ? nodes.length / banners.length - 1 : Math.floor(nodes.length / banners.length)) : nodes.length;
       $ const chunkedNodes = chunkNumber === 0 ? chunk(nodes, 1) : chunk(nodes, chunkNumber);
 
       <for|chunk, i| of=chunkedNodes>
