@@ -45,8 +45,8 @@ $ const queryParams = {
   <marko-web-resolve|{ resolved }| promise=Promise.all(promises)>
     $ const banners = resolved.filter(item => item.data);
     <if(nodes && nodes.length)>
-      $ const chunkNumber = (banners.length) ? ((banners.length == 2) ? 2 : banners.length - 1) : 1;
-      $ const chunkedNodes = chunk(nodes, chunkNumber);
+      $ const chunkNumber = (banners.length) ? ((nodes.length % banners.length === 0) ? nodes.length / banners.length - 1 : Math.floor(nodes.length / banners.length)) : nodes.length;
+      $ const chunkedNodes = chunkNumber === 0 ? chunk(nodes, 1) : chunk(nodes, chunkNumber);
 
       <for|chunk, i| of=chunkedNodes>
         <if(chunk && chunk.length)>
@@ -82,6 +82,36 @@ $ const queryParams = {
           />
         </if>
       </for>
+      <!-- If the number of banners exceeds content display extra banners at the bottom -->
+      <if(!nodes.length <= banners.length)>
+        $ const extraBanners = banners.slice(nodes.length);
+        <for|banner| of=extraBanners>
+          <if(banner.data)>
+            $ const { data } = banner;
+            $ const dpmArgs = {
+              lc: "Advertising",
+              lkw: "sponsoredContent",
+              ln: `${get(data, "advertiser.name" || "creative.name")}`,
+              lcv: `${get(data, "campaign.name")}`,
+            };
+            $ const linkAttrs = {
+              ...(getAsObject(input, "link.attrs")),
+              ...data.elements.a,
+            };
+            <common-ad-full-native-block
+              date=date
+              newsletter=newsletter
+              section-name=null
+              content=convertAdToContent(data)
+              dpm-args=dpmArgs
+              tenant=get(nativeX, "tenant")
+              creative-id=get(data, "creative.mindfulCreativeId")
+              primary-color=primaryColor
+              link-attrs=linkAttrs
+            />
+          </if>
+        </for>
+      </if>
     </if>
     <else>
       <if(banners && banners.length)>
