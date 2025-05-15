@@ -1,10 +1,13 @@
 import contentList from "@industrial-media/common/graphql/fragments/content-list";
 import { get } from "@mindful-web/object-path";
 
-$ const { website, config } = out.global;
+$ const { website, config, req } = out.global;
 $ const { newsletter, date, dateInfo } = data;
 $ const primaryColor = "#45ad35";
 $ const nativeX = config.getAsObject("nativeX");
+
+$ const { query } = req;
+$ const mindful = query.mindful ? true : false;
 
 <marko-newsletter-root
   title=newsletter.name
@@ -71,87 +74,97 @@ $ const nativeX = config.getAsObject("nativeX");
       </tr>
     </common-table>
 
-    <common-feed-full-block
-      section-id=88767,
-      date=date,
-      newsletter=newsletter,
-      primary-color=primaryColor,
-      limit=2,
-    />
-    <common-ad-wrapper-block
-      newsletter=newsletter
-      date=date
-      primary-color=primaryColor
-      promotion-component="full-native-block"
-      placement-id=get(nativeX, `placements.${newsletter.alias}.inline-1`)
-    />
-    <common-feed-full-block
-      section-id=88767,
-      date=date,
-      newsletter=newsletter,
-      primary-color=primaryColor,
-      limit=2,
-      skip=2
-    />
-    <common-ad-wrapper-block
-      newsletter=newsletter
-      date=date
-      primary-color=primaryColor
-      promotion-component="full-native-block"
-      placement-id=get(nativeX, `placements.${newsletter.alias}.inline-2`)
-    />
-    <common-feed-full-block
-      section-id=88767,
-      date=date,
-      newsletter=newsletter,
-      primary-color=primaryColor,
-      limit=2,
-      skip=4
-    />
-    <common-ad-wrapper-block
-      newsletter=newsletter
-      date=date
-      primary-color=primaryColor
-      promotion-component="full-native-block"
-      placement-id=get(nativeX, `placements.${newsletter.alias}.inline-3`)
-    />
-    <common-feed-full-block
-      section-id=88767,
-      date=date,
-      newsletter=newsletter,
-      primary-color=primaryColor,
-      limit=2,
-      skip=6
-    />
-    <common-ad-wrapper-block
-      newsletter=newsletter
-      date=date
-      primary-color=primaryColor
-      promotion-component="full-native-block"
-      placement-id=get(nativeX, `placements.${newsletter.alias}.inline-4`)
-    />
-    <common-feed-full-block
-      section-id=88767,
-      date=date,
-      newsletter=newsletter,
-      primary-color=primaryColor,
-      limit=2,
-      skip=8
-    />
-    <common-ad-wrapper-block
-      newsletter=newsletter
-      date=date
-      primary-color=primaryColor
-      promotion-component="full-native-block"
-      placement-id=get(nativeX, `placements.${newsletter.alias}.inline-5`)
-    />
-    <common-feed-full-block
-      section-id=88767,
-      date=date,
-      newsletter=newsletter,
-      primary-color=primaryColor,
-      skip=10
-    />
+    <if(nativeX && mindful)>
+      <common-newsletter-data
+        newsletter=newsletter
+        date=date
+        primary-color=primaryColor
+        section-name=input.sectionName
+      />
+    </if>
+    <else>
+      <common-feed-full-block
+        section-id=88767,
+        date=date,
+        newsletter=newsletter,
+        primary-color=primaryColor,
+        limit=2,
+      />
+      <common-ad-wrapper-block
+        newsletter=newsletter
+        date=date
+        primary-color=primaryColor
+        promotion-component="full-native-block"
+        placement-id=get(nativeX, `placements.${newsletter.alias}.inline-1`)
+      />
+      <common-feed-full-block
+        section-id=88767,
+        date=date,
+        newsletter=newsletter,
+        primary-color=primaryColor,
+        limit=2,
+        skip=2
+      />
+      <common-ad-wrapper-block
+        newsletter=newsletter
+        date=date
+        primary-color=primaryColor
+        promotion-component="full-native-block"
+        placement-id=get(nativeX, `placements.${newsletter.alias}.inline-2`)
+      />
+      <common-feed-full-block
+        section-id=88767,
+        date=date,
+        newsletter=newsletter,
+        primary-color=primaryColor,
+        limit=2,
+        skip=4
+      />
+      <common-ad-wrapper-block
+        newsletter=newsletter
+        date=date
+        primary-color=primaryColor
+        promotion-component="full-native-block"
+        placement-id=get(nativeX, `placements.${newsletter.alias}.inline-3`)
+      />
+      <common-feed-full-block
+        section-id=88767,
+        date=date,
+        newsletter=newsletter,
+        primary-color=primaryColor,
+        limit=2,
+        skip=6
+      />
+      <common-ad-wrapper-block
+        newsletter=newsletter
+        date=date
+        primary-color=primaryColor
+        promotion-component="full-native-block"
+        placement-id=get(nativeX, `placements.${newsletter.alias}.inline-4`)
+      />
+      <common-feed-full-block
+        section-id=88767,
+        date=date,
+        newsletter=newsletter,
+        primary-color=primaryColor,
+        limit=2,
+        skip=8
+      />
+      <common-ad-wrapper-block
+        newsletter=newsletter
+        date=date
+        primary-color=primaryColor
+        promotion-component="full-native-block"
+        placement-id=get(nativeX, `placements.${newsletter.alias}.inline-5`)
+      />
+      <common-feed-full-block
+        section-id=88767,
+        date=date,
+        newsletter=newsletter,
+        primary-color=primaryColor,
+        skip=10
+      />
+    </else>
 
     <common-featured-full-block
       section-id=88766,
