@@ -1,0 +1,103 @@
+import contentList from "@industrial-media/common/graphql/fragments/content-list";
+import waterMarkDisplay from "@industrial-media/common/utils/watermark-display";
+import defaultValue from "@mindful-web/marko-core/utils/default-value";
+import moment from "moment";
+
+$ const { config } = out.global;
+
+$ const {
+  newsletter,
+  date,
+  title,
+  hrBelow,
+  primaryColor,
+  showTeaser,
+  twoColumn,
+  nodes,
+} = input;
+
+$ const titleStyle = defaultValue(input.titleStyle, {
+  "text-decoration": "none !important",
+  "font" : "bold 14px/16px Arial, Helvetica, sans-serif",
+  "color": "#000000",
+});
+
+$ const teaserStyle = defaultValue(input.teaserStyle, {
+  "text-decoration": "none !important",
+  "font" : "normal 13px/15px Arial, Helvetica, sans-serif",
+  "color": "#666666",
+  "margin-top": "5px !important",
+});
+
+$ const contentLinkStyle = defaultValue(input.contentLinkStyle, {
+  "text-decoration": "none !important",
+  "font" : "bold 16px/18px Arial, Helvetica, sans-serif",
+  "color": primaryColor,
+});
+
+<common-table width="630" style="border-collapse:collapse;" align="center" class="main" padding=0 spacing=0>
+  <tr>
+    <td>
+      <common-table width="630" style="border-collapse:collapse;" align="center" class="main" padding=0 spacing=0>
+        <if(title)>
+          <tr>
+            <td style=titleStyle>
+              ${title}
+            </td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+        </if>
+        <tr>
+          <td valign="top">
+            <for|node, index| of=nodes>
+              $ const imgWaterMarkOptions = waterMarkDisplay({ node, newsletter, markWidth: 45, markHeight: 45 });
+              $ const imgOptions = {
+                w: 330,
+                ...imgWaterMarkOptions
+              };
+              <common-table width="630" style="border-collapse:collapse;" align="center" class="main" padding=0 spacing=0>
+                <tr>
+                  <td valign="top">
+                    <common-table style="margin-right: 10px;" align="left" class="left" padding=0 spacing=0>
+                      <tr>
+                        <td>
+                          <marko-core-obj-value|{ value: image }| obj=node field="primaryImage" as="object">
+                            <marko-newsletter-imgix
+                              src=image.src
+                              alt=image.alt
+                              options=imgOptions
+                              class="main"
+                              attrs={ border: 0, width: 150 }
+                            >
+                              <@link href=node.siteContext.url target="_blank" />
+                            </marko-newsletter-imgix>
+                          </marko-core-obj-value>
+                        </td>
+                      </tr>
+                    </common-table>
+                    <marko-core-obj-text obj=node field="name" >
+                      <@link href=node.siteContext.url target="_blank" attrs={ style: contentLinkStyle } />
+                    </marko-core-obj-text>
+                    <if(showTeaser != false)>
+                      <marko-core-obj-text tag="div" obj=node field="teaser" html=true attrs={ style: teaserStyle } />
+                    </if>
+                  </td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                </tr>
+              </common-table>
+            </for>
+          </td>
+        </tr>
+      </common-table>
+    </td>
+  </tr>
+  <if(hrBelow == true)>
+    <tr>
+      <td><hr></td>
+    </tr>
+  </if>
+</common-table>

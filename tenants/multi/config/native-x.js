@@ -1,5 +1,6 @@
 module.exports = {
   uri: 'https://delivery.mindfulcms.com/im/default/compat/native-email/email-placement',
+  tenant: 'im/default',
   placements: {
     'cen-today': {
       'toc-1': '675084ac7d99348589e9a171',

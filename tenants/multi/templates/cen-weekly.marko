@@ -3,13 +3,16 @@ import { get } from "@mindful-web/object-path";
 import moment from "moment";
 import defaultValue from "@mindful-web/marko-core/utils/default-value";
 
-$ const { website, config } = out.global;
+$ const { website, config, req } = out.global;
 $ const { newsletter, date, dateInfo } = data;
 <!-- $ const nativeX = (date >= moment(config.get("mindfulAdsDate"))) ? config.getAsObject("nativeX") : false; -->
 $ const socialMediaProviders = config.getAsArray('cen.socialMediaLinks');
 $ const primaryColor = "#247c26";
 $ const align = defaultValue(input.align, "right");
 $ const nativeX = config.getAsObject("nativeX");
+
+$ const { query } = req;
+$ const mindful = query.mindful ? true : false;
 
 <marko-newsletter-root
   title=newsletter.name
@@ -129,83 +132,94 @@ $ const nativeX = config.getAsObject("nativeX");
       </tr>
     </common-table>
 
-    <common-feed-block
-      section-id=89262,
-      date=date,
-      newsletter=newsletter,
-      primary-color=primaryColor,
-      sequence=1
-    />
-    <common-ad-wrapper-block
-      newsletter=newsletter
-      date=date
-      primary-color=primaryColor
-      promotion-component="full-native-block"
-      placement-id=get(nativeX, `placements.${newsletter.alias}.inline-1`)
-    />
-    <common-feed-block
-      section-id=89262,
-      date=date,
-      newsletter=newsletter,
-      primary-color=primaryColor,
-      sequence=3
-    />
-    <common-ad-wrapper-block
-      newsletter=newsletter
-      date=date
-      primary-color=primaryColor
-      promotion-component="full-native-block"
-      placement-id=get(nativeX, `placements.${newsletter.alias}.inline-2`)
-    />
-    <common-feed-block
-      section-id=89262,
-      date=date,
-      newsletter=newsletter,
-      primary-color=primaryColor,
-      sequence=5
-    />
-    <common-ad-wrapper-block
-      newsletter=newsletter
-      date=date
-      primary-color=primaryColor
-      promotion-component="full-native-block"
-      placement-id=get(nativeX, `placements.${newsletter.alias}.inline-3`)
-    />
-    <common-feed-block
-      section-id=89262,
-      date=date,
-      newsletter=newsletter,
-      primary-color=primaryColor,
-      sequence=7
-    />
-    <common-ad-wrapper-block
-      newsletter=newsletter
-      date=date
-      primary-color=primaryColor
-      promotion-component="full-native-block"
-      placement-id=get(nativeX, `placements.${newsletter.alias}.inline-4`)
-    />
-    <common-feed-block
-      section-id=89262,
-      date=date,
-      newsletter=newsletter,
-      primary-color=primaryColor,
-      sequence=9
-    />
-    <common-ad-wrapper-block
-      newsletter=newsletter
-      date=date
-      primary-color=primaryColor
-      promotion-component="full-native-block"
-      placement-id=get(nativeX, `placements.${newsletter.alias}.inline-5`)
-    />
-    <common-feed-block
-      section-id=89262,
-      date=date,
-      newsletter=newsletter,
-      primary-color=primaryColor,
-      sequence=11
-    />
+    <if(nativeX && mindful)>
+      <common-newsletter-data
+        newsletter=newsletter
+        date=date
+        primary-color=primaryColor
+        section-name=input.sectionName
+      />
+    </if>
+    <else-if(nativeX)>
+      <common-feed-block
+        section-id=89262,
+        date=date,
+        newsletter=newsletter,
+        primary-color=primaryColor,
+        sequence=1
+      />
+      <common-ad-wrapper-block
+        newsletter=newsletter
+        date=date
+        primary-color=primaryColor
+        promotion-component="full-native-block"
+        placement-id=get(nativeX, `placements.${newsletter.alias}.inline-1`)
+      />
+      <common-feed-block
+        section-id=89262,
+        date=date,
+        newsletter=newsletter,
+        primary-color=primaryColor,
+        sequence=3
+      />
+      <common-ad-wrapper-block
+        newsletter=newsletter
+        date=date
+        primary-color=primaryColor
+        promotion-component="full-native-block"
+        placement-id=get(nativeX, `placements.${newsletter.alias}.inline-2`)
+      />
+      <common-feed-block
+        section-id=89262,
+        date=date,
+        newsletter=newsletter,
+        primary-color=primaryColor,
+        sequence=5
+      />
+      <common-ad-wrapper-block
+        newsletter=newsletter
+        date=date
+        primary-color=primaryColor
+        promotion-component="full-native-block"
+        placement-id=get(nativeX, `placements.${newsletter.alias}.inline-3`)
+      />
+      <common-feed-block
+        section-id=89262,
+        date=date,
+        newsletter=newsletter,
+        primary-color=primaryColor,
+        sequence=7
+      />
+      <common-ad-wrapper-block
+        newsletter=newsletter
+        date=date
+        primary-color=primaryColor
+        promotion-component="full-native-block"
+        placement-id=get(nativeX, `placements.${newsletter.alias}.inline-4`)
+      />
+      <common-feed-block
+        section-id=89262,
+        date=date,
+        newsletter=newsletter,
+        primary-color=primaryColor,
+        sequence=9
+      />
+      <common-ad-wrapper-block
+        newsletter=newsletter
+        date=date
+        primary-color=primaryColor
+        promotion-component="full-native-block"
+        placement-id=get(nativeX, `placements.${newsletter.alias}.inline-5`)
+      />
+      <common-feed-block
+        section-id=89262,
+        date=date,
+        newsletter=newsletter,
+        primary-color=primaryColor,
+        sequence=11
+      />
+    </else-if>
+
     <common-featured-full-block
       section-id=89261,
       limit=1,
