@@ -1,0 +1,145 @@
+import defaultValue from "@mindful-web/marko-core/utils/default-value";
+import { get, getAsObject } from "@mindful-web/object-path";
+import { dateToTimestamp, fetchEmailAd } from "@mindful-web/marko-newsletters-native-x/utils";
+import { convertAdToContent } from "@mindful-web/marko-newsletters-native-x/utils";
+import queryFragment from "@industrial-media/common/graphql/fragments/content-list";
+import chunk from "@industrial-media/common/utils/chunk";
+import moment from "moment";
+
+$ const { config } = out.global;
+
+$ const { newsletter, date, primaryColor } = input;
+
+$ const nativeX = (date >= moment(config.get("mindfulAdsDate"))) ? config.getAsObject("nativeX") : false;
+$ const sectionName = defaultValue(input.sectionName, "Main");
+$ const limit = defaultValue(input.limit, 30);
+$ const skip = defaultValue(input.skip, 0);
+
+$ const queryParams = {
+  date: date.valueOf(),
+  newsletterId: newsletter.id,
+  sectionName,
+  limit,
+  skip,
+  queryFragment,
+};
+
+<marko-web-query|{ nodes }| name="newsletter-scheduled-content" collapsible=false params=queryParams>
+  $ const fetchParams = {
+    uri: nativeX.uri,
+    timestamp: dateToTimestamp(date),
+    // imageOptions,
+    // logoOptions,
+    // opts,
+    // req,
+    // debug,
+  };
+  $ const promises = [
+    fetchEmailAd({ ...fetchParams, placementId: get(nativeX, `placements.${newsletter.alias}.inline-1`) }),
+    fetchEmailAd({ ...fetchParams, placementId: get(nativeX, `placements.${newsletter.alias}.inline-2`) }),
+    fetchEmailAd({ ...fetchParams, placementId: get(nativeX, `placements.${newsletter.alias}.inline-3`) }),
+    fetchEmailAd({ ...fetchParams, placementId: get(nativeX, `placements.${newsletter.alias}.inline-4`) }),
+    fetchEmailAd({ ...fetchParams, placementId: get(nativeX, `placements.${newsletter.alias}.inline-5`) }),
+  ];
+
+  <marko-web-resolve|{ resolved }| promise=Promise.all(promises)>
+    $ const banners = resolved.filter(item => item.data);
+    <if(nodes && nodes.length)>
+      $ const chunkNumber = (banners.length) ? ((nodes.length % banners.length === 0 && nodes.length / banners.length > 2) ? nodes.length / banners.length - 1 : Math.floor(nodes.length / banners.length)) : nodes.length;
+      $ const chunkedNodes = chunkNumber === 0 ? chunk(nodes, 1) : chunk(nodes, chunkNumber);
+
+      <for|chunk, i| of=chunkedNodes>
+        <if(chunk && chunk.length)>
+          <common-mindful-feed-block
+            nodes=chunk
+            date=date
+            newsletter=newsletter
+            primary-color=primaryColor
+          />
+        </if>
+        <if(banners[i] && banners[i].data)>
+          $ const { data } = banners[i];
+          $ const dpmArgs = {
+            lc: "Advertising",
+            lkw: "sponsoredContent",
+            ln: `${get(data, "advertiser.name" || "creative.name")}`,
+            lcv: `${get(data, "campaign.name")}`,
+          };
+          $ const linkAttrs = {
+            ...(getAsObject(input, "link.attrs")),
+            ...data.elements.a,
+          };
+          <common-ad-full-native-block
+            date=date
+            newsletter=newsletter
+            section-name=null
+            content=convertAdToContent(data)
+            dpm-args=dpmArgs
+            tenant=get(nativeX, "tenant")
+            creative-id=get(data, "creative.mindfulCreativeId")
+            primary-color=primaryColor
+            link-attrs=linkAttrs
+          />
+        </if>
+      </for>
+      <!-- If the number of banners exceeds content display extra banners at the bottom -->
+      <if(!nodes.length <= banners.length)>
+        $ const extraBanners = banners.slice(nodes.length);
+        <for|banner| of=extraBanners>
+          <if(banner.data)>
+            $ const { data } = banner;
+            $ const dpmArgs = {
+              lc: "Advertising",
+              lkw: "sponsoredContent",
+              ln: `${get(data, "advertiser.name" || "creative.name")}`,
+              lcv: `${get(data, "campaign.name")}`,
+            };
+            $ const linkAttrs = {
+              ...(getAsObject(input, "link.attrs")),
+              ...data.elements.a,
+            };
+            <common-ad-full-native-block
+              date=date
+              newsletter=newsletter
+              section-name=null
+              content=convertAdToContent(data)
+              dpm-args=dpmArgs
+              tenant=get(nativeX, "tenant")
+              creative-id=get(data, "creative.mindfulCreativeId")
+              primary-color=primaryColor
+              link-attrs=linkAttrs
+            />
+          </if>
+        </for>
+      </if>
+    </if>
+    <else>
+      <if(banners && banners.length)>
+        <for|banner, i| of=banners>
+          $ const { data } = banners[i];
+          $ const dpmArgs = {
+            lc: "Advertising",
+            lkw: "sponsoredContent",
+            ln: `${get(data, "advertiser.name" || "creative.name")}`,
+            lcv: `${get(data, "campaign.name")}`,
+          };
+          $ const linkAttrs = {
+            ...(getAsObject(input, "link.attrs")),
+            ...data.elements.a,
+          };
+          <common-ad-full-native-block
+            date=date
+            newsletter=newsletter
+            section-name=null
+            content=convertAdToContent(data)
+            dpm-args=dpmArgs
+            tenant=get(nativeX, "tenant")
+            creative-id=get(data, "creative.mindfulCreativeId")
+            primary-color=primaryColor
+            link-attrs=linkAttrs
+          />
+        </for>
+      </if>
+    </else>
+  </marko-web-resolve>
+</marko-web-query>

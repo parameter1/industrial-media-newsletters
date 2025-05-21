@@ -3,11 +3,14 @@ import { get } from "@mindful-web/object-path";
 import moment from "moment";
 import defaultValue from "@mindful-web/marko-core/utils/default-value";
 
-$ const { website, config } = out.global;
+$ const { website, config, req } = out.global;
 $ const { newsletter, date, dateInfo } = data;
 $ const primaryColor = "#45ad35";
 $ const nativeX = (date >= moment(config.get("mindfulAdsDate"))) ? config.getAsObject("nativeX") : false;
 $ const align = defaultValue(input.align, "right");
+
+$ const { query } = req;
+$ const mindful = query.mindful ? true : false;
 
 <marko-newsletter-root
   title=newsletter.name
@@ -92,7 +95,15 @@ $ const align = defaultValue(input.align, "right");
       </tr>
     </common-table>
 
-    <if(nativeX)>
+    <if(nativeX && mindful)>
+      <common-newsletter-data
+        newsletter=newsletter
+        date=date
+        primary-color=primaryColor
+        section-name=input.sectionName
+      />
+    </if>
+    <else-if(nativeX)>
       <common-feed-block
         section-id=52269,
         date=date,
@@ -170,7 +181,7 @@ $ const align = defaultValue(input.align, "right");
         primary-color=primaryColor,
         sequence=11
       />
-    </if>
+    </else-if>
     <else>
       <common-feed-full-block
         section-id=52269,
