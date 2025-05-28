@@ -12,7 +12,7 @@ $ const nativeX = (date >= moment(config.get("mindfulAdsDate"))) ? config.getAsO
 $ const align = defaultValue(input.align, "right");
 
 $ const { query } = req;
-$ const mindful = query.mindful ? true : false;
+$ const mindful = query.mindful && query.mindful === "false" ? false : true;
 
 <marko-newsletter-root
   title=newsletter.name
