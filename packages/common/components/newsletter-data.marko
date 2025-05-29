@@ -28,11 +28,6 @@ $ const queryParams = {
   $ const fetchParams = {
     uri: nativeX.uri,
     timestamp: dateToTimestamp(date),
-    // imageOptions,
-    // logoOptions,
-    // opts,
-    // req,
-    // debug,
   };
   $ const promises = [
     fetchEmailAd({ ...fetchParams, placementId: get(nativeX, `placements.${newsletter.alias}.inline-1`) }),
@@ -42,23 +37,43 @@ $ const queryParams = {
     fetchEmailAd({ ...fetchParams, placementId: get(nativeX, `placements.${newsletter.alias}.inline-5`) }),
   ];
 
-  <marko-web-resolve|{ resolved }| promise=Promise.all(promises)>
-    $ const banners = resolved.filter(item => item.data);
-    <if(nodes && nodes.length)>
-      $ const chunkNumber = (banners.length) ? ((nodes.length % banners.length === 0 && nodes.length / banners.length > 2) ? nodes.length / banners.length - 1 : Math.floor(nodes.length / banners.length)) : nodes.length;
-      $ const chunkedNodes = chunkNumber === 0 ? chunk(nodes, 1) : chunk(nodes, chunkNumber);
 
-      <for|chunk, i| of=chunkedNodes>
-        <if(chunk && chunk.length)>
-          <common-mindful-feed-block
-            nodes=chunk
-            date=date
-            newsletter=newsletter
-            primary-color=primaryColor
-          />
-        </if>
-        <if(banners[i] && banners[i].data)>
-          $ const { data } = banners[i];
+  $ function distribute({ nodes = [], ads = [], stacks = false } = {}) {
+    const numberOfStacks = (stacks) ? stacks : (ads.length || 0) + 1;
+
+    const minimumPerStack = Math.floor(nodes.length / numberOfStacks);
+
+    const stackLengths = Array.from(Array(numberOfStacks), () => minimumPerStack);
+
+    for (let i = 0; i < nodes.length - (numberOfStacks * minimumPerStack); i += 1) {
+      stackLengths[i] += 1;
+    }
+
+    const chunked = [];
+    let n = 0;
+    for (let i = 0; i < stackLengths.length; i += 1) {
+      const ad = ads[i];
+      const start = n;
+
+      const length = stackLengths[i];
+      n += length;
+      const end = start + length;
+
+      chunked.push(...nodes.slice(start, end));
+      if (ad) chunked.push(ad);
+    }
+
+    return chunked;
+  }
+
+  <marko-web-resolve|{ resolved }| promise=Promise.all(promises)>
+    $ const ads = resolved.filter(item => item.data);
+    <if(nodes && nodes.length)>
+      $ const stacks = (ads && ads.length == 2) ? 2 : 0;
+      $ const items = distribute({ nodes, ads, stacks });
+      <for|item| of=items>
+        <if(item.data && item.data.campaign)>
+          $ const { data } = item;
           $ const dpmArgs = {
             lc: "Advertising",
             lkw: "sponsoredContent",
@@ -81,42 +96,20 @@ $ const queryParams = {
             link-attrs=linkAttrs
           />
         </if>
+        <else>
+          <common-mindful-feed-block
+            nodes=[item]
+            date=date
+            newsletter=newsletter
+            primary-color=primaryColor
+          />
+        </else>
       </for>
-      <!-- If the number of banners exceeds content display extra banners at the bottom -->
-      <if(!nodes.length <= banners.length)>
-        $ const extraBanners = banners.slice(nodes.length);
-        <for|banner| of=extraBanners>
-          <if(banner.data)>
-            $ const { data } = banner;
-            $ const dpmArgs = {
-              lc: "Advertising",
-              lkw: "sponsoredContent",
-              ln: `${get(data, "advertiser.name" || "creative.name")}`,
-              lcv: `${get(data, "campaign.name")}`,
-            };
-            $ const linkAttrs = {
-              ...(getAsObject(input, "link.attrs")),
-              ...data.elements.a,
-            };
-            <common-ad-full-native-block
-              date=date
-              newsletter=newsletter
-              section-name=null
-              content=convertAdToContent(data)
-              dpm-args=dpmArgs
-              tenant=get(nativeX, "tenant")
-              creative-id=get(data, "creative.mindfulCreativeId")
-              primary-color=primaryColor
-              link-attrs=linkAttrs
-            />
-          </if>
-        </for>
-      </if>
     </if>
     <else>
-      <if(banners && banners.length)>
-        <for|banner, i| of=banners>
-          $ const { data } = banners[i];
+      <if(ads && ads.length)>
+        <for|ad, i| of=ads>
+          $ const { data } = ads[i];
           $ const dpmArgs = {
             lc: "Advertising",
             lkw: "sponsoredContent",
