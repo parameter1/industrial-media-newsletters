@@ -68,7 +68,7 @@ $ const queryParams = {
   <marko-web-resolve|{ resolved }| promise=Promise.all(promises)>
     $ const ads = resolved.filter(item => item.data);
     <if(nodes && nodes.length)>
-      $ const stacks = (ads && ads.length == 2) ? 2 : 0;
+      $ const stacks = input.stacks || 0;
       $ const items = distribute({ nodes, ads, stacks });
       <for|item| of=items>
         <if(item.data && item.data.campaign)>
