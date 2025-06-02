@@ -3,7 +3,7 @@ import moment from "moment";
 import defaultValue from "@mindful-web/marko-core/utils/default-value";
 
 $ const { website, config, req } = out.global;
-$ const { newsletter, date, dateInfo } = data;
+$ const { newsletter, date, dateInfo } = input;
 $ const nativeX = (date >= moment(config.get("mindfulAdsDate"))) ? config.getAsObject("nativeX") : false;
 $ const socialMediaProviders = config.getAsArray('cen.socialMediaLinks');
 $ const primaryColor = "#247c26";
