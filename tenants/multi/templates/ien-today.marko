@@ -4,7 +4,7 @@ import { get } from "@mindful-web/object-path";
 import moment from "moment";
 
 $ const { website, config, req } = out.global;
-$ const { newsletter, date, dateInfo } = data;
+$ const { newsletter, date, dateInfo } = input;
 $ const primaryColor = "#ee0228";
 $ const nativeX = (date >= moment(config.get("mindfulAdsDate"))) ? config.getAsObject("nativeX") : false;
 $ const align = defaultValue(input.align, "right");
