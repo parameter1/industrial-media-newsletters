@@ -73,9 +73,12 @@ $ const contentLinkStyle = defaultValue(input.contentLinkStyle, {
               <td valign="top">
                   <marko-core-obj-value|{ value: image }| obj=node field="primaryImage" as="object">
                     $ const imgWaterMarkOptions = waterMarkDisplay({ node, newsletter, markWidth: 90, markHeight: 90 });
+                    $ const fit = (/fit=/i.test(image.src)) ? {} : { fit: "crop" };
                     $ const imgOptions = {
                       w: 630,
-                      ...imgWaterMarkOptions
+                      h: 354,
+                      ...imgWaterMarkOptions,
+                      ...fit,
                     };
                     <marko-newsletter-imgix
                       src=image.src

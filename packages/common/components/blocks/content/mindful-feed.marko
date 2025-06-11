@@ -52,12 +52,6 @@ $ const contentLinkStyle = defaultValue(input.contentLinkStyle, {
         <tr>
           <td valign="top">
             <for|node, index| of=nodes>
-              $ const imgWaterMarkOptions = waterMarkDisplay({ node, newsletter, markWidth: 45, markHeight: 45 });
-              $ const imgOptions = {
-                w: 330,
-                h: 185,
-                ...imgWaterMarkOptions
-              };
               <common-table width="630" style="border-collapse:collapse;" align="center" class="main" padding=0 spacing=0>
                 <tr>
                   <td valign="top">
@@ -65,6 +59,14 @@ $ const contentLinkStyle = defaultValue(input.contentLinkStyle, {
                       <tr>
                         <td>
                           <marko-core-obj-value|{ value: image }| obj=node field="primaryImage" as="object">
+                            $ const imgWaterMarkOptions = waterMarkDisplay({ node, newsletter, markWidth: 45, markHeight: 45 });
+                            $ const fit = (/fit=/i.test(image.src)) ? {} : { fit: "crop" };
+                            $ const imgOptions = {
+                              w: 330,
+                              h: 185,
+                              ...imgWaterMarkOptions,
+                              ...fit,
+                            };
                             <marko-newsletter-imgix
                               src=image.src
                               alt=image.alt
