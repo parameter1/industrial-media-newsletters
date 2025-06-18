@@ -31,7 +31,7 @@ $ const mindful = query.mindful && query.mindful === "false" ? false : true;
     <common-default-header-block
       name=newsletter.name
       href=website.get("origin")
-      image-src="/files/base/indm/ien/image/2020/03/itt.5e6a98a8a1fb4.png"
+      image-src="/files/base/indm/all/image/static/logos/Redzone_QAD_Logo_full_col_CMYK.png"
       bg-color="#ffffff"
     >
       <@wrapper date=date separator-type="date"/>
@@ -39,7 +39,7 @@ $ const mindful = query.mindful && query.mindful === "false" ? false : true;
 
     <!-- Content -->
     <common-featured-full-block
-      section-id=52270,
+      section-id=89381,
       limit=1,
       title="FEATURED STORY",
       date=date,
@@ -52,7 +52,7 @@ $ const mindful = query.mindful && query.mindful === "false" ? false : true;
       <tr>
         <td>
           <common-featured-half-block
-            section-id=53092,
+            section-id=89384,
             limit=2,
             date=date,
             newsletter=newsletter,
@@ -81,7 +81,7 @@ $ const mindful = query.mindful && query.mindful === "false" ? false : true;
               </tr>
             </common-table>
           </if>
-          <else>
+          <!-- <else>
             <common-promotion-half-block
               section-id=52271,
               limit=2,
@@ -90,7 +90,7 @@ $ const mindful = query.mindful && query.mindful === "false" ? false : true;
               newsletter=newsletter,
               align="right",
             />
-          </else>
+          </else> -->
         </td>
       </tr>
     </common-table>
@@ -105,7 +105,7 @@ $ const mindful = query.mindful && query.mindful === "false" ? false : true;
     </if>
     <else-if(nativeX)>
       <common-feed-block
-        section-id=52269,
+        section-id=89383,
         date=date,
         newsletter=newsletter,
         primary-color=primaryColor,
@@ -119,7 +119,7 @@ $ const mindful = query.mindful && query.mindful === "false" ? false : true;
         placement-id=get(nativeX, `placements.${newsletter.alias}.inline-1`)
       />
       <common-feed-block
-        section-id=52269,
+        section-id=89383,
         date=date,
         newsletter=newsletter,
         primary-color=primaryColor,
@@ -133,7 +133,7 @@ $ const mindful = query.mindful && query.mindful === "false" ? false : true;
         placement-id=get(nativeX, `placements.${newsletter.alias}.inline-2`)
       />
       <common-feed-block
-        section-id=52269,
+        section-id=89383,
         date=date,
         newsletter=newsletter,
         primary-color=primaryColor,
@@ -147,7 +147,7 @@ $ const mindful = query.mindful && query.mindful === "false" ? false : true;
         placement-id=get(nativeX, `placements.${newsletter.alias}.inline-3`)
       />
       <common-feed-block
-        section-id=52269,
+        section-id=89383,
         date=date,
         newsletter=newsletter,
         primary-color=primaryColor,
@@ -161,7 +161,7 @@ $ const mindful = query.mindful && query.mindful === "false" ? false : true;
         placement-id=get(nativeX, `placements.${newsletter.alias}.inline-4`)
       />
       <common-feed-block
-        section-id=52269,
+        section-id=89383,
         date=date,
         newsletter=newsletter,
         primary-color=primaryColor,
@@ -175,7 +175,7 @@ $ const mindful = query.mindful && query.mindful === "false" ? false : true;
         placement-id=get(nativeX, `placements.${newsletter.alias}.inline-5`)
       />
       <common-feed-block
-        section-id=52269,
+        section-id=89383,
         date=date,
         newsletter=newsletter,
         primary-color=primaryColor,
@@ -184,7 +184,7 @@ $ const mindful = query.mindful && query.mindful === "false" ? false : true;
     </else-if>
     <else>
       <common-feed-full-block
-        section-id=52269,
+        section-id=89383,
         date=date,
         newsletter=newsletter,
         primary-color=primaryColor,
@@ -193,7 +193,7 @@ $ const mindful = query.mindful && query.mindful === "false" ? false : true;
     </else>
 
     <common-featured-full-block
-      section-id=88409,
+      section-id=89382,
       limit=1,
       title="FEATURED VIDEO",
       date=date,
