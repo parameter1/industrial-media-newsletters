@@ -302,5 +302,14 @@ module.exports = {
       'inline-4': '67c75a32f4fc2a621e4eca63',
       'inline-5': '67c75a35f4fc2a621e4eca65',
     },
+    'industrial-technology-today': {
+      'toc-1': '6847306e67faf1aaec812cc7',
+      'toc-2': '6847307167faf1aaec812cc9',
+      'inline-1': '68473075abd0839926112c10',
+      'inline-2': '6847307967faf1aaec812ccb',
+      'inline-3': '6847307babd0839926112c12',
+      'inline-4': '6847307efc8062915e565f9f',
+      'inline-5': '6847308167faf1aaec812ccd',
+    },
   },
 };
