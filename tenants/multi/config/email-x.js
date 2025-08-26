@@ -359,6 +359,14 @@ config
       width: 600,
       height: 100,
     },
+  ])
+  .setAdUnits('breaking-news', [
+    {
+      name: 'header',
+      id: '68addfb9f766765cb867a6d8',
+      width: 600,
+      height: 100,
+    },
   ]);
 
 module.exports = config;
