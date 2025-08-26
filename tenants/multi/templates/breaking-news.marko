@@ -1,0 +1,57 @@
+import contentList from "@industrial-media/common/graphql/fragments/content-list";
+import defaultValue from "@mindful-web/marko-core/utils/default-value";
+import { get } from "@mindful-web/object-path";
+import moment from "moment";
+
+$ const { website, config, req } = out.global;
+$ const { newsletter, date, dateInfo } = input;
+$ const primaryColor = "#ee0228";
+$ const nativeX = (date >= moment(config.get("mindfulAdsDate"))) ? config.getAsObject("nativeX") : false;
+$ const align = defaultValue(input.align, "right");
+
+$ const { query } = req;
+$ const mindful = query.mindful && query.mindful === "false" ? false : true;
+
+<marko-newsletter-root
+  title=newsletter.name
+  description=newsletter.description
+  date=date
+>
+  <@head>
+    <common-static-styles />
+  </@head>
+  <@body style="margin: 0px !important;">
+    <marko-newsletter-stealth-link newsletter=newsletter date=date />
+    <tenant-banner-element
+      newsletter=newsletter
+      date=date
+      date-info=dateInfo
+    />
+
+    <!-- Header -->
+    <common-default-header-block
+      name=newsletter.name
+      href=website.get("origin")
+      image-src="/files/base/indm/ien/image/2020/03/today.5e6a9734444ee.png"
+      image-width=420
+      bg-color="#ffffff"
+    >
+      <@wrapper date=date separator-type="date"/>
+    </common-default-header-block>
+
+    <!-- Content -->
+    <common-featured-full-block
+      section-id=89511,
+      limit=1,
+      title="FEATURED STORY",
+      date=date,
+      newsletter=newsletter,
+      primary-color=primaryColor,
+      hr-below=true,
+    />
+
+    <!-- Footer/OptOut -->
+    <common-default-footer-block advertise-page-link="https://www.ien.com/formstack/advertise_with_im_ien" />
+
+  </@body>
+</marko-newsletter-root>
