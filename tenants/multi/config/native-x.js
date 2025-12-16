@@ -311,5 +311,13 @@ module.exports = {
       'inline-4': '6847307efc8062915e565f9f',
       'inline-5': '6847308167faf1aaec812ccd',
     },
+    'leaders-featured-company-showcase': {
+      'inline-1': '694185c435cb363dd4ea39c6',
+      'inline-2': '694185c735cb363dd4ea39c8',
+      'inline-3': '694185ca35cb363dd4ea39ca',
+      'inline-4': '694185cc96937dafea55257d',
+      'inline-5': '694185cea7c16e2e3fab507e',
+      'inline-6': '6941862435cb363dd4ea39cc',
+    },
   },
 };
