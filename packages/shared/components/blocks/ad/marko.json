@@ -1,0 +1,46 @@
+{
+  "<shared-ad-emailx-block>": {
+    "template": "./emailx.marko"
+  },
+  "<shared-ad-promotion-advertisement-block>": {
+    "template": "./promotion-advertisement.marko"
+  },
+  "<shared-ad-promotion-native-block>": {
+    "template": "./promotion-native.marko"
+  },
+  "<shared-ad-promotion-sponsored-block>": {
+    "template": "./promotion-sponsored.marko"
+  },
+  "<shared-ad-promotion-aqua-block>": {
+    "template": "./promotion-aqua.marko"
+  },
+  "<shared-ad-wrapper-block>": {
+    "template": "./wrapper.marko"
+  },
+  "<shared-ad-promotion-ab-block>": {
+    "template": "./promotion-ab.marko"
+  },
+  "<shared-ad-promotion-daily-dig-block>": {
+    "template": "./promotion-daily-dig.marko"
+  },
+  "<shared-ad-email-x-dpm-block>": {
+    "template": "./email-x-dpm.marko",
+    "<response>": {
+      "<data>": {
+        "<ad>": {
+          "@height": "number",
+          "@mindfulCreativeId": "string",
+          "@width": "number"
+        }
+      },
+      "@imageSrc": "string"
+    },
+    "<dpm>": {
+      "@enabled": "boolean",
+      "@lc": "string",
+      "@lcv": "string",
+      "@lkw": "string",
+      "@ln": "string"
+    }
+  }
+}

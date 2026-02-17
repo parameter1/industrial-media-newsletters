@@ -1,0 +1,84 @@
+import { get, getAsArray } from "@mindful-web/object-path";
+import defaultValue from "@mindful-web/marko-core/utils/default-value";
+import queryFragment from "@ab-media/package-common/graphql/fragments/content-list";
+
+$ const { sectionName, date, newsletter, content } = input;
+
+$ const withHeader = defaultValue(input.withHeader, false);
+$ const withImage = defaultValue(input.withImage, false);
+$ const imagePosition = defaultValue(input.imagePosition, "right");
+
+$ const queryParams = {
+  date: date.valueOf(),
+  newsletterId: newsletter.id,
+  sectionName,
+  limit: input.limit || 1,
+  skip: input.skip || 0,
+  queryFragment,
+};
+
+$ const imgStyles = {
+  "max-width": "100% !important",
+};
+
+$ const imgLinkStyles = {
+  "border": 0,
+  "outline": "none",
+  "text-decoration": "none",
+};
+
+<marko-web-query|{ nodes }| name="newsletter-scheduled-content" collapsible=false params=queryParams>
+  <if(nodes.length)>
+    <for|content| of=nodes>
+      <if(withHeader)>
+        <shared-list-header-element title=sectionName />
+      </if>
+      <if(withImage && imagePosition === 'right' && content.primaryImage)>
+        <tr>
+          <td align="center" valign="top" dir="ltr">
+            <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td align="left" valign="top">
+                  <table role="presentation" width="100%" border="0" cellpadding="0" cellspacing="0" class="pad" style="padding: 0 30px 0px 0;">
+                    <tr>
+                      <td align="left" valign="top">
+                        $!{content.body}
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+                <td align="right" valign="top" width="200" class="wdt">
+                  <marko-core-obj-value|{ value: image }| obj=content field="primaryImage" as="object">
+                    <marko-newsletter-imgix
+                      src=image.src
+                      alt=image.alt
+                      options={ w: 400 }
+                      class="img_resize2"
+                      attrs={ border: 0, width: 200, style: imgStyles }
+                    >
+                      <!-- <@link href=contentUrl target="_blank" attrs=imgLinkAttrs /> -->
+                    </marko-newsletter-imgix>
+                  </marko-core-obj-value>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </if>
+      <else>
+        <tr>
+          <td align="center" valign="top">
+            <table role="presentation" width="610" border="0" align="center" cellpadding="0" cellspacing="0" class="wrap003">
+              <tr>
+                <td align="left" valign="top">
+                  $!{content.body}
+                </td>
+              </tr>
+              <shared-table-spacer-element height="5" />
+            </table>
+          </td>
+        </tr>
+      </else>
+    </for>
+  </if>
+</marko-web-query>

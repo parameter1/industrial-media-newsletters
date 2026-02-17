@@ -1,0 +1,228 @@
+import { get, getAsArray, getAsObject } from "@mindful-web/object-path";
+import defaultValue from "@mindful-web/marko-core/utils/default-value";
+import { URLSearchParams } from "url";
+
+$ const { config } = out.global;
+$ const { newsletter, content, urlParams, advertiser } = input;
+$ const creativeId = get(input, "mindfulCreativeId");
+$ const tenant = get(input, "mindfulTenant");
+$ const withImage = defaultValue(input.withImage, false);
+$ const imagePosition = defaultValue(input.imagePosition, 'right');
+$ const withSection = defaultValue(input.withSection, true);
+$ const continueReading = defaultValue(input.continueReading, false);
+$ const withTeaser = defaultValue(input.withTeaser, true);
+$ const queryString = (urlParams && content.type !== 'promotion') ? `?${new URLSearchParams(urlParams)}` : "";
+$ const contentUrl = `${content.siteContext.url}${queryString}`
+$ const newsletterConfig = config.get(newsletter.alias);
+$ const primaryColor = defaultValue(get(newsletterConfig, "primaryColor"), "#103A57");
+
+$ const imgStyles = {
+  "max-width": "100% !important",
+};
+
+$ const imgLinkStyles = {
+  "border": 0,
+  "outline": "none",
+  "text-decoration": "none",
+};
+
+$ const tagStyle = {
+  "font-size": "14px",
+  "font-weight": "700",
+  "line-height": "19px",
+  "color": primaryColor,
+  "text-transform": "uppercase",
+};
+
+$ const sponsoredTagStyle = {
+    ...tagStyle,
+  "color": "#a91b20",
+  "font-size": "16px",
+};
+
+$ const logoStyle = {
+  "font-size": "14px",
+  "line-height": 0,
+  "border": 0,
+};
+
+$ const nameLinkStyles = {
+  "font-size": "24px",
+  "line-height": "28px",
+  "color": "#202022",
+  "font-weight": "700",
+  "text-decoration": "none",
+};
+
+$ const linkAttrs = {
+  ...(getAsObject(input, "link.attrs")),
+  ...(creativeId && { 'data-mindful-creative-id': creativeId }),
+  ...(tenant && { 'data-mindful-tenant': tenant }),
+};
+
+$ const imgLinkAttrs = { style: imgLinkStyles, ...linkAttrs };
+$ const nameLinkAttrs = { style: nameLinkStyles, ...linkAttrs };
+
+<tr>
+  <td align="center" valign="top">
+    <table role="presentation" width="610" border="0" align="center" cellpadding="0" cellspacing="0" class="wrap003">
+
+      $ const labels = getAsArray(content, "labels");
+      <if(labels.includes("Sponsored"))>
+        $ const tag = (content.company) ? `Sponsored by ${get(content, "company.name")}` : "Sponsored Content";
+        <tr>
+          <td align="left" valign="center" style=sponsoredTagStyle>${tag}</td>
+          <td align="right" width="200">
+            <marko-newsletter-imgix
+              src=advertiser.image.src
+              alt=advertiser.image.alt
+              options={ w: 360, auto: "format,compress" }
+              attrs={ border: 0, width: 180, style: logoStyle }
+            >
+              <@link href=advertiser.website target="_blank" attrs=imgLinkAttrs />
+            </marko-newsletter-imgix>
+          </td>
+        </tr>
+      </if>
+      <else-if(withSection)>
+        <tr>
+          <td align="left" valign="top" style=tagStyle>${get(content, "primarySection.name")}</td>
+        </tr>
+      </else-if>
+    </table>
+
+    <table role="presentation" width="610" border="0" align="center" cellpadding="0" cellspacing="0" class="wrap003">
+      <if(withImage && imagePosition === 'top' && content.primaryImage)>
+        <tr>
+          <td align="center" valign="top">
+            <marko-core-obj-value|{ value: image }| obj=content field="primaryImage" as="object">
+              <marko-newsletter-imgix
+                src=image.src
+                alt=image.alt
+                options={ w: 1220, auto: "format,compress" }
+                class="img_resize1"
+                attrs={ border: 0, width: 610, align: "center", vspace: 5, style: imgStyles }
+              >
+                <@link href=contentUrl target="_blank" attrs=imgLinkAttrs />
+              </marko-newsletter-imgix>
+            </marko-core-obj-value>
+          </td>
+        </tr>
+        <shared-table-spacer-element height="10" />
+        <tr>
+          <td align="left" valign="top">
+            <table role="presentation" width="100%" border="0" cellpadding="0" cellspacing="0" class="pad" style="padding: 0 30px 0px 0;">
+              <tr>
+                <td align="left" valign="top">
+                  <marko-core-obj-text obj=content field="name" tag=false>
+                    <@link href=contentUrl target="_blank" attrs=nameLinkAttrs class="font1" />
+                  </marko-core-obj-text>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <shared-table-spacer-element height="5" />
+                    <if(withTeaser)>
+                      <tr>
+                        <td align="left" valign="top" style="font-size: 17px;line-height: 23px;color: #202022;font-weight: 400;">
+                          $!{content.teaser}
+                        </td>
+                      </tr>
+                    </if>
+                    <if(continueReading)>
+                      <shared-table-spacer-element height="9" />
+                      <shared-cta-element link-url=contentUrl mindful-creative-id=creativeId />
+                    </if>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </if>
+
+      <else-if(withImage && imagePosition === 'right' && content.primaryImage)>
+        <tr>
+          <td align="center" valign="top" dir="ltr">
+            <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td align="left" valign="top">
+                  <table role="presentation" width="100%" border="0" cellpadding="0" cellspacing="0" class="pad" style="padding: 0 30px 0px 0;">
+                    <tr>
+                      <td align="left" valign="top">
+                        <marko-core-obj-text obj=content field="name" tag=false>
+                          <@link href=contentUrl target="_blank" attrs=nameLinkAttrs class="font1" />
+                        </marko-core-obj-text>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0">
+                          <shared-table-spacer-element height="5" />
+                          <if(withTeaser)>
+                            <tr>
+                              <td align="left" valign="top" style="font-size: 17px;line-height: 23px;color: #202022;font-weight: 400;">
+                                $!{content.teaser}
+                              </td>
+                            </tr>
+                          </if>
+                          <if(continueReading)>
+                            <shared-table-spacer-element height="9" />
+                            <shared-cta-element link-url=contentUrl mindful-creative-id=creativeId />
+                          </if>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+                <td align="right" valign="top" width="200" class="wdt">
+                  <marko-core-obj-value|{ value: image }| obj=content field="primaryImage" as="object">
+                    <marko-newsletter-imgix
+                      src=image.src
+                      alt=image.alt
+                      options={ w: 400 }
+                      class="img_resize2"
+                      attrs={ border: 0, width: 200, style: imgStyles }
+                    >
+                      <@link href=contentUrl target="_blank" attrs=imgLinkAttrs />
+                    </marko-newsletter-imgix>
+                  </marko-core-obj-value>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </else-if>
+
+      <else>
+        <tr>
+          <td align="left" valign="top">
+            <a style="font-size: 24px;line-height: 28px;color: #202022;font-weight: 700;text-decoration: none;" target="_blank" href=contentUrl>
+              $!{content.name}
+            </a>
+          </td>
+        </tr>
+        <shared-table-spacer-element height="5" />
+        <if(withTeaser)>
+          <tr>
+            <td>
+              <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td align="left" valign="top" style="font-size: 17px;line-height: 23px;color: #202022;font-weight: 400;">
+                    $!{content.teaser}
+                  </td>
+                </tr>
+                <if(continueReading)>
+                  <shared-table-spacer-element height="9" />
+                  <shared-cta-element link-url=contentUrl mindful-creative-id=creativeId />
+                </if>
+              </table>
+            </td>
+          </tr>
+        </if>
+      </else>
+      <shared-table-spacer-element height="32" />
+    </table>
+  </td>
+</tr>

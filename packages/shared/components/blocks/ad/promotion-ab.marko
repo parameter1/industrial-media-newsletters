@@ -1,0 +1,18 @@
+import { get, getAsObject } from "@mindful-web/object-path";
+
+$ const creativeId = get(input, "creativeId");
+$ const tenant = get(input, "tenant");
+$ const newsletter = getAsObject(input, "newsletter");
+$ const { content, advertiser } = input;
+
+$ content.labels = ["Sponsored"];
+
+<shared-content-facility-merit-block
+  newsletter=newsletter
+  content=content
+  with-image=true
+  advertiser=advertiser
+  mindful-creative-id=creativeId
+  mindful-tenant=tenant
+  link=input.link
+/>

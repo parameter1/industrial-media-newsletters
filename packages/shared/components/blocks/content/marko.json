@@ -1,0 +1,38 @@
+{
+  "<shared-content-background-block>": {
+    "template": "./background.marko"
+  },
+  "<shared-content-list-block>": {
+    "template": "./list.marko"
+  },
+  "<shared-content-list-item-block>": {
+    "template": "./list-item.marko"
+  },
+  "<shared-content-partners-block>": {
+    "template": "./partners.marko"
+  },
+  "<shared-content-magazine-block>": {
+    "template": "./magazine.marko"
+  },
+  "<shared-content-community-block>": {
+    "template": "./community.marko"
+  },
+  "<shared-content-community-item-block>": {
+    "template": "./community-item.marko"
+  },
+  "<shared-content-shareable-block>": {
+    "template": "./shareable.marko"
+  },
+  "<shared-content-shareable-item-block>": {
+    "template": "./shareable-item.marko"
+  },
+  "<shared-content-facility-merit-block>": {
+    "template": "./facility-merit.marko"
+  },
+  "<shared-content-daily-dig-block>": {
+    "template": "./daily-dig.marko"
+  },
+  "<shared-content-credspark-block>": {
+    "template": "./credspark.marko"
+  }
+}
