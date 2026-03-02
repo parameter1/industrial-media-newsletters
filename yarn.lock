@@ -812,19 +812,6 @@
     graphql-tag "^2.12.6"
     node-fetch "^2.6.9"
 
-"@mindful-web/marko-web-native-x@^1.28.0":
-  version "1.44.2"
-  resolved "https://registry.yarnpkg.com/@mindful-web/marko-web-native-x/-/marko-web-native-x-1.44.2.tgz#ab50ee4a214ec2b3b669bbbbbffc25dc720b96d7"
-  integrity sha512-6qGRuXD93HYswQ8Np3TZl7BtZpGqa6ca/B6tV5WadUXEB8Zty8HBixmI5LR76CDLn8Ny+/SLz1+/Wku0fBw66A==
-  dependencies:
-    "@mindful-web/marko-web-deferred-script-loader" "^1.11.9"
-    "@mindful-web/marko-web-gtm" "^1.11.9"
-    "@mindful-web/object-path" "^1.11.9"
-    "@mindful-web/utils" "^1.11.9"
-    "@mindful-web/web-common" "^1.28.0"
-    graphql-tag "^2.12.6"
-    node-fetch "^2.6.9"
-
 "@mindful-web/newsletter-cli@^1.11.9":
   version "1.11.9"
   resolved "https://registry.yarnpkg.com/@mindful-web/newsletter-cli/-/newsletter-cli-1.11.9.tgz#5f8e2ef7cabc2c4c205adba11bc76298a780a89f"
