@@ -17,5 +17,8 @@
   },
   "<shared-view-online-block>": {
     "template": "./view-online.marko"
+  },
+  "<shared-banner-element-block>": {
+    "template": "./banner-element.marko"
   }
 }
