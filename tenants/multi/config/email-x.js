@@ -367,6 +367,14 @@ config
       width: 600,
       height: 100,
     },
+  ])
+  .setAdUnits('adm-today', [
+    {
+      name: 'header',
+      id: '69a5a13cd421fdcb24f01fe7',
+      width: 600,
+      height: 100,
+    },
   ]);
 
 module.exports = config;

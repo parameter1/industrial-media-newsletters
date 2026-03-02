@@ -124,23 +124,22 @@ $ const taglineStyle = {
 
               <tr>
                 <td align="left" valign="top" style=smallerStyle>
-                  You are receiving this email deployment because you have opted in to receive emails from ${publicationName} or you have a subscription to ${publicationName.replace(/ Magazine$/, '')} magazine.
+                  You are receiving this email deployment because you have opted in to receive emails from ${publicationName}.
                 </td>
               </tr>
               <shared-table-spacer-element height="20" />
               <tr>
                 <td align="left" valign="top" style=smallerStyle>
                   <a href="@{confirmunsubscribelink}@" style=smallerUnderlineStyle>Unsubscribe</a>
-                  | <a href=get(newsletterConfig, "magazineSubscription") style=smallerUnderlineStyle>Start/Renew Magazine Subscription</a>
                   | <a href="@{forwardtoafriendlink}@" style=smallerUnderlineStyle>Forward to a Colleague</a>
                 </td>
               </tr>
               <shared-table-spacer-element height="20" />
               <tr>
                 <td align="left" valign="top" style=smallerStyle>
-                  <strong>AB Media Inc.</strong><br/>
-                  22 E. Mifflin St., Ste. 910, Madison, WI 53703<br/>
-                  &copy; ${(new Date()).getFullYear()} | <a href=get(newsletterConfig, "privacyPolicyLink") style=smallerUnderlineStyle>Privacy Policy</a>
+                  <strong>Lynch Media, LLC</strong><br/>
+                  137 East Wilson Street #310<br/>
+                  Madison, WI 53703, USA<br/>
                 </td>
               </tr>
             <shared-table-spacer-element height="20" />

@@ -319,5 +319,14 @@ module.exports = {
       'inline-5': '694185cea7c16e2e3fab507e',
       'inline-6': '6941862435cb363dd4ea39cc',
     },
+    'adm-today': {
+      'toc-1': '69a5a16f009422667a157d05',
+      'toc-2': '69a5a172d421fdcb24f01fe9',
+      'inline-1': '69a5a17b009422667a157d07',
+      'inline-2': '69a5a17e4d5cea521902852f',
+      'inline-3': '69a5a182d421fdcb24f01feb',
+      'inline-4': '69a5a188d421fdcb24f01fed',
+      'inline-5': '69a5a18c4d5cea5219028531',
+    },
   },
 };
