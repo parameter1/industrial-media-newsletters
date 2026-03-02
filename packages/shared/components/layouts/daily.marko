@@ -28,32 +28,20 @@ $ const urlParams = (utmTerm) ? { "utm_term" : utmTerm } : false;
       <@body>
 
         <!--Digital Focus -->
-        <shared-ad-wrapper-block
+        <!-- <shared-ad-wrapper-block
           date=date
           newsletter=newsletter
           promotion-component="native-block"
           placement-id=get(nativeX, `placements.${newsletter.alias}.digital-focus-top`)
-        />
+        /> -->
 
         <!--Facility of Merit -->
-        <shared-ad-wrapper-block
+        <!-- <shared-ad-wrapper-block
           date=date
           newsletter=newsletter
           promotion-component="ab-block"
           placement-id=get(nativeX, `placements.${newsletter.alias}.facility-of-merit`)
-        />
-
-        <!-- Credspark block -->
-        <shared-content-credspark-block
-          date=date
-          section-name="Credspark Top"
-          newsletter=newsletter
-          with-image=true
-          image-position="right"
-          with-section=false
-          url-params=urlParams
-          limit=1
-        />
+        /> -->
 
         <!-- Content list block -->
         <shared-content-list-block
@@ -82,22 +70,22 @@ $ const urlParams = (utmTerm) ? { "utm_term" : utmTerm } : false;
             <table align="left" role="presentation" width="300" border="0" cellpadding="0" cellspacing="0">
               <tr>
                 <td>
-                  <shared-ad-promotion-sponsored-block
+                  <!-- <shared-ad-promotion-sponsored-block
                     date=date
                     newsletter=newsletter
                     ad-unit=emailX.getAdUnit({ name: "ad-slot-1", alias: newsletter.alias })
-                  />
+                  /> -->
                 </td>
               </tr>
             </table>
             <table align="right" role="presentation" width="300" border="0" cellpadding="0" cellspacing="0">
               <tr>
                 <td>
-                  <shared-ad-promotion-sponsored-block
+                  <!-- <shared-ad-promotion-sponsored-block
                     date=date
                     newsletter=newsletter
                     ad-unit=emailX.getAdUnit({ name: "ad-slot-2", alias: newsletter.alias })
-                  />
+                  /> -->
                 </td>
               </tr>
             </table>
@@ -119,15 +107,15 @@ $ const urlParams = (utmTerm) ? { "utm_term" : utmTerm } : false;
         />
 
         <!-- Advertisement / Promotion block -->
-        <shared-ad-wrapper-block
+        <!-- <shared-ad-wrapper-block
           date=date
           newsletter=newsletter
           promotion-component="advertisement-block"
           placement-id=get(nativeX, `placements.${newsletter.alias}.sponsored-content`)
-        />
+        /> -->
 
         <!-- Content list block -->
-        <shared-content-list-block
+        <!-- <shared-content-list-block
           date=date
           section-name="Daily Digs"
           newsletter=newsletter
@@ -138,15 +126,15 @@ $ const urlParams = (utmTerm) ? { "utm_term" : utmTerm } : false;
           with-teaser=true
           url-params=urlParams
           limit=1
-        />
+        /> -->
 
         <!--Daily Digs -->
-        <shared-ad-wrapper-block
+        <!-- <shared-ad-wrapper-block
           date=date
           newsletter=newsletter
           promotion-component="daily-dig-block"
           placement-id=get(nativeX, `placements.${newsletter.alias}.daily-digs`)
-        />
+        /> -->
 
         <!-- Content list block -->
         <shared-content-list-block
@@ -174,22 +162,22 @@ $ const urlParams = (utmTerm) ? { "utm_term" : utmTerm } : false;
             <table align="left" role="presentation" width="300" border="0" cellpadding="0" cellspacing="0">
               <tr>
                 <td>
-                  <shared-ad-promotion-sponsored-block
+                  <!-- <shared-ad-promotion-sponsored-block
                     date=date
                     newsletter=newsletter
                     ad-unit=emailX.getAdUnit({ name: "ad-slot-3", alias: newsletter.alias })
-                  />
+                  /> -->
                 </td>
               </tr>
             </table>
             <table align="right" role="presentation" width="300" border="0" cellpadding="0" cellspacing="0">
               <tr>
                 <td>
-                  <shared-ad-promotion-sponsored-block
+                  <!-- <shared-ad-promotion-sponsored-block
                     date=date
                     newsletter=newsletter
                     ad-unit=emailX.getAdUnit({ name: "ad-slot-4", alias: newsletter.alias })
-                  />
+                  /> -->
                 </td>
               </tr>
             </table>
@@ -224,22 +212,22 @@ $ const urlParams = (utmTerm) ? { "utm_term" : utmTerm } : false;
             <table align="left" role="presentation" width="300" border="0" cellpadding="0" cellspacing="0">
               <tr>
                 <td>
-                  <shared-ad-promotion-sponsored-block
+                  <!-- <shared-ad-promotion-sponsored-block
                     date=date
                     newsletter=newsletter
                     ad-unit=emailX.getAdUnit({ name: "ad-slot-5", alias: newsletter.alias })
-                  />
+                  /> -->
                 </td>
               </tr>
             </table>
             <table align="right" role="presentation" width="300" border="0" cellpadding="0" cellspacing="0">
               <tr>
                 <td>
-                  <shared-ad-promotion-sponsored-block
+                  <!-- <shared-ad-promotion-sponsored-block
                     date=date
                     newsletter=newsletter
                     ad-unit=emailX.getAdUnit({ name: "ad-slot-6", alias: newsletter.alias })
-                  />
+                  /> -->
                 </td>
               </tr>
             </table>
@@ -260,52 +248,24 @@ $ const urlParams = (utmTerm) ? { "utm_term" : utmTerm } : false;
           skip=5
         />
 
-        <!-- Credspark block -->
-        <shared-content-credspark-block
-          date=date
-          section-name="Credspark Middle"
-          newsletter=newsletter
-        />
-
         <!-- Advertisement / Promotional by block-->
-        <shared-ad-wrapper-block
+        <!-- <shared-ad-wrapper-block
           date=date
           newsletter=newsletter
           promotion-component="advertisement-block"
           ad-unit=emailX.getAdUnit({ name: "ad-slot-7", alias: newsletter.alias })
           placement-id=get(nativeX, `placements.${newsletter.alias}.slot-3`)
-        />
-
-        <!-- Content list block -->
-        <shared-content-list-block
-          date=date
-          section-name="Reader Comments"
-          newsletter=newsletter
-          with-image=false
-          with-header=true
-          with-teaser=true
-          with-section=false
-          url-params=urlParams
-          limit=3
-          skip=0
-        />
-
-        <!-- Credspark block -->
-        <shared-content-credspark-block
-          date=date
-          section-name="Credspark Bottom"
-          newsletter=newsletter
-        />
+        /> -->
 
         <!-- Advertisement / Sponsored block-->
-        <shared-ad-wrapper-block
+        <!-- <shared-ad-wrapper-block
           date=date
           newsletter=newsletter
           promotion-component="advertisement-block"
           placement-id=get(nativeX, `placements.${newsletter.alias}.slot-4`)
-        />
+        /> -->
 
-        <shared-content-list-block
+        <!-- <shared-content-list-block
           date=date
           section-name="Trending"
           newsletter=newsletter
@@ -313,18 +273,18 @@ $ const urlParams = (utmTerm) ? { "utm_term" : utmTerm } : false;
           with-section=false
           url-params=urlParams
           limit=3
-        />
+        /> -->
 
         <!-- Advertisement / Sponsored block-->
-        <shared-ad-wrapper-block
+        <!-- <shared-ad-wrapper-block
           date=date
           newsletter=newsletter
           promotion-component="advertisement-block"
           placement-id=get(nativeX, `placements.${newsletter.alias}.slot-5`)
-        />
+        /> -->
 
         <!--Digital Focus (non-sponsored) block-->
-        <shared-content-list-block
+        <!-- <shared-content-list-block
           date=date
           section-name="Digital Focus"
           newsletter=newsletter
@@ -332,52 +292,26 @@ $ const urlParams = (utmTerm) ? { "utm_term" : utmTerm } : false;
           with-section=false
           url-params=urlParams
           limit=1
-        />
+        /> -->
 
         <!--Sponsored Content -->
-        <shared-ad-wrapper-block
+        <!-- <shared-ad-wrapper-block
           date=date
           newsletter=newsletter
           promotion-component="native-block"
           placement-id=get(nativeX, `placements.${newsletter.alias}.digital-focus-bottom`)
-        />
-
-        <!-- Featured Vendor block -->
-        <shared-content-list-block
-          date=date
-          section-name="Featured Vendor"
-          newsletter=newsletter
-          with-section=false
-          with-image=true
-          image-position='right'
-          with-header=true
-          limit=1
-          skip=0
-        />
-
-        <!-- Featured Architect block -->
-        <shared-content-list-block
-          date=date
-          section-name="Featured Architect"
-          newsletter=newsletter
-          with-section=false
-          with-image=true
-          image-position="right"
-          with-header=true
-          limit=1
-          skip=0
-        />
+        /> -->
 
         <!--Sponsored Content -->
-        <shared-ad-wrapper-block
+        <!-- <shared-ad-wrapper-block
           date=date
           newsletter=newsletter
           promotion-component="native-block"
           placement-id=get(nativeX, `placements.${newsletter.alias}.facility-of-the-week`)
-        />
+        /> -->
 
         <!-- Facility of the Week block -->
-        <shared-content-list-block
+        <!-- <shared-content-list-block
           date=date
           section-name="Facility of the Week"
           newsletter=newsletter
@@ -387,10 +321,10 @@ $ const urlParams = (utmTerm) ? { "utm_term" : utmTerm } : false;
           with-header=true
           limit=1
           skip=0
-        />
+        /> -->
 
         <!-- Industry Announcements block -->
-        <shared-content-list-block
+        <!-- <shared-content-list-block
           date=date
           section-name="Industry Announcements"
           newsletter=newsletter
@@ -399,10 +333,10 @@ $ const urlParams = (utmTerm) ? { "utm_term" : utmTerm } : false;
           with-teaser=false
           url-params=urlParams
           limit=5
-        />
+        /> -->
 
         <!-- New Products block -->
-        <shared-content-list-block
+        <!-- <shared-content-list-block
           date=date
           section-name="New Products"
           newsletter=newsletter
@@ -411,18 +345,7 @@ $ const urlParams = (utmTerm) ? { "utm_term" : utmTerm } : false;
           with-header=true
           with-teaser=true
           limit=3
-        />
-
-        <!-- Magazine Cover block -->
-        <shared-content-magazine-block
-          date=date
-          section-name="Magazine"
-          publication-id=publicationId
-          newsletter=newsletter
-        />
-
-        <!-- Content Partners block -->
-        <shared-content-partners-block newsletter=newsletter date=date />
+        /> -->
 
       </@body>
     </shared-body-wrapper-block>
