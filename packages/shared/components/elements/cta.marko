@@ -1,0 +1,27 @@
+import defaultValue from "@mindful-web/marko-core/utils/default-value";
+import { get, getAsObject } from "@mindful-web/object-path";
+
+$ const creativeId = get(input, "mindfulCreativeId");
+$ const { linkUrl } = input;
+$ const linkText = defaultValue(input.linkText, 'Read More');
+
+$ const linkStyle = {
+  "font-size": "17px",
+  "line-height": "23px",
+  "color": "#3475b6",
+  "font-weight": "400",
+  "text-decoration": "none",
+  ...input.linkStyle,
+};
+
+$ const linkAttrs = {
+  ...getAsObject(input, 'link-attrs'),
+  ...(creativeId && { 'data-mindful-creative-id': creativeId }),
+};
+
+<shared-link-element
+  link-text="Read More"
+  link-url=linkUrl
+  link-style=linkStyle
+  attrs=linkAttrs
+/>

@@ -1,0 +1,16 @@
+import { getAsObject } from "@mindful-web/object-path";
+
+$ const adUnit = getAsObject(input, "adUnit");
+$ const dpm = getAsObject(input, "dpm");
+
+<marko-newsletters-email-x-data|{ response }| decoded-params=["email", "send"]>
+  <@ad-unit ...adUnit />
+  <@params date=input.date email="@{email name}@" send="@{track_id}@" include-advertiser=true />
+  <if(response)>
+    <marko-newsletters-email-x-render response=response />
+    <shared-ad-email-x-dpm-block dpm=dpm response=response />
+  </if>
+  <else>
+    <${input.whenEmpty} />
+  </else>
+</marko-newsletters-email-x-data>

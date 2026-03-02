@@ -1,9 +1,16 @@
+const brands = require('./brands');
 const nativeX = require('./native-x');
 
 module.exports = {
   mindfulAdsDate: '2025-01-25',
   nativeX,
   defaultEsp: 'omeda',
+  'adm-today': {
+    ...brands.adm,
+    name: 'Automotive Design Manufacturing Today',
+    preheader: true,
+    subscribeText: 'SUBSCRIBE TEXT HERE',
+  },
   ddt: {
     socialMediaLinks: [
       {

@@ -1,0 +1,5 @@
+{
+  "<shared-daily-layout>": {
+    "template": "./daily.marko"
+  }
+}

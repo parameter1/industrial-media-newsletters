@@ -578,6 +578,13 @@
   dependencies:
     dayjs "^1.11.7"
 
+"@mindful-web/dayjs@^1.49.2":
+  version "1.49.2"
+  resolved "https://registry.yarnpkg.com/@mindful-web/dayjs/-/dayjs-1.49.2.tgz#b09165d8074528b913bfe4e61decb20de9f54443"
+  integrity sha512-aKGyYvuiC3ISpMal8iWTSPQasvkJNE1RLDfhhUa9T/k4YeG8ud1fToEczKb0cI7t67gU/2aSnVChm3QSZRYPgg==
+  dependencies:
+    dayjs "^1.11.7"
+
 "@mindful-web/eslint@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@mindful-web/eslint/-/eslint-1.0.0.tgz#61ceb254e5099cb45220347abbfa499d7863e879"
@@ -624,6 +631,15 @@
     "@mindful-web/inflector" "^1.0.0"
     "@mindful-web/utils" "^1.11.9"
 
+"@mindful-web/image@^1.27.4":
+  version "1.27.4"
+  resolved "https://registry.yarnpkg.com/@mindful-web/image/-/image-1.27.4.tgz#9a2d896420464d7594ce13a49f9ed005d1bc6ce2"
+  integrity sha512-z1yK909ULbmQFBfruKjZqDBPJn5Z+GRypeKwvDirlp65+EHbzoTEJbGZMiCJDNvD4gYrpbqJ4JrEXaF1/E38GA==
+  dependencies:
+    "@mindful-web/html" "^1.0.0"
+    "@mindful-web/inflector" "^1.0.0"
+    "@mindful-web/utils" "^1.11.9"
+
 "@mindful-web/inflector@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@mindful-web/inflector/-/inflector-1.0.0.tgz#d632a54bc5e342c9044d2411fc45a76e8dcf4cc8"
@@ -653,6 +669,17 @@
     "@mindful-web/object-path" "^1.11.9"
     "@mindful-web/utils" "^1.11.9"
     "@mindful-web/web-common" "^1.20.2"
+
+"@mindful-web/marko-core@^1.28.0":
+  version "1.49.2"
+  resolved "https://registry.yarnpkg.com/@mindful-web/marko-core/-/marko-core-1.49.2.tgz#ae82367c21888b20d458b67f8fe8537d24946c5f"
+  integrity sha512-XM20qQ/dTLhHq0RPxEJvVNn6LQeviWf5/lBPVHPygys7BZAo8Hjhjak7zbRkgo1aoHOkltMVrXayQZ+bLlMpXQ==
+  dependencies:
+    "@mindful-web/dayjs" "^1.49.2"
+    "@mindful-web/marko-express" "^1.0.0"
+    "@mindful-web/object-path" "^1.11.9"
+    "@mindful-web/utils" "^1.11.9"
+    "@mindful-web/web-common" "^1.28.0"
 
 "@mindful-web/marko-express@^1.0.0":
   version "1.0.0"
@@ -709,6 +736,31 @@
     "@mindful-web/tenant-context" "^1.0.0"
     "@mindful-web/utils" "^1.11.9"
     "@mindful-web/web-common" "^1.20.2"
+    express "^4.18.2"
+    graphql "^14.7.0"
+    graphql-tag "^2.12.6"
+    helmet "^3.23.3"
+    http-errors "^1.8.1"
+    marko "~4.20.0"
+    moment "^2.29.1"
+    moment-timezone "^0.5.40"
+    node-fetch "^2.6.9"
+    recursive-readdir "^2.2.3"
+
+"@mindful-web/marko-newsletters@^1.28.0":
+  version "1.28.0"
+  resolved "https://registry.yarnpkg.com/@mindful-web/marko-newsletters/-/marko-newsletters-1.28.0.tgz#d7f3e12dfb5e6e2e2c073a0892a587e729166b18"
+  integrity sha512-l73qexOLBFUEaQzn4koClDEhskRxevnJuTvMWgOabsJkBQtuONVrIpIOzZedFHhx/GDyj2CD3j+2B7dUt/1qzA==
+  dependencies:
+    "@godaddy/terminus" "^4.11.2"
+    "@mindful-web/express-apollo" "^1.0.0"
+    "@mindful-web/image" "^1.27.4"
+    "@mindful-web/marko-express" "^1.0.0"
+    "@mindful-web/marko-node-require" "^1.11.9"
+    "@mindful-web/object-path" "^1.11.9"
+    "@mindful-web/tenant-context" "^1.0.0"
+    "@mindful-web/utils" "^1.11.9"
+    "@mindful-web/web-common" "^1.28.0"
     express "^4.18.2"
     graphql "^14.7.0"
     graphql-tag "^2.12.6"
@@ -796,6 +848,18 @@
   version "1.20.2"
   resolved "https://registry.yarnpkg.com/@mindful-web/web-common/-/web-common-1.20.2.tgz#fd2a143b211180e6ad90288a9a2ae8a857c9f00f"
   integrity sha512-PaCPmIIpxEkr2etCHpugivatlCA3zCaUzIB/HSODfOvN2KVJbnuOJ+AxQlZtm09ZACx+MZXd2O9/2fOavLVqHg==
+  dependencies:
+    "@mindful-web/inflector" "^1.0.0"
+    "@mindful-web/object-path" "^1.11.9"
+    "@mindful-web/utils" "^1.11.9"
+    graphql "^14.7.0"
+    graphql-tag "^2.12.6"
+    http-errors "^1.8.1"
+
+"@mindful-web/web-common@^1.28.0":
+  version "1.28.0"
+  resolved "https://registry.yarnpkg.com/@mindful-web/web-common/-/web-common-1.28.0.tgz#ad8e6baecb70db7943febf29cf4325a815155af8"
+  integrity sha512-yEgsfKGemeNTlM1va+m3kBrDSAuUiDoGxSSqBt4Hvv9YHFThOcwokBgVfO11yahXHmtjY1iiYSms7oTlPQNZ+Q==
   dependencies:
     "@mindful-web/inflector" "^1.0.0"
     "@mindful-web/object-path" "^1.11.9"
