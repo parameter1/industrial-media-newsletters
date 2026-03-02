@@ -1,0 +1,38 @@
+{
+  "<shared-cta-element>": {
+    "template": "./cta.marko",
+    "@link-text": "string",
+    "@link-url": {
+      "type": "string",
+      "required": true
+    },
+    "@link-style": "object",
+    "@link-attrs": "object",
+    "@mindful-creative-id": "string"
+  },
+  "<shared-link-element>": {
+    "template": "./link.marko",
+    "@link-text": {
+      "type": "string",
+      "required": true
+    },
+    "@link-url": {
+      "type": "string",
+      "required": true
+    },
+    "@link-style": "object",
+    "@attrs": "object"
+  },
+  "<shared-list-header-element>": {
+    "template": "./list-header.marko"
+  },
+  "<shared-logo-element>": {
+    "template": "./logo.marko"
+  },
+  "<shared-table-hr-element>": {
+    "template": "./table-hr.marko"
+  },
+  "<shared-table-spacer-element>": {
+    "template": "./table-spacer.marko"
+  }
+}

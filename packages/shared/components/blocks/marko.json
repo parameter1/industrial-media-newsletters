@@ -1,0 +1,21 @@
+{
+  "taglib-imports": [
+    "./ad/marko.json",
+    "./content/marko.json"
+  ],
+  "<shared-body-wrapper-block>": {
+    "template": "./body-wrapper.marko"
+  },
+  "<shared-head-block>": {
+    "template": "./head.marko"
+  },
+  "<shared-header-block>": {
+    "template": "./header.marko"
+  },
+  "<shared-footer-block>": {
+    "template": "./footer.marko"
+  },
+  "<shared-view-online-block>": {
+    "template": "./view-online.marko"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "<shared-ad-emailx-block>": {
+    "template": "./emailx.marko"
+  },
+  "<shared-ad-promotion-native-block>": {
+    "template": "./promotion-native.marko"
+  },
+  "<shared-ad-wrapper-block>": {
+    "template": "./wrapper.marko"
+  },
+  "<shared-ad-email-x-dpm-block>": {
+    "template": "./email-x-dpm.marko",
+    "<response>": {
+      "<data>": {
+        "<ad>": {
+          "@height": "number",
+          "@mindfulCreativeId": "string",
+          "@width": "number"
+        }
+      },
+      "@imageSrc": "string"
+    },
+    "<dpm>": {
+      "@enabled": "boolean",
+      "@lc": "string",
+      "@lcv": "string",
+      "@lkw": "string",
+      "@ln": "string"
+    }
+  }
+}

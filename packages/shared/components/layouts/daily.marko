@@ -1,0 +1,263 @@
+import { get } from "@mindful-web/object-path";
+import { parseBooleanHeader } from "@mindful-web/utils";
+import queryFragment from "@industrial-media/package-shared/graphql/fragments/content-list";
+
+$ const { website, config, req } = out.global;
+$ const { newsletter, date, publicationId } = input.data;
+
+$ const emailX = config.get("emailX");
+$ const nativeX = config.getAsObject("nativeX");
+
+$ const withImage = parseBooleanHeader(get(req, "query.with-image"));
+$ const continueReading = parseBooleanHeader(get(req, "query.continue-reading"));
+
+$ const utmTerm = get(req, "query.utm_term");
+$ const urlParams = (utmTerm) ? { "utm_term" : utmTerm } : false;
+
+<marko-newsletter-root
+  title=newsletter.name
+  description=newsletter.description
+  date=date
+>
+  <@head>
+    <shared-head-block />
+  </@head>
+  <@body style="padding:0; margin:0;font-family: 'Roboto', Arial, sans-serif; -webkit-text-size-adjust:100%;">
+    <marko-newsletter-stealth-link newsletter=newsletter date=date />
+    <shared-body-wrapper-block newsletter=newsletter date=date>
+      <@body>
+
+        <shared-content-list-block
+          date=date
+          section-name="Featured Story"
+          newsletter=newsletter
+          with-section=false
+          with-teaser=true
+          with-image=true
+          image-position="top"
+          url-params=urlParams
+          limit=1
+          skip=0
+        />
+
+        <!-- Advertisement / Promotion block -->
+        <shared-ad-wrapper-block
+          date=date
+          newsletter=newsletter
+          promotion-component="advertisement-block"
+          placement-id=get(nativeX, `placements.${newsletter.alias}.toc-1`)
+        />
+
+        <!-- Content list block-->
+        <shared-content-list-block
+          date=date
+          section-name="Main"
+          newsletter=newsletter
+          with-section=false
+          with-teaser=true
+          url-params=urlParams
+          limit=1
+          skip=0
+        />
+
+        <!-- Advertisement / Promotion block -->
+        <shared-ad-wrapper-block
+          date=date
+          newsletter=newsletter
+          promotion-component="advertisement-block"
+          placement-id=get(nativeX, `placements.${newsletter.alias}.toc-2`)
+        />
+
+
+        <!-- Content list block-->
+        <shared-content-list-block
+          date=date
+          section-name="Main"
+          newsletter=newsletter
+          with-section=false
+          with-teaser=true
+          url-params=urlParams
+          limit=2
+          skip=1
+        />
+
+        <!-- Advertisement / Promotion block -->
+        <shared-ad-wrapper-block
+          date=date
+          newsletter=newsletter
+          promotion-component="advertisement-block"
+          placement-id=get(nativeX, `placements.${newsletter.alias}.inline-1`)
+        />
+
+        <!-- Content list block -->
+        <shared-content-list-block
+          date=date
+          section-name="Main"
+          newsletter=newsletter
+          with-section=false
+          with-teaser=true
+          url-params=urlParams
+          limit=2
+          skip=3
+        />
+
+        <!-- Advertisement / Promotion block -->
+        <shared-ad-wrapper-block
+          date=date
+          newsletter=newsletter
+          promotion-component="advertisement-block"
+          placement-id=get(nativeX, `placements.${newsletter.alias}.inline-2`)
+        />
+
+        <!-- Content list block -->
+        <shared-content-list-block
+          date=date
+          section-name="Main"
+          newsletter=newsletter
+          with-section=false
+          with-teaser=true
+          url-params=urlParams
+          limit=2
+          skip=5
+        />
+
+        <!-- Advertisement / Promotion block -->
+        <shared-ad-wrapper-block
+          date=date
+          newsletter=newsletter
+          promotion-component="advertisement-block"
+          placement-id=get(nativeX, `placements.${newsletter.alias}.inline-3`)
+        />
+
+        <!-- Content list block -->
+        <shared-content-list-block
+          date=date
+          section-name="Main"
+          newsletter=newsletter
+          with-section=false
+          with-teaser=true
+          url-params=urlParams
+          limit=2
+          skip=7
+        />
+
+        <!-- Advertisement / Promotion block -->
+        <shared-ad-wrapper-block
+          date=date
+          newsletter=newsletter
+          promotion-component="advertisement-block"
+          placement-id=get(nativeX, `placements.${newsletter.alias}.inline-4`)
+        />
+
+        <!-- Content list block -->
+        <shared-content-list-block
+          date=date
+          section-name="Main"
+          newsletter=newsletter
+          with-section=false
+          with-teaser=true
+          url-params=urlParams
+          limit=2
+          skip=9
+        />
+
+        <!-- Advertisement / Promotional by block-->
+        <shared-ad-wrapper-block
+          date=date
+          newsletter=newsletter
+          promotion-component="advertisement-block"
+          placement-id=get(nativeX, `placements.${newsletter.alias}.inline-5`)
+        />
+
+        <!-- Content list block -->
+        <shared-content-list-block
+          date=date
+          section-name="Main"
+          newsletter=newsletter
+          with-section=false
+          with-teaser=true
+          url-params=urlParams
+          limit=2
+          skip=11
+        />
+
+        <!-- Advertisement / Promotional by block-->
+        <shared-ad-wrapper-block
+          date=date
+          newsletter=newsletter
+          promotion-component="advertisement-block"
+          placement-id=get(nativeX, `placements.${newsletter.alias}.inline-6`)
+        />
+
+        <!-- Content list block -->
+        <shared-content-list-block
+          date=date
+          section-name="Reader Comments"
+          newsletter=newsletter
+          with-image=false
+          with-header=true
+          with-teaser=true
+          with-section=false
+          url-params=urlParams
+          limit=3
+          skip=0
+        />
+
+        <!-- New Products block -->
+        <shared-content-list-block
+          date=date
+          section-name="New Products"
+          newsletter=newsletter
+          with-image=true
+          image-position="right"
+          with-header=true
+          with-teaser=true
+          limit=3
+        />
+
+        <!-- Industry Announcements block -->
+        <shared-content-list-block
+          date=date
+          section-name="Industry Announcements"
+          newsletter=newsletter
+          with-section=false
+          with-header=true
+          with-teaser=false
+          url-params=urlParams
+          limit=5
+        />
+
+        <!-- Featured Leaders block -->
+        <shared-content-list-block
+          date=date
+          section-name="Featured Leaders"
+          newsletter=newsletter
+          with-section=false
+          with-image=true
+          image-position="right"
+          with-header=true
+          limit=3
+          skip=0
+        />
+
+        <!-- Featured Video block -->
+        <shared-content-list-block
+          date=date
+          section-name="Featured Video",
+          newsletter=newsletter,
+          with-image=true
+          image-position="top"
+          with-section=false
+          with-teaser=true
+          url-params=urlParams
+          limit=1
+          skip=0
+        />
+
+        <!-- Content Partners block -->
+        <shared-content-partners-block newsletter=newsletter date=date />
+
+      </@body>
+    </shared-body-wrapper-block>
+  </@body>
+</marko-newsletter-root>

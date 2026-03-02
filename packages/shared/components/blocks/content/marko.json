@@ -1,0 +1,14 @@
+{
+  "<shared-content-background-block>": {
+    "template": "./background.marko"
+  },
+  "<shared-content-list-block>": {
+    "template": "./list.marko"
+  },
+  "<shared-content-list-item-block>": {
+    "template": "./list-item.marko"
+  },
+  "<shared-content-magazine-block>": {
+    "template": "./magazine.marko"
+  }
+}

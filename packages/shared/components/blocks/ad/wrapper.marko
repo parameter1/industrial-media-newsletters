@@ -1,0 +1,61 @@
+import { get, getAsObject } from "@mindful-web/object-path";
+import defaultValue from "@mindful-web/marko-core/utils/default-value";
+import { convertAdToContent } from "@mindful-web/marko-newsletters-native-x/utils";
+import PromotionAdvertisementBlock from "./promotion-advertisement";
+import PromotionNativeBlock from "./promotion-native";
+import PromotionAquaBlock from "./promotion-aqua";
+import PromotionAbBlock from "./promotion-ab";
+import PromotionDailyDig from "./promotion-daily-dig";
+
+$ const { config } = out.global;
+$ const nativeX = config.getAsObject("nativeX");
+
+$ const adUnit = (input.adUnit) ? getAsObject(input, "adUnit") : false;
+$ const newsletter = getAsObject(input, "newsletter");
+$ const { sectionName, date, placementId } = input;
+
+$ const promotionComponents = {
+  "advertisement-block": PromotionAdvertisementBlock,
+  "native-block": PromotionNativeBlock,
+  "aqua-block": PromotionAquaBlock,
+  "ab-block": PromotionAbBlock,
+  "daily-dig-block": PromotionDailyDig,
+};
+$ const PromotionComponent = promotionComponents[defaultValue(input.promotionComponent, "advertisement-block")];
+
+<if(nativeX.uri && placementId)>
+  <core-native-x-fetch|{ data, tenant }|
+    uri=nativeX.uri
+    date=date
+    placement-id=placementId
+  >
+    <if(data)>
+      <${PromotionComponent}
+        date=date
+        newsletter=newsletter
+        section-name=sectionName
+        content=convertAdToContent(data, { sectionName })
+        advertiser=data.advertiser
+        tenant=tenant
+        creative-id=get(data, "creative.mindfulCreativeId")
+        link={ attrs: data.elements.a }
+      />
+    </if>
+    <else-if(adUnit)>
+      <shared-ad-emailx-block
+        newsletter=newsletter
+        ad-unit=adUnit
+        date=date
+        dpm=input.dpm
+      />
+    </else-if>
+  </core-native-x-fetch>
+</if>
+<else-if(adUnit)>
+  <shared-ad-emailx-block
+    newsletter=newsletter
+    ad-unit=adUnit
+    date=date
+    dpm=input.dpm
+  />
+</else-if>

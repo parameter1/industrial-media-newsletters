@@ -1,0 +1,5 @@
+{
+  "<shared-ab-daily-layout>": {
+    "template": "./ab-daily.marko"
+  }
+}

@@ -1,0 +1,79 @@
+import latestIssueFragment from "@industrial-media/package-shared/graphql/fragments/latest-issue";
+import defaultValue from "@mindful-web/marko-core/utils/default-value";
+import { get, getAsObject } from "@mindful-web/object-path";
+import queryFragment from "@industrial-media/package-shared/graphql/fragments/content-list";
+
+$ const { config } = out.global;
+$ const { date, newsletter } = input;
+
+$ const newsletterConfig = config.get(newsletter.alias);
+$ const publicationId = get(newsletterConfig, "publicationId");
+$ const subscribeText = get(newsletterConfig, "subscribeText");
+$ const magazineHeaderText = get(newsletterConfig, "magazineHeaderText");
+
+$ const subscribeStyle = {
+  "font-size": "20px",
+}
+
+$ const magStyle = {
+  "width": "150px",
+  "height": "206px",
+}
+
+<marko-web-query|{ nodes: issues }|
+  name="magazine-active-issues"
+  params={
+  publicationId: publicationId,
+  queryFragment: latestIssueFragment,
+  requiresCoverImage: true,
+  limit: 3
+  }
+>
+  <tr>
+    <td>
+      <table role="presentation" width="610" border="0" align="center" cellpadding="0" cellspacing="0" class="wrap003">
+        <if(magazineHeaderText)>
+          <shared-list-header-element title=magazineHeaderText />
+        </if>
+        <else>
+          <shared-list-header-element title="Subscribe" />
+        </else>
+      </table>
+
+      <table role="presentation" width="610" border="0" align="center" cellpadding="0" cellspacing="0" class="wrap003">
+        <tr>
+          <td align="center" valign="top">
+            <table role="presentation" width="100%" border="0" align="center"  cellpadding="0" cellspacing="0">
+              <tr>
+                <for|issue| of=issues>
+                  <td align="center">
+                    <marko-core-obj-value|{ value: coverImage }| obj=issue field="coverImage" as="object">
+                      <marko-newsletter-imgix
+                        src=coverImage.src
+                        alt=coverImage.alt
+                        attrs={ border: 0, style: magStyle }
+                      >
+                        <@link href=issue.digitalEditionUrl target="_blank" />
+                      </marko-newsletter-imgix>
+                    </marko-core-obj-value>
+                  </td>
+                </for>
+              </tr>
+            </table>
+            <table role="presentation" width="100%" border="0" align="center"  cellpadding="0" cellspacing="0">
+              <shared-table-spacer-element height="10" />
+              <tr>
+                <td col span="3" align="center" valign="center">
+                  <div style=subscribeStyle>
+                    $!{subscribeText}
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <shared-table-spacer-element height="32" />
+      </table>
+    </td>
+  </tr>
+</marko-web-query>
