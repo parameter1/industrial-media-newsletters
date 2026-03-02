@@ -1,10 +1,9 @@
 import { get } from "@mindful-web/object-path";
 
 $ const { website, config } = out.global;
-$ const { newsletter, date, publicationId } = input;
+$ const { newsletter, date } = input;
 
 $ const emailX = config.get("emailX");
-$ const adUnit = (input.adUnit) ? getAsObject(input, "adUnit") : false;
 
 <table width="100%" align="center" class="top">
   <tr>
@@ -13,22 +12,24 @@ $ const adUnit = (input.adUnit) ? getAsObject(input, "adUnit") : false;
         <tr>
           <shared-view-online-block name=newsletter.name />
         </tr>
-        <tr>
-          <td align="center">
-            <div class="advertisement inline ad-600x100">
-              <shared-ad-wrapper-block
-                date=date
-                newsletter=newsletter
-                ad-unit=emailX.getAdUnit({ name: "header", alias: newsletter.alias })
-              />
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td height="20" class="short">&nbsp;</td>
-        </tr>
+        <if(emailX)>
+          <tr>
+            <td align="center">
+              <div class="advertisement inline ad-600x100">
+                <shared-ad-wrapper-block
+                  date=date
+                  newsletter=newsletter
+                  ad-unit=emailX.getAdUnit({ name: "header", alias: newsletter.alias })
+                />
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td height="20" class="short">&nbsp;</td>
+          </tr>
+        </if>
       </table>
     </td>
   </tr>
 </table>
-$ console.log(emailX);
+$ console.log(emailX.getAdUnit);
