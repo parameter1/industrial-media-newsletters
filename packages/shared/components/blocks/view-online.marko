@@ -1,15 +1,18 @@
-$ const { website } = out.global;
+$ const { config, req } = out.global;
+
+$ const { query } = req;
+$ const esp = query.esp || config.get("defaultEsp");
+$ const viewOnlineLink = esp === "et" ? "%%view_email_url%%" : "@{mv_online_version}@";
 
 <tr>
-  <td align="center" valign="top" >
-    <table role="presentation" width="610" border="0" align="center" cellpadding="0" cellspacing="0" class="wrap003">
-      <shared-table-spacer-element height="13" />
-      <tr>
-        <td align="center" valign="middle" style="font-size:15px;line-height:19px; color:#62626c;font-weight:400;">
-          <a href="@{mv_online_version}@" style="text-decoration: none;color: #62626c;">View in browser</a> &nbsp; | &nbsp; <a href=website.get("origin") style="text-decoration: none;color: #62626c;">${website.get("name")}</a>
-        </td>
-      </tr>
-      <shared-table-spacer-element height="10" />
-    </table>
+  <td
+    height="35"
+    align="center"
+    valign="middle"
+    style="font-family:Arial, Helvetica, sans-serif;font-size:10px;color:#666666;line-height:12px;"
+  >
+      <span class="breakLn">${input.name}</span>
+      <span class="mobileHide">&nbsp; | &nbsp;</span>
+      To view this email as a web page, <a target="_blank" style="color:#666666;" href=viewOnlineLink>click here.</a>
   </td>
 </tr>
