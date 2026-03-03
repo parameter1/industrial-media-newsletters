@@ -383,6 +383,14 @@ config
       width: 600,
       height: 100,
     },
+  ])
+  .setAdUnits('adm-weekly', [
+    {
+      name: 'header',
+      id: '69a5a14b4d5cea521902852d',
+      width: 600,
+      height: 100,
+    },
   ]);
 
 module.exports = config;

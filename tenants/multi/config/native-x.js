@@ -328,5 +328,14 @@ module.exports = {
       'inline-4': '69a5a188d421fdcb24f01fed',
       'inline-5': '69a5a18c4d5cea5219028531',
     },
+    'adm-weekly': {
+      'toc-1': '69a5a1ab009422667a157d09',
+      'toc-2': '69a5a1b7009422667a157d0b',
+      'inline-1': '69a5a1bed421fdcb24f01fef',
+      'inline-2': '69a5a1c14d5cea5219028533',
+      'inline-3': '69a5a1c3009422667a157d0d',
+      'inline-4': '69a5a1c5d421fdcb24f01ff1',
+      'inline-5': '69a5a1c7d421fdcb24f01ff3',
+    },
   },
 };

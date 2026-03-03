@@ -13,7 +13,16 @@ module.exports = {
     ...brands.adm,
     name: 'Automotive Design Manufacturing Today',
     preheader: true,
-    subscribeText: 'SUBSCRIBE TEXT HERE',
+    // subscribeText: 'SUBSCRIBE TEXT HERE',
+  },
+  'adm-weekly': {
+    ...brands.adm,
+    name: 'Automotive Design Manufacturing Weekly',
+    preheader: true,
+    logo: {
+      src: '/files/base/indm/adm/ADD_Weekly_2026.png',
+      footerWidth: 200,
+    },
   },
   ddt: {
     socialMediaLinks: [
