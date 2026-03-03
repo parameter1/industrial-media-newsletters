@@ -1,9 +1,13 @@
 const brands = require('./brands');
 const nativeX = require('./native-x');
+const emailX = require('./email-x');
+const gam = require('./gam');
 
 module.exports = {
   mindfulAdsDate: '2025-01-25',
   nativeX,
+  emailX,
+  gam,
   defaultEsp: 'omeda',
   'adm-today': {
     ...brands.adm,

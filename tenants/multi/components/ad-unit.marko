@@ -1,8 +1,8 @@
 import buildGAMTargeting from "@industrial-media/common/utils/build-gam-targeting";
-import emailX from "../config/email-x";
-import GAM from "../config/gam";
 
 $ const { config, req } = out.global;
+$ const GAM = config.get('gam');
+$ const emailX = config.get('emailX');
 $ const gamEnabled = Object.hasOwnProperty.call(req.query, 'gam');
 
 $ const {
