@@ -375,6 +375,14 @@ config
       width: 600,
       height: 100,
     },
+  ])
+  .setAdUnits('ot-security-update-showcase', [
+    {
+      name: 'header',
+      id: '69a73a24009422667a157d35',
+      width: 600,
+      height: 100,
+    },
   ]);
 
 module.exports = config;
