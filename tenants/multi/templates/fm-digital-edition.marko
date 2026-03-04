@@ -73,7 +73,7 @@ $ const teaserStyle = {
       <tr>
         <td>
           <marko-web-query|{ node: latestIssue }| name="magazine-latest-issue" params={
-            publicationId: "5669c7d177ab469a0ed0aaf4",
+            publicationId: "699df9871000d163148b46d6",
             queryFragment: latestIssueFragment
           }>
 
@@ -100,7 +100,7 @@ $ const teaserStyle = {
             <common-table width="630" border="0" spacing=0 padding=0 align="center" style="border-collapse:collapse;" class="main">
               <tr>
                 <td valign="top" align="center" style="font-size:14px; text-decoration: none !important; font-family: Arial, Helvetica, sans-serif; color: #666666;">
-                  Your <strong>${latestIssue.name}</strong> issue of <em>IEN Magazine</em> is now available online!
+                  Your <strong>${latestIssue.name}</strong> issue of <em>Food Manufacturing Magazine</em> is now available online!
                     <if(latestIssue.digitalEditionUrl)>
                       <a href=latestIssue.digitalEditionUrl target="_blank" style="text-decoration: none !important; font-size: 14px; font-family: Arial, Helvetica, sans-serif; color: #dc0607;">
                         <strong>VIEW »</strong>
@@ -116,12 +116,12 @@ $ const teaserStyle = {
                   <if(latestIssue.publication.subscribeUrl)>
                     <a style="text-decoration: none !important; font-size: 14px; font-family: Arial, Helvetica, sans-serif; color: #dc0607;" href=latestIssue.publication.subscribeUrl target="_blank" rel="noopener noreferrer">
                       <strong>SUBSCRIBE</strong>
-                    </a> for more leading edge content from <em>IEN</em>!
+                    </a> for more leading edge content from <em>Food Manufacturing</em>!
                   </if>
                   <else>
                     <a style="text-decoration: none !important; font-size: 14px; font-family: Arial, Helvetica, sans-serif; color: #dc0607;" href=`${website.get("origin")}/subscribe` target="_blank" rel="noopener noreferrer">
                       <strong>SUBSCRIBE</strong>
-                    </a> for more leading edge content from <em>IEN</em>!
+                    </a> for more leading edge content from <em>Food Manufacturing</em>!
                   </else>
                 </td>
               </tr>
