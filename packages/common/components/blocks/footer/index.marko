@@ -125,8 +125,8 @@ $ const esp = query.esp || config.get("defaultEsp");
             | <a href=`${website.get("origin")}/contact-us`>Customer Service Center </a>
             | <a href=`${website.get("origin")}/privacy-policy`> Privacy Policy</a>
           </p>
-          <p style="margin:0px;margin-bottom:1em;">Interested in advertising opportunities? Please contact <a href="mailto:tom@lynchb2b.com">Tom Lynch</a> for more information.</p>
           <if(companyName === 'Lynch Media')>
+            <p style="margin:0px;margin-bottom:1em;">Interested in advertising opportunities? Please contact <a href="mailto:tom@lynchb2b.com">Tom Lynch</a> for more information.</p>
             <p>
               Lynch Media, LLC<br>
               137 East Wilson Street #310<br>
@@ -135,6 +135,7 @@ $ const esp = query.esp || config.get("defaultEsp");
             <p>This newsletter is a Lynch Media product.</p>
           </if>
           <else>
+            <p style="margin:0px;margin-bottom:1em;">Interested in advertising opportunities? Please contact <a href="mailto:tom@ien.com">Tom Lynch</a> for more information.</p>
             <p>
               Industrial Media<br>
               199 East Badger Road, Suite 100<br>
