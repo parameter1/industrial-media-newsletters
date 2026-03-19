@@ -30,6 +30,15 @@ $ const nameLinkStyles = {
   "text-decoration": "none",
 };
 
+$ const textAdButtonStyle = "background:#004ba6; padding-top:10px; padding-left:10px; padding-right:10px; padding-bottom:10px;";
+$ const textAdButtonLinkStyle = {
+  "text-decoration": "none !important",
+  "font" : "bold 16px/18px Arial, Helvetica, sans-serif",
+  "background": "#004ba6",
+  "color": "#ffffff",
+  "margin-top": "10px",
+};
+
 $ const linkAttrs = {
   ...(getAsObject(input, "link.attrs")),
   ...(creativeId && { 'data-mindful-creative-id': creativeId }),
@@ -89,11 +98,15 @@ $ const nameLinkAttrs = { style: nameLinkStyles, ...linkAttrs };
                     <td align="left" valign="top" style="font-size: 17px;line-height: 22px;color: #202022;padding:0 24px 0 0;">$!{content.teaser}</td>
                   </tr>
                   <shared-table-spacer-element height="9" />
+                </table>
+                <table align="left" padding=0 spacing=0 style="padding-top: 5px">
                   <tr>
-                    <td align="left" valign="top">
-                      <a href=url target="_blank" style="font-size: 17px;line-height: 22px;color: #004ba6;padding:0 24px 0 0;">
-                        ${content.linkText}
-                      </a>
+                    <td style=`${textAdButtonStyle}`>
+                      <div>
+                        <a href=url target="_blank" style=textAdButtonLinkStyle ...linkAttrs>
+                          $!{content.linkText}
+                        </a>
+                      </div>
                     </td>
                   </tr>
                 </table>
