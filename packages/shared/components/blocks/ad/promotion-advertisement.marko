@@ -57,12 +57,12 @@ $ const nameLinkAttrs = { style: nameLinkStyles, ...linkAttrs };
         <td align="center" valign="top" dir="rtl">
           <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td align="right" valign="top" width="200" class="wdt" style="padding-left:5px;">
+              <td align="right" valign="top" width="150" class="wdt" style="padding-left:5px;">
                 <marko-core-obj-value|{ value: image }| obj=content field="primaryImage" as="object">
                   <marko-newsletter-imgix
                     src=image.src
                     alt=image.alt
-                    options={ w: 200, h: 133, fit: "crop", auto: "format,compress" }
+                    options={ w: 150, h: 125, fit: "crop", auto: "format,compress" }
                     attrs={ border: 0, style: imgStyles }
                     class="img_resize2"
                   >
