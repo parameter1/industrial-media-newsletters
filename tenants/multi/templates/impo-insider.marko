@@ -86,6 +86,7 @@ $ const mindful = query.mindful && query.mindful === "false" ? false : true;
       newsletter=newsletter,
       primary-color=primaryColor,
       hr-below=true,
+      show-teaser=false,
     />
 
     <common-table width="630" style="border-collapse:collapse;" align="center" class="main" padding=0 spacing=0>
@@ -98,6 +99,7 @@ $ const mindful = query.mindful && query.mindful === "false" ? false : true;
             newsletter=newsletter,
             primary-color=primaryColor,
             align="left",
+            show-teaser=false,
           />
           <if(nativeX)>
             <common-table width="300" style="border-collapse:collapse;" align=align class="main" padding=0 spacing=0>
@@ -145,6 +147,7 @@ $ const mindful = query.mindful && query.mindful === "false" ? false : true;
         date=date
         primary-color=primaryColor
         section-name=input.sectionName
+        show-teaser=false
       />
     </if>
     <else-if(nativeX)>
@@ -153,7 +156,8 @@ $ const mindful = query.mindful && query.mindful === "false" ? false : true;
         date=date,
         newsletter=newsletter,
         primary-color=primaryColor,
-        sequence=1
+        sequence=1,
+        show-teaser=false,
       />
       <common-ad-wrapper-block
         newsletter=newsletter
@@ -167,7 +171,8 @@ $ const mindful = query.mindful && query.mindful === "false" ? false : true;
         date=date,
         newsletter=newsletter,
         primary-color=primaryColor,
-        sequence=3
+        sequence=3,
+        show-teaser=false,
       />
       <common-ad-wrapper-block
         newsletter=newsletter
@@ -181,7 +186,8 @@ $ const mindful = query.mindful && query.mindful === "false" ? false : true;
         date=date,
         newsletter=newsletter,
         primary-color=primaryColor,
-        sequence=5
+        sequence=5,
+        show-teaser=false,
       />
       <common-ad-wrapper-block
         newsletter=newsletter
@@ -195,7 +201,8 @@ $ const mindful = query.mindful && query.mindful === "false" ? false : true;
         date=date,
         newsletter=newsletter,
         primary-color=primaryColor,
-        sequence=7
+        sequence=7,
+        show-teaser=false,
       />
       <common-ad-wrapper-block
         newsletter=newsletter
@@ -209,7 +216,8 @@ $ const mindful = query.mindful && query.mindful === "false" ? false : true;
         date=date,
         newsletter=newsletter,
         primary-color=primaryColor,
-        sequence=9
+        sequence=9,
+        show-teaser=false,
       />
       <common-ad-wrapper-block
         newsletter=newsletter
@@ -223,7 +231,8 @@ $ const mindful = query.mindful && query.mindful === "false" ? false : true;
         date=date,
         newsletter=newsletter,
         primary-color=primaryColor,
-        sequence=11
+        sequence=11,
+        show-teaser=false,
       />
     </else-if>
     <else>
@@ -232,6 +241,7 @@ $ const mindful = query.mindful && query.mindful === "false" ? false : true;
         date=date,
         newsletter=newsletter,
         primary-color=primaryColor,
+        show-teaser=false,
       />
     </else>
 
@@ -243,6 +253,7 @@ $ const mindful = query.mindful && query.mindful === "false" ? false : true;
       newsletter=newsletter,
       primary-color=primaryColor,
       hr-below=true,
+      show-teaser=false,
     />
 
     <common-magazine-block

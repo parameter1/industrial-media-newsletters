@@ -99,6 +99,7 @@
       "default-value": 0
     },
     "@title": "string",
+    "@show-teaser": "bool",
     "@content-link-style": "object",
     "@title-style": "string",
     "@teaser-style": "object",

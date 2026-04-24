@@ -10,7 +10,8 @@ $ const {
   limit,
   skip,
   primaryColor,
-  align
+  align,
+  showTeaser,
 } = input;
 
 $ const titleStyle = defaultValue(input.titleStyle, {
@@ -92,7 +93,9 @@ $ const contentLinkStyle = defaultValue(input.contentLinkStyle, {
                 <marko-core-obj-text obj=node field="name" attrs={ style: { "margin-top": "5px", "text-align": "left" } } >
                   <@link href=node.siteContext.url target="_blank" attrs={ style: contentLinkStyle } />
                 </marko-core-obj-text>
-                <marko-core-obj-text tag="div" obj=node field="teaser" html=true attrs={ style: teaserStyle } />
+                <if(showTeaser != false)>
+                  <marko-core-obj-text tag="div" obj=node field="teaser" html=true attrs={ style: teaserStyle } />
+                </if>
               </td>
             </tr>
             <tr>
