@@ -7,7 +7,7 @@ import moment from "moment";
 
 $ const { config } = out.global;
 
-$ const { newsletter, date, primaryColor } = input;
+$ const { newsletter, date, primaryColor, showTeaser } = input;
 
 $ const nativeX = (date >= moment(config.get("mindfulAdsDate"))) ? config.getAsObject("nativeX") : false;
 $ const sectionName = defaultValue(input.sectionName, "Main");
@@ -101,6 +101,7 @@ $ const queryParams = {
             date=date
             newsletter=newsletter
             primary-color=primaryColor
+            show-teaser=showTeaser
           />
         </else>
       </for>
