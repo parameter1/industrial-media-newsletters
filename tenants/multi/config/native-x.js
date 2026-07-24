@@ -337,5 +337,14 @@ module.exports = {
       'inline-4': '69a5a1c5d421fdcb24f01ff1',
       'inline-5': '69a5a1c7d421fdcb24f01ff3',
     },
+    'manufacturing-fortinet-cyber-update': {
+      'toc-1': '6a628d61fa317232a16a3680',
+      'toc-2': '6a628d74fa317232a16a3682',
+      'inline-1': '6a628d7672f47af0ee8cf00d',
+      'inline-2': '6a628d7872f47af0ee8cf00f',
+      'inline-3': '6a628d7afa317232a16a3684',
+      'inline-4': '6a628d7fb9a85e4c980e17c5',
+      'inline-5': '6a628d81fa317232a16a3686',
+    },
   },
 };

@@ -391,6 +391,14 @@ config
       width: 600,
       height: 100,
     },
+  ])
+  .setAdUnits('manufacturing-fortinet-cyber-update', [
+    {
+      name: 'header',
+      id: '6a628d00b9a85e4c980e17c3',
+      width: 600,
+      height: 100,
+    },
   ]);
 
 module.exports = config;
