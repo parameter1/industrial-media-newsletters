@@ -407,6 +407,14 @@ config
       width: 600,
       height: 100,
     },
+  ])
+  .setAdUnits('fm-update', [
+    {
+      name: 'header',
+      id: '6a99f5f01ffbf7554a1e3ab4',
+      width: 600,
+      height: 100,
+    },
   ]);
 
 module.exports = config;

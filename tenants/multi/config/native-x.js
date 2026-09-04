@@ -355,5 +355,14 @@ module.exports = {
       'inline-4': '6a9848eb2c4ae406078e9d6f',
       'inline-5': '6a9848edc4136290b254b1d8',
     },
+    'fm-update': {
+      'toc-1': '6a99f646b72e67bfd6938dd4',
+      'toc-2': '6a99f6491ffbf7554a1e3ab6',
+      'inline-1': '6a99f64c1ffbf7554a1e3ab8',
+      'inline-2': '6a99f64fb72e67bfd6938dd6',
+      'inline-3': '6a99f651b72e67bfd6938dd8',
+      'inline-4': '6a99f6557247c50ec5f0d8cd',
+      'inline-5': '6a99f657b72e67bfd6938dda',
+    },
   },
 };
