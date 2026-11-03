@@ -1,3 +1,4 @@
+import contentUrl from "@industrial-media/package-shared/utils/content-url";
 import { get, getAsObject } from "@mindful-web/object-path";
 import defaultValue from "@mindful-web/marko-core/utils/default-value";
 import queryFragment from "@industrial-media/package-shared/graphql/fragments/content-list";
@@ -53,7 +54,7 @@ $ const imgLinkStyles = {
                     class="img_resize1"
                     attrs={ border: 0, width: 580, align: "center", vspace: 5, style: imgStyles }
                   >
-                    <@link href=content.siteContext.url target="_blank" attrs={ style: imgLinkStyles } />
+                    <@link href=contentUrl(out, content.siteContext.url) target="_blank" attrs={ style: imgLinkStyles } />
                   </marko-newsletter-imgix>
                 </marko-core-obj-value>
               </td>

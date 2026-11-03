@@ -1,3 +1,4 @@
+import buildContentUrl from "@industrial-media/package-shared/utils/content-url";
 import { get, getAsArray, getAsObject } from "@mindful-web/object-path";
 import defaultValue from "@mindful-web/marko-core/utils/default-value";
 import { URLSearchParams } from "url";
@@ -8,7 +9,7 @@ $ const creativeId = get(input, "mindfulCreativeId");
 $ const tenant = get(input, "mindfulTenant");
 $ const withTeaser = defaultValue(input.withTeaser, true);
 $ const queryString = (urlParams && content.type !== 'promotion') ? `?${new URLSearchParams(urlParams)}` : "";
-$ const contentUrl = `${content.siteContext.url}${queryString}`
+$ const contentUrl = content.type === "promotion" ? `${content.siteContext.url}${queryString}` : buildContentUrl(out, `${content.siteContext.url}${queryString}`);
 $ const newsletterConfig = config.get(newsletter.alias);
 $ const primaryColor = defaultValue(get(newsletterConfig, "primaryColor"), "#103A57");
 

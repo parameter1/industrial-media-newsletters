@@ -1,3 +1,4 @@
+import contentUrl from "@industrial-media/common/utils/content-url";
 import getAlignment from "@industrial-media/common/utils/get-alignment";
 import contentList from "@industrial-media/common/graphql/fragments/content-list";
 import waterMarkDisplay from "@industrial-media/common/utils/watermark-display";
@@ -80,12 +81,12 @@ $ const contentLinkStyle = defaultValue(input.contentLinkStyle, {
                       class="main"
                       attrs={ border: 0, width: 300 }
                     >
-                      <@link href=node.siteContext.url target="_blank" />
+                      <@link href=contentUrl(out, node.siteContext.url) target="_blank" />
                     </marko-newsletter-imgix>
                   </marko-core-obj-value>
 
                   <marko-core-obj-text obj=node field="name" attrs={ style: { "margin-top": "5px", "text-align": "left" } } >
-                    <@link href=node.siteContext.url target="_blank" attrs={ style: contentLinkStyle } />
+                    <@link href=contentUrl(out, node.siteContext.url) target="_blank" attrs={ style: contentLinkStyle } />
                   </marko-core-obj-text>
                   <marko-core-obj-text tag=null obj=node field="body" html=true attrs={ style: bodyStyle } />
                   <div style="text-align: center; color: #6b6b6b; font: 400 11px/16px Helvetica, Arial, sans-serif;">Advertisement</div>
@@ -114,12 +115,12 @@ $ const contentLinkStyle = defaultValue(input.contentLinkStyle, {
                       class="main"
                       attrs={ border: 0, width: 300 }
                     >
-                      <@link href=node.siteContext.url target="_blank" />
+                      <@link href=contentUrl(out, node.siteContext.url) target="_blank" />
                     </marko-newsletter-imgix>
                   </marko-core-obj-value>
 
                   <marko-core-obj-text obj=node field="name" attrs={ style: { "margin-top": "5px", "text-align": "left" } } >
-                    <@link href=node.siteContext.url target="_blank" attrs={ style: contentLinkStyle } />
+                    <@link href=contentUrl(out, node.siteContext.url) target="_blank" attrs={ style: contentLinkStyle } />
                   </marko-core-obj-text>
                   <marko-core-obj-text tag="p" obj=node field="teaser" html=true attrs={ style: teaserStyle } />
                 </td>

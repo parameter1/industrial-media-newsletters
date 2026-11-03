@@ -1,3 +1,4 @@
+import buildContentUrl from "@industrial-media/package-shared/utils/content-url";
 import { get, getAsObject } from "@mindful-web/object-path";
 import defaultValue from "@mindful-web/marko-core/utils/default-value";
 import { URLSearchParams } from "url";
@@ -8,7 +9,7 @@ $ const tenant = get(input, "mindfulTenant");
 $ const continueReading = defaultValue(input.continueReading, false);
 $ const withTeaser = defaultValue(input.withTeaser, true);
 $ const queryString = (urlParams && content.type !== 'promotion') ? `?${new URLSearchParams(urlParams)}` : "";
-$ const contentUrl = `${content.siteContext.url}${queryString}`
+$ const contentUrl = content.type === "promotion" ? `${content.siteContext.url}${queryString}` : buildContentUrl(out, `${content.siteContext.url}${queryString}`);
 
 $ const imgStyles = {
   "outline": "none",

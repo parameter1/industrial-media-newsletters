@@ -1,3 +1,4 @@
+import contentUrl from "@industrial-media/common/utils/content-url";
 import contentList from "@industrial-media/common/graphql/fragments/content-list";
 import waterMarkDisplay from "@industrial-media/common/utils/watermark-display";
 import defaultValue from "@mindful-web/marko-core/utils/default-value";
@@ -93,7 +94,7 @@ $ const textAdButtonLinkStyle = {
                     <@link href=node.linkUrl target="_blank" attrs={ style: contentLinkStyle } />
                   </if>
                   <else>
-                    <@link href=node.siteContext.url target="_blank" attrs={ style: contentLinkStyle } />
+                    <@link href=contentUrl(out, node.siteContext.url) target="_blank" attrs={ style: contentLinkStyle } />
                   </else>
                 </marko-core-obj-text>
                 <common-table
@@ -121,7 +122,7 @@ $ const textAdButtonLinkStyle = {
                             <@link href=node.linkUrl target="_blank"/>
                           </if>
                           <else>
-                            <@link href=node.siteContext.url target="_blank"/>
+                            <@link href=contentUrl(out, node.siteContext.url) target="_blank"/>
                           </else>
                         </marko-newsletter-imgix>
                       </marko-core-obj-value>
@@ -139,7 +140,7 @@ $ const textAdButtonLinkStyle = {
                           <@link href=node.linkUrl target="_blank" attrs={ style: textAdButtonLinkStyle } />
                         </if>
                         <else>
-                          <@link href=node.siteContext.url target="_blank" attrs={ style: textAdButtonLinkStyle } />
+                          <@link href=contentUrl(out, node.siteContext.url) target="_blank" attrs={ style: textAdButtonLinkStyle } />
                         </else>
                       </marko-core-obj-text>
                     </td>

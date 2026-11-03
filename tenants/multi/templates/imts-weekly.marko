@@ -1,3 +1,4 @@
+import contentUrl from "@industrial-media/common/utils/content-url";
 import contentList from "@industrial-media/common/graphql/fragments/content-list";
 import waterMarkDisplay from "@industrial-media/common/utils/watermark-display";
 
@@ -141,12 +142,12 @@ $ const textAdButtonLinkStyle = {
                   class="main"
                   attrs={ border: 0, width: 630 }
                 >
-                  <@link href=node.siteContext.url target="_blank" />
+                  <@link href=contentUrl(out, node.siteContext.url) target="_blank" />
                 </marko-newsletter-imgix>
               </marko-core-obj-value>
 
               <marko-core-obj-text obj=node field="name" attrs={ style: { "margin-top": "5px", "text-align": "left" } } >
-                <@link href=node.siteContext.url target="_blank" attrs={ style: contentLinkStyle } />
+                <@link href=contentUrl(out, node.siteContext.url) target="_blank" attrs={ style: contentLinkStyle } />
               </marko-core-obj-text>
               <marko-core-obj-text tag="div" obj=node field="teaser" html=true attrs={ style: teaserStyle } />
             </for>
@@ -198,12 +199,12 @@ $ const textAdButtonLinkStyle = {
                               class="main"
                               attrs={ border: 0, width: 300 }
                             >
-                              <@link href=node.siteContext.url target="_blank" />
+                              <@link href=contentUrl(out, node.siteContext.url) target="_blank" />
                             </marko-newsletter-imgix>
                           </marko-core-obj-value>
 
                           <marko-core-obj-text obj=node field="name" attrs={ style: { "margin-top": "5px", "text-align": "left" } } >
-                            <@link href=node.siteContext.url target="_blank" attrs={ style: contentLinkStyle } />
+                            <@link href=contentUrl(out, node.siteContext.url) target="_blank" attrs={ style: contentLinkStyle } />
                           </marko-core-obj-text>
                           <marko-core-obj-text tag="div" obj=node field="teaser" html=true attrs={ style: teaserStyle } />
                         </td>
@@ -234,7 +235,7 @@ $ const textAdButtonLinkStyle = {
                       <tr>
                         <td bgcolor="#ecedee">
                           <marko-core-obj-text obj=node field="name">
-                            <@link href=node.siteContext.url target="_blank" attrs={ style: contentLinkStyle } />
+                            <@link href=contentUrl(out, node.siteContext.url) target="_blank" attrs={ style: contentLinkStyle } />
                           </marko-core-obj-text>
                           <common-table
                             style="margin:10px 10px 0 0;"
@@ -258,7 +259,7 @@ $ const textAdButtonLinkStyle = {
                                     class="main"
                                     attrs={ border: 0, width: 150 }
                                   >
-                                    <@link href=node.siteContext.url target="_blank" />
+                                    <@link href=contentUrl(out, node.siteContext.url) target="_blank" />
                                   </marko-newsletter-imgix>
                                 </marko-core-obj-value>
                               </td>
@@ -271,7 +272,7 @@ $ const textAdButtonLinkStyle = {
                             <tr>
                               <td style=`${textAdButtonStyle}`>
                                 <marko-core-obj-text obj=node field="linkText" html=true >
-                                  <@link href=node.siteContext.url target="_blank" attrs={ style: textAdButtonLinkStyle } />
+                                  <@link href=contentUrl(out, node.siteContext.url) target="_blank" attrs={ style: textAdButtonLinkStyle } />
                                 </marko-core-obj-text>
                               </td>
                             </tr>
@@ -335,14 +336,14 @@ $ const textAdButtonLinkStyle = {
                                 class="main"
                                 attrs={ border: 0, width: 150 }
                               >
-                                <@link href=node.siteContext.url target="_blank" />
+                                <@link href=contentUrl(out, node.siteContext.url) target="_blank" />
                               </marko-newsletter-imgix>
                             </marko-core-obj-value>
                           </td>
                         </tr>
                       </common-table>
                       <marko-core-obj-text obj=node field="name" >
-                        <@link href=node.siteContext.url target="_blank" attrs={ style: contentLinkStyle } />
+                        <@link href=contentUrl(out, node.siteContext.url) target="_blank" attrs={ style: contentLinkStyle } />
                       </marko-core-obj-text>
                       <marko-core-obj-text tag="div" obj=node field="teaser" html=true attrs={ style: teaserStyle } />
                     </td>
@@ -359,7 +360,7 @@ $ const textAdButtonLinkStyle = {
                   <tr>
                     <td bgcolor="#ecedee">
                       <marko-core-obj-text obj=node field="name">
-                        <@link href=node.siteContext.url target="_blank" attrs={ style: contentLinkStyle } />
+                        <@link href=contentUrl(out, node.siteContext.url) target="_blank" attrs={ style: contentLinkStyle } />
                       </marko-core-obj-text>
                       <common-table
                         style="margin:10px 10px 0 0;"
@@ -378,7 +379,7 @@ $ const textAdButtonLinkStyle = {
                                 class="main"
                                 attrs={ border: 0, width: 150 }
                               >
-                                <@link href=node.siteContext.url target="_blank" />
+                                <@link href=contentUrl(out, node.siteContext.url) target="_blank" />
                               </marko-newsletter-imgix>
                             </marko-core-obj-value>
                           </td>
@@ -390,7 +391,7 @@ $ const textAdButtonLinkStyle = {
                         <tr>
                           <td style=`${textAdButtonStyle}`>
                             <marko-core-obj-text obj=node field="linkText" html=true >
-                              <@link href=node.siteContext.url target="_blank" attrs={ style: textAdButtonLinkStyle } />
+                              <@link href=contentUrl(out, node.siteContext.url) target="_blank" attrs={ style: textAdButtonLinkStyle } />
                             </marko-core-obj-text>
                           </td>
                         </tr>

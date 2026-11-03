@@ -1,3 +1,4 @@
+import contentUrl from "@industrial-media/common/utils/content-url";
 import contentList from "@industrial-media/common/graphql/fragments/content-list";
 import waterMarkDisplay from "@industrial-media/common/utils/watermark-display";
 
@@ -88,7 +89,7 @@ $ const teaserStyle = {
                               class="main"
                               attrs={ border: 0, width: 280 }
                             >
-                              <@link href=node.siteContext.url target="_blank" />
+                              <@link href=contentUrl(out, node.siteContext.url) target="_blank" />
                             </marko-newsletter-imgix>
                           </marko-core-obj-value>
                         </td>
@@ -98,7 +99,7 @@ $ const teaserStyle = {
                       <tr>
                         <td>
                           <marko-core-obj-text obj=node field="name" attrs={ style: { "text-align": "left" } } >
-                            <@link href=node.siteContext.url target="_blank" attrs={ style: contentLinkStyle } />
+                            <@link href=contentUrl(out, node.siteContext.url) target="_blank" attrs={ style: contentLinkStyle } />
                           </marko-core-obj-text>
                           <marko-core-obj-text tag="div" obj=node field="teaser" html=true attrs={ style: teaserStyle } />
                         </td>
