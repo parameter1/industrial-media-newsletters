@@ -111,6 +111,15 @@ config
     },
   ])
 
+  .setAdUnits('design-development-today-video-showcase', [
+    {
+      name: 'header',
+      id: '6afc6c7bf72ec6e58aa913fc',
+      width: 600,
+      height: 100,
+    },
+  ])
+
   .setAdUnits('ien-today', [
     {
       name: 'header',

@@ -20,6 +20,14 @@ module.exports = {
       'inline-4': '67eebfc188fd10346420f170',
       'inline-5': '67eebfc4b3178b979e5aa9fb',
     },
+    'design-development-today-video-showcase': {
+      'ad-slot-1': '6afc6c9429c53d8b74aef78b',
+      'ad-slot-2': '6afc6c9f29c53d8b74aef796',
+      'ad-slot-3': '6afc6cb529c53d8b74aef7ac',
+      'ad-slot-4': '6afc6cc0f72ec6e58aa91421',
+      'ad-slot-5': '6afc6cc8f72ec6e58aa91426',
+      'ad-slot-6': '6afc6cd129c53d8b74aef7be',
+    },
     'design-development-today': {
       'toc-1': '67869727d67b9fe2b80c0225',
       'toc-2': '6786972c5e8b8f6a7e48e351',
